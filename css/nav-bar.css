@@ -1,0 +1,22 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.nav-bar {
+    height: 1.4rem;
+    box-shadow: 0 0 1.5rem grey;
+    font-size: 1rem;
+}
+.ul-navbar {
+    position: absolute;
+    align-self: baseline;
+    list-style: none;
+    right: 1rem;
+}
+.ul-navbar > li {
+    display: inline;
+    padding-left: 0.5rem;
+}
+.ul-navbar > li > a {
+    text-decoration: none;
+    color: black;
+}
