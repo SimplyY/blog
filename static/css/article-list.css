@@ -18,6 +18,7 @@
 }
 
 .article-list{
+
 }
 
 .article-item{
@@ -26,10 +27,12 @@
 }
 
 .title{
+    color: black;
     margin: 0.5rem 1rem;
     font-size: 2.5rem;
 }
 .time{
+    color: rgb(119,128,135);
     margin: 0.5rem 1rem;
     font-size: 1rem;
 }
