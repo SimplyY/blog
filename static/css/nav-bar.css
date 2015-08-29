@@ -10,14 +10,14 @@ body {
 }
 .ul-navbar {
     height: inherit;
-    margin-left: 1rem;
+    margin-left: 9rem;
     list-style: none;
 }
 .ul-navbar > li {
     height: 2.8rem;
     display: inline-block;
-    padding-right: .5rem;
-    padding-left: .5rem;
+    padding-right: .8rem;
+    padding-left: .8rem;
 }
 
 /*渐变动画，不包括第一个*/
@@ -42,12 +42,4 @@ body {
     line-height: 2.8rem;
     text-decoration: none;
     color: black;
-}
-
-.test{
-    text-decoration: none;
-    font-size: 1.6rem;
-    font-weight: 400;
-    display: inline-block;
-    margin-left: 1rem;
 }

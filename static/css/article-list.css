@@ -1,0 +1,35 @@
+.current-tag{
+    margin: 1rem;
+    font-size: 1.5rem;
+    font-family: Microsoft YaHei;
+
+}
+
+.current-tag a {
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: rgb(119,128,135);
+    font-weight:lighter;
+}
+
+.current-tag :hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.article-list{
+}
+
+.article-item{
+    border-top: 0.16rem solid;
+    border-color: rgb(203,203,203);
+}
+
+.title{
+    margin: 0.5rem 1rem;
+    font-size: 2.5rem;
+}
+.time{
+    margin: 0.5rem 1rem;
+    font-size: 1rem;
+}
