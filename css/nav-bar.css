@@ -1,22 +1,53 @@
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+
+/*导航栏样式*/
 .nav-bar {
-    height: 1.4rem;
-    box-shadow: 0 0 1.5rem grey;
-    font-size: 1rem;
+    font-size: 1.5rem;
+    height: 2.8rem;
+    box-shadow: 0 0 2.0rem grey;
 }
 .ul-navbar {
-    position: absolute;
-    align-self: baseline;
+    height: inherit;
+    margin-left: 1rem;
     list-style: none;
-    right: 1rem;
 }
 .ul-navbar > li {
-    display: inline;
-    padding-left: 0.5rem;
+    height: 2.8rem;
+    display: inline-block;
+    padding-right: .5rem;
+    padding-left: .5rem;
 }
+
+/*渐变动画，不包括第一个*/
+
+.ul-navbar > li:nth-child(n + 2):hover {
+    animation: beGrey .4s linear 0s normal forwards;
+}
+@keyframes beGrey {
+    from {
+        background-color: rgb(245, 245, 245);
+    }
+    to {
+        background-color: rgb(233, 233, 233);
+    }
+}
+
+/*去除链接样式*/
+
 .ul-navbar > li > a {
+    display: inline-block;
+    height: 2.8rem;
+    line-height: 2.8rem;
     text-decoration: none;
     color: black;
+}
+
+.test{
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 400;
+    display: inline-block;
+    margin-left: 1rem;
 }

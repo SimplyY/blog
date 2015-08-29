@@ -1,0 +1,24 @@
+.main-content a, .aside-sidebar a{
+    font-size: 1.2rem;
+    height: 2.8rem;
+    text-decoration: none;
+    color: rgb(125, 213, 213);
+}
+
+/*电脑或平板*/
+@media screen and (min-width: 50rem) {
+    .main-content {
+        width: 80rem;
+        display: inline;
+        float: left;
+        margin: 2rem;
+        box-shadow: 0 0 .5rem grey;
+    }
+    .sidebar {
+        width: 10rem;
+        position: fixed;
+        margin-right: 2rem;
+        display: inline;
+        margin-bottom: 5px;
+    }
+}
