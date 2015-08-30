@@ -16,15 +16,17 @@ class Tag(models.Model):
             current_tag = current_tag.parent_tag
             if not current_tag:
                 return False
+        return False
 
     def get_tags(self):
         tags = [self, ]
         current_tag = self
         while current_tag.parent_tag:
-            tags.append(current_tag)
             current_tag = current_tag.parent_tag
             if not current_tag:
                 return tags
+            tags.insert(0, current_tag)
+
         return tags
 
 
@@ -40,5 +42,3 @@ class Article(models.Model):
 
     class Meta:
         ordering = ['-id']
-
-
