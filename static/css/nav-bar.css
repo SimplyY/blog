@@ -4,9 +4,13 @@ body {
 
 /*导航栏样式*/
 .nav-bar {
+    position: fixed;
+    width: 100%;
     font-size: 1.5rem;
-    height: 2.8rem;
+    height: 3.8rem;
+    line-height: 3.8rem;
     box-shadow: 0 0 2.0rem grey;
+    background-color: white;
 }
 .ul-navbar {
     height: inherit;
@@ -14,14 +18,13 @@ body {
     list-style: none;
 }
 .ul-navbar > li {
-    height: 2.8rem;
     display: inline-block;
+    height: 100%;
     padding-right: .8rem;
     padding-left: .8rem;
 }
 
 /*渐变动画，不包括第一个*/
-
 .ul-navbar > li:nth-child(n + 2):hover {
     animation: beGrey .4s linear 0s normal forwards;
 }
@@ -38,8 +41,6 @@ body {
 
 .ul-navbar > li > a {
     display: inline-block;
-    height: 2.8rem;
-    line-height: 2.8rem;
     text-decoration: none;
     color: black;
 }

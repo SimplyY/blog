@@ -1,19 +1,55 @@
 
-
 /*电脑或平板*/
 @media screen and (min-width: 50rem) {
+    .two-sides {
+        padding: 6rem 0rem 0rem 10rem;
+    }
+
+/*two-sides style*/
     .main-content {
         width: 60rem;
         display: inline;
         float: left;
-        margin: 2rem 10rem;
         box-shadow: 0 0 .5rem grey;
     }
+
     .sidebar {
-        width: 10rem;
+        width: 18rem;
         position: fixed;
-        margin-right: 2rem;
+        margin: 0rem 8rem;
         display: inline;
-        margin-bottom: 5px;
+        box-shadow: 0 0 .5rem grey;
     }
+
+
+/*current-tag in main-content*/
+    .current-tag{
+        margin: 1rem;
+        font-size: 1.5rem;
+        font-family: Microsoft YaHei;
+
+    }
+    .current-tag a {
+        font-size: 1.4rem;
+        text-decoration: none;
+        color: rgb(119,128,135);
+        font-weight:lighter;
+    }
+    .current-tag :hover {
+        color: black;
+    }
+
+
+/*in sidebar style*/
+    .avatar {
+        margin: 2rem 0;
+        max-width: 15rem;
+    }
+
+    .about-me {
+        max-width: 15rem;
+        margin: 0 auto;
+    }
+
+
 }
