@@ -1,7 +1,9 @@
 from django.shortcuts import render, render_to_response, redirect
 from django.template import Context
+from django.http import HttpResponse
 from myBlog.models import *
 from urllib.parse import unquote
+from myBlog.article import set_tag_article
 
 def root(request):
     return redirect('/home')
@@ -41,3 +43,8 @@ def tag_page(request):
 def article_page(request, name):
     print(request.get_full_path())
     return redirect('/home')
+
+
+def renew_article(request):
+    set_tag_article()
+    return HttpResponse('finish')
