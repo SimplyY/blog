@@ -1,5 +1,7 @@
 from django.db import models
 import os
+from datetime import datetime
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -57,9 +59,11 @@ class Article(models.Model):
         if filename == '.DS_Store':
             return
 
-        content = get_content(root, filename)
+        pub_date, change_date, content = get_article_info(root, filename)
         new_article = Article()
         new_article.title = filename
+        new_article.pub_date = pub_date
+        new_article.change_date = change_date
         new_article.content = content
         new_article.tag = Tag.objects.filter(name=tag)[0]
 
@@ -69,11 +73,39 @@ class Article(models.Model):
         ordering = ['-id']
 
 
+PUB_TIME = '发布时间：'
+UPD_TIME = '更新时间：'
 
-def get_content(dirpath, filename):
+# pub_date, change_date, content
+def get_article_info(dirpath, filename):
     path = os.path.join(dirpath, filename)
     content = ""
+    file_content = ""
     with open(path, 'r') as f:
-        for line in f.readlines():
-            content += line
-    return content
+        for index, line in enumerate(f.readlines()):
+            if index == 0:
+                pub_date = get_pub_date(line)
+                file_content += PUB_TIME + pub_date
+            elif index == 1:
+                change_date = get_change_date(line)
+                file_content += UPD_TIME + change_date
+            else:
+                content += line
+                file_content += content
+
+    with open(path, 'w') as f:
+        f.write(file_content)
+
+    return pub_date, change_date, content
+
+def get_pub_date(line):
+    if line:
+        pub_date = line
+    else:
+        pub_date = str(datetime.today()).split(' ')[0]
+
+    return pub_date
+
+def get_change_date(line):
+    change_date = str(datetime.today()).split('.')[0]
+    return change_date

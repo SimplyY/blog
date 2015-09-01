@@ -5,6 +5,8 @@ from myBlog.models import *
 
 def set_tag_article():
 
+    Tag.objects.all().delete()
+    Article.objects.all().delete()
     root_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'Article')
     first_tags = []
     second_tags = []
@@ -35,10 +37,3 @@ def set_tag_article():
         if parent_dir in [tag.name for tag in third_tags]:
             for article in files:
                 Article.save_article(root, str(article), parent_dir)
-
-
-
-
-
-
-
