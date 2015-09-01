@@ -73,39 +73,19 @@ class Article(models.Model):
         ordering = ['-id']
 
 
-PUB_TIME = '发布时间：'
-UPD_TIME = '更新时间：'
+
 
 # pub_date, change_date, content
 def get_article_info(dirpath, filename):
     path = os.path.join(dirpath, filename)
     content = ""
-    file_content = ""
     with open(path, 'r') as f:
         for index, line in enumerate(f.readlines()):
             if index == 0:
-                pub_date = get_pub_date(line)
-                file_content += PUB_TIME + pub_date
+                pub_date = line
             elif index == 1:
-                change_date = get_change_date(line)
-                file_content += UPD_TIME + change_date
+                change_date = line
             else:
                 content += line
-                file_content += content
-
-    with open(path, 'w') as f:
-        f.write(file_content)
 
     return pub_date, change_date, content
-
-def get_pub_date(line):
-    if line:
-        pub_date = line
-    else:
-        pub_date = str(datetime.today()).split(' ')[0]
-
-    return pub_date
-
-def get_change_date(line):
-    change_date = str(datetime.today()).split('.')[0]
-    return change_date
