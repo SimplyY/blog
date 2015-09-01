@@ -48,8 +48,8 @@ class Article(models.Model):
     title = models.CharField(max_length=100, unique=True)
     tag = models.ForeignKey('Tag')
     content = models.TextField()
-    pub_date = models.DateField(auto_now_add=True)
-    change_date = models.DateTimeField(auto_now=True)
+    pub_date = models.CharField(max_length=100)
+    change_date = models.CharField(max_length=100)
 
     def __str__(self):
         return self.title + " tag:" + str(self.tag)
@@ -73,8 +73,6 @@ class Article(models.Model):
         ordering = ['-id']
 
 
-
-
 # pub_date, change_date, content
 def get_article_info(dirpath, filename):
     path = os.path.join(dirpath, filename)
@@ -82,9 +80,9 @@ def get_article_info(dirpath, filename):
     with open(path, 'r') as f:
         for index, line in enumerate(f.readlines()):
             if index == 0:
-                pub_date = line
+                pub_date = line[5:]
             elif index == 1:
-                change_date = line
+                change_date = line[5:]
             else:
                 content += line
 

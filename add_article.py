@@ -4,10 +4,11 @@
 from datetime import datetime
 import os
 
+# 运行程序会自动将两时间以当前时间添加，删除相应行，再更改即可以当前时间更新之，也可以手动更新，但是行头不能变
 
 # 第一行
 PUB_TIME = '发布时间：'
-# 第二行
+# 第二行，
 UPD_TIME = '更新时间：'
 
 root_dir = os.path.join(os.path.dirname(__file__), 'Article')
@@ -32,15 +33,18 @@ def deal_article(dir, article):
 
     with open(path, "r") as f:
         for index, line in enumerate(f.readlines()):
-            if index == 0 and line[0:4] != '发布时间':
-                pub_date_info = get_pub_date_info(line)
-            elif index == 1 and line[0:4] != '更新时间':
-                change_date_info = get_change_date_info(line)
-
-            if line[0:4] == '发布时间':
-                pub_date_info == line
-            if line[0:4] == '更新时间':
-                change_date_info == line
+            if index == 0:
+                if line[0:4] != '发布时间':
+                    pub_date_info = get_pub_date_info(line)
+                else:
+                    pub_date_info = line
+                    continue
+            elif index == 1:
+                if line[0:4] != '更新时间':
+                    change_date_info = get_change_date_info(line)
+                else:
+                    change_date_info = line
+                    continue
 
             file_content += line
 
