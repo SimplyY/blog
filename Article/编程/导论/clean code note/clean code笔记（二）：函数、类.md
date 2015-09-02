@@ -1,3 +1,6 @@
+发布时间：2015-09-02
+更新时间：2015-09-02 16:02:55
+github 地址: https://github.com/SimplyY/Blog/tree/master/Article
 #clean code笔记（二）：函数、类
 ## 编写函数的规范
 > 沃德原则:_如果每个历程都让你感到深和己意，那就是整洁的代码_

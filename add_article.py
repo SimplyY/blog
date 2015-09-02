@@ -10,6 +10,8 @@ import os
 PUB_TIME = '发布时间：'
 # 第二行，
 UPD_TIME = '更新时间：'
+# 第三行，需要自己填写自己的仓库地址
+GITHUB_URL = 'https://github.com/SimplyY/Blog/tree/master/Article'
 
 root_dir = os.path.join(os.path.dirname(__file__), 'Article')
 
@@ -30,6 +32,7 @@ def deal_article(dir, article):
     file_content = ""
     pub_date_info = ""
     change_date_info = ""
+    url = ""
 
     with open(path, "r") as f:
         for index, line in enumerate(f.readlines()):
@@ -45,10 +48,14 @@ def deal_article(dir, article):
                 else:
                     change_date_info = line
                     continue
+            elif index == 2:
+                url ="github 地址: " + GITHUB_URL + '\n'
+                if line[0:9] == 'github 地址':
+                    continue
 
             file_content += line
 
-    file_content = pub_date_info + change_date_info + file_content
+    file_content = pub_date_info + change_date_info + url + file_content
 
     with open(path, "w") as f:
         f.write(file_content)
