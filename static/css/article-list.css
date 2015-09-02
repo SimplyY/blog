@@ -1,21 +1,32 @@
 
-
-.article-list{
-
-}
-
 .article-item{
     border-top: 0.16rem solid;
     border-color: rgb(203,203,203);
 }
 
+.article-list :hover{
+    animation: beGrey .4s linear 0s normal forwards;
+}
+@keyframes beGrey {
+    from {
+        background-color: rgb(245, 245, 245);
+    }
+    to {
+        background-color: rgb(230, 230, 230);
+    }
+}
+
+.article-list :hover > div{
+    animation: none;
+}
+
 .title{
     color: black;
-    margin: 0.5rem 1rem;
+    padding: 0.5rem 1rem;
     font-size: 1.8rem;
 }
 .time{
     color: rgb(119,128,135);
-    margin: 0.5rem 1rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
     font-size: 1rem;
 }

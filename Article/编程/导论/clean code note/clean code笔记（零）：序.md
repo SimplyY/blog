@@ -1,6 +1,6 @@
-发布时间：2015-09-01
+发布时间：2014-08-23
 更新时间：2015-09-01 23:33:40
-github 地址: https://github.com/SimplyY/Blog/tree/master/Article
+github 地址: https://github.com/SimplyY/Blog/
 # clean code笔记（零）：序
 
 **clean code这本书是程序员必读经典之一。**

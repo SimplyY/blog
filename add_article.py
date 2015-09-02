@@ -11,7 +11,7 @@ PUB_TIME = '发布时间：'
 # 第二行，
 UPD_TIME = '更新时间：'
 # 第三行，需要自己填写自己的仓库地址
-GITHUB_URL = 'https://github.com/SimplyY/Blog/tree/master/Article'
+GITHUB_URL = 'https://github.com/SimplyY/Blog/'
 
 root_dir = os.path.join(os.path.dirname(__file__), 'Article')
 

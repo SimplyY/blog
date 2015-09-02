@@ -1,6 +1,6 @@
-发布时间：2015-09-01
+发布时间：2014-08-22
 更新时间：2015-09-01 23:33:40
-github 地址: https://github.com/SimplyY/Blog/tree/master/Article
+github 地址: https://github.com/SimplyY/Blog/
 # clean code笔记（一）：命名规范
 
 ## 命名

@@ -10,7 +10,7 @@
         width: 60rem;
         display: inline;
         float: left;
-        box-shadow: 0 0 .5rem grey;
+        box-shadow: 0 0 .8rem grey;
     }
 
     .sidebar {
@@ -18,7 +18,7 @@
         position: fixed;
         margin: 0rem 8rem;
         display: inline;
-        box-shadow: 0 0 .5rem grey;
+        box-shadow: 0 0 .8rem grey;
     }
 
 
@@ -32,7 +32,7 @@
     .current-tag a {
         font-size: 1.4rem;
         text-decoration: none;
-        color: rgb(119,128,135);
+        color: rgb(149,158,165);
         font-weight:lighter;
     }
     .current-tag :hover {
