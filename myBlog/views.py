@@ -12,7 +12,7 @@ def root(request):
 def home_page(request):
     current_tags = Tag.objects.filter(name='编程')
     print(current_tags)
-    return render_to_response('home.html', Context({"article_list": Article.objects.all(), "current_tags": current_tags}))
+    return render_to_response('home.html', Context({"article_list": Article.objects.all(), "current_tags": current_tags, "column_tag_list": Tag.objects.filter(is_column=True)}))
 
 
 def tag_page(request):
@@ -37,7 +37,7 @@ def tag_page(request):
 
     print(article_list)
     print(current_tags)
-    return render_to_response('home.html', Context({"article_list": article_list, "current_tags": current_tags}))
+    return render_to_response('home.html', Context({"article_list": article_list, "current_tags": current_tags, "column_tag_list": Tag.objects.filter(is_column=True)}))
 
 
 def article_page(request, name):

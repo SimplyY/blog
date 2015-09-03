@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
@@ -51,16 +50,33 @@
 
         </div>
         <div class="sidebar">
-            <div class="about-me">
-                <a href="/author">
-                    <img class="avatar" src="https://avatars3.githubusercontent.com/u/8455579?v=3&s=460"/>
-                </a>
-
-            </div>
 
             <div class="column-tag-list">
-
+                <p>
+                    专辑：
+                </p>
+                {% for tag in column_tag_list %}
+                <a href="/tag/{{tag.name}}" class="column-tag">《 {{tag.name}} 》</a>
+                {% endfor %}
             </div>
+            <div class="about-me">
+                <div>
+                    <a href="/author">
+                        <img class="avatar" src="https://avatars3.githubusercontent.com/u/8455579?v=3&s=460"/>
+                    </a>
+                <div class="contact">
+                    <div class="email">
+                        <a  href="mailto:simplyyu@163.com?subject=feedback">SimplyYu@163.com</a>
+                    </div>
+                    <div>
+                        <a href="https://github.com/SimplyY">github</a>
+                        <a href="http://www.zhihu.com/people/SimplyY">zhihu</a>
+                        <a href="http://weibo.com/p/1005055391751756/home?from=page_100505&mod=TAB#place">weibo</a>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 

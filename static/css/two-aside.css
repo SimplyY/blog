@@ -14,7 +14,7 @@
     }
 
     .sidebar {
-        width: 18rem;
+        width: 16rem;
         position: fixed;
         margin: 0rem 8rem;
         display: inline;
@@ -35,21 +35,66 @@
         color: rgb(149,158,165);
         font-weight:lighter;
     }
-    .current-tag :hover {
+    .current-tag a:hover {
         color: black;
     }
 
 
 /*in sidebar style*/
     .avatar {
-        margin: 2rem 0;
-        max-width: 15rem;
+        padding: 1rem 2rem;
+        max-width: 100%;
+        border-radius: 50%;
     }
 
     .about-me {
-        max-width: 15rem;
-        margin: 0 auto;
+        font-size: 2rem;
     }
 
+    .contact {
+        margin: 0rem 2rem 1.5rem 1.5rem;
+        font-size: 1.2rem;
+    }
+
+
+    .email {
+        padding-bottom: 0.5rem;
+    }
+
+    .contact a{
+        color: #4078c0;
+        text-decoration: none;
+    }
+
+    .contact a:hover{
+        text-decoration: underline;
+    }
+
+    .column-tag-list {
+        margin-top: 1rem;
+        margin-left: 1.2rem;
+    }
+
+    .column-tag-list a , .column-tag-list p{
+        font-size: 1.2rem;
+        display: block;
+        color: rgb(149,158,165);
+        text-decoration: none;
+
+    }
+
+    .column-tag-list p{
+        margin: 0.2rem 0.7rem;
+        color: black;
+        font-size: 1.3rrem;
+    }
+
+    .column-tag-list a:hover{
+        color: black;
+    }
+
+    .column-tag {
+        border: 1rem;
+    }
 
 }

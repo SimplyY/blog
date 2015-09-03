@@ -4,6 +4,7 @@ github 地址: https://github.com/SimplyY/Blog/
 # 我的github
 我一直认为能熟练使用 github 是编程进步的一大标志，并且做的项目和熟知的小伙伴可以让自己飞速成长。
 
+我的主页： https://github.com/SimplyY
 
 ## 经常使用 github 的好处
 
@@ -45,6 +46,6 @@ https://github.com/SimplyY/zhihu-rss
 收集了很多编程资料 https://github.com/CoderUnion/coderunion.github.io/issues/39
 
 ## 围观大神
-daimajia 安卓开源界前十的大神 https://github.com/daimajia
+daimajia 安卓开源界前十的大神，目前是国内研究生 https://github.com/daimajia
 
 气体大神 pyer、geeker、全能 https://github.com/xen0n
