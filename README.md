@@ -1,12 +1,28 @@
 # 博客
 这里准备搭建我的个人博客
 
+## 文章数据流
+1. 文章数据从文件夹里
+2. 到数据库里
+3. 到前端页面
+
+## 写文章的步骤
+1. 写文章
+2. 运行脚本来在文章中添加日期数据 eg：python3 add_article.py
+3. 更新数据库里的文章 访问 http://127.0.0.1:8000/renew_article
+
+### 有关文章的映射关系
+0. 阅读 model 内容的表结构
+1. 项目根目录的 Article 文件夹里的所有文件夹都是 tag，文件夹名位 tag name
+2. 所有文章都是 article 上层文件夹就是他的 tag， 其中 title 是文件名， pubdate 和 changedate 分布为文件内容的第一行和第二行，文件正文 content 从第三行开始。
+
 ## TODO
 - [ ] 支持 markdown
-- [ ] 扫描 Article 文件夹的文章
+- [x] 扫描 Article 文件夹的文章
 - [ ] Article 页面
 - [ ] 侧边栏，罗列三级标签
 - [ ] 作者页面
+- [ ] tag 信息 aritcle list 里
 
 ## 设计关键
 - 导航栏标签、专辑标签
