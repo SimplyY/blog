@@ -3,19 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-    <title>test</title>
+    <title>SimplyYu 的博客</title>
 
     {% load staticfiles %}
     <link rel="stylesheet" href= {% static "css/global.css" %}>
     <link rel="stylesheet" href= {% static "css/nav-bar.css" %}>
     <link rel="stylesheet" href= {% static "css/two-aside.css" %}>
     <link rel="stylesheet" href= {% static "css/article-list.css" %}>
+
+    <script src= {% static "js/ajust-rem-size.js" %} charset="utf-8"></script>
+    <script src= {% static "js/markdown.js" %} charset="utf-8"></script>
+    <script src= {% static "js/preview-markdown.js" %} charset="utf-8"></script>
 </head>
 
 <body>
     <div class="nav-bar">
         <ul class="ul-navbar">
-            <li><a href="/home">SimplyY </a></li>
+            <li><a href="/home">SimplyYu </a></li>
             <li><a href="/tag/编程">编程</a></li>
             <li><a href="/tag/生活">生活</a></li>
             <li><a href="/tag/诗集">诗集</a></li>
@@ -25,28 +29,10 @@
     </div>
     <div class="two-sides">
         <div class="main-content">
-            <div class="current-tag">
-            {% for tag in current_tags %}
-                {% if tag.parent_tag %}
-                »
-                <a href="/tag/{{tag.name}}"> {{tag.name}} </a>
-                {% else %}
-                <a href="/tag/{{tag.name}}" > {{tag.name}} </a>
-                {% endif %}
-            {% endfor %}
+            {% block main-content %}
 
-            </div>
-            <div class="article-list">
-                {% for article in article_list %}
-                <div class="article-item">
+            {% endblock %}
 
-                    <a href= {% url 'articles' article.id %}  >
-                        <div class="title"> {{article.title}} </div>
-                        <div class="time"> {{article.pub_date}} </div>
-                    </a>
-                </div>
-                {% endfor %}
-            </div>
 
         </div>
         <div class="sidebar">

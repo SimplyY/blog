@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block main-content %}
+{% include "current-tag.html" %}
+
+<div class="article-list">
+    {% for article in article_list %}
+    <div class="article-item">
+
+        <a href= "/article/{{article.id}}" %}  >
+            <div class="title"> {{article.title}} </div>
+            <div class="time"> {{article.pub_date}} </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
