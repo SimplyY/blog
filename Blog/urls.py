@@ -8,6 +8,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^home$', home_page),
     url(r'^tag/', tag_page, name='tags'),
-    url(r'^article/([0-9]+)/$', article_page, name='articles'),
+    url(r'^article/([0-9]+)$', article_page, name='articles'),
     url(r'^renew_article$', renew_article)
 ]
