@@ -11,6 +11,7 @@ body {
     line-height: 3.8rem;
     box-shadow: 0 0 2.0rem grey;
     background-color: white;
+    z-index: 99;
 }
 .ul-navbar {
     height: inherit;

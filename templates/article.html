@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 {% block main-content %}
 {% include "current-tag.html" %}
+{% load staticfiles %}
+<link rel="stylesheet" href= {% static "css/github-markdown.css" %} charset="utf-8">
+<link rel="stylesheet" href= {% static "css/article.css" %} charset="utf-8">
 
-<div id='article-md-preview'>
-    {{article.content}}
 
-</div>
+<article id='article-md-preview' class='markdown-body'>{{article.content}}</article>
 
+<script src= {% static "js/markdown.js" %} charset="utf-8"></script>
+<script src= {% static "js/preview-markdown.js" %} charset="utf-8"></script>
 
 {% endblock %}

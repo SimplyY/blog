@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <article id="article-md-preview">foo
+> foo
+
+> foo</article>
+    <div id="preview"> </div>
+    <script src="markdown.js"></script>
+    <script>
+
+    var preview = document.getElementById("article-md-preview")
+    preview.innerHTML = markdown.toHTML(preview.innerHTML);
+
+    </script>
+  </body>
+</html>
