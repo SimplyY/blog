@@ -19,10 +19,10 @@
 ## TODO
 - [ ] 支持 markdown
 - [x] 扫描 Article 文件夹的文章
-- [ ] Article 页面
-- [ ] 侧边栏，罗列三级标签
+- [x] Article 页面
+- [x] 侧边栏，罗列三级标签
 - [ ] 作者页面
-- [ ] tag 信息 aritcle list 里
+- [x] tag 信息 aritcle list 里
 
 ## 设计关键
 - 导航栏标签、专辑标签
