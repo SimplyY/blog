@@ -49,7 +49,7 @@ def deal_article(dir, article):
                     change_date_info = line
                     continue
             elif index == 2:
-                url ="github 地址: " + GITHUB_URL + '\n'
+                url = "github 地址: " + GITHUB_URL + '\n'
                 if line[0:9] == 'github 地址':
                     continue
 
@@ -72,7 +72,7 @@ def walk_article():
             for tag in dirs:
                 first_tags.append(tag)
 
-        parent_dir = os.path.basename(root_dir)
+        parent_dir = os.path.basename(root)
 
         # 第二级目录
         if parent_dir in first_tags:
