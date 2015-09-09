@@ -72,7 +72,7 @@ def walk_article():
             for tag in dirs:
                 first_tags.append(tag)
 
-        parent_dir = root.split('/')[-1]
+        parent_dir = os.path.basename(root_dir)
 
         # 第二级目录
         if parent_dir in first_tags:
