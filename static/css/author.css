@@ -1,0 +1,18 @@
+.love-main-side {
+  height: 50rem; }
+  .love-main-side div {
+    display: inline-block;
+    height: 15rem; }
+    .love-main-side div .cat-image {
+      max-width: 10rem;
+      border-radius: 50%; }
+    .love-main-side div #SimplyY {
+      width: 4rem;
+      margin: auto; }
+    .love-main-side div .lovedays {
+      line-height: 15rem; }
+    .love-main-side div #lp {
+      width: 1.5rem;
+      margin: auto; }
+
+/*# sourceMappingURL=author.css.map */

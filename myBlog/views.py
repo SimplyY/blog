@@ -5,9 +5,11 @@ from myBlog.models import *
 from urllib.parse import unquote
 from myBlog.article import set_tag_article
 
-def get_context(current_tags, article_list=None, article=None):
-    context = {"column_tag_list": Tag.objects.filter(is_column=True), "current_tags": current_tags}
+def get_context(current_tags=None, article_list=None, article=None):
+    context = {"column_tag_list": Tag.objects.filter(is_column=True)}
 
+    if current_tags:
+        context.update({"current_tags": current_tags})
     if article_list:
         context.update({"article_list": article_list})
     if article:
@@ -27,7 +29,7 @@ def tag_page(request):
     article_list = get_article_list(tag_name)
     current_tags = get_current_tags(tag_name)
 
-    return render_to_response('article_list.html',get_context(current_tags, article_list=article_list))
+    return render_to_response('article_list.html', get_context(current_tags, article_list=article_list))
 
 
 def article_page(request, name):
@@ -40,8 +42,8 @@ def article_page(request, name):
     return render_to_response('article.html', get_context(current_tags, article=article))
 
 
-# def author_page(request):
-
+def author_page(request):
+    return render_to_response('author.html', get_context())
 
 
 def renew_article(request):
