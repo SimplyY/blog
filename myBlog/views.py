@@ -5,13 +5,20 @@ from myBlog.models import *
 from urllib.parse import unquote
 from myBlog.article import set_tag_article
 
-def root(request):
-    return redirect('/home')
+def get_context(current_tags, article_list=None, article=None):
+    context = {"column_tag_list": Tag.objects.filter(is_column=True), "current_tags": current_tags}
+
+    if article_list:
+        context.update({"article_list": article_list})
+    if article:
+        context.update({"article": article})
+
+    return context
+
 
 def home_page(request):
     current_tags = Tag.objects.filter(name='编程')
-    print(current_tags)
-    return render_to_response('article_list.html', Context({"article_list": Article.objects.all(), "current_tags": current_tags, "column_tag_list": Tag.objects.filter(is_column=True)}))
+    return render_to_response('article_list.html', get_context(current_tags))
 
 def tag_page(request):
     url = request.get_full_path()
@@ -20,21 +27,26 @@ def tag_page(request):
     article_list = get_article_list(tag_name)
     current_tags = get_current_tags(tag_name)
 
-    return render_to_response('article_list.html', Context({"article_list": article_list, "current_tags": current_tags, "column_tag_list": Tag.objects.filter(is_column=True)}))
+    return render_to_response('article_list.html',get_context(current_tags, article_list=article_list))
 
 
 def article_page(request, name):
     url = request.get_full_path()
     article_id = unquote(url.split('/')[-1])
+
     article = Article.objects.get(id=article_id)
     current_tags = get_current_tags(article.tag.name)
 
-    return render_to_response('article.html', Context({"article": article, "current_tags": current_tags, "column_tag_list": Tag.objects.filter(is_column=True)}))
+    return render_to_response('article.html', get_context(current_tags, article=article))
+
+
+# def author_page(request):
+
+
 
 def renew_article(request):
     set_tag_article()
     return HttpResponse('finish')
-
 
 
 def get_article_list(tag_name):
