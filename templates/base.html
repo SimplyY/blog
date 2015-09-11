@@ -11,7 +11,6 @@
     <link rel="stylesheet" href= {% static "css/two-aside.css" %}>
     <link rel="stylesheet" href= {% static "css/article-list.css" %}>
 
-    <script src= {% static "js/ajust-rem-size.js" %} charset="utf-8"></script>
 </head>
 
 <body>
@@ -37,7 +36,7 @@
 
             <div class="column-tag-list">
                 <p>
-                    专辑：
+                    文章专辑：
                 </p>
                 {% for tag in column_tag_list %}
                 <a href="/tag/{{tag.name}}" class="column-tag">《 {{tag.name}} 》</a>

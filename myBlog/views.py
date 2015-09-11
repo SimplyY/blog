@@ -20,7 +20,7 @@ def get_context(current_tags=None, article_list=None, article=None):
 
 def home_page(request):
     current_tags = Tag.objects.filter(name='编程')
-    return render_to_response('article_list.html', get_context(current_tags))
+    return render_to_response('article-list.html', get_context(current_tags))
 
 def tag_page(request):
     url = request.get_full_path()

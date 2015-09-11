@@ -1,18 +1,23 @@
 .love-main-side {
-  height: 50rem; }
-  .love-main-side div {
-    display: inline-block;
-    height: 15rem; }
-    .love-main-side div .cat-image {
-      max-width: 10rem;
-      border-radius: 50%; }
-    .love-main-side div #SimplyY {
+  height: 50rem;
+  position: relative; }
+  .love-main-side img {
+    max-width: 6rem;
+    border-radius: 50%; }
+  .love-main-side .SimplyY-wrapper {
+    height: 15rem;
+    top: 15rem;
+    left: 2rem;
+    position: absolute; }
+    .love-main-side .SimplyY-wrapper #SimplyY {
       width: 4rem;
       margin: auto; }
-    .love-main-side div .lovedays {
-      line-height: 15rem; }
-    .love-main-side div #lp {
+  .love-main-side .lovedays {
+    line-height: 15rem; }
+  .love-main-side .lp-wrapper {
+    top: 15rem;
+    right: 2rem;
+    position: absolute; }
+    .love-main-side .lp-wrapper #lp {
       width: 1.5rem;
       margin: auto; }
-
-/*# sourceMappingURL=author.css.map */

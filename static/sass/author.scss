@@ -1,37 +1,53 @@
+// sizes
 $main-side-heght:50rem;
 $lover-size:15rem;
-$cat-image-size:10rem;
+$cat-image-size:6rem;
+
+// position
+$img-top:15rem;
+
+$padding:2rem;
 
 .love-main-side {
     height:$main-side-heght;
+    position: relative;
 
-    div {
-        display: inline-block;
+    img {
+        max-width: $cat-image-size;
+        border-radius: 50%;
+    }
+
+    .SimplyY-wrapper {
         height: $lover-size;
-        .cat-image {
-            max-width: $cat-image-size;
-            border-radius: 50%;
-        }
+        top: $img-top;
+        left: $padding;
+
+        position: absolute;
 
         #SimplyY {
             width: 4rem;
             margin: auto;
         }
+    }
 
-        .lovedays {
-            line-height: $lover-size;
-        }
+    .lovedays {
+        line-height: $lover-size;
+    }
+
+    .lp-wrapper {
+        top: $img-top;
+        right: $padding;
+        position: absolute;
+
 
         #lp {
             width: 1.5rem;
             margin: auto;
         }
+
     }
 
 
-}
 
-// 动画过程：一周期
-// love-simplyy 和 love-lp
-// 旋转一圈、再旋转一圈靠近,相遇3次，再旋转一圈，再旋转一圈后退。
-// lovedays 颜色从蓝、到紫、到红、到紫
+
+}
