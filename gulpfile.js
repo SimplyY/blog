@@ -10,7 +10,7 @@ gulp.task('watch', function() {
     gulp.watch('./static/sass/*.scss', ['sass']);
 
     livereload.listen();
-    gulp.watch(['./static/**/*.*', './template/*.*']).on('change', livereload.changed);
+    gulp.watch(['./static/**/*.*', './templates/*.*']).on('change', livereload.changed);
 });
 
 
