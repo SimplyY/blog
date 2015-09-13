@@ -1,16 +1,21 @@
 // sizes
-$main-side-heght:50rem;
+$main-side-height:55rem;
 $lover-size:15rem;
 $cat-image-size:6rem;
 
-// position
-$img-top:15rem;
+$lovedays-size:2rem;
 
+// position
+$img-top:20rem;
 $padding:2rem;
 
+// time
+$animate-time: 9s;
+
 .love-main-side {
-    height:$main-side-heght;
+    height:$main-side-height;
     position: relative;
+    color: white;
 
     img {
         max-width: $cat-image-size;
@@ -25,13 +30,46 @@ $padding:2rem;
         position: absolute;
 
         #SimplyY {
-            width: 4rem;
+            width: 3.8rem;
             margin: auto;
         }
     }
 
+    .love {
+        top: $padding*6;
+        left: 25rem;
+        position: absolute;
+        font-size: 3*$lovedays-size;
+
+        // animation: change_color $animate-time infinite alternate;
+        //
+        // @keyframes change_color{
+        //     0%{color: #009ad6;}
+        //     50%{color: purple;}
+        //     100%{color: #fc7aeb;}
+        // }
+    }
+
+    .love :hover{
+        animation: bigger_font_size .6s ease infinite alternate;
+
+        @keyframes bigger_font_size {
+            from {
+                font-size: 3*$lovedays-size;
+            }
+            to{
+                font-size: 4*$lovedays-size;
+            }
+        }
+
+    }
+
     .lovedays {
-        line-height: $lover-size;
+        font-size: $lovedays-size;
+        max-width: 2.7*$lovedays-size;
+        line-height: $main-side-height - 8rem;
+        margin: auto;
+
     }
 
     .lp-wrapper {
@@ -41,13 +79,41 @@ $padding:2rem;
 
 
         #lp {
-            width: 1.5rem;
+            width: 1rem;
             margin: auto;
         }
 
     }
+    .seconds {
+        bottom: $padding;
+        right: $padding;
+        position: absolute;
+    }
+
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    animation-name: change_photo;
+    animation-duration:$animate-time;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 
 
+    @keyframes change_photo{
+        0%{
+            color: #009ad6;
+            background-image: url("https://cloud.githubusercontent.com/assets/8455579/9831879/c0982524-599a-11e5-83e2-0a2d349f2952.jpeg");
+        }
+
+        50%{
+            color: purple;
+            background-image: url("https://cloud.githubusercontent.com/assets/8455579/9831881/c13a0e8e-599a-11e5-905c-84943d46ea09.jpeg");
+        }
+        100%{
+            color: #fc7aeb;
+            background-image: url("https://cloud.githubusercontent.com/assets/8455579/9831917/6346d0e4-599c-11e5-8e8f-cc6c6b564ba6.jpeg");
+
+        }
+    }
 
 
 }

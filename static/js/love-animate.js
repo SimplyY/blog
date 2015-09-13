@@ -8,16 +8,12 @@
 
     function love_animate(argument) {
         var $ = document.querySelectorAll.bind(document);
-        var cycleTime = unitTime * 15;
 
         var SimplyY = $('.SimplyY-wrapper');
         var lp = $('.lp-wrapper');
 
-        setTimeout(function() {
-            myAnimate(SimplyY, 'left');
-            myAnimate(lp, 'right');
-            setTimeout(arguments.callee, cycleTime);
-        }, 0);
+        myAnimate(SimplyY, 'left');
+        myAnimate(lp, 'right');
     }
 
     function myAnimate(element, position) {
@@ -41,15 +37,9 @@
             easing: 'ease',
             duration: unitTime * 2
         }).snabbt({
-            delay: unitTime * 2,
+            delay: unitTime,
             rotation: [0, 0, 0],
             position: [unitDistance * 3.8, 0, 0],
-            easing: 'linear',
-            duration: unitTime * 2
-        }).snabbt({
-            delay: unitTime * 2,
-            rotation: [0, unitRotate * (-2), 0],
-            position: [0, 0, 0],
             easing: 'linear',
             duration: unitTime * 2
         });
