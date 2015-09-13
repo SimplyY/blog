@@ -1,5 +1,5 @@
 // sizes
-$main-side-height:55rem;
+$main-side-height:50rem;
 $lover-size:15rem;
 $cat-image-size:6rem;
 
@@ -101,16 +101,16 @@ $animate-time: 9s;
     @keyframes change_photo{
         0%{
             color: #009ad6;
-            background-image: url("https://cloud.githubusercontent.com/assets/8455579/9831879/c0982524-599a-11e5-83e2-0a2d349f2952.jpeg");
+            background-image: url("http://7xkpdt.com1.z0.glb.clouddn.com/star2_mini_mini.jpeg");
         }
 
         50%{
             color: purple;
-            background-image: url("https://cloud.githubusercontent.com/assets/8455579/9831881/c13a0e8e-599a-11e5-905c-84943d46ea09.jpeg");
+            background-image: url("http://7xkpdt.com1.z0.glb.clouddn.com/star3_mini_mini.jpeg");
         }
         100%{
             color: #fc7aeb;
-            background-image: url("https://cloud.githubusercontent.com/assets/8455579/9831917/6346d0e4-599c-11e5-8e8f-cc6c6b564ba6.jpeg");
+            background-image: url("http://7xkpdt.com1.z0.glb.clouddn.com/star3_mini_mini.jpeg");
 
         }
     }

@@ -6,7 +6,7 @@
 
 ![](https://cloud.githubusercontent.com/assets/8455579/9835391/740e3262-5a1b-11e5-83c9-d3d657cab562.gif)
 
-
+![](http://7xkpdt.com1.z0.glb.clouddn.com/15-8-4/25566477.jpg?attname=&e=1442212641&token=B7AYfxUfqmERZ1et2qdFSOajI17arpp4gDUn1NdV:X81WNhZpZZ8R-_jjOxelUIu3nGM)
 
 ## 文章数据流
 1. 文章数据从文件夹里
