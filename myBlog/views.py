@@ -7,6 +7,7 @@ from myBlog.article import set_tag_article
 
 def get_context(current_tags=None, article_list=None, article=None):
     context = {"column_tag_list": Tag.objects.filter(is_column=True)}
+    context.update({"tag_list": Tag.objects.all()})
 
     if current_tags:
         context.update({"current_tags": current_tags})

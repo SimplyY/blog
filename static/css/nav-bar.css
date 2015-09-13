@@ -1,6 +1,3 @@
-body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
 
 /*导航栏样式*/
 .nav-bar {
@@ -13,7 +10,7 @@ body {
     background-color: white;
     z-index: 99;
 }
-.ul-navbar {
+.ul-navbar{
     height: inherit;
     margin-left: 9rem;
     list-style: none;
@@ -21,12 +18,13 @@ body {
 .ul-navbar > li {
     display: inline-block;
     height: 100%;
+
     padding-right: .8rem;
     padding-left: .8rem;
 }
 
 /*渐变动画，不包括第一个*/
-.ul-navbar > li:nth-child(n + 2):hover {
+.ul-navbar > li:nth-child(n + 2):hover{
     animation: beGrey .4s linear 0s normal forwards;
 }
 @keyframes beGrey {
@@ -40,8 +38,33 @@ body {
 
 /*去除链接样式*/
 
-.ul-navbar > li > a {
+.ul-navbar > li  a {
     display: inline-block;
     text-decoration: none;
     color: black;
+}
+
+
+/*下拉菜单*/
+
+.ul-navbar ul {
+    position: absolute;
+    list-style: none;
+    background-color: white;
+    display: none;
+}
+
+li:hover ul{
+    display: block;
+}
+
+.ul-navbar > li > ul > li {
+    background-color: white;
+    margin-left: -0.8rem;
+    padding-left: 0.8rem;
+    padding-right: 1rem;
+}
+
+.ul-navbar > li > ul > li:hover {
+    animation: beGrey .4s linear 0s normal forwards;
 }
