@@ -52,6 +52,7 @@
     list-style: none;
     background-color: white;
     display: none;
+    box-shadow: 0 0 1.0rem grey;
 }
 
 li:hover ul{
@@ -59,7 +60,7 @@ li:hover ul{
 }
 
 .ul-navbar > li > ul > li {
-    background-color: white;
+    background-color: rgb(248, 248, 248);;
     margin-left: -0.8rem;
     padding-left: 0.8rem;
     padding-right: 1rem;
