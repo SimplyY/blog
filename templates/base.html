@@ -10,7 +10,7 @@
     <link rel="stylesheet" href= {% static "css/nav-bar.css" %}>
     <link rel="stylesheet" href= {% static "css/two-aside.css" %}>
     <script src= {% static "js/ajust-rem-size.js" %} charset="utf-8"></script>
-    
+
     <link rel="stylesheet" href= {% static "css/article-list.css" %}>
 
 </head>
@@ -18,17 +18,17 @@
 <body>
     <div class="nav-bar">
         <ul class="ul-navbar">
-            <li><a href="/home">SimplyYu </a></li>
+            <li><a href="/blog/home">SimplyYu </a></li>
 
             {% for tag in tag_list %}
                 {% if tag.parent_tag == none %}
                 <li>
-                    <a href="/tag/{{tag.name}}"> {{tag.name}} </a>
+                    <a href="/blog/tag/{{tag.name}}"> {{tag.name}} </a>
                     <ul>
                     {% for second_tag in tag_list %}
                         {% if second_tag.parent_tag.name = tag.name%}
                             <li>
-                                <a href="/tag/{{second_tag.name}}">{{second_tag.name}}</a>
+                                <a href="/blog/tag/{{second_tag.name}}">{{second_tag.name}}</a>
                             </li>
                         {% endif %}
                     {% endfor %}
@@ -38,7 +38,7 @@
 
                 {% endif %}
             {% endfor %}
-            <li><a href="/author">作者</a> </li>
+            <li><a href="/blog/author">作者</a> </li>
         </ul>
     </div>
     <div class="two-sides">
@@ -56,12 +56,12 @@
                     文章专辑：
                 </p>
                 {% for tag in column_tag_list %}
-                <a href="/tag/{{tag.name}}" class="column-tag">《 {{tag.name}} 》</a>
+                <a href="/blog/tag/{{tag.name}}" class="column-tag">《 {{tag.name}} 》</a>
                 {% endfor %}
             </div>
             <div class="about-me">
                 <div>
-                    <a href="/author">
+                    <a href="/blog/author">
                         <img class="avatar" src="http://7xkpdt.com1.z0.glb.clouddn.com/meSimplyY_mini.jpeg"/>
                     </a>
                 <div class="contact">

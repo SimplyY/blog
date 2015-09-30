@@ -13,6 +13,13 @@
 2. 到数据库里
 3. 到前端页面
 
+## 第一次运行
+```
+py manage.py migrate
+
+```
+
+
 ## 写文章的步骤
 1. 写文章
 2. 运行脚本来在文章中添加日期数据 eg：python3 add_article.py

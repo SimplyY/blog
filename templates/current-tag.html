@@ -2,9 +2,9 @@
     {% for tag in current_tags %}
     {% if tag.parent_tag %}
     »
-    <a href="/tag/{{tag.name}}"> {{tag.name}} </a>
+    <a href="/blog/tag/{{tag.name}}"> {{tag.name}} </a>
     {% else %}
-    <a href="/tag/{{tag.name}}" > {{tag.name}} </a>
+    <a href="/blog/tag/{{tag.name}}" > {{tag.name}} </a>
     {% endif %}
     {% endfor %}
 
