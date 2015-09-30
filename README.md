@@ -16,7 +16,7 @@
 ## 写文章的步骤
 1. 写文章
 2. 运行脚本来在文章中添加日期数据 eg：python3 add_article.py
-3. 更新数据库里的文章 访问 http://127.0.0.1:8000/renew_article
+3. 更新数据库里的文章 访问 http://site/blog/renew_article
 
 ### 有关文章的映射关系
 0. 阅读 model 内容的表结构
