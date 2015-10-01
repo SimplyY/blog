@@ -72,22 +72,25 @@
     }
 
     .column-tag-list {
-        margin-top: 1rem;
-        margin-left: 1.2rem;
+        padding-top: 1rem;
+        padding-left: 1.2rem;
     }
 
     .column-tag-list a , .column-tag-list p{
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         display: block;
+        padding-bottom: 0.2rem;
+
         color: rgb(149,158,165);
         text-decoration: none;
 
     }
 
     .column-tag-list p{
+        padding-bottom: 0.4rem;
         margin: 0.2rem 0.7rem;
         color: black;
-        font-size: 1.3rrem;
+        font-size: 1.7rem;
     }
 
     .column-tag-list a:hover{

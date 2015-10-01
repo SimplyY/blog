@@ -52,9 +52,7 @@
         <div class="sidebar">
 
             <div class="column-tag-list">
-                <p>
-                    文章专辑：
-                </p>
+                <p>精品系列</p>
                 {% for tag in column_tag_list %}
                 <a href="/blog/tag/{{tag.name}}" class="column-tag">《 {{tag.name}} 》</a>
                 {% endfor %}
