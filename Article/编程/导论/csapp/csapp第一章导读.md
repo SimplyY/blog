@@ -1,6 +1,6 @@
 发布时间：2015-09-01
 更新时间：2015-09-01 23:33:40
-[github 项目：SimplyY 的博客](https://github.com/SimplyY/Blog/)
+[github 本博客项目](https://github.com/SimplyY/Blog/)  觉得文章不错快 star
  
 @(编程读书合集)
 

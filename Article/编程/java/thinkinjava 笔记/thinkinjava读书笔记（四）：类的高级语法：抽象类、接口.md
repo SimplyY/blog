@@ -1,6 +1,6 @@
 发布时间：2015-10-01
 更新时间：2015-10-01 17:16:58
-[github 项目：SimplyY 的博客](https://github.com/SimplyY/Blog/)
+[github 本博客项目](https://github.com/SimplyY/Blog/)  觉得文章不错快 star
 # thinkinjava读书笔记（四）：类的高级语法：抽象类、接口
 ## 抽象类
 - 定义：
