@@ -59,10 +59,8 @@ def get_article_list(tag_name):
     article_list = []
     for article in Article.objects.all():
         if article.tag.name == tag_name:
-            print(article.pub_date)
             article_list.append(article)
         elif article.tag.is_child_tag(tag_name):
-            print(article.pub_date)
             article_list.append(article)
 
     article_list = sorted(article_list, key=lambda article: time.mktime(time.strptime(article.pub_date,"%Y-%m-%d\n")), reverse=True)

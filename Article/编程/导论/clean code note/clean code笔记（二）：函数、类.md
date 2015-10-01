@@ -1,7 +1,7 @@
 发布时间：2014-08-28
 更新时间：2015-09-02 16:02:55
 [github 项目：SimplyY 的博客](https://github.com/SimplyY/Blog/)
-github 地址: https://github.com/SimplyY/Blog/
+ 
 #clean code笔记（二）：函数、类
 ## 编写函数的规范
 > 沃德原则:_如果每个历程都让你感到深和己意，那就是整洁的代码_
