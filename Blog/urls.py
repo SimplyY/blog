@@ -5,11 +5,10 @@ from myBlog.views import *
 
 urlpatterns = [
     url(r'^$', home_page),
-    url(r'^/admin', include(admin.site.urls)),
-    url(r'^/home$', home_page),
-    url(r'^/tag/', tag_page, name='tags'),
-    url(r'^/article/([0-9]+)$', article_page, name='articles'),
-    url(r'^/renew_article$', renew_article),
-    url(r'^/author$', author_page),
-    url(r'^', home_page)
+    url(r'^admin', include(admin.site.urls)),
+    url(r'^home$', home_page),
+    url(r'^tag/', tag_page, name='tags'),
+    url(r'^article/([0-9]+)$', article_page, name='articles'),
+    url(r'^renew_article$', renew_article),
+    url(r'^author$', author_page),
 ]
