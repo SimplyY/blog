@@ -1,3 +1,5 @@
 #article-md-preview {
-    margin: 1rem
+    border-top: 0.16rem solid;
+    border-color: rgb(233,233,233);
+    padding: 2rem
 }

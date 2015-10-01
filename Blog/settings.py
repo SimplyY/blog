@@ -23,7 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '(*zx&he$e&n^2)^j73svfp0@p))_o)+h+lxxq107)_4%3ejsyh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+import socket
+
+if socket.gethostname() == '121.40.224.83':
+    DEBUG = TEMPLATE_DEBUG = False
+else:
+    DEBUG = TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['121.40.224.83', 'simplyy.top', 'simplyy.space']
 
