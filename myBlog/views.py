@@ -5,6 +5,8 @@ from myBlog.models import *
 from urllib.parse import unquote
 from myBlog.article import set_tag_article
 
+import time
+
 def get_context(current_tags=None, article_list=None, article=None):
     context = {"column_tag_list": Tag.objects.filter(is_column=True)}
     context.update({"tag_list": Tag.objects.all()})
@@ -57,10 +59,13 @@ def get_article_list(tag_name):
     article_list = []
     for article in Article.objects.all():
         if article.tag.name == tag_name:
+            print(article.pub_date)
             article_list.append(article)
         elif article.tag.is_child_tag(tag_name):
+            print(article.pub_date)
             article_list.append(article)
 
+    article_list = sorted(article_list, key=lambda article: time.mktime(time.strptime(article.pub_date,"%Y-%m-%d\n")), reverse=True)
     return article_list
 
 def get_current_tags(tag_name):
