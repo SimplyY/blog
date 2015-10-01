@@ -1,3 +1,6 @@
+发布时间：2015-10-01
+更新时间：2015-10-01 11:09:48
+github 地址: https://github.com/SimplyY/Blog/
 ## 个人介绍
 ### 编程语言能力：
 java > python > js > c++ > html、css > c# 。

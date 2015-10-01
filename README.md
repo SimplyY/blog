@@ -31,7 +31,7 @@ py manage.py migrate
 2. 所有文章都是 article 上层文件夹就是他的 tag， 其中 title 是文件名， pubdate 和 changedate 分布为文件内容的第一行和第二行，文件正文 content 从第三行开始。
 
 ## TODO
-- [ ] 将静态图片放到好的 CDN 里
+- [ ] 将静态图片放到好的 CDN 里 https://github.com/SimplyY/save/issues/1
 - [ ] 将项目在服务器里运行，上线
 - [ ] 支持 rss
 - [ ] 自动化更新文章的流程：git push 触发 `python3 add_article.py` 并且 py 文件访问renew_article页面来
