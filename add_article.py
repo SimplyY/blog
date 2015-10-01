@@ -11,7 +11,7 @@ PUB_TIME = '发布时间：'
 # 第二行，
 UPD_TIME = '更新时间：'
 # 第三行，需要自己填写自己的仓库地址
-GITHUB_URL = 'https://github.com/SimplyY/Blog/'
+GITHUB_INFO = '[github 项目：SimplyY 的博客](https://github.com/SimplyY/Blog/)'
 
 root_dir = os.path.join(os.path.dirname(__file__), 'Article')
 
@@ -49,8 +49,8 @@ def deal_article(dir, article):
                     change_date_info = line
                     continue
             elif index == 2:
-                url = "github 地址: " + GITHUB_URL + '\n'
-                if line[0:9] == 'github 地址':
+                url = GITHUB_INFO + '\n'
+                if line[0:7] == '[github':
                     continue
 
             file_content += line

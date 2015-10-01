@@ -71,7 +71,6 @@ def get_current_tags(tag_name):
             if tag.name == tag_name:
                 current_tags.insert(0, tag)
                 if tag.parent_tag:
-                    print(tag.parent_tag.name)
                     tag_name = tag.parent_tag.name
                 else:
                     tag_name = None

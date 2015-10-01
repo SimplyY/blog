@@ -1,5 +1,6 @@
 发布时间：2014-08-22
 更新时间：2015-09-01 23:33:40
+[github 项目：SimplyY 的博客](https://github.com/SimplyY/Blog/)
 github 地址: https://github.com/SimplyY/Blog/
 # clean code笔记（一）：命名规范
 
