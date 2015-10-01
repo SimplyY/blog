@@ -2,7 +2,6 @@
     var preview = document.getElementById("article-md-preview");
     preview = (preview);
 
-    console.log("unescapeHTML(preview.innerHTML)");
     preview.innerHTML = markdown.toHTML(unescapeHTML(preview.innerHTML));
 
     /**
