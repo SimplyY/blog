@@ -3,7 +3,7 @@
 [github 本博客项目](https://github.com/SimplyY/Blog/)
 ## 个人介绍
 ### 编程语言能力：
-java > python > js > c++ > html、css > c# 。
+js > python > java  > html、css > c++ > c# 。
 
 ### 其他能力概述：
 1. 自学能力强。已读了上十本编程方面的国外写的好书，养成了“读书，记复习笔记，写博客”的读书方法。

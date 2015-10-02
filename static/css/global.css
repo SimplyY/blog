@@ -12,9 +12,29 @@ a {
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+
 footer {
-    font-size: 1.4rem;
     clear: both;
-    display: block;
+    background-color: rgb(200, 200, 200);
     height: 3rem;
+    box-shadow: 0 0 2.0rem grey;
+}
+.footer-wrapper {
+    line-height: 3rem;
+    font-size: 1.4rem;
+    margin-left: 43rem;
+}
+.footer-powered {
+    display: inline;
+}
+.footer-text-star {
+    margin-left: 11rem;
+    display: inline;
+}
+footer p{
+    display: inline;
+}
+footer a {
+    display: inline;
+    color: #4078c0;
 }
