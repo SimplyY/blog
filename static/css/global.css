@@ -9,9 +9,18 @@
 a {
     text-decoration: none;
 }
+html {
+    height: 100%;
+}
 body {
+    height: 100%;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+
+.main-wrapper {
+    height: 100%;
+}
+
 
 footer {
     clear: both;
@@ -28,7 +37,7 @@ footer {
     display: inline;
 }
 .footer-text-star {
-    margin-left: 11rem;
+    margin-left: 24rem;
     display: inline;
 }
 footer p{

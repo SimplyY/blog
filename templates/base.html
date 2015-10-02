@@ -10,81 +10,83 @@
     <link rel="stylesheet" href= {% static "css/nav-bar.css" %}>
     <link rel="stylesheet" href= {% static "css/two-aside.css" %}>
     <script src= {% static "js/ajust-rem-size.js" %} charset="utf-8"></script>
-
     <link rel="stylesheet" href= {% static "css/article-list.css" %}>
 
 </head>
 
 <body>
-    <div class="nav-bar">
-        <ul class="ul-navbar">
-            <li><a href="/blog/home">SimplyY </a></li>
+    <div class="main-wrapper">
+        <div class="nav-bar">
+            <ul class="ul-navbar">
+                <li><a href="/blog/home">SimplyY </a></li>
 
-            {% for tag in tag_list %}
-                {% if tag.parent_tag == none %}
-                <li>
-                    <a href="/blog/tag/{{tag.name}}"> {{tag.name}} </a>
-                    <ul>
-                    {% for second_tag in tag_list %}
-                        {% if second_tag.parent_tag.name = tag.name%}
-                            <li>
-                                <a href="/blog/tag/{{second_tag.name}}">{{second_tag.name}}</a>
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-                    </ul>
+                {% for tag in tag_list %}
+                    {% if tag.parent_tag == none %}
+                    <li>
+                        <a href="/blog/tag/{{tag.name}}"> {{tag.name}} </a>
+                        <ul>
+                        {% for second_tag in tag_list %}
+                            {% if second_tag.parent_tag.name = tag.name%}
+                                <li>
+                                    <a href="/blog/tag/{{second_tag.name}}">{{second_tag.name}}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        </ul>
 
-                </li>
+                    </li>
 
-                {% endif %}
-            {% endfor %}
-            <li><a href="/blog/author">作者</a> </li>
-        </ul>
-    </div>
-    <div class="two-sides">
-        <div class="main-content">
-            {% block main-content %}
-
-            {% endblock %}
-
-
-        </div>
-        <div class="sidebar">
-
-            <div class="column-tag-list">
-                <p>精品系列</p>
-                {% for tag in column_tag_list %}
-                <a href="/blog/tag/{{tag.name}}" class="column-tag">《 {{tag.name}} 》</a>
+                    {% endif %}
                 {% endfor %}
-            </div>
-            <div class="about-me">
-                <div>
-                    <a href="/blog/author">
-                        <img class="avatar" src="http://7xkpdt.com1.z0.glb.clouddn.com/meSimplyY_mini.jpeg"/>
-                    </a>
-                </div>
-                <div class="contact">
-                    <div class="email">
-                        <a  href="mailto:simplyyu@163.com?subject=feedback">SimplyYu@163.com</a>
-                    </div>
-                    <div>
-                        <a href="https://github.com/SimplyY">github</a>
-                        <a href="http://www.zhihu.com/people/SimplyY">zhihu</a>
-                        <a href="http://weibo.com/p/1005055391751756/home?from=page_100505&mod=TAB#place">weibo</a>
-                    </div>
-                </div>
-            </div>
-
-
+                <li><a href="/blog/author">作者</a> </li>
+            </ul>
         </div>
+        <div class="two-sides">
+            <div class="main-content">
+                {% block main-content %}
+
+                {% endblock %}
+
+
+            </div>
+            <div class="sidebar">
+
+                <div class="column-tag-list">
+                    <p>精品系列</p>
+                    {% for tag in column_tag_list %}
+                    <a href="/blog/tag/{{tag.name}}" class="column-tag">《 {{tag.name}} 》</a>
+                    {% endfor %}
+                </div>
+                <div class="about-me">
+                    <div>
+                        <a href="/blog/author">
+                            <img class="avatar" src="http://7xkpdt.com1.z0.glb.clouddn.com/meSimplyY_mini.jpeg"/>
+                        </a>
+                    </div>
+                    <div class="contact">
+                        <div class="email">
+                            <a  href="mailto:simplyyu@163.com?subject=feedback">SimplyYu@163.com</a>
+                        </div>
+                        <div>
+                            <a href="https://github.com/SimplyY">github</a>
+                            <a href="http://www.zhihu.com/people/SimplyY">zhihu</a>
+                            <a href="http://weibo.com/p/1005055391751756/home?from=page_100505&mod=TAB#place">weibo</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
     </div>
 
-    <footer>
+    <footer id="footer">
         <div class="footer-wrapper">
             <div class="footer-powered">
                 Powered By <a href="https://github.com/SimplyY">SimplyY</a>
             </div>
-            <p class="footer-text-star">以及觉得写的不错，来github的</p>
+            <p class="footer-text-star">来github的</p>
             <a href="https://github.com/SimplyY/Blog/">博客项目地址</a>
             <p> star 一个吧</p>
         </div>
