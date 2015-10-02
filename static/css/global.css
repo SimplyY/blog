@@ -12,3 +12,9 @@ a {
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+footer {
+    font-size: 1.4rem;
+    clear: both;
+    display: block;
+    height: 3rem;
+}

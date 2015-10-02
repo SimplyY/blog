@@ -1,6 +1,6 @@
 发布时间：2015-09-03
 更新时间：2015-09-03 12:37:35
-[github 本博客项目](https://github.com/SimplyY/Blog/)  觉得文章不错快 star
+[github 本博客项目](https://github.com/SimplyY/Blog/)
 
 # 我的github
 我一直认为能熟练使用 github 是编程进步的一大标志，并且做的项目和熟知的小伙伴可以让自己飞速成长。

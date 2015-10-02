@@ -11,7 +11,7 @@ PUB_TIME = '发布时间：'
 # 第二行，
 UPD_TIME = '更新时间：'
 # 第三行，需要自己填写自己的仓库地址
-GITHUB_INFO = '[github 本博客项目](https://github.com/SimplyY/Blog/)  觉得文章不错快 star'
+GITHUB_INFO = '[github 本博客项目](https://github.com/SimplyY/Blog/)'
 
 root_dir = os.path.join(os.path.dirname(__file__), 'Article')
 

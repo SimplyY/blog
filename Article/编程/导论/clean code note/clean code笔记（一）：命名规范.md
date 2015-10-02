@@ -1,6 +1,6 @@
 发布时间：2014-08-22
 更新时间：2015-09-01 23:33:40
-[github 本博客项目](https://github.com/SimplyY/Blog/)  觉得文章不错快 star
+[github 本博客项目](https://github.com/SimplyY/Blog/)
  
 # clean code笔记（一）：命名规范
 
