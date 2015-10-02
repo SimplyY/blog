@@ -4,7 +4,7 @@
 // lovedays 颜色从蓝、到紫、到红、到紫
 
 (function(document) {
-    var unitTime = 1000;
+    var unitTime = 900;
 
     function love_animate(argument) {
         var $ = document.querySelectorAll.bind(document);
@@ -39,14 +39,14 @@
         }).snabbt({
             delay: unitTime,
             rotation: [0, 0, 0],
-            position: [unitDistance * 3.8, 0, 0],
+            position: [unitDistance * 4.1, 0, 0],
             easing: 'linear',
             duration: unitTime * 2
         });
     }
 
 
-    document.addEventListener("DOMContentLoaded", function(event) {
+    document.addEventListener("DOMContentLoaded", function(event){
         love_animate();
     });
 }(document));

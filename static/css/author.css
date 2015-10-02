@@ -6,8 +6,9 @@
   background-repeat: no-repeat;
   animation-name: change_photo;
   animation-duration: 9s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate; }
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-fill-mode: forwards; }
   .love-main-side img {
     max-width: 6rem;
     border-radius: 50%; }
@@ -20,8 +21,8 @@
       width: 3.8rem;
       margin: auto; }
   .love-main-side .love {
-    top: 12rem;
-    left: 25rem;
+    top: 14rem;
+    left: 26rem;
     position: absolute;
     font-size: 6rem; }
   .love-main-side .love :hover {
@@ -35,7 +36,7 @@
   .love-main-side .lovedays {
     font-size: 2rem;
     max-width: 5.4rem;
-    line-height: 42rem;
+    line-height: 46rem;
     margin: auto; }
   .love-main-side .lp-wrapper {
     top: 20rem;
@@ -52,10 +53,16 @@
 @keyframes change_photo {
   0% {
     color: #009ad6;
-    background-image: url("http://7xkpdt.com1.z0.glb.clouddn.com/star2_mini_mini.jpeg"); }
-  50% {
-    color: purple;
     background-image: url("http://7xkpdt.com1.z0.glb.clouddn.com/star3_mini_mini.jpeg"); }
+  30% {
+    color: #40cae6;
+    background-image: url("http://7xkpdt.com1.z0.glb.clouddn.com/star2_mini_mini.jpeg"); }
+  60% {
+    color: purple;
+    background-image: url("http://7xkpdt.com1.z0.glb.clouddn.com/star2_mini_mini.jpeg"); }
+  80% {
+    color: #d6008b;
+    background-image: url("http://7xkpdt.com1.z0.glb.clouddn.com/star1_mini_mini.jpeg"); }
   100% {
-    color: #fc7aeb;
-    background-image: url("http://7xkpdt.com1.z0.glb.clouddn.com/star3_mini_mini.jpeg"); } }
+    color: #ec6adb;
+    background-image: url("http://7xkpdt.com1.z0.glb.clouddn.com/star1_mini_mini.jpeg"); } }

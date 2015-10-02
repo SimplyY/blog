@@ -31,7 +31,7 @@
 - foreach仅仅是在这样做
 	> int(或某种数据类型) element = array[i]
 
-	- 所以，对element赋值 ，不会改变array[i]，然而对**对象反之**，因为对象的=是将引用给element，这样一来element的改变必然会改变array[i]。
+- 所以，对element赋值 ，不会改变array[i]，然而对**对象反之**，因为对象的=是将引用给element，这样一来element的改变必然会改变array[i]。
 - 数组都是对象，比如
 	> int a[] = {1,2};
 	> b = a;
