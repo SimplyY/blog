@@ -36,11 +36,11 @@ def tag_page(request):
     return render_to_response('article-list.html', get_context(current_tags, article_list=article_list))
 
 
-def article_page(request, name):
+def article_page(request):
     url = request.get_full_path()
-    article_id = unquote(url.split('/')[-1])
+    article_title = unquote(url.split('/')[-1])
 
-    article = Article.objects.get(id=article_id)
+    article = Article.objects.get(title=article_title)
     current_tags = get_current_tags(article.tag.name)
 
     return render_to_response('article.html', get_context(current_tags, article=article))
@@ -48,11 +48,6 @@ def article_page(request, name):
 
 def author_page(request):
     return render_to_response('author.html', get_context())
-
-
-def renew_article(request):
-    set_tag_article()
-    return HttpResponse('finish')
 
 
 def get_article_list(tag_name):
@@ -80,3 +75,28 @@ def get_current_tags(tag_name):
                 break
 
     return current_tags
+
+
+def renew_article(request):
+    file_name = "myBlog/last_renew_time.txt"
+
+    last_renew_time = get_last_renew_time(file_name)
+    now = time.time()
+    if now - last_renew_time > 60:
+        set_tag_article()
+        set_last_renew_time(now, file_name)
+        return HttpResponse('finish')
+    else:
+        return HttpResponse('renew_article in 60s is illegal')
+
+
+def get_last_renew_time(file_name):
+    with open(file_name, "r") as f:
+        a = f.readline()
+    return float(a)
+
+def set_last_renew_time(now, file_name):
+    with open(file_name, "w") as f:
+        f.write(str(now) + '''
+
+// very important for limit renew_article and can't be delete''')
