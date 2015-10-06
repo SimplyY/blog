@@ -23,8 +23,7 @@
 效果如图：
  我的所有的 workflow
 ![image](https://cloud.githubusercontent.com/assets/8455579/9675053/01aa0e08-52eb-11e5-9d37-1655cc12f93f.png)
-（我在good workflow 文件夹里有我搜集的 workflow 以及破解 arfred 的工具）
-
+workflow,大家自行搜索下载吧。
 查文档(要使用 dash 的 workflow)
 
 ![image](https://cloud.githubusercontent.com/assets/8455579/9675073/58745d56-52eb-11e5-9fe1-f11e1325ba11.png)
