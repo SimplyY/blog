@@ -50,6 +50,7 @@ class Article(models.Model):
     content = models.TextField()
     pub_date = models.CharField(max_length=100)
     change_date = models.CharField(max_length=100)
+    # love_number = 
 
     def __str__(self):
         return self.title + " tag:" + str(self.tag)

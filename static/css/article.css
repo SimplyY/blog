@@ -3,3 +3,12 @@
     border-color: rgb(233,233,233);
     padding: 2rem
 }
+
+.update-time-wrapper p{
+    margin-left: 1rem;
+    display: inline-block;
+}
+
+.update-time-wrapper time{
+    display: inline-block;
+}

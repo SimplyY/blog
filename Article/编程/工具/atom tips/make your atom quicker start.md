@@ -7,9 +7,11 @@
 
 In brief, I will use [package-switch](https://atom.io/packages/package-switch) to let some packages **start in need**.
 
-and I have used it to save **60%** time to start atom.
-![](http://7xkpdt.com1.z0.glb.clouddn.com/57ad0e3eb4a083a76e3f9db521c3ca58.png)
+and **I have used it to save 60% time to start atom within 3 steps.**
 
+### before
+![](http://7xkpdt.com1.z0.glb.clouddn.com/57ad0e3eb4a083a76e3f9db521c3ca58.png)
+### after
 ![](http://7xkpdt.com1.z0.glb.clouddn.com/ee0cb14d158bc5e30ba324e117b732b8.png)
 
 and if your machine like this
@@ -52,18 +54,20 @@ and it is atom builtin package, don't need install
 ![](http://7xkpdt.com1.z0.glb.clouddn.com/57ad0e3eb4a083a76e3f9db521c3ca58.png)
 
 ### step2
-> create two new atom window, like this, left image is use "pa create"
+> create two new atom window, like this, left image has use "pa create"
 
-1. look right image, stop packages which make your atom start slow(all in package loading and package activation use 10ms up)
+1. look right image, stop packages which make your atom start slow(all in package loading and package activation use 20+ms)
 
-2. look left image, add all stopping packages in "[package-switch](https://atom.io/packages/package-switch) create".And create new packageList
+2. look left image, add all stopping packages in "[package-switch](https://atom.io/packages/package-switch) create".And create new packageList named "slow-packages"
 > notice: dont add packages some very important or some you must use.
 
 ![](http://7xkpdt.com1.z0.glb.clouddn.com/aabb43f58741ab2e62762b93db1ed160.png)
 
 
 ### step3
-"pa stop" like image. Stop all package you just create packageList. and set package-switch setting.follow images
+"pa stop" like image. Stop all package you just create packageList. and set package-switch setting.
+
+let we follow images
 
 ![](http://7xkpdt.com1.z0.glb.clouddn.com/4428afb48e3e62fc7223ee28edfa2509.png)
 
@@ -80,6 +84,6 @@ and then you can open new atom window and open timecop to see amazing result
 
 > the solution is  " I will use [package-switch](https://atom.io/packages/package-switch) to let some packages **start in need**."
 
-so if you need slow package, use "pa start"
+so if you need some packages that make you start atom slow , use "pa start", start "slow-packages" which you have created just now
 
 ![](http://7xkpdt.com1.z0.glb.clouddn.com/f35eeb649db50a10e33fd31a3e803cb6.png)

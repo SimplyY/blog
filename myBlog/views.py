@@ -6,6 +6,7 @@ from urllib.parse import unquote
 from myBlog.article import set_tag_article
 
 import time
+import os
 
 def get_context(current_tags=None, article_list=None, article=None):
     context = {"column_tag_list": Tag.objects.filter(is_column=True)}
@@ -38,7 +39,8 @@ def tag_page(request):
 
 def article_page(request):
     url = request.get_full_path()
-    article_title = unquote(url.split('/')[-1])
+    article_url = unquote(url.split('/')[-1])
+    article_title = article_url + '.md'
 
     article = Article.objects.get(title=article_title)
     current_tags = get_current_tags(article.tag.name)
@@ -59,6 +61,10 @@ def get_article_list(tag_name):
             article_list.append(article)
 
     article_list = sorted(article_list, key=lambda article: time.mktime(time.strptime(article.pub_date,"%Y-%m-%d\n")), reverse=True)
+
+    for article in article_list:
+        article.url = article.title.split('.md')[0]
+
     return article_list
 
 def get_current_tags(tag_name):
@@ -91,6 +97,12 @@ def renew_article(request):
 
 
 def get_last_renew_time(file_name):
+    if not os.path.isfile(file_name):
+        with open(file_name, "w") as f:
+            f.write('''1444169764.775339
+
+    // very important for limit renew_article and can't be delete''')
+
     with open(file_name, "r") as f:
         a = f.readline()
     return float(a)
