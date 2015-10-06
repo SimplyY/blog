@@ -1,19 +1,18 @@
 发布时间：2015-09-09
 更新时间：2015-09-09 15:24:37
 [github 本博客项目](https://github.com/SimplyY/Blog/)
- 
+
 
 # mac 中级教程：软件篇
 想要把 mac 使用的优雅，那么一定要学会会折腾，mac 下的工具生产力工具特别棒，而且好看。
 
 
-然后我把我的上传百度云了，有的太大就没传，自行搜索下载。
+然后觉得不错的，大家自行搜索下载吧。
 
 有的效果演示我就直接放链接了，自己写还没他们写的好。
 
 ## 我所使用的我喜欢的软件
 
-我分享的 http://pan.baidu.com/s/1pJ68zOJ
 
 
 - keka(使用7z 压缩 win下解压都不会乱码)
@@ -24,8 +23,7 @@
 效果如图：
  我的所有的 workflow
 ![image](https://cloud.githubusercontent.com/assets/8455579/9675053/01aa0e08-52eb-11e5-9d37-1655cc12f93f.png)
-（我在good workflow 文件夹里有我搜集的 workflow 以及破解 arfred 的工具）
-
+workflow,大家自行搜索下载吧。
 查文档(要使用 dash 的 workflow)
 
 ![image](https://cloud.githubusercontent.com/assets/8455579/9675073/58745d56-52eb-11e5-9fe1-f11e1325ba11.png)
