@@ -1,3 +1,6 @@
+发布时间：2015-10-06
+更新时间：2015-10-06 22:51:58
+[github 本博客项目](https://github.com/SimplyY/Blog/)
 # make your atom quicker start
 
 > If you think your atom start too slow, can follow me.
