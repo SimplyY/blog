@@ -50,7 +50,7 @@ class Article(models.Model):
     content = models.TextField()
     pub_date = models.CharField(max_length=100)
     change_date = models.CharField(max_length=100)
-    # love_number = 
+    love_number = models.IntegerField()
 
     def __str__(self):
         return self.title + " tag:" + str(self.tag)
@@ -67,6 +67,7 @@ class Article(models.Model):
         new_article.change_date = change_date
         new_article.content = content
         new_article.tag = Tag.objects.filter(name=tag)[0]
+        new_article.love_number = 1
 
         new_article.save()
 

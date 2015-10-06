@@ -9,6 +9,13 @@
         <a href= "/blog/article/{{article.url}}" %}  >
             <div class="title"> {{article.title}} </div>
             <div class="time"> {{article.pub_date}} </div>
+            <div class="love-number">
+                {% load staticfiles %}
+                <img src= {% static "img/iconfont-iconlove.png" %} alt="" />
+                <p>
+                    {{article.love_number}}
+                </p>
+            </div>
         </a>
     </div>
     {% endfor %}

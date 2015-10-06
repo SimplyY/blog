@@ -26,7 +26,29 @@
     font-size: 1.7rem;
 }
 .time{
+    display: inline-block;
     color: rgb(119,128,135);
     padding: 0rem 1rem 0.5rem 1rem;
     font-size: 1rem;
+}
+
+.love-number{
+    display: inline-block;
+    position:  relative;
+    left: 0.2rem;
+}
+
+
+.love-number p{
+    display: inline-block;
+    color: black;
+}
+.love-number img{
+    display: inline-block;
+    width: 1rem;
+
+    position:  relative;
+    top: 0.25rem;
+
+
 }
