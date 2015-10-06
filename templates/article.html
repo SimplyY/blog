@@ -5,7 +5,12 @@
 <link rel="stylesheet" href= {% static "css/github-markdown.css" %} charset="utf-8">
 <link rel="stylesheet" href= {% static "css/article.css" %} charset="utf-8">
 
-
+<div class="update-time-wrapper">
+    <p>
+        文章更新时间：
+    </p>
+    <time>{{article.change_date}}</time>
+</div>
 <article id='article-md-preview' class='markdown-body'>{{article.content}}</article>
 
 <script src="https://dn-cdnjscn.qbox.me/ajax/libs/markdown.js/0.5.0/markdown.min.js"></script>

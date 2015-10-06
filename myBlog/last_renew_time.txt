@@ -1,3 +1,0 @@
-1443774265.782819
-
-// very important for limit renew_article and can't be delete
