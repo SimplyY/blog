@@ -41,3 +41,4 @@ node_modules
 server-static/
 
 myBlog/last_renew_time.txt
+myBlog/migrations/
