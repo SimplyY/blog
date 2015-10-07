@@ -39,7 +39,10 @@ $animate-time: 9s;
         top: $padding*7;
         left: 26rem;
         position: absolute;
-        font-size: 3*$lovedays-size;
+        p {
+            font-size: 3*$lovedays-size;
+
+        }
 
         // animation: change_color $animate-time infinite alternate;
         //
@@ -49,6 +52,7 @@ $animate-time: 9s;
         //     100%{color: #fc7aeb;}
         // }
     }
+
 
     .love :hover{
         animation: bigger_font_size .6s ease infinite alternate;
