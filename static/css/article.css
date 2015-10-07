@@ -1,14 +1,25 @@
 #article-md-preview {
     border-top: 0.16rem solid;
     border-color: rgb(233,233,233);
-    padding: 2rem
+    padding: 2rem;
+}
+.main-content {
+    position:relative;
+}
+.update-time-wrapper {
+    position: absolute;
+    top:6.4rem;
+    right: 2rem;
 }
 
 .update-time-wrapper p{
-    margin-left: 1rem;
+    font-size: 1rem;
     display: inline-block;
+    color: rgb(153, 153, 153);
 }
 
 .update-time-wrapper time{
+    font-size: 1rem;
     display: inline-block;
+    color: rgb(153, 153, 153);
 }

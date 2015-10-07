@@ -3,7 +3,6 @@
 .nav-bar {
     position: fixed;
     width: 100%;
-    font-size: 1.5rem;
     height: 3.8rem;
     line-height: 3.8rem;
     box-shadow: 0 0 2.0rem grey;
@@ -42,6 +41,7 @@
     display: inline-block;
     text-decoration: none;
     color: black;
+    font-size: 1.6rem;
 }
 
 
