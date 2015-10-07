@@ -23,8 +23,9 @@
   .love-main-side .love {
     top: 14rem;
     left: 26rem;
-    position: absolute;
-    font-size: 6rem; }
+    position: absolute; }
+    .love-main-side .love p {
+      font-size: 6rem; }
   .love-main-side .love :hover {
     animation: bigger_font_size 0.6s ease infinite alternate; }
 
