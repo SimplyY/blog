@@ -1,19 +1,25 @@
 {% extends "base.html" %}
-{% block main-content %}
-{% include "current-tag.html" %}
+
+{% block head %}
 {% load staticfiles %}
 <link rel="stylesheet" href= {% static "css/github-markdown.css" %} charset="utf-8">
+<script src="https://dn-cdnjscn.qbox.me/ajax/libs/markdown.js/0.5.0/markdown.min.js"></script>
 <link rel="stylesheet" href= {% static "css/article.css" %} charset="utf-8">
 
+{% endblock %}
+
+{% block main-content %}
+{% include "current-tag.html" %}
 <div class="update-time-wrapper">
     <p>
-        文章更新时间：
+        博文更新时间：
     </p>
     <time>{{article.change_date}}</time>
 </div>
 <article id='article-md-preview' class='markdown-body'>{{article.content}}</article>
+{% endblock %}
 
-<script src="https://dn-cdnjscn.qbox.me/ajax/libs/markdown.js/0.5.0/markdown.min.js"></script>
+{% block end %}
 <script src= {% static "js/preview-markdown.js" %} charset="utf-8"></script>
 
 {% endblock %}
