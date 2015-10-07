@@ -23,3 +23,9 @@
     display: inline-block;
     color: rgb(153, 153, 153);
 }
+
+.question {
+    padding: 2rem;
+    color: rgb(153, 153, 153);
+    line-height: 2rem;
+}
