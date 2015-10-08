@@ -42,9 +42,9 @@
 
 .love-and-share p {
     display: inline-block;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: rgb(153, 153, 153);
-
+    line-height: 1.5rem;
 }
 
 .article-love, .share-number-wrapper{
@@ -55,7 +55,7 @@
     display: inline-block;
     width: 1.5rem;
     position:  relative;
-    top: 0.20rem;
+    top: 0.37rem;
 }
 
 .share-number-wrapper img{
