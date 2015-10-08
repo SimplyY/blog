@@ -28,13 +28,13 @@
             <ul class="ul-navbar">
                 <li><a href="/blog/home">SimplyY </a></li>
 
-                {% for tag in tag_list %}
+                {% for tag in first_tag_list %}
                     {% if tag.parent_tag == none %}
                     <li>
                         <a href="/blog/tag/{{tag.name}}"> {{tag.name}} </a>
                         <ul>
                         {% for second_tag in tag_list %}
-                            {% if second_tag.parent_tag.name = tag.name%}
+                            {% if second_tag.parent_tag.name == tag.name%}
                                 <li>
                                     <a href="/blog/tag/{{second_tag.name}}">{{second_tag.name}}</a>
                                 </li>

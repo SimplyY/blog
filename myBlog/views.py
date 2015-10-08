@@ -9,8 +9,16 @@ import time
 import os
 
 def get_context(current_tags=None, article_list=None, article=None):
+    tag_list = Tag.objects.all()
+    first_tag_list = [
+        Tag.objects.get(name="编程"),
+        Tag.objects.get(name="生活"),
+        Tag.objects.get(name="电影"),
+        Tag.objects.get(name="诗集")]
+
     context = {"column_tag_list": Tag.objects.filter(is_column=True)}
-    context.update({"tag_list": Tag.objects.all()})
+    context.update({"first_tag_list": first_tag_list})
+    context.update({"tag_list": tag_list})
 
     if current_tags:
         context.update({"current_tags": current_tags})
