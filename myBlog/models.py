@@ -33,14 +33,12 @@ class Tag(models.Model):
         return tags
 
     @staticmethod
-    def save_tag(tag_name, tags, parent_tag=None, is_column=False):
+    def save_tag(tag_name, parent_tag=None, is_column=False):
         new_tag = Tag()
         new_tag.name = tag_name
         new_tag.parent_tag = Tag.objects.filter(name=parent_tag)[0] if parent_tag else None
 
         new_tag.is_column = is_column
-
-        tags.append(new_tag)
         new_tag.save()
 
 
@@ -51,6 +49,7 @@ class Article(models.Model):
     pub_date = models.CharField(max_length=100)
     change_date = models.CharField(max_length=100)
     love_number = models.IntegerField()
+    share_number = models.IntegerField()
 
     def __str__(self):
         return self.title + " tag:" + str(self.tag)
@@ -68,8 +67,21 @@ class Article(models.Model):
         new_article.content = content
         new_article.tag = Tag.objects.filter(name=tag)[0]
         new_article.love_number = 1
+        new_article.share_number = 1
 
         new_article.save()
+
+    @staticmethod
+    def update_article(article, root, filename, tag):
+
+        pub_date, change_date, content = get_article_info(root, filename)
+
+        article.title = filename
+        article.pub_date = pub_date
+        article.change_date = change_date
+        article.content = content
+        article.tag = Tag.objects.filter(name=tag)[0]
+        article.save()
 
     class Meta:
         ordering = ['-id']

@@ -47,6 +47,6 @@ https://github.com/SimplyY/zhihu-rss
 收集了很多编程资料 https://github.com/CoderUnion/coderunion.github.io/issues/39
 
 ## 围观大神
-daimajia 安卓开源界前十的大神，目前是国内研究生 https://github.com/daimajia
-
-气体大神 pyer、geeker、全能 https://github.com/xen0n
+- daimajia 安卓开源界前十的大神，目前是国内研究生 https://github.com/daimajia
+- vue.js 作者（前谷歌华人工程师） https://github.com/yyx990803
+- 气体大神 pyer、geeker、全能 https://github.com/xen0n

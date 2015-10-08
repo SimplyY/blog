@@ -10,10 +10,15 @@
             <div class="title"> {{article.url}} </div>
             <div class="time"> {{article.pub_date}} </div>
             <div class="love-number">
-                {% load staticfiles %}
-                <img src= {% static "img/iconfont-iconlove.png" %} alt="" />
+                <img src= 'http://7xkpdt.com1.z0.glb.clouddn.com/15-10-7/95875549.jpg' alt="love" />
                 <p>
                     {{article.love_number}}
+                </p>
+            </div>
+            <div class="share-number">
+                <img src="http://7xkpdt.com1.z0.glb.clouddn.com/15-10-7/26934945.jpg" alt="share" />
+                <p>
+                    {{article.share_number}}
                 </p>
             </div>
         </a>
