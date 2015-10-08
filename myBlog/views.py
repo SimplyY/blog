@@ -64,7 +64,7 @@ def add_share_number(request):
     article = Article.objects.get(title=added_article_title)
     article.share_number += 1
     article.save()
-    
+
     return HttpResponse(article.share_number)
 
 def author_page(request):
