@@ -47,6 +47,25 @@ def article_page(request):
 
     return render_to_response('article.html', get_context(current_tags, article=article))
 
+def add_love_number(request):
+    url = request.get_full_path()
+    added_article_title = unquote(url.split('/')[-1])
+
+    article = Article.objects.get(title=added_article_title)
+    article.love_number += 1
+    article.save()
+
+    return HttpResponse(article.love_number)
+
+def add_share_number(request):
+    url = request.get_full_path()
+    added_article_title = unquote(url.split('/')[-1])
+
+    article = Article.objects.get(title=added_article_title)
+    article.share_number += 1
+    article.save()
+    
+    return HttpResponse(article.share_number)
 
 def author_page(request):
     return render_to_response('author.html', get_context())
