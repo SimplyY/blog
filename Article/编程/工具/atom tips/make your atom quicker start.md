@@ -84,6 +84,6 @@ and then you can open new atom window and open timecop to see amazing result
 
 > the solution is  " I will use [package-switch](https://atom.io/packages/package-switch) to let some packages **start in need**."
 
-so if you need some packages that make you start atom slow , use "pa start", start "slow-packages" which you have created just now
+so if you need some packages that make you start atom slow , use "pssp", start "slow-packages" which you have created just now
 
-![](http://7xkpdt.com1.z0.glb.clouddn.com/f35eeb649db50a10e33fd31a3e803cb6.png)
+![](http://7xkpdt.com1.z0.glb.clouddn.com/25aaceb2f35d23451ccfdddbadac63ef.png)
