@@ -16,5 +16,5 @@ urlpatterns = [
     url(r'^blog/author$', author_page),
     url(r'^blog/add_love_number/', add_love_number),
     url(r'^blog/add_share_number/', add_share_number),
-    url(r'^contribute$', contribute)
+    url(r'^contribute$', contribute),
 ]

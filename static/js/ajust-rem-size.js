@@ -6,7 +6,7 @@
             return;
         }
         if (clientWidth > 800){
-            docEl.style.fontSize = 4 * (clientWidth / 320) + 'px';
+            docEl.style.fontSize = 3 * (clientWidth / 320) + 'px';
         }else{
             docEl.style.fontSize = 9 * (clientWidth / 320) + 'px';
         }
