@@ -139,3 +139,7 @@ def set_last_renew_time(now, file_name):
         f.write(str(now) + '''
 
 // very important for limit renew_article and can't be delete''')
+
+
+def contribute(request):
+    return render(request, 'contribute.html')
