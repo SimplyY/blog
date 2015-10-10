@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta property="qc:admins" content="0014143155041163013573764212545" />
+    <title>contribute</title>
+
+    {% load staticfiles %}
+    <link rel="stylesheet" href= {% static "contribute/css/global.css" %}>
+    <link rel="stylesheet" href= {% static "contribute/css/contribute.css" %}>
+    <link rel="stylesheet" href= {% static "contribute/lib/github-markdown.css" %}>
+</head>
+
+<body>
+    <nav>
+        <img src="http://7xkpdt.com1.z0.glb.clouddn.com/15-10-10/69208466.jpg" alt="QQ" />
+        <p>QQ登录</p>
+    </nav>
+    <div class="head">
+        <div class="head-content">
+            <h1>植物图鉴</h1>
+            <p>我们帮您记录，每一片叶的脉络，每一朵花瓣的弧度</p>
+            <p>我们帮您记忆，四季摇落的点点缤纷</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class="part">
+                <h2>美景列表</h2>
+                <p>
+                    美景列表将列出投稿已通过和未通过的美景， 您可以点击列表项查看别人已通过的美景介绍。 或者在您的投稿未通过时对美景进行修改。
+                </p>
+            </div>
+            <div class="part">
+                <h2>投稿</h2>
+                <p>
+                    将您喜欢的美景记录下来吧!
+                    <br/> 在这里编辑，将您喜欢的美景投稿给我们，
+                    <br/> 四季变换，时光流转，您心底的美丽依然在这里。
+                </p>
+            </div>
+            <div class="part">
+                <h2>预览</h2>
+                <p>
+                    编辑的同时可以在这里看到呈现出来的最终效果。
+                </p>
+            </div>
+        </div>
+        <div class="content">
+            <hr class="divide"></hr>
+            <div class="part scene-list" id="list">
+                <p>已通过</p>
+                <div class="admited-list" v-on="click: clickList">
+                    <h3 v-text="list_title"></h3>
+                    <span class="by">by:</span>
+                    <p v-text="author"></p>
+                    <p v-text="month"  class="yue"></p>
+                    <span>月</span>
+                    <h1 v-text="season"></h1>
+                </div>
+                <p>未通过</p>
+                <div class="unadmited-list">
+                    <h3 v-text="list_title"></h3>
+                    <span class="by">by:</span>
+                    <p v-text="author"></p>
+                    <p v-text="month"  class="yue"></p>
+                    <span>月</span>
+                    <h1 v-text="season"></h1>
+                </div>
+            </div>
+            <form class="part contribute-content" action="" method="post" id="article">
+                <div class="write">
+                    <label for="">作者：</label>
+                    <input type="text" name="author" v-model="author">
+                </div>
+                <div class="write">
+                    <label for="">地点：</label>
+                    <input type="text" name="location" v-model="location">
+                </div>
+                <div class="write">
+                    <label for="">季节：</label>
+                    <input type="text" name="season" placeholder="春" v-model="season">
+                    <span>季</span>
+                </div>
+                <div class="write">
+                    <label for="">月份：</label>
+                    <input type="text" name="date" placeholder="3" v-model="month">
+                    <span>月</span>
+                </div>
+
+                <div class="scene-article">
+                    <div class="article" id="check">
+                        <input type="text" name="title" id="title" oninput="inputTitle()"
+                        placeholder="请输入美景标题" v-model="title">
+                        <textarea name="scene" rows="20" cols="55" id="text-input"
+                        oninput="this.editor.update()" v-model="article_content"
+                        placeholder="这里采用markdown的编辑模式，换行请打2个回车"></textarea>
+                    </div>
+                </div>
+                <button type="button" name="button" v-on="click: contribute">投稿</button>
+            </form>
+            <div class="preview">
+                <div class="markdown-body" id="preview-title"></div>
+                <div class="markdown-body" id="preview-content"></div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <script type="text/javascript">
+    (function(doc, window) {
+var resizeCall = function(){
+    var docEl = doc.documentElement;
+    var clientWidth = window.screen.width;
+    if (!clientWidth){
+        return;
+    }
+    if (clientWidth > 800){
+        docEl.style.fontSize = 3 * (clientWidth / 320) + 'px';
+    }else{
+        docEl.style.fontSize = 9 * (clientWidth / 320) + 'px';
+    }
+};
+
+doc.addEventListener('DOMContentLoaded', resizeCall, false);
+})(document, window);
+
+    </script>
+    <!-- lib -->
+    <script src="https://dn-cdnjscn.qbox.me/ajax/libs/markdown.js/0.5.0/markdown.min.js"></script>
+    <script src="https://dn-cdnjscn.qbox.me/ajax/libs/vue/0.9.3/vue.min.js"></script>
+
+    <!-- my -->
+
+    <script src= {% static "contribute/js/md-preview.js" %}></script>
+    <script src= {% static "contribute/js/contribute.js" %}></script>
+</body </html>
