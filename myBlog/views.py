@@ -143,3 +143,6 @@ def set_last_renew_time(now, file_name):
 
 def contribute(request):
     return render(request, 'contribute.html')
+
+def contribute_qq_sign(request):
+    return render(request, 'contribute.html')
