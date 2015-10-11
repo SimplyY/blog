@@ -14,8 +14,11 @@
 
 <body>
     <nav>
-        <img src="http://7xkpdt.com1.z0.glb.clouddn.com/15-10-10/69208466.jpg" alt="QQ" />
-        <p>QQ登录</p>
+        <div id="qqLogin">
+            <p id="qqLoginBtn"></p>
+            <p>QQ 登陆</p>
+        </div>
+
     </nav>
     <div class="head">
         <div class="head-content">
@@ -132,8 +135,12 @@ doc.addEventListener('DOMContentLoaded', resizeCall, false);
     <script src="https://dn-cdnjscn.qbox.me/ajax/libs/markdown.js/0.5.0/markdown.min.js"></script>
     <script src="https://dn-cdnjscn.qbox.me/ajax/libs/vue/0.9.3/vue.min.js"></script>
 
-    <!-- my -->
+    <!-- qq -->
+    <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101245187" data-redirecturi="http://simplyy.space/contribute/qq_callback" charset="utf-8"></script>
+    <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8" data-callback="true" ></script>
 
+    <!-- my -->
+    <script src= {% static "contribute/js/qq.js" %}></script>
     <script src= {% static "contribute/js/md-preview.js" %}></script>
     <script src= {% static "contribute/js/contribute.js" %}></script>
 </body </html>
