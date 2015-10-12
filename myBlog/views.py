@@ -145,4 +145,4 @@ def contribute(request):
     return render(request, 'contribute.html')
 
 def contribute_qq_sign(request):
-    return render(request, 'contribute.html')
+    return render(request, 'qqSignCallback.html')
