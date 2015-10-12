@@ -114,21 +114,21 @@
 
     <script type="text/javascript">
     (function(doc, window) {
-var resizeCall = function(){
-    var docEl = doc.documentElement;
-    var clientWidth = window.screen.width;
-    if (!clientWidth){
-        return;
-    }
-    if (clientWidth > 800){
-        docEl.style.fontSize = 3 * (clientWidth / 320) + 'px';
-    }else{
-        docEl.style.fontSize = 9 * (clientWidth / 320) + 'px';
-    }
-};
+        var resizeCall = function(){
+            var docEl = doc.documentElement;
+            var clientWidth = window.screen.width;
+            if (!clientWidth){
+                return;
+            }
+            if (clientWidth > 800){
+                docEl.style.fontSize = 3 * (clientWidth / 320) + 'px';
+            }else{
+                docEl.style.fontSize = 9 * (clientWidth / 320) + 'px';
+            }
+        };
 
-doc.addEventListener('DOMContentLoaded', resizeCall, false);
-})(document, window);
+        doc.addEventListener('DOMContentLoaded', resizeCall, false);
+    })(document, window);
 
     </script>
     <!-- lib -->
@@ -136,6 +136,7 @@ doc.addEventListener('DOMContentLoaded', resizeCall, false);
     <script src="https://dn-cdnjscn.qbox.me/ajax/libs/vue/0.9.3/vue.min.js"></script>
 
     <!-- qq -->
+    <script src="https://dn-cdnjscn.qbox.me/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101245187" data-redirecturi="http://simplyy.space/contribute/qq_callback" charset="utf-8"></script>
 
     <!-- my -->
