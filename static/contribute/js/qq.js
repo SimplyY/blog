@@ -11,12 +11,28 @@
     }
 
     function loginCallBack(oInfo, oOpts) {
+        navShowQQinfo(oInfo);
         saveCookie();
         saveUserInfo(oInfo);
     }
 
     function logoutCallBack() {
         alert("注销成功!");
+    }
+
+    function navShowQQinfo() {
+        var button = $('#qqLoginBtn');
+
+        var QQinfoTemplate=[
+             '<span><img src="{figureurl}" class="{size_key}"/></span>',
+             '<span>{nickname}</span>',
+             '<span><a href="javascript:QC.Login.signOut();">退出</a></span>'
+        ].join("");
+
+        button.html(QC.String.format(_logoutTemplate, {
+           nickname : QC.String.escHTML(oInfo.nickname), //做xss过滤
+           figureurl : oInfo.figureurl_qq_1
+        }));
     }
 
     function saveCookie () {
