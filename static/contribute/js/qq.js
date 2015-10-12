@@ -20,7 +20,7 @@
         alert("注销成功!");
     }
 
-    function navShowQQinfo() {
+    function navShowQQinfo(oInfo) {
         var button = $('#qqLoginBtn');
 
         var QQinfoTemplate=[
@@ -29,7 +29,7 @@
              '<span><a href="javascript:QC.Login.signOut();">退出</a></span>'
         ].join("");
 
-        button.html(QC.String.format(_logoutTemplate, {
+        button.html(QC.String.format(QQinfoTemplate, {
            nickname : QC.String.escHTML(oInfo.nickname), //做xss过滤
            figureurl : oInfo.figureurl_qq_1
         }));
