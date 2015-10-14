@@ -27,7 +27,7 @@ import socket
 DEBUG = TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = ['121.40.224.83', 'simplyy.top', 'simplyy.space']
 
-if socket.gethostname() in ['yuweideMacBook-Pro.local', "promote.cache-dns.local"]:
+if socket.gethostname() in ['yuweideMacBook-Pro.local', "promote.cache-dns.local", "bogon"]:
     DEBUG = TEMPLATE_DEBUG = True
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
