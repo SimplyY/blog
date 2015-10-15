@@ -1,4 +1,4 @@
-(function(window, document, undefined) {
+(function(window, document, $) {
     QC.Login(getQQButtonInfo(), loginCallBack, logoutCallBack);
 
     function getQQButtonInfo() {
@@ -12,6 +12,7 @@
 
     function loginCallBack(oInfo, oOpts) {
         navShowQQinfo(oInfo);
+        navHideQQButton();
         saveCookie();
         saveUserInfo(oInfo);
     }
@@ -35,6 +36,10 @@
         }));
     }
 
+    function navHideQQButton() {
+        $('#LoginText').hide();
+    }
+
     function saveCookie () {
         QC.Login.getMe(function(openId, accessToken){
             document.cookie = 'openId=' + openId;
@@ -49,4 +54,4 @@
         console.log(oInfo.figureurl_qq_1);
         console.log(oInfo.gender);
     }
-})(window, document);
+})(window, document, jQuery);

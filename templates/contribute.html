@@ -16,7 +16,7 @@
     <nav>
         <div id="qqLogin">
             <p id="qqLoginBtn"></p>
-            <p>QQ 登陆</p>
+            <p id="LoginText">QQ 登陆</p>
         </div>
 
     </nav>
@@ -134,12 +134,13 @@
     <!-- lib -->
     <script src="https://dn-cdnjscn.qbox.me/ajax/libs/markdown.js/0.5.0/markdown.min.js"></script>
     <script src="https://dn-cdnjscn.qbox.me/ajax/libs/vue/0.9.3/vue.min.js"></script>
+    <script src="https://dn-cdnjscn.qbox.me/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
     <!-- qq -->
-    <script src="https://dn-cdnjscn.qbox.me/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101245187" data-redirecturi="http://simplyy.space/contribute/qq_callback" charset="utf-8"></script>
 
     <!-- my -->
+    <script src= {% static "contribute/js/demo.js" %} charset="utf-8"></script>
     <script src= {% static "contribute/js/qq.js" %}></script>
     <script src= {% static "contribute/js/md-preview.js" %}></script>
     <script src= {% static "contribute/js/contribute.js" %}></script>
