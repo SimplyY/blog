@@ -39,7 +39,7 @@ https://github.com/CoderUnion/coderunion-github-talk
 - vue.js 作者（前谷歌华人工程师） https://github.com/yyx990803
 - 气体大神 pyer、geeker、全能 https://github.com/xen0n
 
-其实 github 里面的大神根本数不过来，连写 linux 和 git 的 linus 都在那，对于国人最大的门槛是英语，但以过来人的身份说，github 里的英文都真的很简单，它是世界编程界的宝库，用一段时间，就可以和我一样和老外在 issue 里面用英语谈笑风生了。
+其实 github 里面的大神根本数不过来，连写 linux 和 git 的 linus 都在那，对于国人最大的门槛是英语，但以过来人的身份说，github 里的英文都真的很简单，它是世界编程界的宝库，用一段时间，就可以和我一样和大牛老外在 issue 里面用英语谈笑风生了。
 
 ## github 的项目
 使用 github 一年多了，在上面写了很多项目，挑几个有意思的讲讲， 我个人是从 github 上学到了很多东西的。
