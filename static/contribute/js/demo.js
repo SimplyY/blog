@@ -6,7 +6,8 @@
     $.get(sceneApiUrl, function (data) {
         console.log("sceneList");
         console.log(data);
-        changeScene(data[0]._id);
+        var changeInfo = {"title":"title has updated"};
+        changeScene(data[0]._id, changeInfo);
     });
 
     // 添加一个美景
@@ -32,13 +33,13 @@
     });
 
     // 修改一个美景
-    function changeScene(sceneId) {
+    function changeScene(sceneId, changeInfo) {
         $.ajax({
             url: sceneApiUrl + '/' + sceneId,
             type: 'PUT',
             contentType: 'application/json',
             dataType: "json",
-            data: JSON.stringify({"title":"title has updated"}),
+            data: JSON.stringify(changeInfo),
             success: function (result) {
                 console.log(result);
                 console.log("put success");
