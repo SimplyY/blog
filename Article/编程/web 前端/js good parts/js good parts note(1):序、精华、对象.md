@@ -42,11 +42,10 @@
 > 坏处容易造成 bug、且难以 debug。
 
 解决办法:使用闭包，或者 `commonjs` 或 `AMD`
-```
-(function() {
-    // body...
-})();
-```
+
+    (function() {
+        // body...
+    })();
 
 #### 自动插入分号
 （坏处同上，每个语句后面加上分号）
@@ -84,52 +83,49 @@ https://github.com/MikeMcl/decimal.js
 
 NaN 表示 `不是一个数字`，当输入把非数字形式的字符串转化为数字时产生。并且 NaN !== NaN
 
-```
-> typeof NaN === 'number'
-true
-> parseInt('oop')
-NaN
-> Math.sqrt(-1)
-NaN
-> NaN === NaN
-false
-> NaN !== NaN
-true
-```
+
+    > typeof NaN === 'number'
+    true
+    > parseInt('oop')
+    NaN
+    > Math.sqrt(-1)
+    NaN
+    > NaN === NaN
+    false
+    > NaN !== NaN
+    true
+
 
 ##### 如何判断一个数是不是数字
 > isFinite 可以筛选 NaN 和 Infinity(全局属性 Infinity 是一个数值，表示无穷大。),但是会试图非数字变成数字，如'0'
 
-```js
-isFinite(NaN);       // false
-isFinite(-Infinity); // false
+    isFinite(NaN);       // false
+    isFinite(-Infinity); // false
 
-isFinite(0);         // true
-isFinite("0");       // true, would've been false with the more robust Number.isFinite("0")
-isFinite('a')
-false
-```
+    isFinite(0);         // true
+    isFinite("0");       // true, would've been false with the more robust Number.isFinite("0")
+    isFinite('a')
+    false
 
 解决办法，先确保 value 是一个数字
-```js
-function isNumber(value) {
-    return typeof value === 'number' && isFinite(value);
-}
-```
+
+    function isNumber(value) {
+        return typeof value === 'number' && isFinite(value);
+    }
 
 #### 伪数组
 > js 没有真正的数组
 
-```js
-> typeof []
-'object'
-```
+
+    typeof []
+    'object'
+
 检测一个值是不是数组
-```js
-function isArray(value) {
-    return Object.prototype.toString.apply(value) === '[object Array]'
-}
-```
+
+    function isArray(value) {
+        return Object.prototype.toString.apply(value) === '[object Array]'
+    }
+
 
 #### undefined和null
 阮一峰写过一篇[博客](http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html) 如果想弄懂这两个值的典故，值得去学习一下。下面是我的主要摘录。
@@ -142,10 +138,10 @@ function isArray(value) {
 1. 作为函数的参数，表示该函数的参数不是对象。
 2. 作为对象原型链的终点。
 
-```
-Object.getPrototypeOf(Object.prototype)
-// null
-```
+
+    Object.getPrototypeOf(Object.prototype)
+    // null
+
 
 > undefined表示"缺少值"，就是此处应该有一个值，但是还没有定义。
 
@@ -159,12 +155,12 @@ Object.getPrototypeOf(Object.prototype)
 > js 的对象永远不会试真的空对象。它可以从原型链中获取成员属性
 
 比如
-```
-> var a = {}
-undefined
-> a.constructor
-[Function: Object]
-```
+
+    > var a = {}
+    undefined
+    > a.constructor
+    [Function: Object]
+
 ![](http://7xkpdt.com1.z0.glb.clouddn.com/7af9844da77393984091fa575577b8d6.png)
 
 #### 函数
