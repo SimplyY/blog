@@ -42,7 +42,7 @@
 > 坏处容易造成 bug、且难以 debug。
 
 解决办法:使用闭包，或者 `commonjs` 或 `AMD`
-```js
+```
 (function() {
     // body...
 })();
@@ -83,7 +83,8 @@ https://github.com/MikeMcl/decimal.js
 > 在编码很少直接使用到 NaN。通常都是在计算失败时，作为 Math 的某个方法的返回值出现的.例如：Math.sqrt(-1)
 
 NaN 表示 `不是一个数字`，当输入把非数字形式的字符串转化为数字时产生。并且 NaN !== NaN
-```js
+
+```
 > typeof NaN === 'number'
 true
 > parseInt('oop')
@@ -141,7 +142,7 @@ function isArray(value) {
 1. 作为函数的参数，表示该函数的参数不是对象。
 2. 作为对象原型链的终点。
 
-```js
+```
 Object.getPrototypeOf(Object.prototype)
 // null
 ```
@@ -158,7 +159,7 @@ Object.getPrototypeOf(Object.prototype)
 > js 的对象永远不会试真的空对象。它可以从原型链中获取成员属性
 
 比如
-```js
+```
 > var a = {}
 undefined
 > a.constructor
