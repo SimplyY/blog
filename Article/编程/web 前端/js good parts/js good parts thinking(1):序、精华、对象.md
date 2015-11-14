@@ -1,13 +1,10 @@
 发布时间：2015-11-07
 更新时间：2015-11-07 14:20:17
 [github 本博客项目](https://github.com/SimplyY/Blog/)
-# js good parts note(1):序、精华与糟粕、对象
+# js good parts thinking(1):序、精华与糟粕、对象
 
 ## 系列序
-我博客里的js good parts 系列是对[《JavaScript语言精粹》](http://book.douban.com/subject/3590768/)做的笔记。
-
-如果你时间比较急并且至少有一年编程功底，想速成js可以只看这个系列的笔记。
-如果你还想深入，买这本书来反复深读吧，只有100多面，但它值得反复咀嚼。我的笔记可以作为一个导论，一种介绍，甚至还可以通过我的笔记和我讨论探讨。
+我博客里的js good parts 系列是对[《JavaScript语言精粹》](http://book.douban.com/subject/3590768/)做的笔记和思考。
 
 ## 书籍简介
 本书通过对JavaScript语言的分析，甄别出好的和坏的特性，从而提取出相对这门语言的整体而言具有更好的可靠性、可读性和可维护性的JavaScript的子集，以便你能用它创建真正可扩展的和高效的代码。
