@@ -1,3 +1,6 @@
+发布时间：2015-12-26
+更新时间：2015-12-26 17:37:40
+[github 本博客项目](https://github.com/SimplyY/Blog/)
 ## indexOf 判断元素是否在数组的缺陷
 `array.indexOf(item) !== -1 `
 

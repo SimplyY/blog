@@ -1,5 +1,6 @@
 发布时间：2015-11-14
-更新时间：2015-11-14 10:41:01
+更新时间：2015-12-26 17:37:40
+[github 本博客项目](https://github.com/SimplyY/Blog/)
 [github 本博客项目](https://github.com/SimplyY/Blog/)
 # js good parts thinking(3):数组、方法、继承
 
@@ -14,7 +15,7 @@
 ### 不要用 delete
 应该使用
 
-    arr.splice(begin, deleteNumber);
+    array.splice(begin, deleteCount);
 #### 删除数组中的元素
 ![](http://7xkpdt.com1.z0.glb.clouddn.com/ce099953100f3ee0a897872d1e58bfd7.png)
 
@@ -41,18 +42,32 @@
 #### array.join(separator)
 将数组构造成字符串，以 separator 分隔，separator 默认为','
 
-#### array.变异方法
-所谓变异方法，就是会更改原 array。有 push,pop,reverse,shift,unshift,sort(内部用了快排，不稳定排序),splice(),等（map，es6+）
-
 #### array.slice
 slice: 切片
 返回数组中的一部分的浅复制，也是只对数组中的元素进行浅复制
+##### 得到数组最后一个元素
+如果 array 的 element 为简单数据类型，则 array.slice(-1)[0] === array[array.length - 1]
+```
+Array.prototype.getLastElement = function () {
+    return this.slice(-1)[0];
+};
+```
 
-#### array.splice(start, deleteCount, item...)
+### array.变异方法
+所谓变异方法，就是会更改原 array。有 push,pop,reverse,shift,unshift,sort(内部用了快排，不稳定排序),splice(),等（map，es6+）
+#### array.splice(start, deleteCount, items...)
 splice: 拼接
-注意：所有 begin,start 都是包括的，所有 end 都是不包括的，类比 for 循环的起始条件和终止条件。
+deleteCount默认为 max（如果不传参数），即 start 之后全部 delete 掉
 
+- 返回值数组为，array[start, start + deleteCount - 1] , 即start 之后到 start + deleteCount 之前为。
+- **此方法会改变原数组**，原数组会变成，array[0, start -1] + items + array[start + deleteCount, end] , 即连接了 start 之前的数组和 items 和start + deleteCount之后的数组，
+xxx 之前： array[xxx] 前，不包括array[xxx]，xxx即为 end
+xxx 之后： array[xxx] 后，包括array[xxx]，xxx 即为 begin
+
+注意：所有 begin,start 都是包括的，所有 end 都是不包括的，类比 for 循环的起始条件和终止条件。
 口诀：函数传参，**包括起点不包括终点**（最好背下来）。
+
+
 
 ### Number
 #### number.toExponential(fractionDigits)
