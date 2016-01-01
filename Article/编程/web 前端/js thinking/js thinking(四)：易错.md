@@ -9,7 +9,9 @@
 
 解决办法
 
-    // element can be Object, String, Number etc
+    // element can be Object, Strin
+
+    g, Number etc
     function isInArray(element, array) {
         for (var i = 0; i < array.length; i++) {
             if (JSON.stringify(element) === JSON.stringify(array[i])) {
@@ -26,6 +28,6 @@
     JSON.stringify(element);
     var t1 = performance.now();
     console.log(t1-t0);
-    
+
     // 当 element 为简单数据类型时，JSON.stringify(element);性能很高（element 为100长度的字符串时，0.01毫秒）
     // 注意，当 element 为数组的 length 大于10000 时，JSON.stringify(element);性能会开始变低（大于0.01秒），但是绝大多数情况不会大于这么多，所以还是在需要性能优化的时候再性能优化。
