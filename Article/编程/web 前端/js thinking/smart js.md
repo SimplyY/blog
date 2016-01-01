@@ -25,3 +25,8 @@
     Number.prototype.integer = function () {
         return xxx;
     }
+
+### 不要分号
+jshint 插件设置，不要分号，头部加上
+
+    /* jshint asi:true */

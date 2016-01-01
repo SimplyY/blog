@@ -2,7 +2,7 @@
 更新时间：2015-12-26 17:37:40
 [github 本博客项目](https://github.com/SimplyY/Blog/)
 [github 本博客项目](https://github.com/SimplyY/Blog/)
-# js good parts thinking(3):数组、方法、继承
+# js thinking(3):数组、方法、继承
 
 ## 数组
 数组不少坑。
@@ -66,6 +66,49 @@ xxx 之后： array[xxx] 后，包括array[xxx]，xxx 即为 begin
 
 注意：所有 begin,start 都是包括的，所有 end 都是不包括的，类比 for 循环的起始条件和终止条件。
 口诀：函数传参，**包括起点不包括终点**（最好背下来）。
+
+### 遍历方法
+#### foreach
+假设我们有一个数组，每个元素是一个人。你面前站了一排人。foreach 就是你按顺序一个一个跟他们做点什么，具体做什么，随便
+
+    people.forEach(function (dude) {
+      dude.pickUpSoap();
+    });
+
+#### reduce
+The reduce() method applies a function against an accumulator and each value of the array (from left-to-right) to **reduce it to a single value**.
+
+    [0, 1, 2, 3, 4].reduce(function(previousValue, currentValue, currentIndex, array) {
+      return previousValue + currentValue;
+    });//10
+
+### 产生新数组
+就像 python 的数组推导
+
+#### map
+新数组会和原数组长度一致，比如下面函数 doubles === [ undefined, 8, 18 ]
+
+    var numbers = [1, 4, 9];
+    var doubles = numbers.map(function(num) {
+        if(num === 1){
+            return;
+        }
+        else {
+            return num*2
+        }
+    })
+
+    var numbers = [1, 4, 9];
+    var roots = numbers.map(Math.sqrt);
+    // roots is now [1, 2, 3], numbers is still [1, 4, 9]
+
+#### filter
+
+    function isBigEnough(value) {
+      return value >= 10;
+    }
+    var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
+    // filtered is [12, 130, 44]
 
 
 
