@@ -61,11 +61,18 @@ deleteCount默认为 max（如果不传参数），即 start 之后全部 delete
 
 - 返回值数组为，array[start, start + deleteCount - 1] , 即start 之后到 start + deleteCount 之前为。
 - **此方法会改变原数组**，原数组会变成，array[0, start -1] + items + array[start + deleteCount, end] , 即连接了 start 之前的数组和 items 和start + deleteCount之后的数组，
-xxx 之前： array[xxx] 前，不包括array[xxx]，xxx即为 end
-xxx 之后： array[xxx] 后，包括array[xxx]，xxx 即为 begin
+xxx 之前： array[xxx] 前，不包括array[xxx]，xxx即为 end。
+xxx 之后： array[xxx] 后，包括array[xxx]，xxx 即为 begin。
 
 注意：所有 begin,start 都是包括的，所有 end 都是不包括的，类比 for 循环的起始条件和终止条件。
 口诀：函数传参，**包括起点不包括终点**（最好背下来）。
+
+注意2：当 start,end 大于等于 length 时，并不会报错。而关键的是当它们的值为负数时，且小于-length 时，亦不会报错，而且更关键的是，它们的值 **如同0一般**。
+
+    > [1, 2, 3].slice(4)
+    []
+    > [1, 2, 3].slice(-4)
+    [ 1, 2, 3 ]
 
 ### 遍历方法
 #### foreach
