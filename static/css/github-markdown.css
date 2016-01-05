@@ -9,9 +9,13 @@
   color: #333;
   overflow: hidden;
   font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.6;
   word-wrap: break-word;
+}
+
+.markdown-body p {
+    font-size: 1.2rem;
 }
 
 .markdown-body a {
@@ -131,27 +135,27 @@
 }
 
 .markdown-body h1 {
-  font-size: 30px;
+  font-size: 2.7rem;
 }
 
 .markdown-body h2 {
-  font-size: 21px;
+  font-size: 2.4rem;
 }
 
 .markdown-body h3 {
-  font-size: 16px;
+  font-size: 2.1rem;
 }
 
 .markdown-body h4 {
-  font-size: 14px;
+  font-size: 1.8rem;
 }
 
 .markdown-body h5 {
-  font-size: 12px;
+  font-size: 1.5rem;
 }
 
 .markdown-body h6 {
-  font-size: 11px;
+  font-size: 1.3rem;
 }
 
 .markdown-body blockquote {
@@ -183,13 +187,13 @@
 
 .markdown-body code {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 12px;
+  font-size: 0.8rem;
 }
 
 .markdown-body pre {
   margin-top: 0;
   margin-bottom: 0;
-  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font: 0.8rem Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 
 .markdown-body .select::-ms-expand {
@@ -197,7 +201,7 @@
 }
 
 .markdown-body .octicon {
-  font: normal normal normal 16px/1 octicons-anchor;
+  font: normal normal normal 1rem/1 octicons-anchor;
   display: inline-block;
   text-decoration: none;
   text-rendering: auto;
@@ -248,7 +252,7 @@
 .markdown-body h6 {
   position: relative;
   margin-top: 1em;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
   font-weight: bold;
   line-height: 1.4;
 }
@@ -297,7 +301,6 @@
 
 .markdown-body h2 {
   padding-bottom: 0.3em;
-  font-size: 1.75em;
   line-height: 1.225;
   border-bottom: 1px solid #eee;
 }
@@ -307,7 +310,6 @@
 }
 
 .markdown-body h3 {
-  font-size: 1.5em;
   line-height: 1.43;
 }
 
@@ -315,16 +317,12 @@
   line-height: 1.2;
 }
 
-.markdown-body h4 {
-  font-size: 1.25em;
-}
 
 .markdown-body h4 .anchor {
   line-height: 1.2;
 }
 
 .markdown-body h5 {
-  font-size: 1em;
 }
 
 .markdown-body h5 .anchor {
@@ -332,7 +330,6 @@
 }
 
 .markdown-body h6 {
-  font-size: 1em;
   color: #777;
 }
 
@@ -348,13 +345,13 @@
 .markdown-body table,
 .markdown-body pre {
   margin-top: 0;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .markdown-body hr {
   height: 4px;
   padding: 0;
-  margin: 16px 0;
+  margin: 1rem 0;
   background-color: #e7e7e7;
   border: 0 none;
 }
@@ -373,7 +370,7 @@
 }
 
 .markdown-body li>p {
-  margin-top: 16px;
+  margin-top: 1rem;
 }
 
 .markdown-body dl {
@@ -382,15 +379,15 @@
 
 .markdown-body dl dt {
   padding: 0;
-  margin-top: 16px;
+  margin-top: 1rem;
   font-size: 1em;
   font-style: italic;
   font-weight: bold;
 }
 
 .markdown-body dl dd {
-  padding: 0 16px;
-  margin-bottom: 16px;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
 }
 
 .markdown-body blockquote {
@@ -466,12 +463,12 @@
 }
 
 .markdown-body .highlight {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .markdown-body .highlight pre,
 .markdown-body pre {
-  padding: 16px;
+  padding: 1rem;
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
