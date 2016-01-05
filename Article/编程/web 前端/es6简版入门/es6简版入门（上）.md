@@ -1,0 +1,558 @@
+发布时间：2016-01-05
+更新时间：2016-01-05 19:35:21
+[github 本博客项目](https://github.com/SimplyY/Blog/)
+
+# es6简版入门（上）
+## 前沿
+我只是阮一峰的 [《ECMAScript 6入门》](http://es6.ruanyifeng.com/)  的搬运工。当然啦，如果只是简单搬运那大家还不如直接看原版，我这里其实是有目的的，将阮一峰的书里写的 es6 的部分常用语法特性，摘录。
+
+也就是说，你可以通过两三个小时，快速读完，阮一峰那本书我都读了好几天还有不少没读完，所以呢，这里的目的就是给一个快速入门 es6 的捷径。
+
+## es6 语法7
+### let和const命令
+let命令
+基本用法
+ES6新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。
+
+> 注：也就是说 let 是块作用域的，不同于 var（函数作用域）。
+
+#### 例子
+
+    {
+      let a = 10;
+      var b = 1;
+    }
+
+    a // ReferenceError: a is not defined.
+    b // 1
+
+##### 常用的地方
+for循环的计数器，就很合适使用let命令。
+
+    for(let i = 0; i < arr.length; i++){}
+
+#### 特别注意
+
+##### 不存在变量提升
+let不像var那样会发生“变量提升”现象。所以，变量一定要在声明后使用，否则报错。
+
+    console.log(foo); // 输出undefined
+    console.log(bar); // 报错ReferenceError
+
+    var foo = 2;
+    let bar = 2;
+
+
+`var foo = 2;` 这里其实会出现类似函数提升一样的效果，也就是对于 js 引擎上面的代码的执行顺序其实是先 `var foo;` 再 `console.log(foo);` (所以会输出undefined) ,最后 `foo = 2;`
+
+不过呢，let 就会出现这个现象了。变量bar用let命令声明，不会发生变量提升。这表示在声明它之前，变量bar是不存在的，这时如果用到它，就会抛出一个错误。(报错ReferenceError)
+
+##### 暂时性死区
+只要块级作用域内存在let命令，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响。
+
+    var tmp = 123;
+
+    if (true) {
+      tmp = 'abc'; // ReferenceError
+      let tmp;
+    }
+
+上面代码中，存在全局变量tmp，但是块级作用域内let又声明了一个局部变量tmp，导致后者绑定这个块级作用域，所以在let声明变量前，对tmp赋值会报错。
+
+ES6明确规定，如果区块中存在let和const命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些命令，就会报错。总之，在代码块内，使用let命令声明变量之前，该变量都是不可用的。这在语法上，称为“暂时性死区”（temporal dead zone，简称TDZ）。
+
+总之，暂时性死区的本质就是，只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用该变量。
+
+
+### 块级作用域
+
+ES6允许块级作用域的任意嵌套。
+
+    {{{{{let insane = 'Hello World'}}}}};
+
+外层作用域无法读取内层作用域的变量。内层作用域可以定义外层作用域的同名变量。
+
+块级作用域的出现，实际上使得获得广泛应用的立即执行匿名函数（IIFE）不再必要了。
+
+    // IIFE写法
+    (function () {
+      var tmp = ...;
+      ...
+    }());
+
+    // 块级作用域写法
+    {
+      let tmp = ...;
+      ...
+    }
+
+另外，ES6也规定，**函数本身的作用域，在其所在的块级作用域之内** 。
+
+    function f() { console.log('I am outside!'); }
+    (function () {
+      if(false) {
+        // 重复声明一次函数f
+        function f() { console.log('I am inside!'); }
+      }
+
+      f();
+    }());
+
+上面代码在ES5中运行，会得到“I am inside!”，但是在ES6中运行，会得到“I am outside!”。这是因为ES5存在函数提升，不管会不会进入 if代码块，函数声明都会提升到当前作用域的顶部，得到执行；而ES6支持块级作用域，不管会不会进入if代码块，其内部声明的函数皆不会影响到作用域的外部。。
+
+### const命令
+
+const也用来声明变量，但是声明的是常量。一旦声明，常量的值就不能改变。
+
+const声明的变量不得改变值，这意味着，const一旦声明变量，就必须立即初始化，不能留到以后赋值。
+
+    'use strict';
+    const foo;
+    // SyntaxError: missing = in const declaration
+
+上面代码表示，对于const来说，只声明不赋值，就会报错。同样的，这行命令在常规模式下不报错，但foo以后也没法重新赋值了。
+
+    const foo;
+    foo = 1; // 常规模式，重新赋值无效
+    foo // undefined
+
+#### 类比 let
+const的作用域与let命令相同：只在声明所在的块级作用域内有效。const命令声明的常量也是不提升，同样存在暂时性死区，只能在声明的位置后面使用。const声明的常量，也与let一样不可重复声明。
+
+对于复合类型的变量，变量名不指向数据，而是指向数据所在的地址。const命令只是保证变量名指向的地址不变，并不保证该地址的数据不变，所以将一个对象声明为常量必须非常小心。
+
+    const foo = {};
+    foo.prop = 123;
+
+    foo.prop
+    // 123
+
+    foo = {} // TypeError: "foo" is read-only
+
+> 注： 其实这和 c++，java(final) 一样，const 声明的对象，是指它的**引用不变**，也就是地址不变，也就是引用为常量，毕竟对于声明一个对象，const object，object 只是一个指向对象地址的**引用**，而不是真正的对象。
+
+下面是另一个例子。
+
+    const a = [];
+    a.push("Hello"); // 可执行
+    a.length = 0;    // 可执行
+    a = ["Dave"];    // 报错
+
+#### 冻结对象
+如果真的想将对象冻结，应该使用Object.freeze方法。
+
+    const foo = Object.freeze({});
+
+    // 常规模式时，下面一行不起作用；
+    // 严格模式时，该行会报错
+    foo.prop = 123;
+
+除了将对象本身冻结，对象的属性也会冻结。
+
+
+#### 跨模块常量
+(这里的模块即是文件模块，下面的 constants.js 模块，可以理解成 constants.js 文件)
+上面说过，const声明的常量只在当前代码块有效。如果想设置跨模块的常量，可以采用下面的写法。
+
+    // constants.js 模块
+    export const A = 1;
+    export const B = 3;
+    export const C = 4;
+
+    // test1.js 模块
+    import * as constants from './constants';
+    console.log(constants.A); // 1
+    console.log(constants.B); // 3
+
+    // test2.js 模块
+    import {A, B} from './constants';
+    console.log(A); // 1
+    console.log(B); // 3
+
+
+### 变量的解构赋值
+
+#### 基本用法
+ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。
+
+以前，为变量赋值，只能直接指定值。
+
+    var a = 1;
+    var b = 2;
+    var c = 3;
+
+ES6允许写成下面这样。
+
+    var [a, b, c] = [1, 2, 3];
+
+本质上，这种写法属于“模式匹配”，只要等号两边的模式相同，左边的变量就会被赋予对应的值。下面是一些使用嵌套数组进行解构的例子。
+
+    let [foo, [[bar], baz]] = [1, [[2], 3]];
+    foo // 1
+    bar // 2
+    baz // 3
+
+    let [ , , third] = ["foo", "bar", "baz"];
+    third // "baz"
+
+如果解构不成功，变量的值就等于undefined。
+
+    var [foo] = [];
+    var [bar, foo] = [1];
+
+
+    let [x, y] = [1, 2, 3];
+    x // 1
+    y // 2
+
+    let [a, [b], d] = [1, [2, 3], 4];
+    a // 1
+    b // 2
+    d // 4
+
+上面两个例子，都属于不完全解构，但是可以成功。
+
+如果等号的右边没有实现 Iterator 接口（也就是不是可遍历的结构，参见《Iterator》一章），那么将会报错。
+
+    // 报错
+    let [foo] = 1;
+    let [foo] = NaN;
+    let [foo] = undefined;
+    let [foo] = {};
+
+事实上，只要某种数据结构具有Iterator接口，都可以采用数组形式的解构赋值。
+
+    function* fibs() {
+      var a = 0;
+      var b = 1;
+      while (true) {
+        yield a;
+        [a, b] = [b, a + b];
+      }
+    }
+
+    var [first, second, third, fourth, fifth, sixth] = fibs();
+    sixth // 5
+
+这里的 `function* fibs`  是 Generator 函数（看了后面你就懂了），原生具有 Iterator接口 。解构赋值会依次从这个接口获取值。
+
+#### 默认值
+解构赋值允许指定默认值。
+
+    var [foo = true] = [];
+    foo // true
+
+    [x, y = 'b'] = ['a'] // x='a', y='b'
+    [x, y = 'b'] = ['a', undefined] // x='a', y='b'
+
+#### 对象的解构赋值
+解构不仅可以用于数组，还可以用于对象(因为对象也实现了Iterator接口)。
+
+对象的解构与数组有一个重要的不同。**数组的元素是按次序排列的，变量的取值由它的位置决定；而对象的属性没有次序，变量必须与属性同名**，才能取到正确的值。
+
+    var { bar, foo } = { foo: "aaa", bar: "bbb" };
+    foo // "aaa"
+    bar // "bbb"
+
+    var { baz } = { foo: "aaa", bar: "bbb" };
+    baz // undefined
+
+如果变量名与属性名不一致，必须写成下面这样。
+
+    var { foo: baz } = { foo: "aaa", bar: "bbb" };
+    baz // "aaa"
+
+    let obj = { first: 'hello', last: 'world' };
+    let { first: f, last: l } = obj;
+    f // 'hello'
+    l // 'world'
+
+也就是说，对象的解构赋值的内部机制，是先找到同名属性，然后再赋给对应的变量。真正被赋值的是后者，而不是前者。
+
+
+和数组一样，解构也可以用于嵌套结构的对象。
+
+    var obj = {
+      p: [
+        "Hello",
+        { y: "World" }
+      ]
+    };
+
+    var { p: [x, { y }] } = obj;
+    x // "Hello"
+    y // "World"
+
+对象的解构也可以指定默认值。默认值生效的条件是，对象的属性值严格等于undefined。
+
+如果要将一个已经声明的变量用于解构赋值，必须非常小心。
+
+    // 错误的写法
+
+    var x;
+    {x} = {x: 1};
+    // SyntaxError: syntax error
+
+大括号写在行首导致了JavaScript引擎会将{x}理解成一个代码块，从而发生语法错误。只有不将大括号写在行首，避免JavaScript将其解释为代码块，才能解决这个问题。
+
+    // 正确的写法
+    ({x} = {x: 1});
+
+
+#### 字符串的解构赋值
+字符串也可以解构赋值。这是因为此时，字符串被转换成了一个类似数组的对象。
+
+    const [a, b, c, d, e] = 'hello';
+    a // "h"
+    b // "e"
+    c // "l"
+    d // "l"
+    e // "o"
+
+类似数组的对象都有一个length属性，因此还可以对这个属性解构赋值。
+
+    let {length : len} = 'hello';
+    len // 5
+
+#### 数值和布尔值的解构赋值
+解构赋值时，如果等号右边是数值和布尔值，则会先转为对象。
+
+    let {toString: s} = 123;
+    s === Number.prototype.toString // true
+
+    let {toString: s} = true;
+    s === Boolean.prototype.toString // true
+
+#### 规则
+解构赋值的规则是，只要等号右边的值不是对象，就先将其转为对象。由于undefined和null无法转为对象，所以对它们进行解构赋值，都会报错。
+
+#### 函数参数的解构赋值
+函数的参数也可以使用解构赋值。
+
+    function add([x, y]){
+      return x + y;
+    }
+
+    add([1, 2]) // 3
+
+函数参数的解构也可以使用默认值。
+
+    function move({x = 0, y = 0} = {}) {
+      return [x, y];
+    }
+
+    move({x: 3, y: 8}); // [3, 8]
+    move({x: 3}); // [3, 0]
+    move({}); // [0, 0]
+    move(); // [0, 0]
+
+#### 用途
+变量的解构赋值用途很多。
+
+##### 交换变量的值
+
+    [x, y] = [y, x];
+
+上面代码交换变量x和y的值，这样的写法不仅简洁，而且易读，语义非常清晰。
+
+##### 从函数返回多个值
+
+函数只能返回一个值，如果要返回多个值，只能将它们放在数组或对象里返回。有了解构赋值，取出这些值就非常方便。
+
+    // 返回一个数组
+
+    function example() {
+      return [1, 2, 3];
+    }
+    var [a, b, c] = example();
+
+    // 返回一个对象
+
+    function example() {
+      return {
+        foo: 1,
+        bar: 2
+      };
+    }
+    var { foo, bar } = example();
+
+##### 函数参数的定义
+
+解构赋值可以方便地将一组参数与变量名对应起来。
+
+    // 参数是一组有次序的值
+    function f([x, y, z]) { ... }
+    f([1, 2, 3])
+
+    // 参数是一组无次序的值
+    function f({x, y, z}) { ... }
+    f({z: 3, y: 2, x: 1})
+
+##### 提取JSON数据
+
+解构赋值对提取JSON对象中的数据，尤其有用。
+
+    var jsonData = {
+      id: 42,
+      status: "OK",
+      data: [867, 5309]
+    }
+
+    let { id, status, data: number } = jsonData;
+
+    console.log(id, status, number)
+    // 42, OK, [867, 5309]
+
+上面代码可以快速提取JSON数据的值。
+
+> 注：json 这个简直好用到爆。
+
+##### 遍历Map结构
+
+任何部署了Iterator接口的对象，都可以用for...of循环遍历。Map结构原生支持Iterator接口，配合变量的解构赋值，获取键名和键值就非常方便。
+
+> 注：Map和 python 的字典是同一种数据结构。
+
+    var map = new Map();
+    map.set('first', 'hello');
+    map.set('second', 'world');
+
+    for (let [key, value] of map) {
+      console.log(key + " is " + value);
+    }
+    // first is hello
+    // second is world
+
+
+如果只想获取键名，或者只想获取键值，可以写成下面这样。
+
+    // 获取键名
+    for (let [key] of map) {
+      // ...
+    }
+
+    // 获取键值
+    for (let [,value] of map) {
+      // ...
+    }
+
+
+##### 输入模块的指定方法
+
+加载模块时，往往需要指定输入那些方法。解构赋值使得输入语句非常清晰。
+
+
+const { SourceMapConsumer, SourceNode } = require("source-map");
+
+## 各种类型的扩展
+### 字符串的扩展
+#### 字符串的遍历器接口
+ES6为字符串添加了遍历器接口（详见《Iterator》一章），使得字符串可以被for...of循环遍历。
+
+    for (let codePoint of 'foo') {
+      console.log(codePoint)
+    }
+
+#### includes(), startsWith(), endsWith()
+传统上，JavaScript只有indexOf方法，可以用来确定一个字符串是否包含在另一个字符串中。ES6又提供了三种新方法。
+
+includes()：返回布尔值，表示是否找到了参数字符串。
+startsWith()：返回布尔值，表示参数字符串是否在源字符串的头部。
+endsWith()：返回布尔值，表示参数字符串是否在源字符串的尾部。
+
+    var s = 'Hello world!';
+
+    s.startsWith('Hello') // true
+    s.endsWith('!') // true
+    s.includes('o') // true
+
+这三个方法都支持第二个参数，表示开始搜索的位置。
+
+    var s = 'Hello world!';
+
+    s.startsWith('world', 6) // true
+    s.endsWith('Hello', 5) // true
+    s.includes('Hello', 6) // false
+
+上面代码表示，使用第二个参数n时，endsWith的行为与其他两个方法有所不同。它针对前n个字符，而其他两个方法针对从第n个位置直到字符串结束。
+
+#### repeat()
+repeat方法返回一个新字符串，表示将原字符串重复n次。
+
+    'x'.repeat(3) // "xxx"
+    'hello'.repeat(2) // "hellohello"
+
+#### 模板字符串
+传统的JavaScript语言，输出模板通常是这样写的。
+
+    $("#result").append(
+      "There are <b>" + basket.count + "</b> " +
+      "items in your basket, " +
+      "<em>" + basket.onSale +
+      "</em> are on sale!"
+    );
+
+上面这种写法相当繁琐不方便，ES6引入了模板字符串解决这个问题。
+
+    $("#result").append(`
+      There are <b>${basket.count}</b> items
+       in your basket, <em>${basket.onSale}</em>
+      are on sale!
+    `);
+
+模板字符串（template string）是增强版的字符串，用反引号（`）标识。它可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量。
+
+    // 普通字符串
+    `In JavaScript '\n' is a line-feed.`
+
+    // 多行字符串
+    `In JavaScript this is
+     not legal.`
+
+    console.log(`string text line 1
+    string text line 2`);
+
+    // 字符串中嵌入变量
+    var name = "Bob", time = "today";
+    `Hello ${name}, how are you ${time}?`
+
+上面代码中的字符串，都是用反引号表示。如果在模板字符串中需要使用反引号，则前面要用反斜杠转义。
+
+    var greeting = `\`Yo\` World!`;
+
+如果使用模板字符串表示多行字符串，所有的空格和缩进都会被保留在输出之中。
+
+    $("#warning").html(`
+      <h1>Watch out!</h1>
+      <p>Unauthorized hockeying can result in penalties
+      of up to ${maxPenalty} minutes.</p>
+    `);
+
+模板字符串中嵌入变量，需要将变量名写在${}之中。
+
+    function authorize(user, action) {
+      if (!user.hasPrivilege(action)) {
+        throw new Error(
+          // 传统写法为
+          // 'User '
+          // + user.name
+          // + ' is not authorized to do '
+          // + action
+          // + '.'
+          `User ${user.name} is not authorized to do ${action}.`);
+      }
+    }
+
+大括号内部可以放入任意的JavaScript表达式，可以进行运算，以及引用对象属性。
+
+    var x = 1;
+    var y = 2;
+
+    `${x} + ${y} = ${x + y}`
+    // "1 + 2 = 3"
+
+### 正则的扩展
+这里不写了，有兴趣看这 http://es6.ruanyifeng.com/#docs/regex
+
+### 数值的扩展
+不写+1 http://es6.ruanyifeng.com/#docs/number
