@@ -1,5 +1,6 @@
 发布时间：2016-01-05
-更新时间：2016-01-05 22:30:05
+更新时间：2016-01-07 12:54:12
+[github 本博客项目](https://github.com/SimplyY/Blog/)
 [github 本博客项目](https://github.com/SimplyY/Blog/)
 
 
@@ -23,3 +24,9 @@
 我的大创后端  [JnPlant-node](https://github.com/SimplyY/JnPlant-node) ，直接就用上面俩库，项目结构都是直接模仿 meanapp 的server 里面的。
 
 那个 meanapp 虽然只是一个例子，但是很棒，里面代码的扩展性很高，大创开发到中后期东西即便多了起来，处理起来仍然毫无压力=。=，如果你也想搭一个 restful node 后端，非常推荐去看他的源码，也可以参考我的项目，我的算是他的丰富版，他的是骨架。
+
+还有一个，vue 作者写的 [pod](https://github.com/yyx990803/pod), 用来管理多个 node 应用用。
+
+效果图：
+
+![](http://7xkpdt.com1.z0.glb.clouddn.com/058a53b32c933036eba2e054f37370ca.png)
