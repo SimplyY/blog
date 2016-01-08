@@ -78,7 +78,17 @@
 
 forin 的迭代无序，且包括原型链。
 
+#### 深复制
+TODO
+"JSON unsafe" is an object containing any value type that is not representable in standard JSON. For example:
 
+undefined
+function
+regex
+typed object (like String, Number)
+reference (circular reference, for example)
+#### 浅复制
+TODO
 
 ## 函数
 > 函数式 js 的基础模块单元，用于代码复用、信息隐藏和组合调用。
