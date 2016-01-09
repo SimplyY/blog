@@ -1,3 +1,6 @@
+发布时间：2016-01-09
+更新时间：2016-01-09 20:29:29
+[github 本博客项目](https://github.com/SimplyY/Blog/)
 # web-front-end-learning-intro
 
 ## web 前端简单介绍
