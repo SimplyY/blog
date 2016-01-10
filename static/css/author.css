@@ -1,4 +1,6 @@
 .love-main-side {
+    display: inline-block;
+    width: 100%;
   height: 50rem;
   position: relative;
   color: white;
@@ -40,6 +42,9 @@
     font-size: 6rem; }
   to {
     font-size: 8rem; } }
+
+.main-content {
+}
 
 @keyframes bigger_font_size {
   from {
