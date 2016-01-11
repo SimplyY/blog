@@ -146,3 +146,7 @@ def contribute(request):
 
 def contribute_qq_sign(request):
     return render(request, 'qqSignCallback.html')
+
+
+def google_index(request):
+    return render(request, 'google0fb416815f1d4d7c.html')
