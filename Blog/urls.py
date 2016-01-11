@@ -18,4 +18,5 @@ urlpatterns = [
     url(r'^blog/add_share_number/', add_share_number),
     url(r'^contribute$', contribute),
     url(r'^contribute/qq_callback$', contribute_qq_sign),
+    url(r'^google0fb416815f1d4d7c.html$', google_index),
 ]
