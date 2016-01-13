@@ -12,15 +12,7 @@
     setTimeout(function(){
         seconds += 1;
 
-        var loveInfo = $("#love-info")[0];
-        loveInfo.removeChild($(".seconds")[0]);
-
-        var newSecondsDOM = document.createElement('p');
-        newSecondsDOM.innerHTML = seconds.toString() + "秒";
-        loveInfo.appendChild(newSecondsDOM);
-        $('p')[3].setAttribute('id', 'seconds');
-        $('#seconds')[0].setAttribute('class', 'seconds');
-
+        secondsDOM.innerHTML = seconds.toString() + "秒";
         setTimeout(arguments.callee, cycleTime);
     }, cycleTime);
 
