@@ -1,30 +1,36 @@
-const TEST_DIR = '../Article';
-
 import fse from 'fs-extra';
-import {basename, dirname} from 'path';
-import {readFile} from 'fs';
+import { basename, dirname } from 'path';
+import { readFile } from 'fs';
 
 let tags = [];
 let articles = [];
 
-function Tag({tagName, parentTagName}) {
-    [this.tagName, this.parentTagName] = [tagName, parentTagName];
+var config = require('../config');
+const ROOT_DIR = config.blogRootPath;
+
+
+function Tag({tagName, parentTagName, aritcleTitleList}) {
+    [this.tagName, this.parentTagName, this.aritcleTitleList] = [tagName, parentTagName, aritcleTitleList];
 }
 
 function Article({title, parentTagName, md}) {
     [this.title, this.parentTagName, this.md] = [title, parentTagName, md];
 }
 
-fse.walk(TEST_DIR)
+fse.walk(ROOT_DIR)
     .on('data', function (item) {
         if (item.stats.isDirectory()) {
             // create tag and add in tags
             let tagName = basename(item.path);
             // 根目录不作为 tag
-            if (basename(TEST_DIR) === tagName) {
+            if (basename(ROOT_DIR) === tagName) {
                 return;
             }
             let parentTagName = basename(dirname(item.path));
+            if (parentTagName === ROOT_DIR) {
+                parentTagName = "";
+            }
+
             tags.push(new Tag({tagName, parentTagName}));
         }
 
