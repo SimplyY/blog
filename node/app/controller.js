@@ -43,7 +43,7 @@ module.exports.setViews = function (app) {
     app.set('view engine', 'html');
     app.set('views', path.join(__dirname, 'views'));
 
-    app.get('/', function (req, res) {
+    app.get('/*', function (req, res) {
         res.render('view', function (err, html) {
             res.send(html);
         });
