@@ -25,14 +25,14 @@ module.exports.setRouters = function (app, models) {
             models.tagSchema
         ).methods(['get']);
 
-    tagRest.register(app, '/tag');
+    tagRest.register(app, '/api/tag');
 
     var articleRest = restful.model(
             'article',
             models.articleSchema
         ).methods(['get', 'put', 'post', 'delete']);
 
-    articleRest.register(app, '/article');
+    articleRest.register(app, '/api/article');
 
 };
 

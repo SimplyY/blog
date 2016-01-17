@@ -13,5 +13,5 @@ mid.useMid(app);
 controller.setRouters(app, models);
 controller.setViews(app);
 
-app.listen(config.port);
-console.log('listen:', config.port);
+app.listen(config.serverPort);
+console.log('listening:', config.serverPort);
