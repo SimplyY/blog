@@ -9,7 +9,7 @@ var stream = byline(fs.createReadStream(mogodbConfigPath));
 var dbpath = "";
 var logpath = "";
 stream.on('data', function(line) {
-    var strs = line.split('=');
+    var strs = line.toString().split('=');
     if (strs[0] === 'dbpath') {
         dbpath = strs[1];
     }
