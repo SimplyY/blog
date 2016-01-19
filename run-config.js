@@ -1,5 +1,6 @@
 var fse = require('fs-extra');
 var fs = require('fs');
+var path = require('path');
 var byline = require('byline');
 
 var mogodbConfigPath = './mongod.conf';
@@ -14,7 +15,7 @@ stream.on('data', function(line) {
         dbpath = strs[1];
     }
     if (strs[0] === 'logpath') {
-        logpath = strs[1];
+        logpath = path.dirname(strs[1]);
     }
 }).on('end', function () {
     fse.ensureDir(dbpath, function (err) {
