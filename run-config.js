@@ -13,7 +13,7 @@ stream.on('data', function(line) {
     if (strs[0] === 'dbpath') {
         dbpath = strs[1];
     }
-    if (sts[0] === 'logpath') {
+    if (strs[0] === 'logpath') {
         logpath = strs[1];
     }
 }).on('end', function () {
