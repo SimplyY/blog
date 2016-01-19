@@ -3,7 +3,7 @@ var path = require('path');
 var uid = require('rand-token').uid;
 var restful = require('node-restful');
 
-var config = require('./config');
+var config = require('../../config');
 var token;
 
 module.exports.setRouters = function (app, models) {

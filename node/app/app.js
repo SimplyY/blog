@@ -1,6 +1,6 @@
 var express = require('express');
 
-var config = require('./config');
+var config = require('../../config');
 // var models = require('./models');
 var controller = require('./controller');
 var mid = require('./mid');
