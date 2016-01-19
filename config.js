@@ -1,4 +1,4 @@
-// please set serve-favicon in public
+// please set serve-favicon in ./node/app/public path
 
 module.exports = {
     blogRootPath: "/Users/yuwei/GitHub/Blog/Article",

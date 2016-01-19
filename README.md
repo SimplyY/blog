@@ -1,6 +1,21 @@
 # 博客
 这里准备搭建我的个人博客
 
+## 搭建流程
+> 所有命令应该在项目根目录使用
+
+### 配置环境和文件
+> 第一次 clone 下来的步骤
+
+0. 设置 config 文件，"./config.js"文件，mongodb 配置文件 "./node/mongod.conf"
+1. npm install 所有的依赖
+2. npm run config 运行配置脚本程序  
+
+### 运行服务器
+> 重新开机后都要运行
+
+1. npm run mongodb 启动数据库（端口默认为27017,修改见 "./node/mongod.conf"文件）
+2. npm run server 启动服务器(默认同上，修改方式同上)
 
 ## 重写计划
 ### 后端

@@ -1,15 +1,18 @@
 {
-  "name": "node",
+  "name": "my blog",
   "version": "1.0.0",
   "description": "",
-  "main": "fs-tag-article.js",
+  "main": "./node/app/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "mongodb": "mongod -f ./mongod.conf",
+    "server": "node ./node/app/app.js",
+    "config": "node ./node/run-config.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "~1.13.2",
+    "byline": "^4.2.1",
     "compression": "^1.6.0",
     "crawlme": "0.0.7",
     "ejs": "~2.3.3",
