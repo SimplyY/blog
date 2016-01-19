@@ -1,5 +1,5 @@
 {
-  "name": "my blog",
+  "name": "blog",
   "version": "1.0.0",
   "description": "",
   "main": "./node/app/app.js",
