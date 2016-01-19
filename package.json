@@ -6,7 +6,7 @@
   "scripts": {
     "mongodb": "mongod -f ./mongod.conf",
     "server": "node ./node/app/app.js",
-    "config": "node ./node/run-config.js"
+    "config": "node ./run-config.js"
   },
   "author": "",
   "license": "ISC",
