@@ -5,7 +5,7 @@
   "main": "./node/app/app.js",
   "scripts": {
     "mongodb": "mongod -f ./mongod.conf",
-    "server": "node ./node/app/app.js",
+    "start": "sudo node ./node/app/app.js",
     "config": "node ./run-config.js"
   },
   "author": "",
