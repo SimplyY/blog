@@ -25,15 +25,14 @@ module.exports.setRouters = function (app, models) {
             models.tagSchema
         ).methods(['get']);
 
-    tagRest.register(app, '/api/tag');
+    tagRest.register(app, '/api/tags');
 
     var articleRest = restful.model(
             'article',
             models.articleSchema
         ).methods(['get', 'put', 'post', 'delete']);
 
-    articleRest.register(app, '/api/article');
-
+    articleRest.register(app, '/api/articles');
 };
 
 module.exports.setViews = function (app) {
@@ -44,7 +43,7 @@ module.exports.setViews = function (app) {
     app.set('views', path.join(__dirname, 'views'));
 
     app.get('/*', function (req, res) {
-        res.render('view', function (err, html) {
+        res.render('blog', function (err, html) {
             res.send(html);
         });
     });
