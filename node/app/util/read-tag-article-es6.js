@@ -17,7 +17,6 @@ function getTagAndArticle(callback) {
         .on('data', function (item) {
             if (item.stats.isDirectory()) {
                 // create tag and add in tags
-
                 let tag = createTag(item.path);
                 if (tag !== undefined) {
                     tags.push(tag);
@@ -57,6 +56,8 @@ function getTagAndArticle(callback) {
             parentTagName = "";
         }
         let parentsTagNameArray = getParentsTagNameArray(ROOT_DIR, path);
+        let tagRank = parentsTagNameArray.length + 1;
+
         let aritcleTitleList = [];
         fse.walk(path)
             .on('data', function (item) {
@@ -71,7 +72,7 @@ function getTagAndArticle(callback) {
                 }
             });
 
-        return { tagName, parentTagName, aritcleTitleList, parentsTagNameArray };
+        return { tagName, parentTagName, aritcleTitleList, parentsTagNameArray, tagRank };
     }
 
     function getParentsTagNameArray(ROOT_DIR, path) {

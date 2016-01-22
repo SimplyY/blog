@@ -8,6 +8,9 @@ var tagSchema = new mongoose.Schema({
     tagName: { type: String, required: true },
     parentTagName: { type: String, required: true },
 
+    // 几级目录，一级目录从 1 开始 
+    tagRank: Number,
+
     // 此标签的父标签数组，比如，对于路径 /yourPath/Article/编程/web 前端/es6简版入门
     // parentsTagNameArray： [ '编程', 'web 前端' ]
     parentsTagNameArray: [{ type: String, required: true }],
