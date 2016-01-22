@@ -19,17 +19,13 @@
 
 ## 重写计划
 ### 后端
-> node koa mongodb
+！！！禁止有相同的目录名或者文件名！！！（因为这俩会作为主键存在数据库中）
+
+> node express mongodb
 
 扫描文件目录树生成文章（md 文件）、标签（文件夹），前端交互生成评论
 
-文章 model
-- 标题
-- 正文
-- 标签
-- 喜欢数
-- 分享数
-- 评论 list
+文章 model， 标签 model，详情见 node/app/model.js 里的相应 schema。
 
 
 ### pc 前端
@@ -53,6 +49,3 @@
 ## 设计关键
 - 导航栏标签、专辑标签
 - 银色为主色调
-
-<item for item in items>
-<div class="loader">

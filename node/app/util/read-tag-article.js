@@ -20,7 +20,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.getTagAndArticle = getTagAndArticle;
 
 function getTagAndArticle(callback) {
-
     var tags = [];
     var articles = [];
 

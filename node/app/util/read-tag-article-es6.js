@@ -6,7 +6,6 @@ export { getTagAndArticle };
 
 
 function getTagAndArticle(callback) {
-
     let tags = [];
     let articles = [];
 
@@ -88,7 +87,5 @@ function getTagAndArticle(callback) {
     function getTile(baseName) {
          return basename(baseName, '.md');
     }
-
-
 
 }
