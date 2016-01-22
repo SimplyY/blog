@@ -29,14 +29,17 @@
 
 
 ### pc 前端
-
 > react antd chartjs
 
+用 react router + 组件化开发 来spa
+
 #### 组件
-- 布局（antd）
-- md 正文（显示目录, 正文, antd 分享、喜欢按钮)
-- 评论(antd 表单)
-- 文章简介悬浮框（文章列表中）
+- layout（antd）
+- article list
+- articleIntroHover (文章简介悬浮框，文章列表中）
+- article（md 渲染,显示目录, 正文, antd 分享、喜欢按钮)
+- comment(antd 表单)
+- articleAnalyseChart 用 chartjs 写博客文章标签分析图表
 
 ### mobile 前端
 
