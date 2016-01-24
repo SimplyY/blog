@@ -4,10 +4,12 @@
 ## 搭建流程
 > 所有命令应该在项目根目录使用
 
+如果想 fork 过去学习或者使用的话，就需要搭建，**搭建需要*nix 平台、mongodb、nodejs 这三环境**
+
 ### 配置环境和文件
 > 第一次 clone 下来的步骤
 
-0. 设置 config 文件，"./config.js"文件，mongodb 配置文件 "./node/mongod.conf"
+0. 设置 config 文件，一定要设置好，和程序运行有关："./config.js"文件，mongodb 配置文件 "./node/mongod.conf"
 1. npm install 所有的依赖
 2. npm run config 运行配置脚本程序  
 
@@ -19,14 +21,17 @@
 
 ## 重写计划
 ### 后端
+> node express mongodb fs restful
+
+
+- [x] 扫描文件目录生成标签和文章
+- [x] 提供 restful api，文档看 node/app/model.js 里的相应 schema。
+
 ！！！禁止有相同的目录名或者文件名！！！（因为这俩会作为主键存在数据库中）
 
-> node express mongodb
-
-扫描文件目录树生成文章（md 文件）、标签（文件夹），前端交互生成评论
+扫描文件目录树生成文章（md 文件）、标签（文件夹），前端交互生成评论。
 
 文章 model， 标签 model，详情见 node/app/model.js 里的相应 schema。
-
 
 ### pc 前端
 > react antd chartjs
@@ -35,11 +40,15 @@
 
 #### 组件
 - layout（antd）
-- article list
-- articleIntroHover (文章简介悬浮框，文章列表中）
-- article（md 渲染,显示目录, 正文, antd 分享、喜欢按钮)
-- comment(antd 表单)
-- articleAnalyseChart 用 chartjs 写博客文章标签分析图表
+    - commen part
+        - top navgation bar
+        - right intro
+    - spa main
+        - article list
+            - articleIntroHover (文章简介悬浮框，文章列表中）
+        - article（md 渲染,显示目录, 正文, antd 分享、喜欢按钮)
+            - comment(antd 表单)
+        - articleAnalyseChart 用 chartjs 写博客文章标签分析图表
 
 ### mobile 前端
 
