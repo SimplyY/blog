@@ -41,22 +41,28 @@
 #### 组件
 - layout（antd）
     - commen part
-        - top navgation bar
+        - top navgation bar（一级标签）
         - right intro
+            - ColumnTag(三级标签)
+            - Avator
+            - personalInfo(github zhihu weibo email)
     - spa main
-        - article list
+        - ArticleListPage（显示喜欢数、分享数、票数最多的难易度、分数、日期）
             - articleIntroHover (文章简介悬浮框，文章列表中）
-        - article（md 渲染,显示目录, 正文, antd 分享、喜欢按钮)
-            - comment(antd 表单)
+        - ArticlePage（显示目录,, antd 分享、喜欢按钮)
+            - Tag
+            - ArticleInfo（时间）
+            - tableOfContents(目录)
+            - ArticleMd(md 渲染 正文)
+            - CommentBox(antd 表单)
+            - VoteBox(投票功能，文章的难易程度，打分)
         - articleAnalyseChart 用 chartjs 写博客文章标签分析图表
 
 ### mobile 前端
-
 - FrameWork：redux
 - View：react
 - Router：react-router
 - Ajax：superagent
-- Click：react-fastclick
 
 ## 设计关键
 - 导航栏标签、专辑标签
