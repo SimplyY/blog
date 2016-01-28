@@ -44,6 +44,8 @@ var articleSchema = new mongoose.Schema({
 
     loveNumber: Number,
     shareNumber: Number,
+    // diffcult,easy grade
+    grade: { type: Number, default: 50 },
     comments:[{
         date: { type: String, default: moment().tz("Asia/Shanghai").format() },
 

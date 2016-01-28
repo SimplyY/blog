@@ -26,6 +26,7 @@
 
 - [x] 扫描文件目录生成标签和文章
 - [x] 提供 restful api，文档看 node/app/model.js 里的相应 schema。
+- [ ] 支持 www
 
 ！！！禁止有相同的目录名或者文件名！！！（因为这俩会作为主键存在数据库中）
 
@@ -38,24 +39,33 @@
 
 用 react router + 组件化开发 来spa
 
-#### 组件
+- [ ] spa
+- [ ] 组件开发
+- [ ] redux
+
+#### 组件结构
 - layout（antd）
-    - commen part
-        - top navgation bar（一级标签）
+    - common part
+        - top navgation bar（一级标签 antd）
+            - tag 位置（antd 面包屑）
         - right intro
             - ColumnTag(三级标签)
             - Avator
             - personalInfo(github zhihu weibo email)
     - spa main
-        - ArticleListPage（显示喜欢数、分享数、票数最多的难易度、分数、日期）
+        - ArticleListPage（显示喜欢数、分享数、（投票结果的平均）难易度、日期）
             - articleIntroHover (文章简介悬浮框，文章列表中）
-        - ArticlePage（显示目录,, antd 分享、喜欢按钮)
-            - Tag
-            - ArticleInfo（时间）
-            - tableOfContents(目录)
-            - ArticleMd(md 渲染 正文)
+        - ArticlePage（显示目录, antd 分享、喜欢按钮)
+            - articleBox
+                - Tag
+                - ArticleInfo（时间）
+                - tableOfContents(目录)
+                - ArticleMd(md 渲染, 正文锚点功能)
+            - VoteBox(投票功能，文章的难易程度, antd 表单)
+            - shareLoveBox
+                - share
+                - love
             - CommentBox(antd 表单)
-            - VoteBox(投票功能，文章的难易程度，打分)
         - articleAnalyseChart 用 chartjs 写博客文章标签分析图表
 
 ### mobile 前端
