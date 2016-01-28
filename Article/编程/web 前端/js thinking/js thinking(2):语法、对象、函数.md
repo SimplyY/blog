@@ -1,6 +1,3 @@
-发布时间：2015-11-14
-更新时间：2015-11-14 10:41:01
-[github 本博客项目](https://github.com/SimplyY/Blog/)
 # js thinking(2):语法、对象、函数
 
 ## 语法

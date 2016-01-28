@@ -1,6 +1,3 @@
-发布时间：2015-11-07
-更新时间：2015-11-07 14:20:17
-[github 本博客项目](https://github.com/SimplyY/Blog/)
 # smart js
 
 ## 全局变量
