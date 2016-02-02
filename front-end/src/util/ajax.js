@@ -7,10 +7,12 @@ export function ajaxGet(url, data) {
             .then(checkStatus)
             .then(parseJSON)
             .then(data => {
-                console.log(data)
                 resolve(data)
             }).catch(error => {
-                reject(error)
+                if (error !== undefined) {
+                    console.log('ajaxGet error', error)
+                    reject(error)
+                }
             })
     })
 }
