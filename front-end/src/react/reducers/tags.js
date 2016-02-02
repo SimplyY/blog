@@ -1,11 +1,10 @@
-import { GET_TAG } from '../constants/ActionTypes'
+import { GET_TAG } from '../../consts/ActionTypes'
 
 const initialState = [
     {
       tagName: '编程'
     }
 ]
-
 
 export default function tags(state = initialState, action) {
     switch (action.type) {

@@ -4,7 +4,7 @@ var webpack = require('webpack')
 var SRC_PATH = path.join(__dirname, 'src')
 
 module.exports = {
-    devtool: 'eval-source-map',
+    devtool: 'source-map',
     entry: [
         './src/index.jsx'
     ],
@@ -38,7 +38,9 @@ module.exports = {
             include: SRC_PATH
         }, {
             test: /\.(png|jpg)$/,
-            loader: 'url?limit=20000'
+            loader: 'url?limit=20000',
+            exclude: /node_modules/,
+            include: SRC_PATH
         }]
     }
 }
