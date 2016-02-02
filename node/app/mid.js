@@ -12,7 +12,7 @@ module.exports.useMid = function (app) {
         // .use(favicon(path.join(__dirname, 'public', 'favicon.ico.png')))
         .use(bodyParser.json())
         .use(bodyParser.urlencoded({ extended: false }))
-        .use(express.static(path.join(__dirname, 'public'),{
+        .use('/static', express.static(path.join(__dirname, 'static'),{
             etag: false,
     }));
 };
