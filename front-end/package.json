@@ -1,5 +1,5 @@
 {
-  "name": "blog",
+  "name": "blog-front-end",
   "version": "",
   "entry": {
     "index": "./src/entry/index.js"
@@ -11,7 +11,6 @@
     "classnames": "^2.1.2",
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.5",
-    "isomorphic-fetch": "^2.1.1",
     "node-sass": "^3.4.2",
     "react": "~0.14.3",
     "react-dom": "~0.14.3",
@@ -22,8 +21,8 @@
     "redux-logger": "^2.4.0",
     "redux-thunk": "^1.0.3",
     "sass-loader": "^3.1.2",
-    "scss-loader": "0.0.1",
-    "url-loader": "^0.5.7"
+    "url-loader": "^0.5.7",
+    "whatwg-fetch": "^0.11.0"
   },
   "devDependencies": {
     "babel-core": "^5.6.18",

@@ -3,7 +3,7 @@ var webpack = require('webpack')
 
 module.exports = {
     entry: {
-        app: './index.jsx',
+        app: './src/index.jsx',
         //添加要打包在 libs 里面的库
         libs: ['react']
     },

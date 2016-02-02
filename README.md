@@ -44,9 +44,11 @@ js: react redux chartjs
 - [ ] 组件开发
 - [ ] redux
 
+- [] js 设置 meta title and <meta name="description" content="text">
+
 #### 组件结构
-- app
-    - common part
+- root
+    - app(common part)
         - top navgation bar（一级标签 编程 生活 诗集 电影 最热）
             - tag 位置（antd 面包屑）
         - right intro
