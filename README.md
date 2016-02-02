@@ -35,7 +35,8 @@
 文章 model， 标签 model，详情见 node/app/model.js 里的相应 schema。
 
 ### pc 前端
-> react antd chartjs
+css:  [alice](http://aliceui.org/)
+js: react redux chartjs
 
 用 react router + 组件化开发 来spa
 
@@ -44,18 +45,20 @@
 - [ ] redux
 
 #### 组件结构
-- layout（antd）
+- app
     - common part
-        - top navgation bar（一级标签 antd）
+        - top navgation bar（一级标签 编程 生活 诗集 电影 最热）
             - tag 位置（antd 面包屑）
         - right intro
             - ColumnTag(三级标签)
-            - Avator
-            - personalInfo(github zhihu weibo email)
+            - personalInfo(zhihu weibo email)
+            - github info (https://github.com/lepture/github-cards)
+            - subscribe by github api
     - spa main
-        - ArticleListPage（显示喜欢数、分享数、（投票结果的平均）难易度、日期）
+        - index （项目展示、博文入口）
+        - ArticleList（显示喜欢数、分享数、（投票结果的平均）难易度、日期）
             - articleIntroHover (文章简介悬浮框，文章列表中）
-        - ArticlePage（显示目录, antd 分享、喜欢按钮)
+        - Article（显示目录, antd 分享、喜欢按钮)
             - articleBox
                 - Tag
                 - ArticleInfo（时间）
@@ -66,7 +69,7 @@
                 - share
                 - love
             - CommentBox(antd 表单)
-        - articleAnalyseChart 用 chartjs 写博客文章标签分析图表
+        - Chart 用 chartjs 写博客文章标签分析图表
 
 ### mobile 前端
 - FrameWork：redux
