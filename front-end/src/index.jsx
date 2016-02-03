@@ -3,20 +3,25 @@ import React from 'react'
 import { render } from 'react-dom'
 import createConfigureStore from './react/store/createConfigureStore'
 
-import { data } from './data'
+import { appData } from './data'
 import Root from './react/containers/root/Root'
 
 import './scss/reset.scss'
 
-data.loadData()
+appData.loadMustData()
     .then(() => {
         const store = createConfigureStore()
         render(
-            <Root store={store} tags={data[0]} />,
+            <Root store={store} />,
             document.getElementById('root')
         )
-    }).catch(error => {
+    })
+    .then(() => {
+        appData.loadAllArticles()
+            // .then(() => console.dir(appData))
+    })
+    .catch(error => {
         if (error !== undefined) {
-            alert(error)
+            console.log(error);
         }
     })

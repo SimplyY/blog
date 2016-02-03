@@ -6,6 +6,7 @@ var SRC_PATH = path.join(__dirname, 'src')
 module.exports = {
     devtool: 'source-map',
     entry: [
+        'webpack-hot-middleware/client',
         './src/index.jsx'
     ],
     output: {

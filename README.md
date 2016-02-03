@@ -44,30 +44,32 @@ js: react redux chartjs
 - [ ] 组件开发
 - [ ] redux
 
-- [] js 设置 meta title and <meta name="description" content="text">
+- [ ] js 设置 meta title and <meta name="description" content="text">
+- [ ] ArticlesTable (左侧点击，显示目录，点击加号展开一级标题，根据 h 标签开发）
 
 #### 组件结构
 - root
     - app(common part)
-        - top navgation bar（一级标签 编程 生活 诗集 电影 最热）
-            - tag 位置（antd 面包屑）
-        - right intro
+        - NavigationBar 编程 生活 诗集 电影 最热）
+        - InfoBox(right)
             - ColumnTag(三级标签)
             - personalInfo(zhihu weibo email)
             - github info (https://github.com/lepture/github-cards)
             - subscribe by github api
     - spa main
-        - index （项目展示、博文入口）
-        - ArticleList（显示喜欢数、分享数、（投票结果的平均）难易度、日期）
-            - articleIntroHover (文章简介悬浮框，文章列表中）
-        - Article（显示目录, antd 分享、喜欢按钮)
+        - ArticleListMain
+            - TagInfo（面包屑）
+            - ArticlesTable (左侧点击，显示目录）
+            - ArticleItem（显示喜欢数、分享数、（投票结果的平均）难易度、日期）
+            - click more
+        - ArticleMain
+            - TagInfo（面包屑）
+            - ArticleIntro
             - articleBox
-                - Tag
-                - ArticleInfo（时间）
-                - tableOfContents(目录)
+                - ArticleInfo（时间，适合人群：新手、1年、2年....）
                 - ArticleMd(md 渲染, 正文锚点功能)
-            - VoteBox(投票功能，文章的难易程度, antd 表单)
-            - shareLoveBox
+            - VoteBox(投票功能，适合人群：新手、1年、2年....)
+            - shareLoveBox（分享、喜欢按钮)
                 - share
                 - love
             - CommentBox(antd 表单)
