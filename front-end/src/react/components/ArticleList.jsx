@@ -19,7 +19,7 @@ class ArticleList extends Component {
     }
 
     render() {
-        const { showArticles } = this.props
+        const { showArticles } = this.state
 
         let articlesDOM = showArticles.map((item) => {
             return (

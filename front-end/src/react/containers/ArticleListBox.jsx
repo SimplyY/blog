@@ -13,11 +13,11 @@ class ArticleListBox extends Component {
         super()
     }
     render() {
-        let allArticles = this.props.articles
+        let articles = this.props.articles
         const tagId = this.props.params._id
-        let articles = appData.getAriclesByTagId(allArticles, tagId)
+        let showArticles = appData.getAriclesByTagId(articles, tagId)
 
-        if (articles === undefined) {
+        if (showArticles === undefined) {
             return (
                 <InvalidUrl info={INVALED_TAG_URL_TIP} />
             )
@@ -25,7 +25,7 @@ class ArticleListBox extends Component {
 
         return (
             <div>
-                <ArticleList articles={articles}/>
+                <ArticleList showArticles={showArticles}/>
             </div>
         )
     }
