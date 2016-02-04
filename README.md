@@ -51,21 +51,21 @@ js: react redux chartjs
 - root
     - app(common part)
         - NavigationBar 编程 生活 诗集 电影 最热）
-        - InfoBox(right)
+        - InfoSideBar(right)
             - ColumnTag(三级标签)
             - personalInfo(zhihu weibo email)
             - github info (https://github.com/lepture/github-cards)
             - subscribe by github api
     - spa main
-        - ArticleListMain
+        - ArticleListBox
             - TagInfo（面包屑）
             - ArticlesTable (左侧点击，显示目录）
-            - ArticleItem（显示喜欢数、分享数、（投票结果的平均）难易度、日期）
-            - click more
-        - ArticleMain
+            - ArticleList（显示喜欢数、分享数、（投票结果的平均）难易度、日期）
+                - click more
+        - ArticleBox
             - TagInfo（面包屑）
             - ArticleIntro
-            - articleBox
+            - article
                 - ArticleInfo（时间，适合人群：新手、1年、2年....）
                 - ArticleMd(md 渲染, 正文锚点功能)
             - VoteBox(投票功能，适合人群：新手、1年、2年....)
@@ -74,6 +74,7 @@ js: react redux chartjs
                 - love
             - CommentBox(antd 表单)
         - Chart 用 chartjs 写博客文章标签分析图表
+        - InvalidUrlBox
 
 ### mobile 前端
 - FrameWork：redux

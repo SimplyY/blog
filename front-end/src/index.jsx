@@ -3,14 +3,17 @@ import React from 'react'
 import { render } from 'react-dom'
 import createConfigureStore from './react/store/createConfigureStore'
 
-import { appData } from './data'
 import Root from './react/containers/root/Root'
+import { appData } from './data'
+import { loadMustArticlesAction, loadAllArticlesAction } from './react/actions/articles'
 
 import './scss/reset.scss'
 
+let store = createConfigureStore();
+
 appData.loadMustData()
     .then(() => {
-        const store = createConfigureStore()
+        store.dispatch(loadMustArticlesAction(appData.articles))
         render(
             <Root store={store} />,
             document.getElementById('root')
@@ -18,10 +21,12 @@ appData.loadMustData()
     })
     .then(() => {
         appData.loadAllArticles()
-            // .then(() => console.dir(appData))
+            .then(() => {
+                store.dispatch(loadAllArticlesAction(appData.articles))
+            })
     })
     .catch(error => {
         if (error !== undefined) {
-            console.log(error);
+            throw error
         }
     })

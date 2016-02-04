@@ -1,9 +1,7 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux'
-// import {push} from 'react-router-redux'
 
 import NavigationBar from '../components/NavigationBar'
-import InfoBox from '../components/InfoBox'
+import InfoSideBar from '../components/InfoSideBar'
 import { appData } from '../../data'
 
 class App extends Component {
@@ -16,15 +14,11 @@ class App extends Component {
         return (
             <div>
                 <NavigationBar tags={tags} />
-                <InfoBox />
+                <InfoSideBar />
                 {children}
             </div>
         )
     }
 }
 
-// function mapStateToProps(state) {
-//     return {}
-// }
-
-export default connect()(App)
+export default App
