@@ -7,7 +7,7 @@
 如果想 fork 过去学习或者使用的话，就需要搭建，**搭建需要*nix 平台、mongodb、nodejs 这三环境**
 
 ### 配置环境和文件
-> 第一次 clone 下来的步骤
+> 第一次 clone 下来的步骤，注意不建议直接拿去使用，除非对node后端开发 linux 操作很熟，或者有人帮助
 
 0. 设置 config 文件，一定要设置好，和程序运行有关："./config.js"文件，mongodb 配置文件 "./node/mongod.conf"
 1. npm install 所有的依赖
@@ -65,7 +65,7 @@ js: react redux chartjs
         - ArticleBox
             - TagInfo（面包屑）
             - ArticleIntro
-            - article
+            - Article
                 - ArticleInfo（时间，适合人群：新手、1年、2年....）
                 - ArticleMd(md 渲染, 正文锚点功能)
             - VoteBox(投票功能，适合人群：新手、1年、2年....)
