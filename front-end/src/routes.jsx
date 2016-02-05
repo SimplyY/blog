@@ -10,8 +10,8 @@ import { TAG_PATH, ARTICLE_PATH, CHART_PATH } from './consts/config'
 
 export default (
     <Route path="/" component={App} >
-        <Route path={TAG_PATH + ':_id'} component={ArticleListBox}/>
-        <Route path={ARTICLE_PATH + ':_id'} component={ArticleBox}/>
+        <Route path={TAG_PATH + ':tagId'} component={ArticleListBox}/>
+        <Route path={ARTICLE_PATH + ':articleId'} component={ArticleBox}/>
         <Route path={CHART_PATH} component={Chart}/>
     </Route>
 )

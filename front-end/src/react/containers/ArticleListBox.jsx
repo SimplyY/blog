@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { appData } from '../../data'
+import { AppData } from '../../util/AppData'
 
 import ArticleList from '../components/ArticleList'
 import InvalidUrl from '../components/InvalidUrl'
@@ -13,9 +13,9 @@ class ArticleListBox extends Component {
         super()
     }
     render() {
-        let articles = this.props.articles
-        const tagId = this.props.params._id
-        let showArticles = appData.getAriclesByTagId(articles, tagId)
+        let { articles, tags } = this.props
+        const tagId = this.props.params.tagId
+        let showArticles = AppData.getAriclesByTagId(articles, tags, tagId)
 
         if (showArticles === undefined) {
             return (
@@ -32,9 +32,9 @@ class ArticleListBox extends Component {
 }
 
 function mapStateToProps(state) {
-    let { articles } = state
     return {
-        articles
+        articles: state.data.get('articles').toJS(),
+        tags: state.data.get('tags').toJS()
     }
 }
 

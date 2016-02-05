@@ -1,16 +1,16 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 
 import NavigationBar from '../components/NavigationBar'
 import InfoSideBar from '../components/InfoSideBar'
-import { appData } from '../../data'
 
 class App extends Component {
     constructor() {
         super()
     }
     render() {
-        const { children } = this.props
-        let tags = appData.tags
+        const { children, tags } = this.props
+
         return (
             <div>
                 <NavigationBar tags={tags} />
@@ -21,4 +21,10 @@ class App extends Component {
     }
 }
 
-export default App
+function mapStateToProps(state) {
+    return {
+        tags: state.data.get('tags').toJS()
+    }
+}
+
+export default connect(mapStateToProps)(App)

@@ -1,9 +1,11 @@
-import { LOAD_MUST_ARTICLES, LOAD_ALL_ARTICLES } from '../../consts/ActionTypes'
+import { LOAD_MUST_DATA, LOAD_ALL_ARTICLES } from '../../consts/ActionTypes'
 
-export function loadMustArticlesAction(articles) {
+export function loadMustDataAction(data) {
     return {
-        type: LOAD_MUST_ARTICLES,
-        articles
+        type: LOAD_MUST_DATA,
+        articles: data.articles,
+        currentArticle: data.currentArticle,
+        tags: data.tags
     }
 }
 

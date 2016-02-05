@@ -1,8 +1,6 @@
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import { syncHistory } from 'react-router-redux'
 import { browserHistory } from 'react-router'
-import thunk from 'redux-thunk'
-import createLogger from 'redux-logger'
 
 import DevTools from '../containers/DevTools'
 import rootReducer from '../reducers'

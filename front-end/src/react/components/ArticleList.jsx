@@ -10,20 +10,14 @@ class ArticleList extends Component {
         this.dispatch = dispatch
     }
 
-    getInitialState() {
-        const { showArticles } = this.props
-
-        return {
-            showArticles
-        };
-    }
-
     render() {
-        const { showArticles } = this.state
+        const { showArticles } = this.props
 
         let articlesDOM = showArticles.map((item) => {
             return (
-                <div key={item._id} onClick={enterArticle(this.dispatch, item._id)} >
+                <div key={item._id} onClick={() => {
+                        this.dispatch(push('/' + ARTICLE_PATH + item._id))
+                    }} >
                     {item.title}
                 </div>
             )
@@ -32,7 +26,7 @@ class ArticleList extends Component {
         let clickMoreDOM
         if (showArticles.length > SHOW_ARTICLE_NUMBER) {
             clickMoreDOM = (
-                <div onClick={loadMoreArticle} >click more</div>
+                <div>click more</div>
             )
         }
 
@@ -43,10 +37,6 @@ class ArticleList extends Component {
             </div>
         )
     }
-}
-
-function enterArticle(dispatch, articleId) {
-    dispatch(push('/' + ARTICLE_PATH + articleId))
 }
 
 export default connect()(ArticleList)

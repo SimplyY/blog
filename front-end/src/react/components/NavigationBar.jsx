@@ -35,4 +35,5 @@ class NavigationBar extends Component{
         )
     }
 }
+
 export default connect()(NavigationBar)
