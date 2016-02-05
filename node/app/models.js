@@ -58,8 +58,6 @@ var articleSchema = new mongoose.Schema({
 
 db.model(localConfig.articleModelName, articleSchema);
 
-
-
 function renewDatabase() {
     var newTagsNames = [], newArticlesTitles = [];
     var oldTagsNames = [], oldArticlesTitles = [];
@@ -99,11 +97,6 @@ function renewDatabase() {
         var addItems, deleteItems, updateItems;
         Promise.all([p1, p2])
             .then(function () {
-                if (oldTagsNames === undefined || oldArticlesTitles === undefined) {
-                    // TODO
-                    return;
-                }
-
                 var tagOperateItems = getOperateItems(oldTagsNames, newTagsNames);
                 var articleOperateItems = getOperateItems(oldArticlesTitles, newArticlesTitles);
 
@@ -124,9 +117,9 @@ function renewDatabase() {
         var updateItems = array.difference(allItems, differenceItems);
 
         return {
-            addItems,
-            deleteItems,
-            updateItems
+            addItems: addItems,
+            deleteItems: deleteItems,
+            updateItems: updateItems
         };
     }
 
@@ -149,13 +142,18 @@ function renewDatabase() {
         for (i = 0; i < updateItems.length; i++) {
             var updateObject = findObject(updateItems[i], modelName, newObjects);
             var updateConditions = getConditions(updateObject, modelName);
-            model.update(updateConditions, updateObject);
+            delete updateObject._id;
+            model.update(updateConditions, updateObject, function (err, raw) {
+                if (err) return handleError(err);
+            });
         }
 
         for (i = 0; i < deleteItems.length; i++) {
             var deleteObject = findObject(deleteItems[i], modelName, oldObjects);
             var deleteConditions = getConditions(deleteObject, modelName);
-            model.remove(deleteConditions);
+            model.remove(deleteConditions, function (err, raw) {
+                if (err) return handleError(err);
+            });
         }
 
         // for modelName is tag or article
