@@ -27,7 +27,7 @@
 - [x] 扫描文件目录生成标签和文章
 - [x] 提供 restful api，文档看 node/app/model.js 里的相应 schema。
 - [ ] 支持 www
-
+- [ ] 邮件提醒功能
 ！！！禁止有相同的目录名或者文件名！！！（因为这俩会作为主键存在数据库中）
 
 扫描文件目录树生成文章（md 文件）、标签（文件夹），前端交互生成评论。
@@ -40,9 +40,9 @@ js: react redux chartjs
 
 用 react router + 组件化开发 来spa
 
-- [ ] spa
-- [ ] 组件开发
-- [ ] redux
+- [x] spa
+- [x] redux
+- [ ] 组件开发(已完成50%)
 
 - [ ] js 设置 meta title and <meta name="description" content="text">
 - [ ] ArticlesTable (左侧点击，显示目录，点击加号展开一级标题，根据 h 标签开发）
