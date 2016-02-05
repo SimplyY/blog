@@ -26,6 +26,7 @@
 
 - [x] 扫描文件目录生成标签和文章
 - [x] 提供 restful api，文档看 node/app/model.js 里的相应 schema。
+- [ ] 支持 www
 
 ！！！禁止有相同的目录名或者文件名！！！（因为这俩会作为主键存在数据库中）
 
@@ -34,29 +35,52 @@
 文章 model， 标签 model，详情见 node/app/model.js 里的相应 schema。
 
 ### pc 前端
-> react antd chartjs
+css:  [alice](http://aliceui.org/)
+js: react redux chartjs
 
 用 react router + 组件化开发 来spa
 
-#### 组件
-- layout（antd）
-    - commen part
-        - top navgation bar
-        - right intro
+- [ ] spa
+- [ ] 组件开发
+- [ ] redux
+
+- [ ] js 设置 meta title and <meta name="description" content="text">
+- [ ] ArticlesTable (左侧点击，显示目录，点击加号展开一级标题，根据 h 标签开发）
+
+#### 组件结构
+- root
+    - app(common part)
+        - NavigationBar 编程 生活 诗集 电影 最热）
+        - InfoSideBar(right)
+            - ColumnTag(三级标签)
+            - personalInfo(zhihu weibo email)
+            - github info (https://github.com/lepture/github-cards)
+            - subscribe by github api
     - spa main
-        - article list
-            - articleIntroHover (文章简介悬浮框，文章列表中）
-        - article（md 渲染,显示目录, 正文, antd 分享、喜欢按钮)
-            - comment(antd 表单)
-        - articleAnalyseChart 用 chartjs 写博客文章标签分析图表
+        - ArticleListBox
+            - TagInfo（面包屑）
+            - ArticlesTable (左侧点击，显示目录）
+            - ArticleList（显示喜欢数、分享数、（投票结果的平均）难易度、日期）
+                - click more
+        - ArticleBox
+            - TagInfo（面包屑）
+            - ArticleIntro
+            - article
+                - ArticleInfo（时间，适合人群：新手、1年、2年....）
+                - ArticleMd(md 渲染, 正文锚点功能)
+            - VoteBox(投票功能，适合人群：新手、1年、2年....)
+            - shareLoveBox（分享、喜欢按钮)
+                - share
+                - love
+            - CommentBox(antd 表单)
+        - Chart 用 chartjs 写博客文章标签分析图表
+        - InvalidUrlBox
 
 ### mobile 前端
-
 - FrameWork：redux
 - View：react
 - Router：react-router
 - Ajax：superagent
-- Click：react-fastclick
 
 ## 设计关键
 - 导航栏标签、专辑标签

@@ -37,3 +37,5 @@ node_modules/
 mgdb-data/
 log/
 *.zip
+
+dist/

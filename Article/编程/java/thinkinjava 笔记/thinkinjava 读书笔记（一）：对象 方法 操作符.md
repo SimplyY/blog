@@ -1,6 +1,3 @@
-发布时间：2015-10-01
-更新时间：2015-10-01 17:16:58
-[github 本博客项目](https://github.com/SimplyY/Blog/)
 # thinkinjava 读书笔记（一）：对象 方法 操作符
 ## 对象导论
 

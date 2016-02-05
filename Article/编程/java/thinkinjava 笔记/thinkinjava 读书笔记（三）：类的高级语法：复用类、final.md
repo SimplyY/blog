@@ -1,6 +1,3 @@
-发布时间：2015-10-01
-更新时间：2015-10-01 17:16:58
-[github 本博客项目](https://github.com/SimplyY/Blog/)
 # thinkinjava读书笔记（三）：类的高级语法：复用类、final
 ## 复用类
 ### 实现代码复用的方式

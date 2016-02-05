@@ -1,9 +1,3 @@
-发布时间：2016-01-05
-更新时间：2016-01-07 12:54:12
-[github 本博客项目](https://github.com/SimplyY/Blog/)
-[github 本博客项目](https://github.com/SimplyY/Blog/)
-
-
 # node 学习之路
 
 我就按时间顺序写写我的 node 学习之路吧（其实也就学了1个月加写了2、3个月吧）

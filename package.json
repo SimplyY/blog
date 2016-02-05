@@ -1,15 +1,14 @@
 {
   "name": "blog",
   "version": "1.0.0",
-  "description": "",
+  "description": "SimplyY's blog",
   "main": "./node/app/app.js",
   "scripts": {
     "mongodb": "mongod -f ./mongod.conf",
-    "start": "sudo node ./node/app/app.js",
+    "start": "node ./node/app/app.js",
     "config": "node ./run-config.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "SimplyY",
   "dependencies": {
     "array-extended": "0.0.11",
     "body-parser": "~1.13.2",
