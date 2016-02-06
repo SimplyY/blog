@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import _ from '../../../lib/lodash.core'
 
 import { AppData } from '../../util/AppData'
 
@@ -10,6 +11,14 @@ class ArticleBox extends Component {
     constructor() {
         super()
     }
+
+    shouldComponentUpdate(nextProps){
+        let nextArticle = AppData.getAricleByArticleId(nextProps.articles, nextProps.params.articleId)
+        let oldArticle = AppData.getAricleByArticleId(this.props.articles, this.props.params.articleId)
+
+        return !_.isEqual(nextArticle, oldArticle)
+    }
+
     render() {
         let { tags, articles } = this.props
         const { articleId } = this.props.params

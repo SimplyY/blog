@@ -3,6 +3,8 @@ import { ajaxGet } from './ajax'
 import { API_ROOT_URL, TAGS_URL, ARTICLES_URL } from '../consts/apis'
 import { TAG_STR, ARTICLE_STR, SORT_LIMIT_QUERY_STR, SORT_QUREY_STR, PATH_TYPE_IN_SPLIT_NUMBER } from '../consts/config'
 
+import * as text from '../consts/text'
+
 export let AppData = {
 
     loadMustData() {
@@ -33,7 +35,7 @@ export let AppData = {
                     if (data[2] === undefined) {
                         mustData.articles = [data[1]]
                     }
-
+                    AppData.convertDateStrType(mustData.articles)
                     resolve(mustData)
                 }).catch(error => {
                     reject(error)
@@ -52,15 +54,19 @@ export let AppData = {
         return new Promise(function(resolve, reject) {
             ajaxGet(API_ROOT_URL + ARTICLES_URL + SORT_QUREY_STR)
                 .then((data) => {
-                    data.forEach((item) => {
-                        item.date = new Date(item.date)
-                    })
+                    AppData.convertDateStrType(data)
                     resolve(data)
                 }).catch(error => {
                     if (error !== undefined) {
                         reject(error)
                     }
                 })
+        })
+    },
+
+    convertDateStrType(data){
+        data.forEach((item) => {
+            item.date = new Date(item.date)
         })
     },
 
@@ -90,6 +96,21 @@ export let AppData = {
 
     getAricleByArticleId(articles, articleId){
         return articles.find(item => item._id === articleId)
-    }
+    },
 
+    formatArticleDate(date){
+        return date.toISOString().substring(0, 10)
+    },
+
+    getDifficultLevelByGrade(grade){
+        let difficultLevel
+        if (0 < grade && grade < 33) {
+            difficultLevel = text.EASY_TEXT
+        } else if (33 <= grade && grade <= 66) {
+            difficultLevel = text.NORMAL_TEXT
+        } else if (66 < grade && grade < 100) {
+            difficultLevel = text.DIFFICULT_TEXT
+        }
+        return difficultLevel
+    }
 }

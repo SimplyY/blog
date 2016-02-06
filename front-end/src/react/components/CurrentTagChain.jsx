@@ -4,7 +4,8 @@ import { Link } from 'react-router'
 
 import { AppData } from '../../util/AppData'
 
-import { TAG_PATH, ALL_ARITCLES_STR } from '../../consts/config'
+import { TAG_PATH } from '../../consts/config'
+import { ALL_ARITCLES_STR } from '../../consts/text'
 
 class CurrentTagChain extends Component {
     constructor() {

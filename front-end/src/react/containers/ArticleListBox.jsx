@@ -10,7 +10,7 @@ import InvalidUrlBox from '../containers/InvalidUrlBox'
 import ArticleList from '../components/ArticleList'
 import CurrentTagChain from '../components/CurrentTagChain'
 
-import { INVALED_TAG_URL_TIP } from '../../consts/tips'
+import { INVALED_TAG_URL_TIP } from '../../consts/text'
 
 class ArticleListBox extends Component {
     constructor() {

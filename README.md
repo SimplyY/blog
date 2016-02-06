@@ -47,6 +47,7 @@ js: react redux chartjs
 
 - [ ] js 设置 meta title and <meta name="description" content="text">
 - [ ] ArticlesTable (左侧点击，显示目录，点击加号展开一级标题，根据 h 标签开发）
+- [ ] 正文锚点功能
 
 #### 组件结构
 - root
@@ -67,7 +68,7 @@ js: react redux chartjs
             - CurrentTagChain
             - ArticleIntro
             - Article
-                - ArticleInfo（时间，适合人群：新手、1年、2年....）
+                - ArticleInfo（时间，难易度：简单、中等、难....）
                 - ArticleMd(md 渲染, 正文锚点功能)
             - VoteBox(投票功能，适合人群：新手、1年、2年....)
             - shareLoveBox（分享、喜欢按钮)

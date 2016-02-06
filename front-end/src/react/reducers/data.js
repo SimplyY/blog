@@ -1,5 +1,5 @@
 import { createReducer } from 'redux-immutablejs'
-import Immutable from 'immutable';
+import Immutable from 'immutable'
 
 import { LOAD_MUST_DATA, LOAD_ALL_ARTICLES, SHOW_MORE_ARITICLES } from '../../consts/ActionTypes'
 import { FIRST_SHOWED_ARTICLES_MAX_NUMBER } from '../../consts/config'

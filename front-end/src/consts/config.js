@@ -5,7 +5,6 @@ export const PATH_TYPE_IN_SPLIT_NUMBER = 3
 
 export const SORT_QUREY_STR = '?sort=-date'
 export const SORT_LIMIT_QUERY_STR = SORT_QUREY_STR + '&limit=' + LATEST_ARTICLES_NUMBER
-export const ALL_ARITCLES_STR = '所有文章'
 
 export const TAG_STR = 'tag'
 export const ARTICLE_STR = 'article'

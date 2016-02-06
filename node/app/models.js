@@ -42,8 +42,8 @@ var articleSchema = new mongoose.Schema({
     // because date con't be json.stringfy safe, so use String type
     date: { type: String, default: moment().tz("Asia/Shanghai").format() },
 
-    loveNumber: Number,
-    shareNumber: Number,
+    loveNumber: { type: Number, default: 0 },
+    shareNumber: { type: Number, default: 0 },
     // diffcult,easy grade
     grade: { type: Number, default: 50 },
     comments:[{
