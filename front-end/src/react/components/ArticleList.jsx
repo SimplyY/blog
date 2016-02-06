@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 
-import { ARTICLE_PATH, SHOW_ARTICLE_NUMBER } from '../../consts/config'
+import { ARTICLE_PATH, SHOW_MORE_ARTICLES_NUMBER } from '../../consts/config'
 
 class ArticleList extends Component {
     constructor({ dispatch }) {
@@ -11,9 +11,19 @@ class ArticleList extends Component {
     }
 
     render() {
-        const { showArticles } = this.props
+        let { showedArticles, showMoreAriticle, showedArticlesMaxNumber } = this.props
 
-        let articlesDOM = showArticles.map((item) => {
+        let clickMoreDOM
+        if (showedArticles.length > showedArticlesMaxNumber) {
+            clickMoreDOM = (
+                <div onClick={() => showMoreAriticle(SHOW_MORE_ARTICLES_NUMBER)} >
+                    click more
+                </div>
+            )
+        }
+
+        showedArticles = showedArticles.slice(0, showedArticlesMaxNumber)
+        let articlesDOM = showedArticles.map((item) => {
             return (
                 <div key={item._id} onClick={() => {
                         this.dispatch(push('/' + ARTICLE_PATH + item._id))
@@ -22,13 +32,6 @@ class ArticleList extends Component {
                 </div>
             )
         })
-
-        let clickMoreDOM
-        if (showArticles.length > SHOW_ARTICLE_NUMBER) {
-            clickMoreDOM = (
-                <div>click more</div>
-            )
-        }
 
         return (
             <div>

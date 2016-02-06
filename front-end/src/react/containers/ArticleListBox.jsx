@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import { AppData } from '../../util/AppData'
 
+import { showMoreAriticleAction } from '../actions/articles'
+
 import ArticleList from '../components/ArticleList'
-import InvalidUrl from '../components/InvalidUrl'
+import InvalidUrlBox from '../containers/InvalidUrlBox'
 
 import { INVALED_TAG_URL_TIP } from '../../consts/tips'
 
@@ -13,19 +16,30 @@ class ArticleListBox extends Component {
         super()
     }
     render() {
-        let { articles, tags } = this.props
+        let { articles, tags, showMoreAriticle, showedArticlesMaxNumber } = this.props
         const tagId = this.props.params.tagId
-        let showArticles = AppData.getAriclesByTagId(articles, tags, tagId)
 
-        if (showArticles === undefined) {
-            return (
-                <InvalidUrl info={INVALED_TAG_URL_TIP} />
-            )
+        let showedArticles
+        // url in /tag/:tagId
+        if (tagId !== undefined) {
+            showedArticles = AppData.getAriclesByTagId(articles, tags, tagId)
+            // tagId is illeagal
+            if (showedArticles === undefined) {
+                return (
+                    <InvalidUrlBox info={INVALED_TAG_URL_TIP} />
+                )
+            }
+        }
+        // url in routes root or blog etc show allArticles
+        if (tagId === undefined) {
+            showedArticles = articles
         }
 
         return (
             <div>
-                <ArticleList showArticles={showArticles}/>
+                <ArticleList showedArticles={showedArticles}
+                    showMoreAriticle={showMoreAriticle}
+                    showedArticlesMaxNumber={showedArticlesMaxNumber} />
             </div>
         )
     }
@@ -34,8 +48,15 @@ class ArticleListBox extends Component {
 function mapStateToProps(state) {
     return {
         articles: state.data.get('articles').toJS(),
-        tags: state.data.get('tags').toJS()
+        tags: state.data.get('tags').toJS(),
+        showedArticlesMaxNumber: state.data.get('showedArticlesMaxNumber')
     }
 }
 
-export default connect(mapStateToProps)(ArticleListBox)
+function mapDispatchToProps(dispatch) {
+    return {
+        showMoreAriticle: bindActionCreators(showMoreAriticleAction, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ArticleListBox)

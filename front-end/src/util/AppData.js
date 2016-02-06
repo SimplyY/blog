@@ -11,14 +11,15 @@ export let AppData = {
             let pArticle, pArticles
 
             let params = document.URL.split('/')
+            let pathTypeStr = getPathTypeStr(params)
             let articleId
             // if page show article, load the article
-            if (getPathTypeStr(params) === ARTICLE_STR) {
+            if (pathTypeStr === ARTICLE_STR) {
                 articleId = getIdStr(params)
                 pArticle = ajaxGet(API_ROOT_URL + ARTICLES_URL + articleId)
             }
-            // if page in tag url show articlelist, load limited number article
-            if (getPathTypeStr(params) === TAG_STR) {
+            // if url is tag url or root show articlelist, load limited number article
+            if (pathTypeStr === TAG_STR || pathTypeStr === '') {
                 let latestArticleQurey = API_ROOT_URL + ARTICLES_URL + SORT_LIMIT_QUERY_STR
                 pArticles = ajaxGet(latestArticleQurey)
             }
