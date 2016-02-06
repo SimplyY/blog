@@ -59,12 +59,12 @@ js: react redux chartjs
             - subscribe by github api
     - spa main
         - ArticleListBox
-            - TagInfo（面包屑）
+            - CurrentTagChain
             - ArticlesTable (左侧点击，显示目录）
             - ArticleList（显示喜欢数、分享数、（投票结果的平均）难易度、日期）
                 - click more
         - ArticleBox
-            - TagInfo（面包屑）
+            - CurrentTagChain
             - ArticleIntro
             - Article
                 - ArticleInfo（时间，适合人群：新手、1年、2年....）

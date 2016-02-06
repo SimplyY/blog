@@ -6,8 +6,9 @@ import { AppData } from '../../util/AppData'
 
 import { showMoreAriticleAction } from '../actions/articles'
 
-import ArticleList from '../components/ArticleList'
 import InvalidUrlBox from '../containers/InvalidUrlBox'
+import ArticleList from '../components/ArticleList'
+import CurrentTagChain from '../components/CurrentTagChain'
 
 import { INVALED_TAG_URL_TIP } from '../../consts/tips'
 
@@ -22,7 +23,7 @@ class ArticleListBox extends Component {
         let showedArticles
         // url in /tag/:tagId
         if (tagId !== undefined) {
-            showedArticles = AppData.getAriclesByTagId(articles, tags, tagId)
+            showedArticles = AppData.getArticlesByTagId(articles, tags, tagId)
             // tagId is illeagal
             if (showedArticles === undefined) {
                 return (
@@ -37,6 +38,7 @@ class ArticleListBox extends Component {
 
         return (
             <div>
+                <CurrentTagChain tags={tags} currentTagId={tagId} />
                 <ArticleList showedArticles={showedArticles}
                     showMoreAriticle={showMoreAriticle}
                     showedArticlesMaxNumber={showedArticlesMaxNumber} />
@@ -47,8 +49,8 @@ class ArticleListBox extends Component {
 
 function mapStateToProps(state) {
     return {
-        articles: state.data.get('articles').toJS(),
         tags: state.data.get('tags').toJS(),
+        articles: state.data.get('articles').toJS(),
         showedArticlesMaxNumber: state.data.get('showedArticlesMaxNumber')
     }
 }

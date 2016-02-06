@@ -64,20 +64,15 @@ export let AppData = {
         })
     },
 
-    getAriclesByTagId(allArticles, tags, tagId){
-        let tagName;
-        tags.forEach(item => {
-            if (item._id === tagId) {
-                tagName = item.tagName
-            }
-        })
-        if (tagName === undefined) {
+    getArticlesByTagId(allArticles, tags, tagId){
+        let currentTag = AppData.getTagById(tags, tagId)
+        if (currentTag === undefined) {
             return
         }
 
         let articles = [];
         allArticles.forEach(item => {
-            if (item.parentsTagNameArray.find(item => item === tagName)) {
+            if (item.parentsTagNameArray.find(item => item === currentTag.tagName)) {
                 articles.push(item)
             }
         })
@@ -85,8 +80,16 @@ export let AppData = {
         return articles
     },
 
-    getAricleByArticleId(allArticles, articleId){
-        return allArticles.find(item => item._id === articleId)
+    getTagById(tags, tagId){
+        return tags.find(item => item._id === tagId)
+    },
+
+    getTagByTagName(tags, tagName){
+        return tags.find(item => item.tagName === tagName)
+    },
+
+    getAricleByArticleId(articles, articleId){
+        return articles.find(item => item._id === articleId)
     }
 
 }
