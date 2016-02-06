@@ -31,8 +31,12 @@ module.exports = {
         loaders: [{
             test: /\.scss$/,
             loaders: [ 'style', 'css', 'sass'],
-            include: path.join(SRC_PATH, 'scss')
+            include: path.join(SRC_PATH, 'css')
         }, {
+            test: /\.css$/,
+            loaders: [ 'style', 'css'],
+            include: path.join(SRC_PATH, 'css')
+        },{
             test: /\.(js|jsx)$/,
             loaders: [ 'babel'],
             exclude: /node_modules/,

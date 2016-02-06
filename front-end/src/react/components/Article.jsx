@@ -11,9 +11,8 @@ class Article extends Component {
         let currentArticleDOM = md2html(currentArticle.md)
 
         return (
-            <div>
-                {currentArticleDOM}
-            </div>
+            <article className="markdown-body" dangerouslySetInnerHTML={{__html: currentArticleDOM}}>
+            </article>
         )
     }
 }

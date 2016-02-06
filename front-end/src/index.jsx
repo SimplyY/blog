@@ -7,7 +7,8 @@ import Root from './react/containers/root/Root'
 import { AppData } from './util/AppData'
 import { loadMustDataAction, loadAllArticlesAction } from './react/actions/articles'
 
-import './scss/reset.scss'
+import './css/lib/github-markdown.css'
+import './css/lib/github-gist.css'
 
 let store = createConfigureStore();
 
