@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch'
 
 // return ajax promise
-export function ajaxGet(url, data) {
+export function ajaxGet(url) {
     return new Promise((resolve, reject) => {
         fetch(url)
             .then(checkStatus)
@@ -15,6 +15,23 @@ export function ajaxGet(url, data) {
                 }
             })
     })
+}
+
+export function ajaxPut(url, changeInfo) {
+    return new Promise((resolve, reject) => {
+        fetch(url, {
+            method: 'put',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(changeInfo)
+        }).then(res => {
+            resolve(res)
+        }).catch(error => {
+            reject(error)
+        })
+    });
 }
 
 function checkStatus(response) {

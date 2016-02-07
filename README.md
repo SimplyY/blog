@@ -67,12 +67,12 @@ js: react redux chartjs
                 - click more
         - ArticleBox
             - CurrentTagChain
-            - ArticleIntro
+            - ArticlesTable
             - Article
                 - ArticleInfo（时间，难易度：简单、中等、难....）
                 - ArticleMd(md 渲染, 正文锚点功能)
-            - VoteBox(投票功能,难度等级，grade)
-            - shareLoveBox（分享、喜欢按钮)
+            - VoteShareLoveBox(投票功能,难度等级，grade)
+                - vote
                 - share
                 - love
             - CommentBox(antd 表单)

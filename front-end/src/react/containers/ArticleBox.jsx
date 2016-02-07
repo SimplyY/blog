@@ -1,11 +1,16 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import { bindActionCreators } from 'redux'
+
 import _ from '../../../lib/lodash.core'
 
 import { AppData } from '../../util/AppData'
 
+import * as action from '../actions/articles'
+
 import Article from '../components/Article'
 import CurrentTagChain from '../components/CurrentTagChain'
+import VoteShareLoveBox from '../components/VoteShareLoveBox'
 
 class ArticleBox extends Component {
     constructor() {
@@ -20,7 +25,11 @@ class ArticleBox extends Component {
     }
 
     render() {
-        let { tags, articles } = this.props
+        let {
+            tags, articles,
+            addAriticleLoveNumber, addAriticleShareNumber, changeArticleGrade
+        } = this.props
+
         const { articleId } = this.props.params
 
         let currentArticle = AppData.getAricleByArticleId(articles, articleId)
@@ -30,6 +39,10 @@ class ArticleBox extends Component {
             <div>
                 <CurrentTagChain tags={tags} currentTagId={currentTag._id} />
                 <Article currentArticle={currentArticle} />
+                <VoteShareLoveBox currentArticle={currentArticle}
+                    addAriticleLoveNumber={addAriticleLoveNumber}
+                    addAriticleShareNumber={addAriticleShareNumber}
+                    changeArticleGrade={changeArticleGrade} />
             </div>
         )
     }
@@ -42,4 +55,12 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(ArticleBox)
+function mapDispatchToProps(dispatch) {
+    return {
+        addAriticleLoveNumber: bindActionCreators(action.addAriticleLoveNumberAction, dispatch),
+        addAriticleShareNumber: bindActionCreators(action.addAriticleShareNumberAction, dispatch),
+        changeArticleGrade: bindActionCreators(action.changeArticleGradeAction, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ArticleBox)
