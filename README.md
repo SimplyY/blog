@@ -48,6 +48,7 @@ js: react redux chartjs
 - [ ] js 设置 meta title and <meta name="description" content="text">
 - [ ] ArticlesTable (左侧点击，显示目录，点击加号展开一级标题，根据 h 标签开发）
 - [ ] 正文锚点功能
+- [ ] 评论功能 avatar url default 'http://7xkpdt.com1.z0.glb.clouddn.com/46867d9be26db9982249775578cf37fc.png'
 
 #### 组件结构
 - root
@@ -70,7 +71,7 @@ js: react redux chartjs
             - Article
                 - ArticleInfo（时间，难易度：简单、中等、难....）
                 - ArticleMd(md 渲染, 正文锚点功能)
-            - VoteBox(投票功能，适合人群：新手、1年、2年....)
+            - VoteBox(投票功能,难度等级，grade)
             - shareLoveBox（分享、喜欢按钮)
                 - share
                 - love

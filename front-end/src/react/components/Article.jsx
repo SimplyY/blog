@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 
 import { AppData } from '../../util/AppData'
-
 import { md2html } from '../../util/md'
 
 import * as text from '../../consts/text'
