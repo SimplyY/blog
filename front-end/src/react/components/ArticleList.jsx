@@ -37,25 +37,26 @@ class ArticleList extends Component {
 
             return (
                 <div key={item._id} onClick={() => {
+                        window.scrollTo(0, 0)
                         this.dispatch(push('/' + ARTICLE_PATH + item._id))
                     }} >
                     <div>{item.title}</div>
 
-                    <div className="love-number">
+                    <div className="articlelist-love-number">
                         <img src={imgUrl.LOVE_ICON_URL} alt="love" />
                         <div>{loveNumber}</div>
                     </div>
-                    <div className="share-number">
+                    <div className="articlelist-share-number">
                         <img src={imgUrl.SHARE_ICON_URL} alt="share" />
                         <div>{shareNumber}</div>
                     </div>
 
-                    <div className="difficult-level">
+                    <div className="articlelist-difficult-level">
                         <label>{text.ARTICLE_DIFFCULT_LEVEL_TEXT}</label>
                         <div>{difficultLevel}</div>
                     </div>
 
-                    <div className="date">
+                    <div className="articlelist-date">
                         <label>{text.ARTICLE_DATE_LABEL_TEXT}</label>
                         <div>{dateStr}</div>
                     </div>
