@@ -1,4 +1,4 @@
-import marked from 'marked'
+import marked from '../../lib/hackedMarked'
 
 export function md2html(article) {
     marked.setOptions({

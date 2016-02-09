@@ -46,6 +46,13 @@ module.exports = {
             loader: 'url?limit=20000',
             exclude: /node_modules/,
             include: SRC_PATH
-        }]
+        },
+        {
+            test: /\.(ttf|svg|woff|png|eot)/,
+            loader : 'url?limit=20000',
+            exclude: /node_modules/,
+            include: SRC_PATH
+        }
+    ]
     }
 }

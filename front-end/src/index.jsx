@@ -9,6 +9,7 @@ import { loadMustDataAction, loadAllArticlesAction } from './react/actions/artic
 
 import './css/lib/github-markdown.css'
 import './css/lib/github-gist.css'
+import './css/index.scss'
 
 let store = createConfigureStore();
 

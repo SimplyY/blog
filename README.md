@@ -53,8 +53,8 @@ js: react redux chartjs
 #### 组件结构
 - root
     - app(common part)
-        - NavigationBar 编程 生活 诗集 电影 最热）
-        - InfoSideBar(right)
+        - NavigationBar (TODO:编程 生活 诗集 电影 最热）
+        - InfoSideBar(TODO:right)
             - ColumnTag(三级标签)
             - personalInfo(zhihu weibo email)
             - github info (https://github.com/lepture/github-cards)
