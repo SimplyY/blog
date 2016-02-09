@@ -800,7 +800,7 @@ Renderer.prototype.heading = function(text, level, raw) {
     } else {
         anchor = text
     }
-    var tagA = '<a href="#' + anchor + '" class="iconfont reset-a">&#xe6e0  </a>'
+    var tagA = '<a href="#' + anchor + '" class="iconfont article-anchor">&#xe6e0  </a>'
 
 
   return '<h'

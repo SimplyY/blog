@@ -27,7 +27,7 @@
 - [x] 扫描文件目录生成标签和文章
 - [x] 提供 restful api，文档看 node/app/model.js 里的相应 schema。
 - [ ] 支持 www
-- [ ] 邮件提醒功能
+- [ ] 邮件提醒功能（一天发一封）
 
 ！！！禁止有相同的目录名或者文件名！！！（因为这俩会作为主键存在数据库中）
 
@@ -43,12 +43,13 @@ js: react redux chartjs
 
 - [x] spa
 - [x] redux
-- [ ] 组件开发(已完成50%)
-
+- [ ] 组件开发(已完成60%)
+- [x] 正文锚点功能
+- [ ] 回到顶部
 - [ ] js 设置 meta title and <meta name="description" content="text">
 - [ ] ArticlesTable (左侧点击，显示目录，点击加号展开一级标题，根据 h 标签开发）
-- [ ] 正文锚点功能
-- [ ] 评论功能 avatar url default 'http://7xkpdt.com1.z0.glb.clouddn.com/46867d9be26db9982249775578cf37fc.png'
+- [ ] 评论功能 CommentBox avatar url default 'http://7xkpdt.com1.z0.glb.clouddn.com/46867d9be26db9982249775578cf37fc.png'
+- [ ] chartjs
 
 #### 组件结构
 - root
