@@ -27,10 +27,15 @@ class NavigationBar extends Component{
         })
 
         return (
-            <div>
-                <ul>
+            <div className="main-nav-bar">
+                <p onClick={() => {
+                        this.dispatch(push('/'))
+                    }}>
+                    SimplyY
+                </p>
+                <ol>
                     {doms}
-                </ul>
+                </ol>
             </div>
         )
     }

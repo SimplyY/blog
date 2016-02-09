@@ -1,0 +1,21 @@
+@mixin reset-link-style($color: black) {
+    color: $color;
+    text-decoration: none;
+}
+
+@mixin box-grey-shadow($width: 20px){
+    box-shadow: 0 0 $width grey;
+}
+
+@mixin vertical-center($max-width){
+    max-width: $max-width;
+    margin: 0 auto;
+}
+
+.clear-float:after {
+    content:".";
+    display:block;
+    height:0;
+    visibility:hidden;
+    clear:both;
+}

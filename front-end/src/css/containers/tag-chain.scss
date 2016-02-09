@@ -1,0 +1,10 @@
+.tag-chain {
+}
+
+.tag-chain li {
+    display: inline-block;
+}
+
+.tag-chain a {
+    @include reset-link-style
+}

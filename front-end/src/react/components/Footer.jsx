@@ -1,16 +1,15 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux'
 
-class InfoBox extends Component{
+class Footer extends Component {
     constructor() {
         super()
     }
-
     render() {
         return (
-            <div className="main-sidebar">
+            <div className="main-footer">
             </div>
         )
     }
 }
-export default connect()(InfoBox)
+
+export default Footer

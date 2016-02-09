@@ -1,0 +1,30 @@
+.main-nav-bar p, .main-nav-bar li {
+    font-size: $nav-font-size;
+}
+
+.main-nav-bar p, .main-nav-bar li:hover {
+    cursor: pointer;
+}
+
+.main-nav-bar>p {
+    display: inline;
+    margin-left: 40px;
+    margin-right: 20px;
+    @include reset-link-style;
+}
+
+.main-nav-bar>ol {
+    display: inline-block;
+    height: $nav-height;
+}
+
+.main-nav-bar>ol>li {
+    display: inline-block;
+    line-height: $nav-height;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.main-nav-bar>ol>li:hover {
+    background-color: $silver-light-sand;
+}

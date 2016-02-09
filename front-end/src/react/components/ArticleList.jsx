@@ -6,7 +6,6 @@ import { AppData } from '../../util/AppData'
 
 import { ARTICLE_PATH, SHOW_MORE_ARTICLES_NUMBER } from '../../consts/config'
 import * as text from '../../consts/text'
-import * as imgUrl from '../../consts/imgUrl'
 
 class ArticleList extends Component {
     constructor({ dispatch }) {
@@ -43,11 +42,11 @@ class ArticleList extends Component {
                     <div>{item.title}</div>
 
                     <div className="articlelist-love-number">
-                        <img src={imgUrl.LOVE_ICON_URL} alt="love" />
+                        <i className="iconfont article-list-love">&#xe612;</i>
                         <div>{loveNumber}</div>
                     </div>
                     <div className="articlelist-share-number">
-                        <img src={imgUrl.SHARE_ICON_URL} alt="share" />
+                        <i className="iconfont article-list-share">&#xe60c;</i>
                         <div>{shareNumber}</div>
                     </div>
 

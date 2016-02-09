@@ -38,7 +38,7 @@ class CurrentTagChain extends Component {
         }
 
         return (
-            <div>
+            <div className="tag-chain">
                 <ol>
                     {tagChainDOM}
                 </ol>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import NavigationBar from '../components/NavigationBar'
 import InfoSideBar from '../components/InfoSideBar'
+import Footer from '../components/Footer'
 
 class App extends Component {
     constructor() {
@@ -12,10 +13,15 @@ class App extends Component {
         const { children, tags } = this.props
 
         return (
-            <div>
+            <div className="main-wrapper">
                 <NavigationBar tags={tags} />
-                <InfoSideBar />
-                {children}
+                <div className="main-body clear-float">
+                    <div className="main-container">
+                        {children}
+                    </div>
+                    <InfoSideBar />
+                </div>
+                <Footer />
             </div>
         )
     }

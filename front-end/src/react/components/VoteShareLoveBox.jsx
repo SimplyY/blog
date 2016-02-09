@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 
-import * as imgUrl from '../../consts/imgUrl'
-
 class VoteShareLoveBox extends Component {
     constructor() {
         super()
@@ -22,22 +20,22 @@ class VoteShareLoveBox extends Component {
                         changeArticleGrade(_id, 1)
                     }}>
                 </div>
-                <div className='article-love-number' onClick={() => {
+                <div className='article-love-box' onClick={() => {
                         if (this.isLove === false) {
                             addAriticleLoveNumber(_id, 1)
                             this.isLove = true
                         }
                     }}>
-                    <img src={imgUrl.LOVE_ICON_URL} alt="love" />
+                    <i className="iconfont article-list-love">&#xe612;</i>
                     <div>{currentArticle.loveNumber}</div>
                 </div>
-                <div className='article-share-number' onClick={() => {
+                <div className='article-share-box' onClick={() => {
                         if (this.isShare === false) {
                             addAriticleShareNumber(_id, 1)
                             this.isShare = true
                         }
                     }}>
-                    <img src={imgUrl.SHARE_ICON_URL} alt="share" />
+                    <i className="iconfont article-list-share">&#xe60c;</i>
                     <div>{currentArticle.shareNumber}</div>
                 </div>
             </div>
