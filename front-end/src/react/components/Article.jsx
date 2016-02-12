@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 
 import { AppData } from '../../util/AppData'
 import { md2html } from '../../util/md'
+import { anchorHandler } from '../../util/common'
 
 import * as text from '../../consts/text'
 
@@ -26,7 +27,11 @@ class Article extends Component {
                     <div>{difficultLevel}</div>
                 </div>
 
-                <article className="markdown-body" dangerouslySetInnerHTML={{__html: currentArticleDOM}}>
+                <article className="markdown-body"
+                    dangerouslySetInnerHTML={{__html: currentArticleDOM}}
+                    onClick={(e) => {
+                        anchorHandler(e)
+                }} >
                 </article>
             </div>
 
