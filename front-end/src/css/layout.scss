@@ -1,3 +1,17 @@
+// layout
+$nav-height: 45px;
+$body-max-width: 90%;
+$main-container-width: 70%;
+$sidebar-width: 20%;
+$footer-height: $nav-height;
+$nav-body-margin: 30px;
+
+// layout margin
+$body-top-margin: $nav-height + $nav-body-margin;
+$container-sidebar-margin: 5%;
+$body-footer-margin: 50px;
+
+
 html, body {
     height:100%;
 }

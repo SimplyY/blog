@@ -16,11 +16,25 @@ class NavigationBar extends Component{
         let doms = []
         tags.forEach((item) => {
             if (item.tagRank === 1) {
+                let childrenTagDoms = item.childrenTags.map(item => {
+                    return (
+                        <li key={item._id} onClick={(e) => {
+                                this.dispatch(push('/' + TAG_PATH + item._id))
+                                e.stopPropagation()
+                            }} >
+                            {item.tagName}
+                        </li>
+                    )
+                })
+
                 doms.push(
                     <li key={item._id} onClick={() => {
                             this.dispatch(push('/' + TAG_PATH + item._id))
                         }} >
                         {item.tagName}
+                        <ol className="second-menus">
+                            {childrenTagDoms}
+                        </ol>
                     </li>
                 )
             }
@@ -28,12 +42,12 @@ class NavigationBar extends Component{
 
         return (
             <div className="main-nav-bar">
-                <p onClick={() => {
+                <p className="home" onClick={() => {
                         this.dispatch(push('/'))
                     }}>
                     SimplyY
                 </p>
-                <ol>
+                <ol className="first-menus">
                     {doms}
                 </ol>
             </div>

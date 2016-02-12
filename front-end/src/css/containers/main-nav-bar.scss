@@ -1,29 +1,59 @@
+$nav-box-shadow-width: 26px;
+$nav-font-size: 20px;
+$menu-padding: 10px;
+
 .main-nav-bar {
     font-size: $nav-font-size;
 
-    > ol {
+    .home {
+        display: inline;
+        margin-left: 40px;
+        margin-right: 20px;
+        @include reset-link-style;
+    }
+    .home {
+        cursor: pointer;
+    }
+
+    // 默认直接显示
+    .first-menus {
         display: inline-block;
         height: $nav-height;
 
         > li {
             display: inline-block;
             line-height: $nav-height;
-            padding-left: 10px;
-            padding-right: 10px;
+            padding-left: $menu-padding;
+            padding-right: $menu-padding;
+        }
+        > li:hover {
+            cursor: pointer;
+            @include be-brey-animation
+
+            // 显示下拉菜单
+            .second-menus {
+                display: block;
+            }
+        }
+    }
+
+    // 下拉菜单
+    .second-menus {
+        display: none;
+        position: absolute;
+        margin-left: -$menu-padding;
+
+        list-style: none;
+        background-color: white;
+        box-shadow: 0 5px 1.0rem grey;
+
+        > li {
+            padding-left: $menu-padding;
+            padding-right: $menu-padding;
         }
         > li:hover {
             cursor: pointer;
             @include be-brey-animation
         }
-    }
-
-    p {
-        display: inline;
-        margin-left: 40px;
-        margin-right: 20px;
-        @include reset-link-style;
-    }
-    p:hover {
-        cursor: pointer;
     }
 }
