@@ -1,26 +1,27 @@
 .tag-chain {
     padding: $main-container-padding;
-}
 
-.tag-chain li {
-    display: inline-block;
-}
+    li {
+        display: inline-block;
+    }
 
-.tag-chain a {
-    @include reset-link-style(rgb(120,120,120));
-}
+    a {
+        @include reset-link-style(rgb(120,120,120));
+    }
 
-.tag-chain a:hover {
-    text-decoration: underline;
-}
+    a:hover {
+        text-decoration: underline;
+    }
 
-.tag-chain li:last-of-type a {
-    color: black;
-}
+    li:last-of-type a {
+        color: black;
+    }
 
-.tag-chain ol li:nth-child(n+2):before{
-    content:"›";
-    padding: 0 7px;
-    font-family: "Lucida Grande";
-    font-weight: 500;
+    // element >=2
+    li:nth-of-type(n+2):before{
+        content:"›";
+        padding: 0 7px;
+        font-family: "Lucida Grande";
+        font-weight: 500;
+    }
 }

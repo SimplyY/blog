@@ -12,10 +12,23 @@
     margin: 0 auto;
 }
 
+@mixin be-brey-animation(){
+    animation: beGrey .4s ease-out 0s normal forwards;
+}
+
 .clear-float:after {
     content:".";
     display:block;
     height:0;
     visibility:hidden;
     clear:both;
+}
+
+@keyframes beGrey {
+    from {
+        background-color: $light-silver;
+    }
+    to {
+        background-color: $silver-light-sand;
+    }
 }

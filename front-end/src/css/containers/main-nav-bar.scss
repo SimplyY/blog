@@ -1,30 +1,29 @@
-.main-nav-bar p, .main-nav-bar li {
+.main-nav-bar {
     font-size: $nav-font-size;
-}
 
-.main-nav-bar p, .main-nav-bar li:hover {
-    cursor: pointer;
-}
+    > ol {
+        display: inline-block;
+        height: $nav-height;
 
-.main-nav-bar>p {
-    display: inline;
-    margin-left: 40px;
-    margin-right: 20px;
-    @include reset-link-style;
-}
+        > li {
+            display: inline-block;
+            line-height: $nav-height;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        > li:hover {
+            cursor: pointer;
+            @include be-brey-animation
+        }
+    }
 
-.main-nav-bar>ol {
-    display: inline-block;
-    height: $nav-height;
-}
-
-.main-nav-bar>ol>li {
-    display: inline-block;
-    line-height: $nav-height;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.main-nav-bar>ol>li:hover {
-    background-color: $silver-light-sand;
+    p {
+        display: inline;
+        margin-left: 40px;
+        margin-right: 20px;
+        @include reset-link-style;
+    }
+    p:hover {
+        cursor: pointer;
+    }
 }
