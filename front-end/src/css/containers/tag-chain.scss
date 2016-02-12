@@ -1,4 +1,5 @@
 .tag-chain {
+    padding: $main-container-padding;
 }
 
 .tag-chain li {
@@ -6,5 +7,20 @@
 }
 
 .tag-chain a {
-    @include reset-link-style
+    @include reset-link-style(rgb(120,120,120));
+}
+
+.tag-chain a:hover {
+    text-decoration: underline;
+}
+
+.tag-chain li:last-of-type a {
+    color: black;
+}
+
+.tag-chain ol li:nth-child(n+2):before{
+    content:"›";
+    padding: 0 7px;
+    font-family: "Lucida Grande";
+    font-weight: 500;
 }
