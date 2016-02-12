@@ -35,7 +35,22 @@ export let AppData = {
                     if (data[2] === undefined) {
                         mustData.articles = [data[1]]
                     }
+
+                    // process data
+                    mustData.tags.sort((a, b) => b.aritcleTitleList.length - a.aritcleTitleList.length)
+                    mustData.tags.forEach(item => {
+                        if (item.tagRank === 2) {
+                             let parentTag = AppData.getTagByTagName(mustData.tags, item.parentTagName)
+
+                             if (parentTag.childrenTags === undefined) {
+                                 parentTag.childrenTags = [item]
+                             } else {
+                                 parentTag.childrenTags.push(item)
+                             }
+                        }
+                    })
                     AppData.convertDateStrType(mustData.articles)
+
                     resolve(mustData)
                 }).catch(error => {
                     reject(error)
