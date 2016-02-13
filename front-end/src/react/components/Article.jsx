@@ -21,6 +21,8 @@ class Article extends Component {
         return (
             <div>
                 <div className="article-info">
+                    <label>{text.AUTHOR}</label>
+                    <div>{text.AUTHOR_NAME}</div>
                     <label>{text.ARTICLE_DATE_LABEL_TEXT}</label>
                     <date>{dateStr}</date>
                     <label>{text.ARTICLE_DIFFCULT_LEVEL_TEXT}</label>

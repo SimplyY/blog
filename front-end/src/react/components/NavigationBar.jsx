@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 
 import {TAG_PATH} from '../../consts/config'
+import * as text from '../../consts/text'
 
 class NavigationBar extends Component{
     constructor({ dispatch }) {
@@ -45,7 +46,7 @@ class NavigationBar extends Component{
                 <p className="home" onClick={() => {
                         this.dispatch(push('/'))
                     }}>
-                    SimplyY
+                    {text.AUTHOR_NAME}
                 </p>
                 <ol className="first-menus">
                     {doms}
