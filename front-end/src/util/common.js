@@ -1,4 +1,8 @@
 export function anchorHandler(e) {
+    if (e.target.className !== 'iconfont article-anchor') {
+        return
+    }
+
     e.preventDefault()
     let anchorName = e.target.href.split('#')[1]
     if (location.href.indexOf('#') === -1) {
@@ -9,16 +13,18 @@ export function anchorHandler(e) {
     scrollToAnchor(e.target.offsetTop, 30)
     // TODO: highliaht animation
 }
-
 export function showAnchor() {
     let anchorName = location.href.split('#')[1]
     let anchorDOM = document.getElementById(anchorName)
-    scrollToAnchor(anchorDOM.offsetTop, 42)
+
+    // for dom load img will change dom position, so delay
+    setTimeout(function() {
+        scrollToAnchor(anchorDOM.offsetTop, 42)
+    }, 500)
 }
 
 // fixed nav-bar make a wrong offsetTop
 // so make anchor scroll right position by distance
 function scrollToAnchor(anchorOffsetTop, distance) {
-    console.log(anchorOffsetTop + distance)
     window.scrollTo(0, anchorOffsetTop + distance)
 }

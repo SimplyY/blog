@@ -22,6 +22,7 @@ class NavigationBar extends Component{
                     childrenTagDoms = item.childrenTags.map(item => {
                         return (
                             <li key={item._id} onClick={(e) => {
+                                    window.scrollTo(0, 0)
                                     this.dispatch(push('/' + TAG_PATH + item._id))
                                     e.stopPropagation()
                                 }} >
@@ -33,6 +34,7 @@ class NavigationBar extends Component{
 
                 doms.push(
                     <li key={item._id} onClick={() => {
+                            window.scrollTo(0, 0)
                             this.dispatch(push('/' + TAG_PATH + item._id))
                         }} >
                         {item.tagName}
