@@ -40,8 +40,6 @@ html, body {
     float: left;
     width: $main-container-width;
     margin-right: $container-sidebar-margin;
-
-    @include box-grey-shadow($container-shadow-width)
 }
 
 .main-sidebar {

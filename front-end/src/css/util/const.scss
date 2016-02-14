@@ -1,6 +1,11 @@
 // padding
-$main-container-padding: 10px;
+$main-container-padding-h: 10px;
+$main-container-padding-v: 0.7*$main-container-padding-h;
 
 // box shadow
 $container-shadow-width: 12px;
 $nav-box-shadow-width: 26px;
+
+// article-info
+$article-info-font-size: 14px;
+$article-info-right-margin: 30px;

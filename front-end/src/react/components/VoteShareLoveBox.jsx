@@ -5,6 +5,7 @@ class VoteShareLoveBox extends Component {
         super()
         this.isLove = false
         this.isShare = false
+        this.isVote === false
     }
     render() {
         let {
@@ -17,30 +18,48 @@ class VoteShareLoveBox extends Component {
         return (
             <div>
                 <div className='article-vote-difficult-level' onClick={() => {
-                        changeArticleGrade(_id, 1)
-                    }}>
-                </div>
-                <div className='article-love-box' onClick={() => {
-                        if (this.isLove === false) {
-                            addAriticleLoveNumber(_id, 1)
-                            this.isLove = true
+                        if (this.isVote === false) {
+                            changeArticleGrade(_id, 1)
+                            this.isVote = true
                         }
                     }}>
-                    <i className="iconfont article-list-love">&#xe612;</i>
-                    <div>{currentArticle.loveNumber}</div>
                 </div>
-                <div className='article-share-box' onClick={() => {
-                        if (this.isShare === false) {
-                            addAriticleShareNumber(_id, 1)
-                            this.isShare = true
-                        }
-                    }}>
-                    <i className="iconfont article-list-share">&#xe60c;</i>
-                    <div>{currentArticle.shareNumber}</div>
+
+                <div className="love-and-share">
+                    <div className='love-box' onClick={() => {
+                            if (this.isLove === false) {
+                                addAriticleLoveNumber(_id, 1)
+                                this.isLove = true
+                            }
+                        }}>
+                        <i className="iconfont article-love">&#xe612;</i>
+                        <p>{'喜欢(' + currentArticle.loveNumber + ')'}</p>
+                    </div>
+                    <div className="share-box" onClick={() => {
+                            if (this.isShare === false) {
+                                addAriticleShareNumber(_id, 1)
+                                this.isShare = true
+
+                                shareInfo2clipboard(currentArticle)
+                            }
+                        }}>
+                        <i className="iconfont article-share">&#xe60c;</i>
+                        <p>{'分享(' + currentArticle.shareNumber + ')'}</p>
+                    </div>
                 </div>
             </div>
         )
     }
+}
+
+function shareInfo2clipboard(currentArticle) {
+    console.log(articleName)
+    var articleName = currentArticle.title
+    var articleUrl = window.location.href
+
+    var shareInfo = 'SimplyY 的博客文章: ' + '《' +  articleName  + '》' + '\t链接为： ' + articleUrl;
+
+    window.prompt('你正在分享这篇博文\n将分享信息复制到剪贴板: Ctrl+C, Enter（回车）\n然后发到任何你想发的地方吧', shareInfo);
 }
 
 export default VoteShareLoveBox

@@ -36,7 +36,7 @@ class ArticleBox extends Component {
         let currentTag = AppData.getTagByTagName(tags, currentArticle.parentTagName)
 
         return (
-            <div>
+            <div className="article-box">
                 <CurrentTagChain tags={tags} currentTagId={currentTag._id} />
                 <Article currentArticle={currentArticle} />
                 <VoteShareLoveBox currentArticle={currentArticle}

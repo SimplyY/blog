@@ -1,0 +1,34 @@
+$vote-share-love-box-height: 60px;
+
+.article-box {
+    position: relative;
+    padding-bottom: $vote-share-love-box-height;
+
+    @include box-grey-shadow($container-shadow-width)
+}
+
+.article {
+    position: relative;
+    padding: 20px $main-container-padding-h;
+    @include silver-border-top
+}
+
+.article-info {
+    margin-bottom: 25px;
+
+    font-size: $article-info-font-size;
+    color: $light-grey;
+
+    div {
+        display: inline;
+        margin-right: $article-info-right-margin;
+    }
+
+    label:after {
+        content: ": ";
+    }
+
+    p {
+        display: inline;
+    }
+}

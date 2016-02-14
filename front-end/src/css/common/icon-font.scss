@@ -1,8 +1,10 @@
 .iconfont.article-list-share {
+    display: inline;
     color: $grey;
 }
 
 .iconfont.article-list-love {
+    display: inline;
     color: $grey;
 }
 
@@ -14,7 +16,6 @@
     @include reset-link-style($black);
     font-weight: lighter;
 }
-
 
 @font-face {font-family: 'iconfont';
     src: url('../font/iconfont.eot'); /* IE9*/
