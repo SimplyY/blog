@@ -29,6 +29,6 @@ AppData.loadMustData()
     })
     .catch(error => {
         if (error !== undefined) {
-            throw error
+            console.log(error)
         }
     })
