@@ -11,7 +11,7 @@ class Article extends Component {
         super()
     }
     componentDidMount() {
-        if (location.href.indexOf('#') !== -1) {
+        if (location.href.indexOf('#') !== -1 && location.href.split('#')[1]) {
             showAnchor()
         }
     }
