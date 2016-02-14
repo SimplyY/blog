@@ -1,13 +1,3 @@
-.iconfont.article-list-share {
-    display: inline;
-    color: $grey;
-}
-
-.iconfont.article-list-love {
-    display: inline;
-    color: $grey;
-}
-
 .iconfont.article-anchor {
     @include reset-link-style($light-grey);
     font-weight: lighter;

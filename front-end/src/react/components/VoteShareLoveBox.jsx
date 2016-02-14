@@ -33,7 +33,7 @@ class VoteShareLoveBox extends Component {
                             }
                         }}>
                         <i className="iconfont article-love">&#xe612;</i>
-                        <p>{'喜欢(' + currentArticle.loveNumber + ')'}</p>
+                        <p>{'喜欢 ( ' + currentArticle.loveNumber + ' )'}</p>
                     </div>
                     <div className="share-box" onClick={() => {
                             if (this.isShare === false) {
@@ -44,7 +44,7 @@ class VoteShareLoveBox extends Component {
                             }
                         }}>
                         <i className="iconfont article-share">&#xe60c;</i>
-                        <p>{'分享(' + currentArticle.shareNumber + ')'}</p>
+                        <p>{'分享 ( ' + currentArticle.shareNumber + ' )'}</p>
                     </div>
                 </div>
             </div>

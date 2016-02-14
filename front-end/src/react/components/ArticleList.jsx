@@ -28,26 +28,28 @@ class ArticleList extends Component {
         // limit showed aritcles number by state.showedArticlesMaxNumber
         let factShowedArticles = showedArticles.slice(0, showedArticlesMaxNumber)
 
-        let articlesDOM = factShowedArticles.map((item) => {
+        let articlesListDOM = factShowedArticles.map((item) => {
             let loveNumber = Math.ceil(item.loveNumber)
             let shareNumber = Math.ceil(item.shareNumber)
             let difficultLevel = AppData.getDifficultLevelByGrade(item.grade)
             let dateStr = AppData.formatArticleDate(item.date)
 
             return (
-                <div key={item._id} onClick={() => {
+                <div className="article-list-item" key={item._id} onClick={() => {
                         window.scrollTo(0, 0)
                         this.dispatch(push('/' + ARTICLE_PATH + item._id))
                     }} >
-                    <div>{item.title}</div>
+                    <div className="title">{item.title}</div>
 
-                    <div className="articlelist-love-number">
-                        <i className="iconfont article-list-love">&#xe612;</i>
-                        <div>{loveNumber}</div>
-                    </div>
-                    <div className="articlelist-share-number">
-                        <i className="iconfont article-list-share">&#xe60c;</i>
-                        <div>{shareNumber}</div>
+                    <div className="love-share-info">
+                        <div className="articlelist-love-box">
+                            <i className="iconfont article-list-love">&#xe612;</i>
+                            <div>{loveNumber}</div>
+                        </div>
+                        <div className="articlelist-share-box">
+                            <i className="iconfont article-list-share">&#xe60c;</i>
+                            <div>{shareNumber}</div>
+                        </div>
                     </div>
 
                     <div className="articlelist-difficult-level">
@@ -65,7 +67,7 @@ class ArticleList extends Component {
 
         return (
             <div>
-                {articlesDOM}
+                {articlesListDOM}
                 {clickMoreDOM}
             </div>
         )

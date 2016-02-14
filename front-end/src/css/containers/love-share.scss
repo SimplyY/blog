@@ -2,14 +2,14 @@
     display: inline-block;
 
     position: absolute;
-    right: $main-container-padding-h;
+    right: $main-container-padding-h + 2px;
 
     background-color: rgb(248, 248, 248);
     @include box-grey-shadow(6px)
 
     .love-box, .share-box {
         display: inline-block;
-        padding: 0 6px;
+        padding: 3px 6px;
 
         cursor: pointer;
     }
@@ -29,7 +29,7 @@
     }
     .article-share {
         font-size:16px;
-        padding-right:3px;
+        padding-right:5px;
 
         position: relative;
         top:-3px;

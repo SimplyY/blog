@@ -1,0 +1,52 @@
+.article-list-box {
+    @include box-grey-shadow($container-shadow-width)
+}
+
+.article-list-item:hover {
+    @include be-brey-animation
+    cursor: pointer;
+}
+
+.article-list-item {
+    padding: $main-container-padding-v $main-container-padding-h;
+
+    @include silver-border-top
+
+    .title {
+        font-size: 22px;
+    }
+
+    > div:not(.title) {
+        margin-right: $article-info-right-margin;
+    }
+
+    :not(.title) {
+        display: inline;
+        font-size: $article-info-font-size;
+        color: $grey;
+
+        label:after {
+            content: ": ";
+        }
+    }
+
+    .articlelist-love-box {
+        padding-right: 10px;
+    }
+
+    .article-list-love, .article-list-share {
+        display: inline;
+        color: $grey;
+    }
+
+    .article-list-love {
+        position: relative;
+        top: 2px;
+        font-size: 22px;
+    }
+
+    .article-list-share {
+        font-size: 14px;
+        padding-right: 4px;
+    }
+}

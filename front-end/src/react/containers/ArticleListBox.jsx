@@ -37,7 +37,7 @@ class ArticleListBox extends Component {
         }
 
         return (
-            <div>
+            <div className="article-list-box">
                 <CurrentTagChain tags={tags} currentTagId={tagId} />
                 <ArticleList showedArticles={showedArticles}
                     showMoreAriticle={showMoreAriticle}
