@@ -1,16 +1,19 @@
+/* jshint esnext: true */
+
 import fse from 'fs-extra';
+import EventProxy from 'eventproxy';
 import { basename, dirname, extname } from 'path';
 import { readFile } from 'fs';
 
 export { getTagAndArticle };
 
+var config = require('../../../config');
+const ROOT_DIR = config.blogRootPath;
 
 function getTagAndArticle(callback) {
     let tags = [];
+    let articlesPaths =[];
     let articles = [];
-
-    var config = require('../../../config');
-    const ROOT_DIR = config.blogRootPath;
 
     fse.walk(ROOT_DIR)
         .on('data', function (item) {
@@ -27,21 +30,31 @@ function getTagAndArticle(callback) {
                 if (extname(item.path) !== '.md') {
                     return;
                 }
-
-                let title = getTile(item.path);
-                let parentTagName = basename(dirname(item.path));
-                readFile(item.path, 'utf8', function (err, data) {
-                    if (err) throw err;
-                    let md = data;
-                    let parentsTagNameArray = getParentsTagNameArray(ROOT_DIR, item.path);
-                    let article = { title, md, parentTagName, parentsTagNameArray };
-                    articles.push(article);
-                });
+                articlesPaths.push(item.path);
             }
         })
         .on('end', function () {
-            callback(tags, articles);
+            let ep = new EventProxy();
+
+            ep.after('got_file', articlesPaths.length, function() {
+                callback(tags, articles);
+            });
+
+            for (let i = 0; i < articlesPaths.length; i++) {
+                readFile(articlesPaths[i], 'utf8', function (err, data) {
+                    if (err) console.log(err);
+                    let title = getTile(articlesPaths[i]);
+                    let parentTagName = basename(dirname(articlesPaths[i]));
+                    let md = data;
+                    let parentsTagNameArray = getParentsTagNameArray(ROOT_DIR, articlesPaths[i]);
+                    let article = { title, md, parentTagName, parentsTagNameArray };
+                    articles.push(article);
+
+                    ep.emit('got_file');
+                });
+            }
         });
+
 
     function createTag(path) {
         let tagName = basename(path);

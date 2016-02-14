@@ -17,6 +17,7 @@
     "crawlme": "0.0.7",
     "ejs": "~2.3.3",
     "es6-promise": "^3.0.2",
+    "eventproxy": "^0.3.4",
     "express": "~4.13.1",
     "fs-extra": "^0.26.4",
     "moment-timezone": "^0.5.0",
