@@ -1,3 +1,7 @@
+@mixin silver-border-top {
+    border-top: 1.5px solid $silver;
+}
+
 @mixin reset-link-style($color: black) {
     color: $color;
     text-decoration: none;

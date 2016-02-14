@@ -1,0 +1,31 @@
+$article-info-font-size: 14px;
+$article-info-right-margin: 30px;
+
+.article {
+    position: relative;
+    padding: 20px $main-container-padding;
+    @include silver-border-top
+
+    .article-info {
+        //position: absolute;
+        //top: 90px;
+        //left: 30px;
+        margin-bottom: 25px;
+
+        font-size: $article-info-font-size;
+        color: $light-grey;
+
+        div {
+            display: inline;
+            margin-right: $article-info-right-margin;
+        }
+
+        label:after {
+            content: ": ";
+        }
+
+        p {
+            display: inline;
+        }
+    }
+}

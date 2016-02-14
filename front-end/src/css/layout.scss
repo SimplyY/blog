@@ -2,14 +2,14 @@
 $nav-height: 45px;
 $footer-height: $nav-height;
 
-$body-max-width: 90%;
-$main-container-width: 70%;
+$body-max-width: 1080px;
+$main-container-width: 75%;
 $sidebar-width: 20%;
 
 // layout margin
 $nav-body-margin: 30px;
 $body-top-margin: $nav-height + $nav-body-margin;
-$container-sidebar-margin: 5%;
+$container-sidebar-margin: 100% - $main-container-width - $sidebar-width;
 $body-footer-margin: 50px;
 
 
@@ -26,6 +26,7 @@ html, body {
     width: 100%;
     height: $nav-height;
     background-color: white;
+    z-index: 99;
     @include box-grey-shadow($nav-box-shadow-width)
 }
 
