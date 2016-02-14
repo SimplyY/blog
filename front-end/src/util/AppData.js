@@ -19,11 +19,12 @@ export let AppData = {
             if (pathTypeStr === ARTICLE_STR) {
                 articleId = getIdStr(params)
                 pArticle = ajaxGet(API_ROOT_URL + ARTICLES_URL + articleId)
-            }
-            // if url is tag url or root show articlelist, load limited number article
-            if (pathTypeStr === TAG_STR || pathTypeStr === '') {
-                let latestArticleQurey = API_ROOT_URL + ARTICLES_URL + SORT_LIMIT_QUERY_STR
+            } else if (pathTypeStr === TAG_STR || pathTypeStr === '') {
+                // if url is tag url or root show articlelist, load limited number article
+                var latestArticleQurey = API_ROOT_URL + ARTICLES_URL + SORT_LIMIT_QUERY_STR
                 pArticles = ajaxGet(latestArticleQurey)
+            } else {
+                return
             }
 
             Promise.all([pTags, pArticle, pArticles])

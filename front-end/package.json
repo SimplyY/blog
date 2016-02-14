@@ -10,7 +10,6 @@
   "dependencies": {
     "classnames": "^2.1.2",
     "css-loader": "^0.23.1",
-    "highlight": "^0.2.4",
     "immutable": "^3.7.6",
     "isomorphic-fetch": "^2.2.1",
     "marked": "^0.3.5",
