@@ -1,6 +1,9 @@
 # 博客
 这里准备搭建我的个人博客
 
+- 后端：express + mongodb + node-restful,  也就是使用 node 遍历文件目录作为文章和标签的数据源，提供 rest api
+- 前端：react + react router + redux + babel + webpack + sass 开发的 spa 博客应用，并尝试使用 immutable.js
+
 ## 搭建流程
 > 所有命令应该在项目根目录使用
 
