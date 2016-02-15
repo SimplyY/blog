@@ -6,73 +6,67 @@ import { TAG_STR, ARTICLE_STR, SORT_LIMIT_QUERY_STR, SORT_QUREY_STR, PATH_TYPE_I
 import * as text from '../consts/text'
 
 export let AppData = {
+    // load functions
 
+    // 针对文章数量多且大的特点，于是做了加载优化，只加载了必须的文章
+    // 通过 url 判断，如果为文章页面，只加载一篇文章（article）
+    // 如果为 tag 页面或者根页面加载，只 limited articles
     loadMustData() {
         return new Promise(function(resolve, reject) {
             let pTags = ajaxGet(API_ROOT_URL + TAGS_URL)
-            let pArticle, pArticles
+            let { pArticle, pArticles } = getMustArticlesJudgeFromUrl(document.URL)
 
-            let params = document.URL.split('/')
-            let pathTypeStr = getPathTypeStr(params)
-            let articleId
-            // if page show article, load the article
-            if (pathTypeStr === ARTICLE_STR) {
-                articleId = getIdStr(params)
-                pArticle = ajaxGet(API_ROOT_URL + ARTICLES_URL + articleId)
-            } else if (pathTypeStr === TAG_STR || pathTypeStr === '') {
-                // if url is tag url or root show articlelist, load limited number article
-                var latestArticleQurey = API_ROOT_URL + ARTICLES_URL + SORT_LIMIT_QUERY_STR
-                pArticles = ajaxGet(latestArticleQurey)
-            } else {
+            if (pArticle === undefined && pArticles === undefined) {
                 return
             }
 
-            Promise.all([pTags, pArticle, pArticles])
-                .then(data => {
-                    let mustData = {
-                        tags: data[0],
-                        articles: data[2]
-                    }
-                    if (data[2] === undefined) {
-                        mustData.articles = [data[1]]
-                    }
+            // tag 页面
+            if (pArticle === undefined) {
+                Promise.all([pTags, pArticles])
+                    .then(datas => {
+                        let [tags, articles] = datas
+                        let mustData = { tags, articles }
 
-                    // process data
-                    mustData.tags.sort((a, b) => b.aritcleTitleList.length - a.aritcleTitleList.length)
-                    mustData.tags.forEach(item => {
-                        if (item.tagRank === 2) {
-                             let parentTag = AppData.getTagByTagName(mustData.tags, item.parentTagName)
+                        // process data
+                        processTags(mustData.tags)
+                        processArticles(mustData.articles)
 
-                             if (parentTag.childrenTags === undefined) {
-                                 parentTag.childrenTags = [item]
-                             } else {
-                                 parentTag.childrenTags.push(item)
-                             }
-                        }
+                        resolve(mustData)
                     })
-                    AppData.convertDateStrType(mustData.articles)
+                    .catch(error => {
+                        reject(error)
+                    })
+            }
 
-                    resolve(mustData)
-                }).catch(error => {
-                    reject(error)
-                })
+            // 文章页面
+            if (pArticles === undefined) {
+                Promise.all([pTags, pArticle])
+                    .then(datas => {
+                        let [tags, article] = datas
+                        let articles = [article]
+                        let mustData = { tags, articles }
+
+                        // process data
+                        processTags(mustData.tags)
+                        processArticles(mustData.articles)
+
+                        resolve(mustData)
+                    })
+                    .catch(error => {
+                        reject(error)
+                    })
+            }
         });
-
-        function getPathTypeStr(params) {
-            return params[PATH_TYPE_IN_SPLIT_NUMBER]
-        }
-        function getIdStr(params) {
-            return params[PATH_TYPE_IN_SPLIT_NUMBER + 1]
-        }
     },
 
     loadAllArticles() {
         return new Promise(function(resolve, reject) {
             ajaxGet(API_ROOT_URL + ARTICLES_URL + SORT_QUREY_STR)
                 .then((data) => {
-                    AppData.convertDateStrType(data)
+                    processArticles(data)
                     resolve(data)
-                }).catch(error => {
+                })
+                .catch(error => {
                     if (error !== undefined) {
                         reject(error)
                     }
@@ -80,12 +74,8 @@ export let AppData = {
         })
     },
 
-    convertDateStrType(data){
-        data.forEach((item) => {
-            item.date = new Date(item.date)
-        })
-    },
-
+    // model functions
+    
     getArticlesByTagId(allArticles, tags, tagId){
         let currentTag = AppData.getTagById(tags, tagId)
         if (currentTag === undefined) {
@@ -129,4 +119,60 @@ export let AppData = {
         }
         return difficultLevel
     }
+}
+
+// 文章页面只加载一篇文章（article）
+// tag 页面或者根页面加载 limited articles
+function getMustArticlesJudgeFromUrl(url) {
+    let pArticle, pArticles
+
+    let params = url.split('/')
+    // pathTypeStr is tag or '' or article or other
+    let pathTypeStr = getPathTypeStr(params)
+    if (pathTypeStr === ARTICLE_STR) {
+        let articleId = getIdStr(params)
+        pArticle = ajaxGet(API_ROOT_URL + ARTICLES_URL + articleId)
+        // pArticles will be undefined
+    } else if (pathTypeStr === TAG_STR || pathTypeStr === '') {
+        var latestArticleQurey = API_ROOT_URL + ARTICLES_URL + SORT_LIMIT_QUERY_STR
+        pArticles = ajaxGet(latestArticleQurey)
+        // pArticle will be undefined
+    } else {
+        // other situation will all undefined
+    }
+
+    return { pArticle, pArticles }
+
+    function getPathTypeStr(params) {
+        return params[PATH_TYPE_IN_SPLIT_NUMBER]
+    }
+    function getIdStr(params) {
+        return params[PATH_TYPE_IN_SPLIT_NUMBER + 1]
+    }
+}
+
+function processTags(tags) {
+    // process tags
+    tags.sort((a, b) => b.aritcleTitleList.length - a.aritcleTitleList.length)
+    tags.forEach(item => {
+        if (item.tagRank === 2) {
+             let parentTag = AppData.getTagByTagName(tags, item.parentTagName)
+
+             if (parentTag.childrenTags === undefined) {
+                 parentTag.childrenTags = [item]
+             } else {
+                 parentTag.childrenTags.push(item)
+             }
+        }
+    })
+}
+
+function processArticles(articles) {
+    convertDateStrType(articles)
+}
+
+function convertDateStrType(data){
+    data.forEach((item) => {
+        item.date = new Date(item.date)
+    })
 }
