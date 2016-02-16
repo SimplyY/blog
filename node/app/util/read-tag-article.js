@@ -87,7 +87,7 @@ function getTagAndArticle(callback) {
         var parentsTagNameArray = getParentsTagNameArray(ROOT_DIR, path);
         var tagRank = parentsTagNameArray.length + 1;
 
-        var aritcleTitleList = [];
+        var articleTitleList = [];
         _fsExtra2.default.walk(path).on('data', function (item) {
             if (item.stats.isFile()) {
                 // create article and add in articles
@@ -96,11 +96,11 @@ function getTagAndArticle(callback) {
                 }
 
                 var title = getTile(item.path);
-                aritcleTitleList.push(title);
+                articleTitleList.push(title);
             }
         });
 
-        return { tagName: tagName, parentTagName: parentTagName, aritcleTitleList: aritcleTitleList, parentsTagNameArray: parentsTagNameArray, tagRank: tagRank };
+        return { tagName: tagName, parentTagName: parentTagName, articleTitleList: articleTitleList, parentsTagNameArray: parentsTagNameArray, tagRank: tagRank };
     }
 
     function getParentsTagNameArray(ROOT_DIR, path) {

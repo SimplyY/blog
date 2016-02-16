@@ -27,7 +27,7 @@ class ArticleBox extends Component {
     render() {
         let {
             tags, articles,
-            addAriticleLoveNumber, addAriticleShareNumber, changeArticleGrade
+            addArticleLoveNumber, addArticleShareNumber, changeArticleGrade
         } = this.props
 
         const { articleId } = this.props.params
@@ -40,8 +40,8 @@ class ArticleBox extends Component {
                 <CurrentTagChain tags={tags} currentTagId={currentTag._id} />
                 <Article currentArticle={currentArticle} />
                 <VoteShareLoveBox currentArticle={currentArticle}
-                    addAriticleLoveNumber={addAriticleLoveNumber}
-                    addAriticleShareNumber={addAriticleShareNumber}
+                    addArticleLoveNumber={addArticleLoveNumber}
+                    addArticleShareNumber={addArticleShareNumber}
                     changeArticleGrade={changeArticleGrade} />
             </div>
         )
@@ -57,8 +57,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        addAriticleLoveNumber: bindActionCreators(action.addAriticleLoveNumberAction, dispatch),
-        addAriticleShareNumber: bindActionCreators(action.addAriticleShareNumberAction, dispatch),
+        addArticleLoveNumber: bindActionCreators(action.addArticleLoveNumberAction, dispatch),
+        addArticleShareNumber: bindActionCreators(action.addArticleShareNumberAction, dispatch),
         changeArticleGrade: bindActionCreators(action.changeArticleGradeAction, dispatch)
     }
 }

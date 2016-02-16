@@ -70,7 +70,7 @@ function getTagAndArticle(callback) {
         let parentsTagNameArray = getParentsTagNameArray(ROOT_DIR, path);
         let tagRank = parentsTagNameArray.length + 1;
 
-        let aritcleTitleList = [];
+        let articleTitleList = [];
         fse.walk(path)
             .on('data', function (item) {
                 if (item.stats.isFile()) {
@@ -80,11 +80,11 @@ function getTagAndArticle(callback) {
                     }
 
                     let title = getTile(item.path);
-                    aritcleTitleList.push(title);
+                    articleTitleList.push(title);
                 }
             });
 
-        return { tagName, parentTagName, aritcleTitleList, parentsTagNameArray, tagRank };
+        return { tagName, parentTagName, articleTitleList, parentsTagNameArray, tagRank };
     }
 
     function getParentsTagNameArray(ROOT_DIR, path) {

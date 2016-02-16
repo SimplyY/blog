@@ -28,7 +28,7 @@ var tagSchema = new mongoose.Schema({
 
     // without sorted
     // 此标签下的所有文章，即标签所在文件路径里的所有 md 文件
-    aritcleTitleList:[{ type: String, required: true }] // 属于此标签
+    articleTitleList:[{ type: String, required: true }] // 属于此标签
 });
 
 db.model(localConfig.tagModelName, tagSchema);

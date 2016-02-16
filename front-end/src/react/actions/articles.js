@@ -16,24 +16,24 @@ export function loadAllArticlesAction(articles) {
     }
 }
 
-export function showMoreAriticleAction(number) {
+export function showMoreArticleAction(number) {
     return {
-        type: ActionTypes.SHOW_MORE_ARITICLES,
+        type: ActionTypes.SHOW_MORE_ARTICLES,
         number
     }
 }
 
-export function addAriticleLoveNumberAction(_id, addNumber) {
+export function addArticleLoveNumberAction(_id, addNumber) {
     return {
-        type: ActionTypes.ADD_ARITICLE_LOVE_NUMBER,
+        type: ActionTypes.ADD_ARTICLE_LOVE_NUMBER,
         _id,
         addNumber
     }
 }
 
-export function addAriticleShareNumberAction(_id, addNumber) {
+export function addArticleShareNumberAction(_id, addNumber) {
     return {
-        type: ActionTypes.ADD_ARITICLE_SHARE_NUMBER,
+        type: ActionTypes.ADD_ARTICLE_SHARE_NUMBER,
         _id,
         addNumber
     }

@@ -5,7 +5,7 @@ import { Link } from 'react-router'
 import { AppData } from '../../util/AppData'
 
 import { TAG_PATH } from '../../consts/config'
-import { ALL_ARITCLES_STR } from '../../consts/text'
+import { ALL_ARTICLES_STR } from '../../consts/text'
 
 class CurrentTagChain extends Component {
     constructor() {
@@ -20,7 +20,7 @@ class CurrentTagChain extends Component {
         if (tag === undefined) {
             tagChainDOM = (
                 <li>
-                    <Link to="/">{ALL_ARITCLES_STR}</Link>
+                    <Link to="/">{ALL_ARTICLES_STR}</Link>
                 </li>
             )
         }

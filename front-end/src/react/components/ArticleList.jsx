@@ -14,18 +14,18 @@ class ArticleList extends Component {
     }
 
     render() {
-        let { showedArticles, showMoreAriticle, showedArticlesMaxNumber } = this.props
+        let { showedArticles, showMoreArticle, showedArticlesMaxNumber } = this.props
 
         let clickMoreDOM
         if (showedArticles.length > showedArticlesMaxNumber) {
             clickMoreDOM = (
-                <div onClick={() => showMoreAriticle(SHOW_MORE_ARTICLES_NUMBER)} >
+                <div onClick={() => showMoreArticle(SHOW_MORE_ARTICLES_NUMBER)} >
                     click more
                 </div>
             )
         }
 
-        // limit showed aritcles number by state.showedArticlesMaxNumber
+        // limit showed articles number by state.showedArticlesMaxNumber
         let factShowedArticles = showedArticles.slice(0, showedArticlesMaxNumber)
 
         let articlesListDOM = factShowedArticles.map((item) => {

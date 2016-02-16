@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 
 import { AppData } from '../../util/AppData'
 
-import { showMoreAriticleAction } from '../actions/articles'
+import { showMoreArticleAction } from '../actions/articles'
 
 import InvalidUrlBox from '../containers/InvalidUrlBox'
 import ArticleList from '../components/ArticleList'
@@ -17,7 +17,7 @@ class ArticleListBox extends Component {
         super()
     }
     render() {
-        let { articles, tags, showMoreAriticle, showedArticlesMaxNumber } = this.props
+        let { articles, tags, showMoreArticle, showedArticlesMaxNumber } = this.props
         const tagId = this.props.params.tagId
 
         let showedArticles
@@ -40,7 +40,7 @@ class ArticleListBox extends Component {
             <div className="article-list-box">
                 <CurrentTagChain tags={tags} currentTagId={tagId} />
                 <ArticleList showedArticles={showedArticles}
-                    showMoreAriticle={showMoreAriticle}
+                    showMoreArticle={showMoreArticle}
                     showedArticlesMaxNumber={showedArticlesMaxNumber} />
             </div>
         )
@@ -57,7 +57,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        showMoreAriticle: bindActionCreators(showMoreAriticleAction, dispatch)
+        showMoreArticle: bindActionCreators(showMoreArticleAction, dispatch)
     }
 }
 

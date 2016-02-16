@@ -25,14 +25,14 @@ export default createReducer(initialState, {
         articles: action.articles
     }),
 
-    [ActionTypes.SHOW_MORE_ARITICLES]: (state, action) => state.merge({
+    [ActionTypes.SHOW_MORE_ARTICLES]: (state, action) => state.merge({
         showedArticlesMaxNumber: state.get('showedArticlesMaxNumber') + action.number
     }),
 
-    [ActionTypes.ADD_ARITICLE_LOVE_NUMBER]: (state, action) => mergeStateByArticle(
+    [ActionTypes.ADD_ARTICLE_LOVE_NUMBER]: (state, action) => mergeStateByArticle(
         state, action._id, 'loveNumber', action.addNumber
     ),
-    [ActionTypes.ADD_ARITICLE_SHARE_NUMBER]: (state, action) => mergeStateByArticle(
+    [ActionTypes.ADD_ARTICLE_SHARE_NUMBER]: (state, action) => mergeStateByArticle(
         state, action._id, 'shareNumber', action.addNumber
     ),
     [ActionTypes.CHANGE_ARTICLE_GRADE]: (state, action) => mergeStateByArticle(

@@ -153,7 +153,7 @@ function getMustArticlesJudgeFromUrl(url) {
 
 function processTags(tags) {
     // process tags
-    tags.sort((a, b) => b.aritcleTitleList.length - a.aritcleTitleList.length)
+    tags.sort((a, b) => b.articleTitleList.length - a.articleTitleList.length)
     tags.forEach(item => {
         if (item.tagRank === 2) {
              let parentTag = AppData.getTagByTagName(tags, item.parentTagName)

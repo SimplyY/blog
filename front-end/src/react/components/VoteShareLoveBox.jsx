@@ -10,7 +10,7 @@ class VoteShareLoveBox extends Component {
     render() {
         let {
             currentArticle,
-            addAriticleLoveNumber, addAriticleShareNumber, changeArticleGrade
+            addArticleLoveNumber, addArticleShareNumber, changeArticleGrade
         } = this.props
 
         let _id = currentArticle._id
@@ -28,7 +28,7 @@ class VoteShareLoveBox extends Component {
                 <div className="love-and-share">
                     <div className='love-box' onClick={() => {
                             if (this.isLove === false) {
-                                addAriticleLoveNumber(_id, 1)
+                                addArticleLoveNumber(_id, 1)
                                 this.isLove = true
                             }
                         }}>
@@ -37,7 +37,7 @@ class VoteShareLoveBox extends Component {
                     </div>
                     <div className="share-box" onClick={() => {
                             if (this.isShare === false) {
-                                addAriticleShareNumber(_id, 1)
+                                addArticleShareNumber(_id, 1)
                                 this.isShare = true
 
                                 shareInfo2clipboard(currentArticle)
