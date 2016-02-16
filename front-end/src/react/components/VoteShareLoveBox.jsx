@@ -18,31 +18,31 @@ class VoteShareLoveBox extends Component {
         return (
             <div>
                 <div className='article-vote-difficult-level' onClick={() => {
-                        if (this.isVote === false) {
-                            changeArticleGrade(_id, 1)
-                            this.isVote = true
-                        }
-                    }}>
+                    if (this.isVote === false) {
+                        changeArticleGrade(_id, 1)
+                        this.isVote = true
+                    }
+                }}>
                 </div>
 
                 <div className="love-and-share">
                     <div className='love-box' onClick={() => {
-                            if (this.isLove === false) {
-                                addArticleLoveNumber(_id, 1)
-                                this.isLove = true
-                            }
-                        }}>
+                        if (this.isLove === false) {
+                            addArticleLoveNumber(_id, 1)
+                            this.isLove = true
+                        }
+                    }}>
                         <i className="iconfont article-love">&#xe612;</i>
                         <p>{'喜欢 ( ' + currentArticle.loveNumber + ' )'}</p>
                     </div>
                     <div className="share-box" onClick={() => {
-                            if (this.isShare === false) {
-                                addArticleShareNumber(_id, 1)
-                                this.isShare = true
+                        if (this.isShare === false) {
+                            addArticleShareNumber(_id, 1)
+                            this.isShare = true
 
-                                shareInfo2clipboard(currentArticle)
-                            }
-                        }}>
+                            shareInfo2clipboard(currentArticle)
+                        }
+                    }}>
                         <i className="iconfont article-share">&#xe60c;</i>
                         <p>{'分享 ( ' + currentArticle.shareNumber + ' )'}</p>
                     </div>
