@@ -3,52 +3,67 @@ import React, {Component} from 'react'
 class VoteShareLoveBox extends Component {
     constructor() {
         super()
-        this.isLove = false
-        this.isShare = false
-        this.isVote === false
+        this.state = {
+            isLove: false,
+            isShare: false,
+            isVote: false
+        }
     }
-    render() {
-        let {
-            currentArticle,
-            addArticleLoveNumber, addArticleShareNumber, changeArticleGrade
-        } = this.props
 
-        let _id = currentArticle._id
+    render() {
+        let { currentArticle } = this.props
 
         return (
             <div>
-                <div className='article-vote-difficult-level' onClick={() => {
-                    if (this.isVote === false) {
-                        changeArticleGrade(_id, 1)
-                        this.isVote = true
-                    }
-                }}>
+                <div className='article-vote-difficult-level' onClick={this.toggleVote.bind(this)}>
                 </div>
 
                 <div className="love-and-share">
-                    <div className='love-box' onClick={() => {
-                        if (this.isLove === false) {
-                            addArticleLoveNumber(_id, 1)
-                            this.isLove = true
-                        }
-                    }}>
+                    <div className='love-box' onClick={this.toggleLove.bind(this)}>
+
                         <i className="iconfont article-love">&#xe612;</i>
                         <p>{'喜欢 ( ' + currentArticle.loveNumber + ' )'}</p>
                     </div>
-                    <div className="share-box" onClick={() => {
-                        if (this.isShare === false) {
-                            addArticleShareNumber(_id, 1)
-                            this.isShare = true
+                    <div className="share-box" onClick={this.toggleShare.bind(this)}>
 
-                            shareInfo2clipboard(currentArticle)
-                        }
-                    }}>
                         <i className="iconfont article-share">&#xe60c;</i>
                         <p>{'分享 ( ' + currentArticle.shareNumber + ' )'}</p>
                     </div>
                 </div>
             </div>
         )
+    }
+
+    toggleVote() {
+        let { currentArticle, changeArticleGrade } = this.props
+        let _id = currentArticle._id
+
+        if (this.state.isVote === false) {
+            // TODO: changeArticleGrade
+            changeArticleGrade(_id, 1)
+            this.setState({isVote: true})
+        }
+    }
+
+    toggleLove() {
+        let { currentArticle, addArticleLoveNumber } = this.props
+        let _id = currentArticle._id
+
+        if (this.state.isLove === false) {
+            addArticleLoveNumber(_id, 1)
+            this.setState({isLove: true})
+        }
+    }
+
+    toggleShare() {
+        let { currentArticle, addArticleShareNumber } = this.props
+        let _id = currentArticle._id
+
+        if (this.state.isShare === false) {
+            addArticleShareNumber(_id, 1)
+            this.setState({isShare: true})
+            shareInfo2clipboard(currentArticle)
+        }
     }
 }
 

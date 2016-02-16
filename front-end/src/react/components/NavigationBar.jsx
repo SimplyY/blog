@@ -14,11 +14,12 @@ class NavigationBar extends Component{
     render() {
         let { tags } = this.props
 
-        let tagsDOM = buildTagsDOMBytTags(tags)
+        let tagsDOM = buildTagsDOMBytTags(tags, this)
 
         return (
             <div className="main-nav-bar">
                 <p className="home" onClick={() => {
+                        window.scrollTo(0, 0)
                         this.dispatch(push('/'))
                     }}>
                     {text.AUTHOR_NAME}
@@ -31,7 +32,7 @@ class NavigationBar extends Component{
     }
 }
 
-function buildTagsDOMBytTags(tags) {
+function buildTagsDOMBytTags(tags, that) {
     let tagsDOM = []
     tags.forEach((item) => {
         if (item.tagRank === 1) {
@@ -41,7 +42,7 @@ function buildTagsDOMBytTags(tags) {
                     return (
                         <li key={item._id} onClick={(e) => {
                             window.scrollTo(0, 0)
-                            this.dispatch(push('/' + TAG_PATH + item._id))
+                            that.dispatch(push('/' + TAG_PATH + item._id))
                             e.stopPropagation()
                         }} >
                             {item.tagName}
@@ -53,7 +54,7 @@ function buildTagsDOMBytTags(tags) {
             tagsDOM.push(
                 <li key={item._id} onClick={() => {
                         window.scrollTo(0, 0)
-                        this.dispatch(push('/' + TAG_PATH + item._id))
+                        that.dispatch(push('/' + TAG_PATH + item._id))
                     }} >
                     {item.tagName}
                     <ol className="second-menus">
