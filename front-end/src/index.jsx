@@ -13,6 +13,7 @@ import './css/index.scss'
 
 let store = createConfigureStore();
 
+// 先加载 mustData 再加载 allArticles
 AppData.loadMustData()
     .then((data) => {
         store.dispatch(loadMustDataAction(data))

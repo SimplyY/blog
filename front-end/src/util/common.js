@@ -20,7 +20,7 @@ export function showAnchor() {
     // for dom load img will change dom position, so delay
     setTimeout(function() {
         scrollToAnchor(anchorDOM.offsetTop, 42)
-    }, 500)
+    }, 300)
 }
 
 // fixed nav-bar make a wrong offsetTop

@@ -50,7 +50,7 @@ js: react redux chartjs
 - [x] 正文锚点功能
 - [ ] 回到顶部
 - [ ] js 设置 meta title and <meta name="description" content="text">
-- [ ] ArticlesTable (左侧点击，显示目录，点击加号展开一级标题，根据 h 标签开发）
+- [ ] ContentTable (左侧点击，显示目录，根据 h 标签开发）
 - [ ] 评论功能 CommentBox avatar url default 'http://7xkpdt.com1.z0.glb.clouddn.com/46867d9be26db9982249775578cf37fc.png'
 - [ ] chartjs
 
@@ -66,12 +66,11 @@ js: react redux chartjs
     - spa main
         - ArticleListBox
             - CurrentTagChain
-            - ArticlesTable (左侧点击，显示目录）
             - ArticleList（显示喜欢数、分享数、（投票结果的平均）难易度、日期）
                 - click more
         - ArticleBox
+            - ContentTable
             - CurrentTagChain
-            - ArticlesTable
             - Article
                 - ArticleInfo（时间，难易度：简单、中等、难....）
                 - ArticleMd(md 渲染, 正文锚点功能)

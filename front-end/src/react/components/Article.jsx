@@ -10,6 +10,7 @@ class Article extends Component {
     constructor() {
         super()
     }
+
     componentDidMount() {
         if (location.href.indexOf('#') !== -1 && location.href.split('#')[1]) {
             showAnchor()
@@ -17,7 +18,6 @@ class Article extends Component {
     }
 
     render() {
-
         let { currentArticle } = this.props
         let currentArticleDOM = md2html(currentArticle.md)
 
@@ -41,7 +41,7 @@ class Article extends Component {
                     </div>
                 </div>
 
-                <article className="markdown-body"
+                <article id="article-content" className="markdown-body"
                     dangerouslySetInnerHTML={{__html: currentArticleDOM}}
                     onClick={(e) => {
                         anchorHandler(e)
