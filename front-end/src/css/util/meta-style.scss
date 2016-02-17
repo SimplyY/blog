@@ -17,7 +17,11 @@
 }
 
 @mixin be-brey-animation(){
-    animation: beGrey .4s ease-out 0s normal forwards;
+    animation: be-grey .4s ease-out 0s normal forwards;
+}
+
+@mixin anchor-highlight-animation($time){
+    animation: anchor-change $time ease-in 0s normal forwards;
 }
 
 .clear-float:after {
@@ -28,11 +32,20 @@
     clear:both;
 }
 
-@keyframes beGrey {
+@keyframes be-grey {
     from {
         background-color: $light-silver;
     }
     to {
         background-color: $silver-light-sand;
+    }
+}
+
+@keyframes anchor-change {
+    from {
+        color: Brown;
+    }
+    to {
+        color: black;
     }
 }

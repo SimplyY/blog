@@ -6,7 +6,6 @@ class VoteShareLoveBox extends Component {
         this.state = {
             isLove: false,
             isShare: false,
-            isVote: false
         }
     }
 
@@ -15,34 +14,18 @@ class VoteShareLoveBox extends Component {
 
         return (
             <div>
-                <div className='article-vote-difficult-level' onClick={this.toggleVote.bind(this)}>
-                </div>
-
                 <div className="love-and-share">
                     <div className='love-box' onClick={this.toggleLove.bind(this)}>
-
                         <i className="iconfont article-love">&#xe612;</i>
                         <p>{'喜欢 ( ' + currentArticle.loveNumber + ' )'}</p>
                     </div>
                     <div className="share-box" onClick={this.toggleShare.bind(this)}>
-
                         <i className="iconfont article-share">&#xe60c;</i>
                         <p>{'分享 ( ' + currentArticle.shareNumber + ' )'}</p>
                     </div>
                 </div>
             </div>
         )
-    }
-
-    toggleVote() {
-        let { currentArticle, changeArticleGrade } = this.props
-        let _id = currentArticle._id
-
-        if (this.state.isVote === false) {
-            // TODO: changeArticleGrade
-            changeArticleGrade(_id, 1)
-            this.setState({isVote: true})
-        }
     }
 
     toggleLove() {

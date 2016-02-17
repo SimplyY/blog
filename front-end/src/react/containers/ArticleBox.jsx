@@ -27,7 +27,7 @@ class ArticleBox extends Component {
     render() {
         let {
             tags, articles,
-            addArticleLoveNumber, addArticleShareNumber, changeArticleGrade
+            addArticleLoveNumber, addArticleShareNumber
         } = this.props
 
         const { articleId } = this.props.params
@@ -41,8 +41,7 @@ class ArticleBox extends Component {
                 <Article currentArticle={currentArticle} />
                 <VoteShareLoveBox currentArticle={currentArticle}
                     addArticleLoveNumber={addArticleLoveNumber}
-                    addArticleShareNumber={addArticleShareNumber}
-                    changeArticleGrade={changeArticleGrade} />
+                    addArticleShareNumber={addArticleShareNumber} />
             </div>
         )
     }
@@ -59,7 +58,6 @@ function mapDispatchToProps(dispatch) {
     return {
         addArticleLoveNumber: bindActionCreators(action.addArticleLoveNumberAction, dispatch),
         addArticleShareNumber: bindActionCreators(action.addArticleShareNumberAction, dispatch),
-        changeArticleGrade: bindActionCreators(action.changeArticleGradeAction, dispatch)
     }
 }
 

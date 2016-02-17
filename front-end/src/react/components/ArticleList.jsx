@@ -31,7 +31,6 @@ class ArticleList extends Component {
         let articlesListDOM = factShowedArticles.map((item) => {
             let loveNumber = Math.ceil(item.loveNumber)
             let shareNumber = Math.ceil(item.shareNumber)
-            let difficultLevel = AppData.getDifficultLevelByGrade(item.grade)
             let dateStr = AppData.formatArticleDate(item.date)
 
             return (
@@ -51,12 +50,6 @@ class ArticleList extends Component {
                             <div>{shareNumber}</div>
                         </div>
                     </div>
-
-                    <div className="articlelist-difficult-level">
-                        <label>{text.ARTICLE_DIFFCULT_LEVEL_TEXT}</label>
-                        <div>{difficultLevel}</div>
-                    </div>
-
                     <div className="articlelist-date">
                         <label>{text.ARTICLE_DATE_LABEL_TEXT}</label>
                         <div>{dateStr}</div>

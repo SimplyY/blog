@@ -4,33 +4,40 @@ class ContentTable extends Component {
     constructor() {
         super()
         this.state = {
-            isShow: false
+            isShow: false,
+            contentTable: undefined
         }
     }
 
     render() {
-        let { contentDOMId } = this.props
-
         return (
-            <button onClick={() => {
-                    if (this.state.isShow === false) {
-                        showContentTable(contentDOMId)
-                        this.setState({isShow: true})
-                    } else {
-                        hiddenContentTable()
-                        this.setState({isShow: false})
-                    }
-                }}>
+            <button onClick={this.toggleContentTable.bind(this)}>
                 a
             </button>
         )
     }
+
+    toggleContentTable() {
+        let { contentDOMId } = this.props
+
+        // 第一次需从 dom 里加载出 contentTable
+        if (this.state.contentTable === undefined) {
+            let contentTable = getContentTableFromDOM(document.getElementById(contentDOMId))
+            this.setState({contentTable})
+        }
+
+        if (this.state.isShow === false) {
+            showContentTable()
+            this.setState({isShow: true})
+        } else {
+            hiddenContentTable()
+            this.setState({isShow: false})
+        }
+    }
 }
 
-function showContentTable(contentDOMId) {
-    setTimeout(function() {
-        getContentTableFromDOM(document.getElementById(contentDOMId))
-    }, 100)
+function showContentTable() {
+
 }
 
 function hiddenContentTable() {

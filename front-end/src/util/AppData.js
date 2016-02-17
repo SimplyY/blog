@@ -3,8 +3,6 @@ import { ajaxGet } from './ajax'
 import { API_ROOT_URL, TAGS_URL, ARTICLES_URL } from '../consts/apis'
 import { TAG_STR, ARTICLE_STR, SORT_LIMIT_QUERY_STR, SORT_QUREY_STR, PATH_TYPE_IN_SPLIT_NUMBER } from '../consts/config'
 
-import * as text from '../consts/text'
-
 export let AppData = {
     // load functions
 
@@ -75,7 +73,7 @@ export let AppData = {
     },
 
     // model functions
-    
+
     getArticlesByTagId(allArticles, tags, tagId){
         let currentTag = AppData.getTagById(tags, tagId)
         if (currentTag === undefined) {
@@ -107,18 +105,6 @@ export let AppData = {
     formatArticleDate(date){
         return date.toISOString().substring(0, 10)
     },
-
-    getDifficultLevelByGrade(grade){
-        let difficultLevel
-        if (0 < grade && grade < 33) {
-            difficultLevel = text.EASY_TEXT
-        } else if (33 <= grade && grade <= 66) {
-            difficultLevel = text.NORMAL_TEXT
-        } else if (66 < grade && grade < 100) {
-            difficultLevel = text.DIFFICULT_TEXT
-        }
-        return difficultLevel
-    }
 }
 
 // 文章页面只加载一篇文章（article）

@@ -5,6 +5,10 @@ $vote-share-love-box-height: 60px;
     padding-bottom: $vote-share-love-box-height;
 
     @include box-grey-shadow($container-shadow-width)
+
+    :target {
+        @include anchor-highlight-animation(2.5s)
+    }
 }
 
 .article {

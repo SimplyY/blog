@@ -21,7 +21,6 @@ class Article extends Component {
         let { currentArticle } = this.props
         let currentArticleDOM = md2html(currentArticle.md)
 
-        let difficultLevel = AppData.getDifficultLevelByGrade(currentArticle.grade)
         let dateStr = AppData.formatArticleDate(currentArticle.date)
 
         return (
@@ -30,10 +29,6 @@ class Article extends Component {
                     <div className="author-info-wrapper">
                         <label>{text.AUTHOR}</label>
                         <p>{text.AUTHOR_NAME}</p>
-                    </div>
-                    <div className="difficult-info-wrapper">
-                        <label>{text.ARTICLE_DIFFCULT_LEVEL_TEXT}</label>
-                        <p>{difficultLevel}</p>
                     </div>
                     <div className="date-info-wrapper">
                         <label>{text.ARTICLE_DATE_LABEL_TEXT}</label>
@@ -48,7 +43,6 @@ class Article extends Component {
                 }} >
                 </article>
             </div>
-
         )
     }
 }
