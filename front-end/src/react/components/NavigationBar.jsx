@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 
-import {TAG_PATH} from '../../consts/config'
+import {TAG_PATH, HOT_PATH} from '../../consts/config'
 import * as text from '../../consts/text'
 
 class NavigationBar extends Component{
@@ -18,13 +18,21 @@ class NavigationBar extends Component{
         return (
             <div className="main-nav-bar">
                 <p className="home" onClick={() => {
-                        window.scrollTo(0, 0)
-                        this.dispatch(push('/'))
-                    }}>
+                    window.scrollTo(0, 0)
+                    this.dispatch(push('/'))
+                }}>
                     {text.AUTHOR_NAME}
                 </p>
                 <ol className="first-menus">
+
                     {tagsDOM}
+
+                    <li onClick={() => {
+                        window.scrollTo(0, 0)
+                        this.dispatch(push('/' + HOT_PATH))
+                    }}>
+                        {text.HOT_TEXT}
+                    </li>
                 </ol>
             </div>
         )

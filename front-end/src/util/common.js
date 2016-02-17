@@ -1,3 +1,7 @@
+export function getPathType(urlPathname) {
+    return urlPathname.split('/')[1]
+}
+
 export function isUrlInAnchor() {
     return location.href.indexOf('#') !== -1 && location.href.split('#')[1]
 }

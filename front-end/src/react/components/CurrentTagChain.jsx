@@ -4,8 +4,8 @@ import { Link } from 'react-router'
 
 import { AppData } from '../../util/AppData'
 
-import { TAG_PATH } from '../../consts/config'
-import { ALL_ARTICLES_STR } from '../../consts/text'
+import * as config from '../../consts/config'
+import * as text from '../../consts/text'
 
 class CurrentTagChain extends Component {
     constructor() {
@@ -25,28 +25,43 @@ class CurrentTagChain extends Component {
 
     getTagChainDOM() {
         let tagChainDOM
-        let { tags, currentTagId } = this.props
+        let { pathType, tags, currentTagId } = this.props
         let tag = AppData.getTagById(tags, currentTagId)
 
-        // 如果是没有 currentTag 的页面，就是所有文章页面
-        if (tag === undefined) {
-            tagChainDOM = (
-                <li>
-                    <Link to="/">{ALL_ARTICLES_STR}</Link>
-                </li>
-            )
-        }
-        if (tag !== undefined){
-            let tagChain = tag.parentsTagNameArray
-            tagChain = tagChain.map((item) => AppData.getTagByTagName(tags, item))
-            tagChain.push(tag)
-            tagChainDOM = tagChain.map(item => {
-                return (
-                    <li key={item._id} >
-                        <Link to={'/' + TAG_PATH + item._id}>{item.tagName}</Link>
+        switch (pathType) {
+            case config.TAG_STR:
+                let tagChain = tag.parentsTagNameArray
+                tagChain = tagChain.map((item) => AppData.getTagByTagName(tags, item))
+                tagChain.push(tag)
+                tagChainDOM = tagChain.map(item => {
+                    return (
+                        <li key={item._id} >
+                            <Link to={'/' + config.TAG_PATH + item._id}>{item.tagName}</Link>
+                        </li>
+                    )
+                })
+                break
+            case config.HOT_STR:
+                tagChainDOM = (
+                    <li>
+                        <Link to="/hot">{text.HOT_TEXT}</Link>
                     </li>
                 )
-            })
+                break
+            // root path case show all articles
+            case config.ROOT_STR:
+                tagChainDOM = (
+                    <li>
+                        <Link to="/">{text.ALL_ARTICLES_STR}</Link>
+                    </li>
+                )
+                break
+            default:
+                tagChainDOM = (
+                    <li>
+                        <Link to="/">{text.ALL_ARTICLES_STR}</Link>
+                    </li>
+                )
         }
         return tagChainDOM
     }

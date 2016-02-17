@@ -19,7 +19,7 @@ class App extends Component {
                     <div className="main-container">
                         {children}
                     </div>
-                    <InfoSideBar />
+                    <InfoSideBar tags={tags} />
                 </div>
                 <Footer />
             </div>

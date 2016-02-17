@@ -90,6 +90,14 @@ export let AppData = {
         return articles
     },
 
+    getHotSortedArticles(allArticles) {
+        return allArticles.sort((a, b) => getHotWeight(b) - getHotWeight(a))
+
+        function getHotWeight(article) {
+            return article.loveNumber + article.shareNumber + article.comments.length
+        }
+    },
+
     getTagById(tags, tagId){
         return tags.find(item => item._id === tagId)
     },

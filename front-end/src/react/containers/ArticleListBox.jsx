@@ -10,6 +10,8 @@ import InvalidUrlBox from '../containers/InvalidUrlBox'
 import ArticleList from '../components/ArticleList'
 import CurrentTagChain from '../components/CurrentTagChain'
 
+import { getPathType } from '../../util/common'
+import * as config from '../../consts/config'
 import { INVALED_TAG_URL_TIP } from '../../consts/text'
 
 class ArticleListBox extends Component {
@@ -17,21 +19,25 @@ class ArticleListBox extends Component {
         super()
     }
     render() {
-        let { articles, tags, showMoreArticle, showedArticlesMaxNumber } = this.props
+        let {
+            articles, tags, showMoreArticle, showedArticlesMaxNumber,
+            urlPathname
+        } = this.props
         const tagId = this.props.params.tagId
 
-        let showedArticles = getShowedArticles(articles, tags, tagId)
+        let pathType = getPathType(urlPathname)
+        let showedArticles = getShowedArticles(pathType, articles, tags, tagId)
 
-        // if tagId is illeagal
+        // if url is illeagal
         if (showedArticles === undefined) {
             return (
                 <InvalidUrlBox info={INVALED_TAG_URL_TIP} />
             )
         }
-        
+
         return (
             <div className="article-list-box">
-                <CurrentTagChain tags={tags} currentTagId={tagId} />
+                <CurrentTagChain pathType={pathType} tags={tags} currentTagId={tagId} />
                 <ArticleList showedArticles={showedArticles}
                     showMoreArticle={showMoreArticle}
                     showedArticlesMaxNumber={showedArticlesMaxNumber} />
@@ -40,16 +46,22 @@ class ArticleListBox extends Component {
     }
 }
 
-function getShowedArticles(articles, tags, tagId) {
+function getShowedArticles(pathType, articles, tags, tagId) {
     let showedArticles
-    // url in /tag/:tagId
-    if (tagId !== undefined) {
-        showedArticles = AppData.getArticlesByTagId(articles, tags, tagId)
-
-    }
-    // url in routes root or blog etc show allArticles
-    if (tagId === undefined) {
-        showedArticles = articles
+    // get showedArticles by url path type
+    switch (pathType) {
+        case config.HOT_STR:
+            showedArticles = AppData.getHotSortedArticles(articles)
+            break
+        case config.TAG_STR:
+            showedArticles = AppData.getArticlesByTagId(articles, tags, tagId)
+            break
+        // root path case show all articles
+        case config.ROOT_STR:
+            showedArticles = articles
+            break
+        default:
+            showedArticles = undefined
     }
     return showedArticles
 }
@@ -58,7 +70,9 @@ function mapStateToProps(state) {
     return {
         tags: state.data.get('tags').toJS(),
         articles: state.data.get('articles').toJS(),
-        showedArticlesMaxNumber: state.data.get('showedArticlesMaxNumber')
+        showedArticlesMaxNumber: state.data.get('showedArticlesMaxNumber'),
+
+        urlPathname: state.routing.location.pathname
     }
 }
 

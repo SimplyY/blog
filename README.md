@@ -57,8 +57,8 @@ js: react redux chartjs
 #### 组件结构
 - root
     - app(common part)
-        - NavigationBar (TODO:编程 生活 诗集 电影 最热）
-        - InfoSideBar(TODO:right)
+        - NavigationBar (编程 生活 诗集 电影 最热）
+        - InfoSideBar(right)
             - ColumnTag(三级标签)
             - personalInfo(zhihu weibo email)
             - github info (https://github.com/lepture/github-cards)
@@ -72,10 +72,9 @@ js: react redux chartjs
             - ContentTable
             - CurrentTagChain
             - Article
-                - ArticleInfo（时间，难易度：简单、中等、难....）
+                - ArticleInfo（作者，时间）
                 - ArticleMd(md 渲染, 正文锚点功能)
-            - VoteShareLoveBox(投票功能,难度等级，grade)
-                - vote
+            - ShareLoveBox
                 - share
                 - love
             - CommentBox(antd 表单)

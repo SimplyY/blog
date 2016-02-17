@@ -12,7 +12,7 @@ class Article extends Component {
     }
 
     componentDidMount() {
-        if (isUrlInAnchor) {
+        if (isUrlInAnchor()) {
             showAnchor()
         }
     }
