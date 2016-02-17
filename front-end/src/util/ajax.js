@@ -8,7 +8,8 @@ export function ajaxGet(url) {
             .then(parseJSON)
             .then(data => {
                 resolve(data)
-            }).catch(error => {
+            })
+            .catch(error => {
                 if (error !== undefined) {
                     console.log('ajaxGet error', error)
                     reject(error)
@@ -26,9 +27,11 @@ export function ajaxPut(url, changeInfo) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(changeInfo)
-        }).then(res => {
+        })
+        .then(res => {
             resolve(res)
-        }).catch(error => {
+        })
+        .catch(error => {
             reject(error)
         })
     });
@@ -37,7 +40,8 @@ export function ajaxPut(url, changeInfo) {
 function checkStatus(response) {
     if (response.status >= 200 && response.status < 300) {
         return response
-    } else {
+    }
+    else {
         var error = new Error(response.statusText)
         error.response = response
         throw error

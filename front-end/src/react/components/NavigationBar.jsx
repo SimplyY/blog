@@ -13,7 +13,6 @@ class NavigationBar extends Component{
 
     render() {
         let { tags } = this.props
-
         let tagsDOM = buildTagsDOMBytTags(tags, this)
 
         return (
@@ -36,9 +35,10 @@ function buildTagsDOMBytTags(tags, that) {
     let tagsDOM = []
     tags.forEach((item) => {
         if (item.tagRank === 1) {
-            let childrenTagDoms
+            // 构造二级 tag DOM
+            let childrenTagsDOM
             if (item.childrenTags !== undefined) {
-                childrenTagDoms = item.childrenTags.map(item => {
+                childrenTagsDOM = item.childrenTags.map(item => {
                     return (
                         <li key={item._id} onClick={(e) => {
                             window.scrollTo(0, 0)
@@ -50,7 +50,7 @@ function buildTagsDOMBytTags(tags, that) {
                     )
                 })
             }
-
+            // 构造一级 tag DOM
             tagsDOM.push(
                 <li key={item._id} onClick={() => {
                         window.scrollTo(0, 0)
@@ -58,7 +58,7 @@ function buildTagsDOMBytTags(tags, that) {
                     }} >
                     {item.tagName}
                     <ol className="second-menus">
-                        {childrenTagDoms}
+                        {childrenTagsDOM}
                     </ol>
                 </li>
             )

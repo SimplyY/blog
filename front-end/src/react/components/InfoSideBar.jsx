@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux'
 
 class InfoBox extends Component{
     constructor() {
@@ -13,4 +12,4 @@ class InfoBox extends Component{
         )
     }
 }
-export default connect()(InfoBox)
+export default InfoBox

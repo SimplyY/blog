@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 
 import { AppData } from '../../util/AppData'
 import { md2html } from '../../util/md'
-import { anchorHandler, showAnchor } from '../../util/common'
+import { anchorHandler, showAnchor, isUrlInAnchor } from '../../util/common'
 
 import * as text from '../../consts/text'
 
@@ -12,7 +12,7 @@ class Article extends Component {
     }
 
     componentDidMount() {
-        if (location.href.indexOf('#') !== -1 && location.href.split('#')[1]) {
+        if (isUrlInAnchor) {
             showAnchor()
         }
     }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-class VoteShareLoveBox extends Component {
+class ShareLoveBox extends Component {
     constructor() {
         super()
         this.state = {
@@ -60,4 +60,4 @@ function shareInfo2clipboard(currentArticle) {
     window.prompt('你正在分享这篇博文\n将分享信息复制到剪贴板: Ctrl+C, Enter（回车）\n然后发到任何你想发的地方吧', shareInfo);
 }
 
-export default VoteShareLoveBox
+export default ShareLoveBox

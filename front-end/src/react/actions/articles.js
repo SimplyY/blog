@@ -38,11 +38,3 @@ export function addArticleShareNumberAction(_id, addNumber) {
         addNumber
     }
 }
-
-export function changeArticleGradeAction(_id, changeGrade) {
-    return {
-        type: ActionTypes.CHANGE_ARTICLE_GRADE,
-        _id,
-        changeGrade
-    }
-}

@@ -11,11 +11,23 @@ class CurrentTagChain extends Component {
     constructor() {
         super()
     }
+
     render() {
+        let tagChainDOM = this.getTagChainDOM()
+        return (
+            <div className="tag-chain">
+                <ol>
+                    {tagChainDOM}
+                </ol>
+            </div>
+        )
+    }
+
+    getTagChainDOM() {
+        let tagChainDOM
         let { tags, currentTagId } = this.props
         let tag = AppData.getTagById(tags, currentTagId)
 
-        let tagChainDOM
         // 如果是没有 currentTag 的页面，就是所有文章页面
         if (tag === undefined) {
             tagChainDOM = (
@@ -36,14 +48,7 @@ class CurrentTagChain extends Component {
                 )
             })
         }
-
-        return (
-            <div className="tag-chain">
-                <ol>
-                    {tagChainDOM}
-                </ol>
-            </div>
-        )
+        return tagChainDOM
     }
 }
 

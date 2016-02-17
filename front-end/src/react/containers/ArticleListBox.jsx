@@ -20,22 +20,15 @@ class ArticleListBox extends Component {
         let { articles, tags, showMoreArticle, showedArticlesMaxNumber } = this.props
         const tagId = this.props.params.tagId
 
-        let showedArticles
-        // url in /tag/:tagId
-        if (tagId !== undefined) {
-            showedArticles = AppData.getArticlesByTagId(articles, tags, tagId)
-            // tagId is illeagal
-            if (showedArticles === undefined) {
-                return (
-                    <InvalidUrlBox info={INVALED_TAG_URL_TIP} />
-                )
-            }
-        }
-        // url in routes root or blog etc show allArticles
-        if (tagId === undefined) {
-            showedArticles = articles
-        }
+        let showedArticles = getShowedArticles(articles, tags, tagId)
 
+        // if tagId is illeagal
+        if (showedArticles === undefined) {
+            return (
+                <InvalidUrlBox info={INVALED_TAG_URL_TIP} />
+            )
+        }
+        
         return (
             <div className="article-list-box">
                 <CurrentTagChain tags={tags} currentTagId={tagId} />
@@ -45,6 +38,20 @@ class ArticleListBox extends Component {
             </div>
         )
     }
+}
+
+function getShowedArticles(articles, tags, tagId) {
+    let showedArticles
+    // url in /tag/:tagId
+    if (tagId !== undefined) {
+        showedArticles = AppData.getArticlesByTagId(articles, tags, tagId)
+
+    }
+    // url in routes root or blog etc show allArticles
+    if (tagId === undefined) {
+        showedArticles = articles
+    }
+    return showedArticles
 }
 
 function mapStateToProps(state) {

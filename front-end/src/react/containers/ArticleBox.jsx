@@ -8,9 +8,13 @@ import { AppData } from '../../util/AppData'
 
 import * as action from '../actions/articles'
 
+import InvalidUrlBox from '../containers/InvalidUrlBox'
+
 import Article from '../components/Article'
 import CurrentTagChain from '../components/CurrentTagChain'
-import VoteShareLoveBox from '../components/VoteShareLoveBox'
+import ShareLoveBox from '../components/ShareLoveBox'
+
+import { INVALED_TAG_URL_TIP } from '../../consts/text'
 
 class ArticleBox extends Component {
     constructor() {
@@ -20,7 +24,7 @@ class ArticleBox extends Component {
     shouldComponentUpdate(nextProps){
         let nextArticle = AppData.getAricleByArticleId(nextProps.articles, nextProps.params.articleId)
         let oldArticle = AppData.getAricleByArticleId(this.props.articles, this.props.params.articleId)
-
+        // use lodash (deep)isEqual
         return !_.isEqual(nextArticle, oldArticle)
     }
 
@@ -35,11 +39,17 @@ class ArticleBox extends Component {
         let currentArticle = AppData.getAricleByArticleId(articles, articleId)
         let currentTag = AppData.getTagByTagName(tags, currentArticle.parentTagName)
 
+        if (currentArticle === undefined) {
+            return (
+                <InvalidUrlBox info={INVALED_TAG_URL_TIP} />
+            )
+        }
+
         return (
             <div className="article-box">
                 <CurrentTagChain tags={tags} currentTagId={currentTag._id} />
                 <Article currentArticle={currentArticle} />
-                <VoteShareLoveBox currentArticle={currentArticle}
+                <ShareLoveBox currentArticle={currentArticle}
                     addArticleLoveNumber={addArticleLoveNumber}
                     addArticleShareNumber={addArticleShareNumber} />
             </div>

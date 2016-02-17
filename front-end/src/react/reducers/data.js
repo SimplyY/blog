@@ -34,10 +34,7 @@ export default createReducer(initialState, {
     ),
     [ActionTypes.ADD_ARTICLE_SHARE_NUMBER]: (state, action) => mergeStateByArticle(
         state, action._id, 'shareNumber', action.addNumber
-    ),
-    [ActionTypes.CHANGE_ARTICLE_GRADE]: (state, action) => mergeStateByArticle(
-        state, action._id, 'grade', action.changeGrade
-    ),
+    )
 })
 
 
