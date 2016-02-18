@@ -1,3 +1,8 @@
+export function enterNewRouter(path, dispatch, push) {
+    window.scrollTo(0, 0)
+    dispatch(push('/'))
+}
+
 export function getPathType(urlPathname) {
     return urlPathname.split('/')[1]
 }

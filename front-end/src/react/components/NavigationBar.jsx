@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 
+import { enterNewRouter } from '../../util/common'
+
 import {TAG_PATH, HOT_PATH} from '../../consts/config'
 import * as text from '../../consts/text'
 
@@ -13,13 +15,12 @@ class NavigationBar extends Component{
 
     render() {
         let { tags } = this.props
-        let tagsDOM = buildTagsDOMBytTags(tags, this)
+        let tagsDOM = buildTagsDOMBytTags(tags, this.dispatch)
 
         return (
             <div className="main-nav-bar">
                 <p className="home" onClick={() => {
-                    window.scrollTo(0, 0)
-                    this.dispatch(push('/'))
+                    enterNewRouter('/', this.dispatch, push)
                 }}>
                     {text.AUTHOR_NAME}
                 </p>
@@ -28,8 +29,7 @@ class NavigationBar extends Component{
                     {tagsDOM}
 
                     <li onClick={() => {
-                        window.scrollTo(0, 0)
-                        this.dispatch(push('/' + HOT_PATH))
+                        enterNewRouter('/' + HOT_PATH, this.dispatch, push)
                     }}>
                         {text.HOT_TEXT}
                     </li>
@@ -39,7 +39,7 @@ class NavigationBar extends Component{
     }
 }
 
-function buildTagsDOMBytTags(tags, that) {
+function buildTagsDOMBytTags(tags, dispatch) {
     let tagsDOM = []
     tags.forEach((item) => {
         if (item.tagRank === 1) {
@@ -49,8 +49,7 @@ function buildTagsDOMBytTags(tags, that) {
                 childrenTagsDOM = item.childrenTags.map(item => {
                     return (
                         <li key={item._id} onClick={(e) => {
-                            window.scrollTo(0, 0)
-                            that.dispatch(push('/' + TAG_PATH + item._id))
+                            enterNewRouter('/' + TAG_PATH, dispatch, push)
                             e.stopPropagation()
                         }} >
                             {item.tagName}
@@ -61,8 +60,7 @@ function buildTagsDOMBytTags(tags, that) {
             // 构造一级 tag DOM
             tagsDOM.push(
                 <li key={item._id} onClick={() => {
-                        window.scrollTo(0, 0)
-                        that.dispatch(push('/' + TAG_PATH + item._id))
+                        enterNewRouter('/' + TAG_PATH + item._id, dispatch, push)
                     }} >
                     {item.tagName}
                     <ol className="second-menus">
