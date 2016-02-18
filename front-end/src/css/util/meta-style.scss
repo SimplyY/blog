@@ -18,7 +18,7 @@
 
 @mixin arrow-char-style($padding-v, $font-weight: 500) {
     padding: 0 $padding-v;
-    font-family: "Lucida Grande";
+    font-family: "Lucida Grande sans-serif";
     font-weight: $font-weight
 }
 
