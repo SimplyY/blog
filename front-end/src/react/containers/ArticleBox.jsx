@@ -14,6 +14,7 @@ import Article from '../components/Article'
 import CurrentTagChain from '../components/CurrentTagChain'
 import ShareLoveBox from '../components/ShareLoveBox'
 
+import { getPathType } from '../../util/common'
 import { INVALED_TAG_URL_TIP } from '../../consts/text'
 
 class ArticleBox extends Component {
@@ -30,12 +31,14 @@ class ArticleBox extends Component {
 
     render() {
         let {
+            urlPathname,
             tags, articles,
             addArticleLoveNumber, addArticleShareNumber
         } = this.props
 
         const { articleId } = this.props.params
 
+        let pathType = getPathType(urlPathname)
         let currentArticle = AppData.getAricleByArticleId(articles, articleId)
         let currentTag = AppData.getTagByTagName(tags, currentArticle.parentTagName)
 
@@ -47,7 +50,7 @@ class ArticleBox extends Component {
 
         return (
             <div className="article-box">
-                <CurrentTagChain tags={tags} currentTagId={currentTag._id} />
+                <CurrentTagChain pathType={pathType} tags={tags} currentTagId={currentTag._id} />
                 <Article currentArticle={currentArticle} />
                 <ShareLoveBox currentArticle={currentArticle}
                     addArticleLoveNumber={addArticleLoveNumber}
@@ -60,7 +63,9 @@ class ArticleBox extends Component {
 function mapStateToProps(state) {
     return {
         tags: state.data.get('tags').toJS(),
-        articles: state.data.get('articles').toJS()
+        articles: state.data.get('articles').toJS(),
+
+        urlPathname: state.routing.location.pathname
     }
 }
 

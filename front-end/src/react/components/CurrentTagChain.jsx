@@ -30,16 +30,10 @@ class CurrentTagChain extends Component {
 
         switch (pathType) {
             case config.TAG_STR:
-                let tagChain = tag.parentsTagNameArray
-                tagChain = tagChain.map((item) => AppData.getTagByTagName(tags, item))
-                tagChain.push(tag)
-                tagChainDOM = tagChain.map(item => {
-                    return (
-                        <li key={item._id} >
-                            <Link to={'/' + config.TAG_PATH + item._id}>{item.tagName}</Link>
-                        </li>
-                    )
-                })
+                tagChainDOM = getTagChainDOM(tag, tags)
+                break
+            case config.ARTICLE_STR:
+                tagChainDOM = getTagChainDOM(tag, tags)
                 break
             case config.HOT_STR:
                 tagChainDOM = (
@@ -65,6 +59,20 @@ class CurrentTagChain extends Component {
         }
         return tagChainDOM
     }
+}
+
+function getTagChainDOM(tag, tags) {
+    let tagChain = tag.parentsTagNameArray
+    tagChain = tagChain.map((item) => AppData.getTagByTagName(tags, item))
+    tagChain.push(tag)
+    let tagChainDOM = tagChain.map(item => {
+        return (
+            <li key={item._id} >
+                <Link to={'/' + config.TAG_PATH + item._id}>{item.tagName}</Link>
+            </li>
+        )
+    })
+    return tagChainDOM
 }
 
 export default connect()(CurrentTagChain)

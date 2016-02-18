@@ -49,7 +49,7 @@ function buildTagsDOMBytTags(tags, dispatch) {
                 childrenTagsDOM = item.childrenTags.map(item => {
                     return (
                         <li key={item._id} onClick={e => {
-                            enterNewRouter('/' + TAG_PATH, dispatch, push)
+                            enterNewRouter('/' + TAG_PATH + item._id, dispatch, push)
                             e.stopPropagation()
                         }} >
                             {item.tagName}
