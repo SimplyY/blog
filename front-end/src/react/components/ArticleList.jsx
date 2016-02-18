@@ -45,7 +45,7 @@ function getClickMoreDOM(showedArticles, showedArticlesMaxNumber, showMoreArticl
 }
 
 function getArticlesListDOM(routerDispatch, factShowedArticles) {
-    return factShowedArticles.map((item) => {
+    return factShowedArticles.map(item => {
         let loveNumber = Math.ceil(item.loveNumber)
         let shareNumber = Math.ceil(item.shareNumber)
         let dateStr = AppData.formatArticleDate(item.date)

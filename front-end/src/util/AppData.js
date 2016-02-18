@@ -7,18 +7,24 @@ export let AppData = {
     // load functions
 
     // 针对文章数量多且大的特点，于是做了加载优化，只加载了必须的文章
-    // 通过 url 判断，如果为文章页面，只加载一篇文章（article）
-    // 如果为 tag 页面或者根页面加载，只 limited articles
     loadMustData() {
         return new Promise(function(resolve, reject) {
             let pTags = ajaxGet(API_ROOT_URL + TAGS_URL)
+
+            // 通过 url 判断，如果为文章页面，只加载一篇文章（article）
+            // 如果为 tag 页面或者根页面，只加载 limited articles
             let { pArticle, pArticles } = getMustArticlesJudgeFromUrl(document.URL)
 
+            // 非 tag、article页面，只显示需要 tag 的 navgation-bar
             if (pArticle === undefined && pArticles === undefined) {
-                return
+                pTags.then(tags => {
+                    let articles = []
+                    let mustData = { tags, articles }
+                    resolve(mustData)
+                })
             }
 
-            // tag 页面
+            // tag 页面或根页面
             if (pArticle === undefined) {
                 Promise.all([pTags, pArticles])
                     .then(datas => {
@@ -127,11 +133,13 @@ function getMustArticlesJudgeFromUrl(url) {
         let articleId = getIdStr(params)
         pArticle = ajaxGet(API_ROOT_URL + ARTICLES_URL + articleId)
         // pArticles will be undefined
-    } else if (pathTypeStr === TAG_STR || pathTypeStr === '') {
+    }
+    else if (pathTypeStr === TAG_STR || pathTypeStr === '') {
         var latestArticleQurey = API_ROOT_URL + ARTICLES_URL + SORT_LIMIT_QUERY_STR
         pArticles = ajaxGet(latestArticleQurey)
         // pArticle will be undefined
-    } else {
+    }
+    else {
         // other situation will all undefined
     }
 

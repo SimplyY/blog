@@ -15,7 +15,7 @@ let store = createConfigureStore();
 
 // 先加载 mustData 再加载 allArticles
 AppData.loadMustData()
-    .then((data) => {
+    .then(data => {
         store.dispatch(loadMustDataAction(data))
         render(
             <Root store={store} />,
