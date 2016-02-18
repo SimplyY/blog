@@ -28,7 +28,7 @@ class Article extends Component {
                 <div className="article-info">
                     <div className="author-info-wrapper">
                         <label>{text.AUTHOR}</label>
-                        <p>{text.AUTHOR_NAME}</p>
+                        <p>{text.MY_NAME}</p>
                     </div>
                     <div className="date-info-wrapper">
                         <label>{text.ARTICLE_DATE_LABEL_TEXT}</label>

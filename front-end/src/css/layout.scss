@@ -1,10 +1,10 @@
 // layout
-$nav-height: 45px;
+$nav-height: 48px;
 $footer-height: $nav-height;
 
 $body-max-width: 1080px;
-$main-container-width: 75%;
-$sidebar-width: 20%;
+$main-container-width: 74%;
+$sidebar-width: 22%;
 
 // layout margin
 $nav-body-margin: 30px;
@@ -15,6 +15,7 @@ $body-footer-margin: 50px;
 
 html, body {
     height:100%;
+    background-color: $light-silver;
 }
 #root {
     min-height:100%;
@@ -26,8 +27,9 @@ html, body {
     width: 100%;
     height: $nav-height;
     background-color: white;
-    z-index: 99;
+    z-index: 999;
     @include box-grey-shadow($nav-box-shadow-width)
+    background-color: white;
 }
 
 .main-body {
@@ -38,15 +40,18 @@ html, body {
 
 .main-container {
     float: left;
+    display: inline;
     width: $main-container-width;
     margin-right: $container-sidebar-margin;
+    background-color: white;
 }
 
 .main-sidebar {
     float: left;
+    display: inline;
     width: $sidebar-width;
-    height: 400px;
     @include box-grey-shadow($container-shadow-width)
+    background-color: white;
 }
 
 .main-footer {

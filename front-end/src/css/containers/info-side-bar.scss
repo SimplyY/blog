@@ -1,0 +1,90 @@
+$info-height: 25px;
+
+.main-sidebar {
+    padding: $main-container-padding-h $main-container-padding-v
+}
+
+.personal-info {
+    padding-top: 10px;
+
+    .avator-info {
+        padding: 10px 0;
+        .avator {
+            display: block;
+            max-width: 80%;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+        .avator-name {
+            font-size: 24px;
+            line-height: 40px;
+            color: #666;
+            font-weight: 300;
+            @include vertical-center(90px)
+        }
+    }
+
+    .social-info {
+        padding: 10px 5px;
+        @include silver-border-top
+    }
+
+    .github-info, .email-info, .zhihu-info, .weibo-info {
+        height: $info-height;
+        display: inline-block;
+        div {
+            display: inline-block;
+            line-height: $info-height;
+            margin-right: 6px;
+        }
+        a {
+            display: inline-block;
+            font-size: 9px;
+            line-height: $info-height;
+            @include reset-link-style($grey)
+        }
+        a:hover {
+            @include reset-link-style(black)
+        }
+    }
+    .github-info, .zhihu-info {
+        width: 40%;
+    }
+}
+
+.column-tags {
+    .column-header {
+        @include silver-border-top
+        padding-top: 20px;
+    }
+
+    .column-header:after {
+        content: " :"
+    }
+
+    .column-list {
+        padding: 10px 0;
+    }
+
+    .column-item {
+        margin: 3px;
+        display: block;
+        color: $deep-grey;
+
+    }
+    .column-item:hover {
+        color: black;
+        cursor: pointer;
+    }
+
+    $arrow-padding: 3px;
+    .column-item:before {
+        content:"‹‹";
+        @include arrow-char-style($arrow-padding)
+    }
+
+    .column-item:after {
+        content:"››";
+        @include arrow-char-style($arrow-padding)
+    }
+}

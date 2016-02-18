@@ -22,7 +22,7 @@ class NavigationBar extends Component{
                 <p className="home" onClick={() => {
                     enterNewRouter('/', this.dispatch, push)
                 }}>
-                    {text.AUTHOR_NAME}
+                    {text.MY_NAME}
                 </p>
                 <ol className="first-menus">
 
@@ -48,7 +48,7 @@ function buildTagsDOMBytTags(tags, dispatch) {
             if (item.childrenTags !== undefined) {
                 childrenTagsDOM = item.childrenTags.map(item => {
                     return (
-                        <li key={item._id} onClick={(e) => {
+                        <li key={item._id} onClick={e => {
                             enterNewRouter('/' + TAG_PATH, dispatch, push)
                             e.stopPropagation()
                         }} >

@@ -15,6 +15,10 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
-.icon-link:before { content: "\e6e0"; }
-.icon-love05:before { content: "\e612"; }
-.icon-share:before { content: "\e60c"; }
+.icon-link:before { content: "\e600"; }
+.icon-weibo:before { content: "\e601"; }
+.icon-share:before { content: "\e602"; }
+.icon-github:before { content: "\e606"; }
+.icon-love05:before { content: "\e603"; }
+.icon-mail:before { content: "\e604"; }
+.icon-zhihu:before { content: "\e605"; }

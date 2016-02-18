@@ -7,8 +7,8 @@
     text-decoration: none;
 }
 
-@mixin box-grey-shadow($width: 20px){
-    box-shadow: 0 0 $width grey;
+@mixin box-grey-shadow($width: 15px){
+    box-shadow: 0 2px $width grey;
 }
 
 @mixin vertical-center($max-width){
@@ -16,22 +16,15 @@
     margin: 0 auto;
 }
 
+@mixin arrow-char-style($padding-v, $font-weight: 500) {
+    padding: 0 $padding-v;
+    font-family: "Lucida Grande";
+    font-weight: $font-weight
+}
+
 @mixin be-brey-animation(){
     animation: be-grey .4s ease-out 0s normal forwards;
 }
-
-@mixin anchor-highlight-animation($time){
-    animation: anchor-change $time ease-in 0s normal forwards;
-}
-
-.clear-float:after {
-    content:".";
-    display:block;
-    height:0;
-    visibility:hidden;
-    clear:both;
-}
-
 @keyframes be-grey {
     from {
         background-color: $light-silver;
@@ -41,6 +34,9 @@
     }
 }
 
+@mixin anchor-highlight-animation($time){
+    animation: anchor-change $time ease-in 0s normal forwards;
+}
 @keyframes anchor-change {
     from {
         color: Brown;
@@ -48,4 +44,13 @@
     to {
         color: black;
     }
+}
+
+
+.clear-float:after {
+    content:".";
+    display:block;
+    height:0;
+    visibility:hidden;
+    clear:both;
 }

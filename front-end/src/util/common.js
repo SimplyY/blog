@@ -1,6 +1,6 @@
 export function enterNewRouter(path, dispatch, push) {
     window.scrollTo(0, 0)
-    dispatch(push('/'))
+    dispatch(push(path))
 }
 
 export function getPathType(urlPathname) {

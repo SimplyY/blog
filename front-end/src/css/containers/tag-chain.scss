@@ -20,8 +20,6 @@
     // element >=2
     li:nth-of-type(n+2):before{
         content:"›";
-        padding: 0 7px;
-        font-family: "Lucida Grande";
-        font-weight: 500;
+        @include arrow-char-style(7px)
     }
 }

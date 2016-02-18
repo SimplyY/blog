@@ -6,6 +6,7 @@ import { AppData } from '../../util/AppData'
 import { enterNewRouter } from '../../util/common'
 
 import { ARTICLE_PATH, SHOW_MORE_ARTICLES_NUMBER } from '../../consts/config'
+import * as img from '../../consts/img'
 import * as text from '../../consts/text'
 
 class ArticleList extends Component {
@@ -58,11 +59,13 @@ function getArticlesListDOM(dispatch, factShowedArticles) {
                 <div className="title">{item.title}</div>
                 <div className="love-share-info">
                     <div className="articlelist-love-box">
-                        <i className="iconfont article-list-love">&#xe612;</i>
+                        <div className="iconfont article-list-love"
+                             dangerouslySetInnerHTML={{__html: img.LOVE_ICONFONT}}></div>
                         <div>{loveNumber}</div>
                     </div>
                     <div className="articlelist-share-box">
-                        <i className="iconfont article-list-share">&#xe60c;</i>
+                        <div className="iconfont article-list-share"
+                            dangerouslySetInnerHTML={{__html: img.SHARE_ICONFONT}}></div>
                         <div>{shareNumber}</div>
                     </div>
                 </div>

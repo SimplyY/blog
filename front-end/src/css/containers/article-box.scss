@@ -36,3 +36,13 @@ $vote-share-love-box-height: 60px;
         display: inline;
     }
 }
+
+.iconfont.article-anchor {
+    @include reset-link-style($light-grey);
+    font-weight: lighter;
+    padding-right: 3px;
+    padding-bottom: 3px;
+}
+.iconfont.article-anchor:hover {
+    @include reset-link-style(black);
+}

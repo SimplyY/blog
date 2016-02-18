@@ -21,17 +21,19 @@
 
     p {
         position: relative;
-        top:-3px;
+        top: -3px;
     }
 
     .article-love {
-        font-size:26px;
+        position: relative;
+        top: -1px;
+        font-size: 26px;
     }
     .article-share {
-        font-size:16px;
-        padding-right:5px;
+        font-size: 23px;
+        padding-right: 2px;
 
         position: relative;
-        top:-3px;
+        top: -2px;
     }
 }

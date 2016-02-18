@@ -792,6 +792,7 @@ Renderer.prototype.html = function(html) {
   return html;
 };
 
+var img = require('../src/consts/img')
 Renderer.prototype.heading = function(text, level, raw) {
     var anchor
     var matches = /(.*)\[(.*)\]\(.*\)(.*)/.exec(raw)
@@ -800,7 +801,7 @@ Renderer.prototype.heading = function(text, level, raw) {
     } else {
         anchor = text
     }
-    var tagA = '<a href="#' + anchor + '" class="iconfont article-anchor">&#xe6e0  </a>'
+    var tagA = '<a href="#' + anchor + '" class="iconfont article-anchor">'+ img.ANCHOR_ICONFONT + '</a>'
 
 
   return '<h'

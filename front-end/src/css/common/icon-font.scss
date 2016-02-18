@@ -1,12 +1,3 @@
-.iconfont.article-anchor {
-    @include reset-link-style($light-grey);
-    font-weight: lighter;
-}
-.iconfont.article-anchor:hover {
-    @include reset-link-style($black);
-    font-weight: lighter;
-}
-
 @font-face {font-family: 'iconfont';
     src: url('../font/iconfont.eot'); /* IE9*/
     src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */

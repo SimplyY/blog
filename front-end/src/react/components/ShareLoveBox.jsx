@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+import * as img from '../../consts/img'
+
 class ShareLoveBox extends Component {
     constructor() {
         super()
@@ -16,11 +18,13 @@ class ShareLoveBox extends Component {
             <div>
                 <div className="love-and-share">
                     <div className='love-box' onClick={this.toggleLove.bind(this)}>
-                        <i className="iconfont article-love">&#xe612;</i>
+                        <div className="iconfont article-love"
+                            dangerouslySetInnerHTML={{__html: img.LOVE_ICONFONT}}></div>
                         <p>{'喜欢 ( ' + currentArticle.loveNumber + ' )'}</p>
                     </div>
                     <div className="share-box" onClick={this.toggleShare.bind(this)}>
-                        <i className="iconfont article-share">&#xe60c;</i>
+                        <div className="iconfont article-share"
+                            dangerouslySetInnerHTML={{__html: img.SHARE_ICONFONT}}></div>
                         <p>{'分享 ( ' + currentArticle.shareNumber + ' )'}</p>
                     </div>
                 </div>
