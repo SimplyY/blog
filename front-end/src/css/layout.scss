@@ -1,6 +1,5 @@
 // layout
 $nav-height: 48px;
-$footer-height: $nav-height;
 
 $body-max-width: 1080px;
 $main-container-width: 74%;
@@ -10,7 +9,6 @@ $sidebar-width: 22%;
 $nav-body-margin: 30px;
 $body-top-margin: $nav-height + $nav-body-margin;
 $container-sidebar-margin: 100% - $main-container-width - $sidebar-width;
-$body-footer-margin: 50px;
 
 
 html, body {
@@ -35,7 +33,7 @@ html, body {
 .main-body {
     @include vertical-center($body-max-width);
     padding-top: $body-top-margin;
-    padding-bottom: $body-footer-margin + $footer-height;
+    padding-bottom: $body-top-margin;
 }
 
 .main-container {
@@ -52,12 +50,4 @@ html, body {
     width: $sidebar-width;
     @include box-grey-shadow($container-shadow-width)
     background-color: white;
-}
-
-.main-footer {
-    position:absolute;
-    bottom: 0;
-    width: 100%;
-    height: $footer-height;
-    background-color: $silver-sand;
 }

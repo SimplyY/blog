@@ -53,8 +53,7 @@
 }
 
 .click-more {
-    border-top: 1.5px solid $silver;
-    border-bottom: 1.5px solid $silver;
+    @include silver-border-top()
     padding: $main-container-padding-v 0;
 
     p {

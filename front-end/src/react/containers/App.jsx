@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 import NavigationBar from '../components/NavigationBar'
 import InfoSideBar from '../components/InfoSideBar'
-import Footer from '../components/Footer'
 
 class App extends Component {
     constructor() {
@@ -21,7 +20,6 @@ class App extends Component {
                     </div>
                     <InfoSideBar tags={tags} />
                 </div>
-                <Footer />
             </div>
         )
     }
