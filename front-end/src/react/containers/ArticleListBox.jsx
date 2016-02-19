@@ -12,7 +12,6 @@ import CurrentTagChain from '../components/CurrentTagChain'
 
 import { getPathType } from '../../util/common'
 import * as config from '../../consts/config'
-import { INVALED_TAG_URL_TIP } from '../../consts/text'
 
 class ArticleListBox extends Component {
     constructor() {
@@ -31,7 +30,7 @@ class ArticleListBox extends Component {
         // if url is illeagal
         if (showedArticles === undefined) {
             return (
-                <InvalidUrlBox info={INVALED_TAG_URL_TIP} />
+                <InvalidUrlBox />
             )
         }
 
