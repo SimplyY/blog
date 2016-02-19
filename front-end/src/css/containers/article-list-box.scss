@@ -51,3 +51,22 @@
         font-size: 20px;
     }
 }
+
+.click-more {
+    border-top: 1.5px solid $silver;
+    border-bottom: 1.5px solid $silver;
+    padding: $main-container-padding-v 0;
+
+    p {
+        color: $deep-grey;
+        @include vertical-center(42px)
+    }
+}
+.click-more:hover {
+    cursor: pointer;
+    @include be-brey-animation()
+
+    p {
+        color: black;
+    }
+}

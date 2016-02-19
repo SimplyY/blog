@@ -38,8 +38,8 @@ function getClickMoreDOM(showedArticles, showedArticlesMaxNumber, showMoreArticl
     let clickMoreDOM
     if (showedArticles.length > showedArticlesMaxNumber) {
         clickMoreDOM = (
-            <div onClick={() => showMoreArticle(SHOW_MORE_ARTICLES_NUMBER)} >
-                click more
+            <div className="click-more" onClick={() => showMoreArticle(SHOW_MORE_ARTICLES_NUMBER)} >
+                <p>More</p>
             </div>
         )
     }
