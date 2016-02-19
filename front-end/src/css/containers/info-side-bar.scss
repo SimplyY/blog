@@ -17,10 +17,11 @@ $info-height: 25px;
         }
         .avator-name {
             font-size: 24px;
-            line-height: 40px;
+            line-height: 45px;
+            padding-top: 5px;
             color: #666;
             font-weight: 300;
-            @include vertical-center(90px)
+            @include vertical-center(88px)
         }
     }
 
@@ -32,7 +33,7 @@ $info-height: 25px;
     .github-info, .email-info, .zhihu-info, .weibo-info {
         height: $info-height;
         display: inline-block;
-        div {
+        .iconfont {
             display: inline-block;
             line-height: $info-height;
             margin-right: 6px;
@@ -48,13 +49,25 @@ $info-height: 25px;
         }
     }
     .github-info, .zhihu-info {
-        width: 40%;
+        width: 38%;
+    }
+    .weibo-info {
+        .iconfont {
+            font-size: 20px;
+        }
+    }
+    .email-info {
+        .iconfont {
+            font-size: 18px;
+            padding: 0 1px;
+        }
     }
 }
 
 .column-tags {
     .column-header {
         @include silver-border-top
+        padding-left: 4px;
         padding-top: 20px;
     }
 
@@ -67,7 +80,7 @@ $info-height: 25px;
     }
 
     .column-item {
-        margin: 3px;
+        margin: 1px;
         display: block;
         color: $deep-grey;
 

@@ -15,7 +15,6 @@ import CurrentTagChain from '../components/CurrentTagChain'
 import ShareLoveBox from '../components/ShareLoveBox'
 
 import { getPathType } from '../../util/common'
-import { INVALED_TAG_URL_TIP } from '../../consts/text'
 
 class ArticleBox extends Component {
     constructor() {
@@ -44,7 +43,7 @@ class ArticleBox extends Component {
 
         if (currentArticle === undefined) {
             return (
-                <InvalidUrlBox info={INVALED_TAG_URL_TIP} />
+                <InvalidUrlBox />
             )
         }
 
