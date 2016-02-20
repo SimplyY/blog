@@ -1,5 +1,10 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+import {
+    showContentTableAction, hiddenContentTableAction, loadContentTableContentAction
+} from '../actions/contentTable'
 
 import NavigationBar from '../components/NavigationBar'
 import InfoSideBar from '../components/InfoSideBar'
@@ -10,12 +15,19 @@ class App extends Component {
         super()
     }
     render() {
-        const { children, tags } = this.props
+        const {
+            children, tags, contentTable,
+            showContentTable, hiddenContentTable, loadContentTableContent
+        } = this.props
 
         return (
             <div className="main-wrapper">
                 <NavigationBar tags={tags} />
-                <ContentTable contentDOMId='article-content' wrapperId='main-body'/>
+                <ContentTable contentDOMId='article-content' wrapperId='main-body'
+                    showContentTable={showContentTable}
+                    hiddenContentTable={hiddenContentTable}
+                    loadContentTableContent={loadContentTableContent}
+                    contentTable={contentTable} />
 
                 <div id="main-body" className="main-body clear-float">
                     <div className="main-container">
@@ -30,8 +42,17 @@ class App extends Component {
 
 function mapStateToProps(state) {
     return {
-        tags: state.data.get('tags').toJS()
+        tags: state.data.get('tags').toJS(),
+        contentTable: state.contentTable.toJS()
     }
 }
 
-export default connect(mapStateToProps)(App)
+function mapDispatchToProps(dispatch) {
+    return {
+        showContentTable: bindActionCreators(showContentTableAction, dispatch),
+        hiddenContentTable: bindActionCreators(hiddenContentTableAction, dispatch),
+        loadContentTableContent: bindActionCreators(loadContentTableContentAction, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

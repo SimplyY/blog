@@ -7,21 +7,23 @@ import { jumpToAnchor } from '../../util/common'
 class ContentTable extends Component {
     constructor() {
         super()
-        this.state = {
-            isShow: false,
-            contentTable: undefined
-        }
     }
 
     render() {
-        let contentTableDOM = this.getContentTableDOM(this.state.contentTable)
+        let { contentTable } = this.props
+        if (contentTable.appear === false) {
+        }
+
+        let contentTableDOM = this.getContentTableDOM(contentTable.content)
+
         let buttonClass = classNames({
             'content-table-button': true,
-            'content-table-button-clicked': this.state.isShow
+            'content-table-button-clicked': contentTable.isShow,
+            'content-table-button-disapper': !contentTable.appear
         })
         let sidebarClass = classNames({
             'content-table-sidebar': true,
-            'content-table-sidebar-show': this.state.isShow
+            'content-table-sidebar-show': contentTable.isShow
         })
 
         return (
@@ -37,21 +39,24 @@ class ContentTable extends Component {
     }
 
     toggleContentTable() {
-        let { contentDOMId } = this.props
+        let {
+            contentDOMId, contentTable,
+            showContentTable, hiddenContentTable, loadContentTableContent
+        } = this.props
 
         // 第一次需从 dom 里加载出 contentTable
-        if (this.state.contentTable === undefined) {
-            let contentTable = getContentTableFromDOM(document.getElementById(contentDOMId))
-            this.setState({contentTable})
+        if (contentTable.content === undefined) {
+            let contentTableContent = getContentTableContent(document.getElementById(contentDOMId))
+            loadContentTableContent(contentTableContent)
         }
 
         const wrapperMoveClass = ' wrapper-move'
-        if (this.state.isShow === false) {
-            showContentTable(wrapperMoveClass, this.props.wrapperId)
-            this.setState({isShow: true})
+        if (contentTable.isShow === false) {
+            wrapperMove(wrapperMoveClass, this.props.wrapperId)
+            showContentTable()
         } else {
-            hiddenContentTable(wrapperMoveClass, this.props.wrapperId)
-            this.setState({isShow: false})
+            wrapperReset(wrapperMoveClass, this.props.wrapperId)
+            hiddenContentTable()
         }
     }
 
@@ -72,17 +77,17 @@ class ContentTable extends Component {
     }
 }
 
-function showContentTable(wrapperMoveClass, wrapperId) {
+function wrapperMove(wrapperMoveClass, wrapperId) {
     let wrapperDOM = document.getElementById(wrapperId)
     wrapperDOM.className += wrapperMoveClass
 }
 
-function hiddenContentTable(wrapperMoveClass, wrapperId) {
+function wrapperReset(wrapperMoveClass, wrapperId) {
     let wrapperDOM = document.getElementById(wrapperId)
     wrapperDOM.className = wrapperDOM.className.replace(wrapperMoveClass, '' );
 }
 
-function getContentTableFromDOM(contentDOM) {
+function getContentTableContent(contentDOM) {
     let contentDOMArray = Array.prototype.slice.call(contentDOM.children)
     let contentTable = contentDOMArray.filter(item => {
         let tagNameArray = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6']

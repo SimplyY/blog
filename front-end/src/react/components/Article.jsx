@@ -15,6 +15,11 @@ class Article extends Component {
         if (isUrlInAnchor()) {
             showAnchor()
         }
+        this.props.appearContentTable()
+    }
+
+    componentWillUnmount() {
+        this.props.disappearContentTable()
     }
 
     render() {
@@ -48,5 +53,7 @@ class Article extends Component {
         )
     }
 }
+
+
 
 export default Article

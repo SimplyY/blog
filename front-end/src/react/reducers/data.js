@@ -19,7 +19,7 @@ const initialState = Immutable.fromJS({
 export default createReducer(initialState, {
     [ActionTypes.LOAD_MUST_DATA]: (state, action) => state.merge({
         articles: action.articles,
-        tags: action.tags,
+        tags: action.tags
     }),
     [ActionTypes.LOAD_ALL_ARTICLES]: (state, action) => state.merge({
         articles: action.articles

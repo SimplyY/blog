@@ -6,7 +6,8 @@ import _ from '../../../lib/lodash.core'
 
 import { AppData } from '../../util/AppData'
 
-import * as action from '../actions/articles'
+import { addArticleLoveNumberAction, addArticleShareNumberAction } from '../actions/articles'
+import { appearContentTableAction, disappearContentTableAction } from '../actions/contentTable'
 
 import InvalidUrlBox from '../containers/InvalidUrlBox'
 
@@ -32,7 +33,7 @@ class ArticleBox extends Component {
         let {
             urlPathname,
             tags, articles,
-            addArticleLoveNumber, addArticleShareNumber
+            addArticleLoveNumber, addArticleShareNumber, appearContentTable, disappearContentTable
         } = this.props
 
         const { articleId } = this.props.params
@@ -50,7 +51,9 @@ class ArticleBox extends Component {
         return (
             <div className="article-box">
                 <CurrentTagChain pathType={pathType} tags={tags} currentTagId={currentTag._id} />
-                <Article currentArticle={currentArticle} />
+                <Article currentArticle={currentArticle}
+                    appearContentTable={appearContentTable}
+                    disappearContentTable={disappearContentTable}/>
                 <ShareLoveBox currentArticle={currentArticle}
                     addArticleLoveNumber={addArticleLoveNumber}
                     addArticleShareNumber={addArticleShareNumber} />
@@ -70,8 +73,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        addArticleLoveNumber: bindActionCreators(action.addArticleLoveNumberAction, dispatch),
-        addArticleShareNumber: bindActionCreators(action.addArticleShareNumberAction, dispatch),
+        addArticleLoveNumber: bindActionCreators(addArticleLoveNumberAction, dispatch),
+        addArticleShareNumber: bindActionCreators(addArticleShareNumberAction, dispatch),
+        appearContentTable: bindActionCreators(appearContentTableAction, dispatch),
+        disappearContentTable: bindActionCreators(disappearContentTableAction, dispatch)
     }
 }
 
