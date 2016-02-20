@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server --hot --no-info"
   },
   "dependencies": {
-    "classnames": "^2.1.2",
+    "classnames": "^2.2.3",
     "css-loader": "^0.23.1",
     "immutable": "^3.7.6",
     "isomorphic-fetch": "^2.2.1",

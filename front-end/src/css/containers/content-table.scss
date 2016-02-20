@@ -1,0 +1,43 @@
+$content-table-sidebar-width: 200px;
+
+.content-table-button {
+    position: fixed;
+    left: 0;
+    top: $nav-height;
+    z-index: 999;
+    cursor: pointer;
+    @include translate3d-t()
+}
+
+.content-table-button-clicked {
+    color: white;
+}
+
+.content-table-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    @include translate3d-t(-$content-table-sidebar-width)
+
+    width: $content-table-sidebar-width;
+    overflow: scroll;
+}
+
+.content-table-sidebar-show {
+    @include translate3d-t()
+}
+
+.main-body {
+    @include translate3d-t()
+}
+.wrapper-move {
+    position: relative;
+    @include translate3d-t($content-table-sidebar-width)
+}
+
+.content-table-item {
+    display: block;
+    @include reset-link-style()
+}

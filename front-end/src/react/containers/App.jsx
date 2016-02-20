@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import NavigationBar from '../components/NavigationBar'
 import InfoSideBar from '../components/InfoSideBar'
+import ContentTable from '../components/ContentTable'
 
 class App extends Component {
     constructor() {
@@ -14,7 +15,9 @@ class App extends Component {
         return (
             <div className="main-wrapper">
                 <NavigationBar tags={tags} />
-                <div className="main-body clear-float">
+                <ContentTable contentDOMId='article-content' wrapperId='main-body'/>
+
+                <div id="main-body" className="main-body clear-float">
                     <div className="main-container">
                         {children}
                     </div>

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 
 import { AppData } from '../../util/AppData'
 import { md2html } from '../../util/md'
-import { anchorHandler, showAnchor, isUrlInAnchor } from '../../util/common'
+import { jumpToAnchor, showAnchor, isUrlInAnchor } from '../../util/common'
 
 import * as text from '../../consts/text'
 
@@ -39,7 +39,9 @@ class Article extends Component {
                 <article id="article-content" className="markdown-body"
                     dangerouslySetInnerHTML={{__html: currentArticleDOM}}
                     onClick={(e) => {
-                        anchorHandler(e)
+                        if (e.target.className === 'iconfont article-anchor') {
+                            jumpToAnchor(e)
+                        }
                 }} >
                 </article>
             </div>

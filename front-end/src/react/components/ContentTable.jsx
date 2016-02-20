@@ -1,5 +1,9 @@
 import React, {Component} from 'react'
 
+import classNames from 'classNames'
+
+import { jumpToAnchor } from '../../util/common'
+
 class ContentTable extends Component {
     constructor() {
         super()
@@ -10,10 +14,25 @@ class ContentTable extends Component {
     }
 
     render() {
+        let contentTableDOM = this.getContentTableDOM(this.state.contentTable)
+        let buttonClass = classNames({
+            'content-table-button': true,
+            'content-table-button-clicked': this.state.isShow
+        })
+        let sidebarClass = classNames({
+            'content-table-sidebar': true,
+            'content-table-sidebar-show': this.state.isShow
+        })
+
         return (
-            <button onClick={this.toggleContentTable.bind(this)}>
-                a
-            </button>
+            <div className="content-table">
+                <div className={buttonClass} onClick={this.toggleContentTable.bind(this)}>
+                    button
+                </div>
+                <div className={sidebarClass}>
+                    {contentTableDOM}
+                </div>
+            </div>
         )
     }
 
@@ -26,22 +45,41 @@ class ContentTable extends Component {
             this.setState({contentTable})
         }
 
+        const wrapperMoveClass = ' wrapper-move'
         if (this.state.isShow === false) {
-            showContentTable()
+            showContentTable(wrapperMoveClass, this.props.wrapperId)
             this.setState({isShow: true})
         } else {
-            hiddenContentTable()
+            hiddenContentTable(wrapperMoveClass, this.props.wrapperId)
             this.setState({isShow: false})
         }
     }
+
+    getContentTableDOM(contentTable) {
+        if (contentTable === undefined) {
+            return
+        }
+
+        return contentTable.map(item => {
+            return (
+                <a className="content-table-item" key={item.content}
+                    data-rank={item.rank} href={'#' + item.content}
+                    onClick={jumpToAnchor}>
+                    {item.content}
+                </a>
+            )
+        })
+    }
 }
 
-function showContentTable() {
-
+function showContentTable(wrapperMoveClass, wrapperId) {
+    let wrapperDOM = document.getElementById(wrapperId)
+    wrapperDOM.className += wrapperMoveClass
 }
 
-function hiddenContentTable() {
-
+function hiddenContentTable(wrapperMoveClass, wrapperId) {
+    let wrapperDOM = document.getElementById(wrapperId)
+    wrapperDOM.className = wrapperDOM.className.replace(wrapperMoveClass, '' );
 }
 
 function getContentTableFromDOM(contentDOM) {
@@ -59,6 +97,8 @@ function getContentTableFromDOM(contentDOM) {
         }
         return newItem
     })
+
+    return contentTable
 }
 
 export default ContentTable

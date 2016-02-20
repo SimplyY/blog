@@ -22,6 +22,11 @@
     font-weight: $font-weight
 }
 
+@mixin translate3d-t($x:0, $y:0, $z:0, $time: .2s){
+    transition: transform $time ease;
+    transform: translate3d($x, $y, $z);
+}
+
 @mixin be-brey-animation(){
     animation: be-grey .4s ease-out 0s normal forwards;
 }
