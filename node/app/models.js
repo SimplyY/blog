@@ -39,6 +39,7 @@ var articleSchema = new mongoose.Schema({
     parentTagName: { type: String, required: true },
     parentsTagNameArray: [{ type: String, required: true }], // 同上
     md:  { type: String, required: true },
+    html: { type: String, required: true},
     // because date con't be json.stringfy safe, so use String type
     date: { type: String, default: moment().tz("Asia/Shanghai").format() },
 
