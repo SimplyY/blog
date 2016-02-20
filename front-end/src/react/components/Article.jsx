@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 
 import { AppData } from '../../util/AppData'
-import { md2html } from '../../util/md'
 import { jumpToAnchor, showAnchor, isUrlInAnchor } from '../../util/common'
 
 import * as text from '../../consts/text'
@@ -24,7 +23,7 @@ class Article extends Component {
 
     render() {
         let { currentArticle } = this.props
-        let currentArticleDOM = md2html(currentArticle.md)
+        let currentArticleDOM = currentArticle.html
 
         let dateStr = AppData.formatArticleDate(currentArticle.date)
 
