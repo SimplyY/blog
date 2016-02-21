@@ -28,7 +28,6 @@ class App extends Component {
                     hiddenContentTable={hiddenContentTable}
                     loadContentTableContent={loadContentTableContent}
                     contentTable={contentTable} />
-
                 <div id="main-body" className="main-body clear-float">
                     <div className="main-container">
                         {children}

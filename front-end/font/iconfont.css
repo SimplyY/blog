@@ -15,6 +15,7 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
+.icon-arrow:before { content: "\e607"; }
 .icon-link:before { content: "\e600"; }
 .icon-weibo:before { content: "\e601"; }
 .icon-share:before { content: "\e602"; }

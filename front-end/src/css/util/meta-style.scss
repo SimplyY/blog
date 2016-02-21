@@ -22,7 +22,7 @@
     font-weight: $font-weight
 }
 
-@mixin translate3d-t($x:0, $y:0, $z:0, $time: .2s){
+@mixin translate3d-t($x:0, $y:0, $z:0, $time: .3s){
     transition: transform $time ease;
     transform: translate3d($x, $y, $z);
 }

@@ -55,7 +55,7 @@ https://github.com/SimplyY/zhihu-rss
 
 ### 我的博客
 
-http://simplyy.space/blog/home
+http://simplyy.space/
 
 我会在上面写很多精品文章，使用 django 搭的
 

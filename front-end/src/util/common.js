@@ -15,7 +15,8 @@ const ANCHOR_DISTANCE = 42
 export function jumpToAnchor(e) {
     e.preventDefault()
 
-    let anchorId = e.target.href.split('#')[1]
+    let href = e.target.href === undefined ? e.target.dataset.href : e.target.href
+    let anchorId = href.split('#')[1]
     let anchorDOM = document.getElementById(anchorId)
     let anchorName = anchorDOM.id
 

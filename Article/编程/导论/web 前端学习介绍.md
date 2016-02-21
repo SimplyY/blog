@@ -30,7 +30,7 @@ web 前端就是写网页上 ui 和交互的代码。
 ## 进阶
 - 架构模式（推荐 mvvm 的 vue [入门教程](http://cn.vuejs.org/guide/)，mvvm 适合大量的 dom 操作也就是复杂交互的页面，特别是非常适合web单页应用）
 - 版本控制(和比人合作开发, 最常用的git [git 教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000))
-- github （学习别人的项目和开发自己的项目, [github 介绍](http://simplyy.space/blog/article/github%20%E7%9A%84%E4%B8%96%E7%95%8C) ）
+- github （学习别人的项目和开发自己的项目, [github 介绍](http://simplyy.space/article/56c2d71f6ba384e02299f9a1) ）
 - 性能优化（动物书之狗书 [高性能网站建设指南](http://book.douban.com/subject/3132277/) ）
 - 代码模块化打包工具、性能优化构建工具（比如 webpack [教程](http://www.html-js.com/article/Study-notes-webpack-tutorial%203113) ）
 - node.js （其实打包工具和构建工具都是 node 写的，阿里大牛写的 [node.js 教程](https://github.com/SimplyY/node-lessons) ）。

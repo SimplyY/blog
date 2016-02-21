@@ -1,31 +1,79 @@
-$content-table-sidebar-width: 200px;
+$content-table-sidebar-width: 230px;
+$content-table-padding: 10px;
+
+.content-table {
+    color: rgb(3,3,3);
+}
 
 .content-table-button {
     position: fixed;
-    left: 0;
-    top: $nav-height;
-    z-index: 999;
+    left: 10px;
+    top: $nav-height + $content-table-padding;
+    z-index: 99;
     cursor: pointer;
     @include translate3d-t()
+
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    padding: 8px;
+
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 3px;
+    background-color: white;
+
+    //box-shadow: 0 1px 1px grey;
+}
+.content-table-button-clicked {
+    @include translate3d-t(170px)
 }
 
-.content-table-button-clicked {
-    color: white;
+.button.iconfont {
+    font-size: 5px;
+    font-weight: 500;
 }
+
+.button-iconfont-clicked {
+    transform: rotate(0.5turn);
+}
+
+
+@keyframes button-move {
+    1% {
+    }
+    100% {
+        transform: translate3d(178px, 0, 0);
+    }
+}
+
 .content-table-button-disapper {
     display: none;
+}
+
+.content-table-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 18px;
+
+    border-bottom: 1.5px solid $silver;
+
+    font-weight: 300;
+    font-size: 16px;
 }
 
 .content-table-sidebar {
     position: fixed;
     top: 0;
-    bottom: 0;
+    height: 100%;
     left: 0;
-    z-index: 99;
+    z-index: 9;
     @include translate3d-t(-$content-table-sidebar-width)
 
     width: $content-table-sidebar-width;
     overflow: scroll;
+    background-color: white;
+
+    padding-top: $nav-height + $content-table-padding;
 }
 
 .content-table-sidebar-show {
@@ -40,7 +88,28 @@ $content-table-sidebar-width: 200px;
     @include translate3d-t($content-table-sidebar-width)
 }
 
+
 .content-table-item {
     display: block;
-    @include reset-link-style()
+    list-style: disc;
+    padding-top: 7px;
+    padding-right: 10px;
+    font-weight: 300;
+    font-size: 14px;
+
+    li {
+        cursor: pointer;
+    }
+}
+
+@for $i from 1 through 6 {
+    .content-table-item[data-rank="#{$i}"] {
+        padding-left: $i*19 - 16px;
+        padding-bottom: 6-$i*1px;
+    }
+}
+
+.content-table-item:hover {
+    //@include be-brey-animation()
+    text-decoration: underline;
 }

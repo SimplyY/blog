@@ -54,7 +54,7 @@ as small as ±5 × 10的−324次方
 
 ![](http://7xkpdt.com1.z0.glb.clouddn.com/f571ebc023dbac7f31f34eec23b9ee41.png)
 
-### 对象是属性的 `容器` ，属性由 `键值` 构成。
+### 对象是属性的容器 ，属性由键值构成。
 
 ![](http://7xkpdt.com1.z0.glb.clouddn.com/ff540b212b828b8b6547ceabb6bd5336.png)
 

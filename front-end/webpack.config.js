@@ -2,6 +2,7 @@ var path = require('path')
 var webpack = require('webpack')
 
 var SRC_PATH = path.join(__dirname, 'src')
+var FONT_PATH = path.join(__dirname, 'font')
 
 module.exports = {
     devtool: 'source-map',
@@ -45,13 +46,12 @@ module.exports = {
             test: /\.(png|jpg)$/,
             loader: 'url?limit=20000',
             exclude: /node_modules/,
-            include: SRC_PATH
         },
         {
             test: /\.(ttf|svg|woff|png|eot)/,
             loader : 'url?limit=20000',
             exclude: /node_modules/,
-            include: SRC_PATH
+            include: FONT_PATH
         }
     ]
     }

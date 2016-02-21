@@ -2,6 +2,7 @@ var path = require('path')
 var webpack = require('webpack')
 
 var SRC_PATH = path.join(__dirname, 'src')
+var FONT_PATH = path.join(__dirname, 'font')
 
 module.exports = {
     entry: {
@@ -10,7 +11,7 @@ module.exports = {
         libs: [
             'react', 'react-router', 'history',
             'immutable', 'redux', 'react-redux', 'redux-immutablejs',
-             'isomorphic-fetch', './lib/hackedMarked', './lib/lodash.core.js'
+             'isomorphic-fetch', './lib/lodash.core.js'
         ]
     },
     output: {
@@ -51,7 +52,7 @@ module.exports = {
             test: /\.(ttf|svg|woff|png|eot)/,
             loader : 'url?limit=10000',
             exclude: /node_modules/,
-            include: SRC_PATH
+            include: FONT_PATH
         }
     ]
     }
