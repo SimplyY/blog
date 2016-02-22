@@ -12,7 +12,6 @@
     "css-loader": "^0.23.1",
     "immutable": "^3.7.6",
     "isomorphic-fetch": "^2.2.1",
-    "marked": "^0.3.5",
     "react": "~0.14.3",
     "react-dom": "~0.14.3",
     "react-redux": "^4.0.6",

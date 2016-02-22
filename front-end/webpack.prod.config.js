@@ -9,7 +9,7 @@ module.exports = {
         app: './src/index.jsx',
         //添加要打包在 libs 里面的库
         libs: [
-            'react', 'react-router', 'history',
+            'react', 'react-router', 'history', 'core-js', 'history',
             'immutable', 'redux', 'react-redux', 'redux-immutablejs',
              'isomorphic-fetch', './lib/lodash.core.js'
         ]

@@ -13,7 +13,7 @@ $vote-share-love-box-height: 60px;
 
 .article {
     position: relative;
-    padding: 20px $main-container-padding-h;
+    padding: 20px $main-container-padding-h + 10px;
     @include silver-border-top
 }
 
@@ -37,12 +37,13 @@ $vote-share-love-box-height: 60px;
     }
 }
 
-
-
 .iconfont.article-anchor {
+    font-size: 20px;
     @include reset-link-style($light-grey);
-    font-weight: lighter;
-    padding-right: 4px;
+
+    line-height: inherit;
+    font-weight: 200;
+    padding-left: 6px;
     padding-bottom: 3px;
 }
 .iconfont.article-anchor:hover {

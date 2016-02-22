@@ -18,7 +18,6 @@ module.exports = {
     devServer: {
         noInfo: true,
         port: 3000,
-
      },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
