@@ -46,7 +46,7 @@ js: react redux chartjs
 
 - [x] spa
 - [x] redux
-- [ ] 组件开发(已完成60%)
+- [ ] 组件开发(已完成90%)
 - [x] 正文锚点功能
 - [ ] 回到顶部
 - [ ] js 设置 meta title and <meta name="description" content="text">

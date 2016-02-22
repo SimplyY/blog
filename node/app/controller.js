@@ -7,6 +7,21 @@ var config = require('../../config');
 var token;
 
 module.exports.setRouters = function (app, models) {
+    // restful routers
+    var tagRest = restful.model(
+            'tag',
+            models.tagSchema
+        ).methods(['get']);
+
+    tagRest.register(app, '/api/tags');
+
+    var articleRest = restful.model(
+            'article',
+            models.articleSchema
+        ).methods(['get', 'put', 'post']);
+
+    articleRest.register(app, '/api/articles');
+
     app.get('/getApiToken', function(req, res) {
         var tokenLen = 32;
         if (token === undefined) {
@@ -19,20 +34,6 @@ module.exports.setRouters = function (app, models) {
             token = uid(tokenLen);
         }, expireTime);
     });
-
-    var tagRest = restful.model(
-            'tag',
-            models.tagSchema
-        ).methods(['get']);
-
-    tagRest.register(app, '/api/tags');
-
-    var articleRest = restful.model(
-            'article',
-            models.articleSchema
-        ).methods(['get', 'put', 'post', 'delete']);
-
-    articleRest.register(app, '/api/articles');
 };
 
 module.exports.setViews = function (app) {
