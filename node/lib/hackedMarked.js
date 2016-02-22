@@ -810,8 +810,8 @@ Renderer.prototype.heading = function(text, level, raw) {
     + ' id="'
     + anchor
     + '">'
-    + tagA
     + text
+    + tagA
     + '</h'
     + level
     + '>\n';
