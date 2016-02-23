@@ -33,6 +33,7 @@ export function jumpToAnchor(e) {
 
 export function showAnchor() {
     let anchorId = location.href.split('#')[1]
+    anchorId = decodeURI(anchorId)
     let anchorDOM = document.getElementById(anchorId)
 
     // for dom load img will change dom position, so delay
