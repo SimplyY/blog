@@ -85,6 +85,9 @@ js: react redux chartjs
         - Chart 用 chartjs 写博客文章标签分析图表
         - InvalidUrlBox
 
+#### 手机端
+准备使用 vue vuex vue-loader vue-router
+
 ## 设计关键
 - 导航栏标签、专辑标签
 - 银色为主色调
