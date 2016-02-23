@@ -1,6 +1,10 @@
 # 博客
 这里准备搭建我的个人博客
 
+博客已经搭成，里面写了一篇简版介绍（包括内容和技术），地址： http://simplyy.space/article/56cb46564496cee272dea173
+
+这里的是详细的技术介绍，包括搭建流程，重写的进度，前后端各种技术细节（有的可能没写上去，有疑惑的开 issue）。
+
 - 后端：express + mongodb + node-restful,  也就是使用 node 遍历文件目录作为文章和标签的数据源，提供 rest api
 - 前端：react + react router + redux + babel + webpack + sass 开发的 spa 博客应用，并尝试使用 immutable.js
 
@@ -50,7 +54,7 @@ js: react redux chartjs
 - [x] 正文锚点功能
 - [ ] 回到顶部
 - [ ] js 设置 meta title and <meta name="description" content="text">
-- [ ] ContentTable (左侧点击，显示目录，根据 h 标签开发）
+- [x] ContentTable (左侧点击，显示目录，根据 h 标签开发）
 - [ ] 评论功能 CommentBox avatar url default 'http://7xkpdt.com1.z0.glb.clouddn.com/46867d9be26db9982249775578cf37fc.png'
 - [ ] chartjs
 
@@ -80,12 +84,6 @@ js: react redux chartjs
             - CommentBox(antd 表单)
         - Chart 用 chartjs 写博客文章标签分析图表
         - InvalidUrlBox
-
-### mobile 前端
-- FrameWork：redux
-- View：react
-- Router：react-router
-- Ajax：superagent
 
 ## 设计关键
 - 导航栏标签、专辑标签
