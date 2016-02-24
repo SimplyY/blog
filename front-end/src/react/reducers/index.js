@@ -2,11 +2,11 @@ import { combineReducers } from 'redux';
 import { routeReducer } from 'react-router-redux'
 
 import dataReducer from './data'
-import contantTableReducer from './contantTable'
+import contentTableReducer from './contentTable'
 
 const rootReducer = combineReducers({
     data: dataReducer,
-    contentTable: contantTableReducer,
+    contentTable: contentTableReducer,
     routing: routeReducer
 })
 
