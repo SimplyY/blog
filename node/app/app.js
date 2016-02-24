@@ -14,6 +14,7 @@ mid.useMid(app);
 controller.setRouters(app, models);
 controller.setViews(app);
 
+models.renewDatabase();
 setInterval(function () {
     models.renewDatabase();
 }, config.renewInterval * 1000);
