@@ -13,7 +13,7 @@ $vote-share-love-box-height: 60px;
 
 .article {
     position: relative;
-    padding: $main-container-padding-v + 10px $main-container-padding-h;
+    padding: $main-container-padding-v + 10px $main-container-padding-h + 1px;
     @include silver-border-top
 }
 

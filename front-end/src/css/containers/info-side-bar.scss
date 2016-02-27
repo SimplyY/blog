@@ -1,7 +1,7 @@
 $info-height: 25px;
 
 .main-sidebar {
-    padding: $main-container-padding-h $main-container-padding-v
+    padding: 7px 10px
 }
 
 .personal-info {
@@ -26,7 +26,7 @@ $info-height: 25px;
     }
 
     .social-info {
-        padding: 10px 5px;
+        padding: 10px 3px;
         @include silver-border-top
     }
 
@@ -49,7 +49,7 @@ $info-height: 25px;
         }
     }
     .github-info, .zhihu-info {
-        width: 38%;
+        width: 80px;
     }
     .weibo-info {
         .iconfont {
@@ -67,7 +67,7 @@ $info-height: 25px;
 .column-tags {
     .column-header {
         @include silver-border-top
-        padding-left: 4px;
+        padding-left: 3px;
         padding-top: 20px;
     }
 
@@ -76,7 +76,7 @@ $info-height: 25px;
     }
 
     .column-list {
-        padding: 10px 0;
+        padding: 8px 0;
     }
 
     .column-item {
