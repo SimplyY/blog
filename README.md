@@ -5,7 +5,6 @@
 ![效果图](http://7xkpdt.com1.z0.glb.clouddn.com/53b61f68635c52ede78449394e995b82.png)
 
 ## 介绍
-
 博客已经搭成，里面写了一篇简版介绍（包括内容和技术），地址： http://simplyy.space/article/56cb46564496cee272dea173
 
 这里的是详细的技术介绍，包括搭建流程，重写的进度，前后端各种技术细节（有的可能没写上去，有疑惑的开 issue）。
@@ -41,7 +40,7 @@
 - [x] 提供 restful api，文档看 node/app/model.js 里的相应 schema。
 - [ ] 支持 www
 - [ ] 邮件提醒功能（一天发一封）
-- [ ] https 
+- [ ] https
 
 ！！！禁止有相同的目录名或者文件名！！！（因为这俩会作为主键存在数据库中）
 

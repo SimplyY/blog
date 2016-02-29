@@ -50,18 +50,22 @@ function getTagAndArticle(callback) {
             });
 
             for (let i = 0; i < articlesPaths.length; i++) {
-                readFile(articlesPaths[i], 'utf8', function (err, data) {
-                    if (err) console.log(err);
-                    let title = getTile(articlesPaths[i]);
-                    let parentTagName = basename(dirname(articlesPaths[i]));
-                    let md = data;
-                    let html = marked(md);
-                    let parentsTagNameArray = getParentsTagNameArray(ROOT_DIR, articlesPaths[i]);
-                    let article = { title, md, html, parentTagName, parentsTagNameArray };
-                    articles.push(article);
+                readFile(articlesPaths[i], 'utf8', dealFileToArticle);
+            }
 
-                    ep.emit('got_file');
+            function dealFileToArticle(err, data) {
+                if (err) console.log(err);
+                let title = getTile(articlesPaths[i]);
+                let parentTagName = basename(dirname(articlesPaths[i]));
+                let md = data;
+                let html = marked(md, () => {
+
                 });
+                let parentsTagNameArray = getParentsTagNameArray(ROOT_DIR, articlesPaths[i]);
+                let article = { title, md, html, parentTagName, parentsTagNameArray };
+                articles.push(article);
+
+                ep.emit('got_file');
             }
         });
 
