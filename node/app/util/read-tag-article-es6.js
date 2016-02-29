@@ -50,7 +50,9 @@ function getTagAndArticle(callback) {
             });
 
             for (let i = 0; i < articlesPaths.length; i++) {
-                readFile(articlesPaths[i], 'utf8', dealFileToArticle);
+                readFile(articlesPaths[i], 'utf8', function () {
+
+                });
             }
 
             function dealFileToArticle(err, data) {
@@ -58,9 +60,7 @@ function getTagAndArticle(callback) {
                 let title = getTile(articlesPaths[i]);
                 let parentTagName = basename(dirname(articlesPaths[i]));
                 let md = data;
-                let html = marked(md, () => {
-
-                });
+                let html = marked(md);
                 let parentsTagNameArray = getParentsTagNameArray(ROOT_DIR, articlesPaths[i]);
                 let article = { title, md, html, parentTagName, parentsTagNameArray };
                 articles.push(article);

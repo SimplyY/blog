@@ -14,10 +14,7 @@ mid.useMid(app);
 controller.setRouters(app, models);
 controller.setViews(app);
 
-models.renewDatabase();
-setInterval(function () {
-    models.renewDatabase();
-}, config.renewInterval * 1000);
+renewDbTimer(models);
 
 app.listen(config.serverPort);
 console.log('listening:', config.serverPort);
@@ -30,4 +27,13 @@ function setHeader(app) {
         if (req.method == 'OPTIONS') res.sendStatus(200);
         next();
     });
+}
+
+function renewDbTimer(models) {
+    setTimeout(function() {
+        models.renewDatabase();
+    }, 0);
+    setInterval(function () {
+        models.renewDatabase();
+    }, config.renewInterval * 1000);
 }
