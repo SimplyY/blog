@@ -32,7 +32,10 @@ export function ajaxPut(url, changeInfo) {
             resolve(res)
         })
         .catch(error => {
-            reject(error)
+            if (error !== undefined) {
+                console.log('ajaxPut error', error)
+                reject(error)
+            }
         })
     });
 }
