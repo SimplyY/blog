@@ -21,7 +21,7 @@ console.log('listening:', config.serverPort);
 
 function setHeader(app) {
     app.all('*', function(req, res, next) {
-        res.header("Access-Control-Allow-Origin", "http://simplyy.space");
+        res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
         res.header('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
         if (req.method == 'OPTIONS') res.sendStatus(200);
@@ -30,9 +30,7 @@ function setHeader(app) {
 }
 
 function renewDbTimer(models) {
-    setTimeout(function() {
-        models.renewDatabase();
-    }, 0);
+    models.renewDatabase();
     setInterval(function () {
         models.renewDatabase();
     }, config.renewInterval * 1000);
