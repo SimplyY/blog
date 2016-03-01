@@ -49,7 +49,7 @@ class InfoSideBar extends Component{
                             <div className="email-info">
                                 <div className="email-icon iconfont"
                                     dangerouslySetInnerHTML={{__html: img.EMAIL_ICONFONT}}></div>
-                                <a target="_blank" href={`mailto:` + text.MY_EMAIL} >{text.MY_EMAIL}</a>
+                                <a href={`mailto:` + text.MY_EMAIL} >{text.MY_EMAIL}</a>
                             </div>
                         </div>
                     </div>
