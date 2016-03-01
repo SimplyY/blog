@@ -28,25 +28,29 @@ class InfoSideBar extends Component{
                         </div>
                     </div>
                     <div className="other-info">
-                        <div className="github-info">
-                            <div className="github-icon iconfont"
-                                dangerouslySetInnerHTML={{__html: img.GITHUB_ICONFONT}}></div>
-                            <a target="_blank" href={text.MY_GITHUB_URL}>{text.MY_NAME}</a>
+                        <div>
+                            <div className="github-info">
+                                <div className="github-icon iconfont"
+                                    dangerouslySetInnerHTML={{__html: img.GITHUB_ICONFONT}}></div>
+                                <a target="_blank" href={text.MY_GITHUB_URL}>{text.MY_NAME}</a>
+                            </div>
+                            <div className="weibo-info">
+                                <div className="weibo-icon iconfont"
+                                    dangerouslySetInnerHTML={{__html: img.WEIBO_ICONFONT}}></div>
+                                <a target="_blank" href={text.MY_WEIBO_URL}>{text.MY_WEIBO_NAME}</a>
+                            </div>
                         </div>
-                        <div className="weibo-info">
-                            <div className="weibo-icon iconfont"
-                                dangerouslySetInnerHTML={{__html: img.WEIBO_ICONFONT}}></div>
-                            <a target="_blank" href={text.MY_WEIBO_URL}>{text.MY_WEIBO_NAME}</a>
-                        </div>
-                        <div className="zhihu-info">
-                            <div className="zhihu-icon iconfont"
-                                dangerouslySetInnerHTML={{__html: img.ZHIHU_ICONFONT}}></div>
-                            <a target="_blank" href={text.MY_ZHIHU_URL}>{text.MY_NAME}</a>
-                        </div>
-                        <div className="email-info">
-                            <div className="email-icon iconfont"
-                                dangerouslySetInnerHTML={{__html: img.EMAIL_ICONFONT}}></div>
-                            <a target="_blank" href={`mailto:` + text.MY_EMAIL} >{text.MY_EMAIL}</a>
+                        <div>
+                            <div className="zhihu-info">
+                                <div className="zhihu-icon iconfont"
+                                    dangerouslySetInnerHTML={{__html: img.ZHIHU_ICONFONT}}></div>
+                                <a target="_blank" href={text.MY_ZHIHU_URL}>{text.MY_NAME}</a>
+                            </div>
+                            <div className="email-info">
+                                <div className="email-icon iconfont"
+                                    dangerouslySetInnerHTML={{__html: img.EMAIL_ICONFONT}}></div>
+                                <a target="_blank" href={`mailto:` + text.MY_EMAIL} >{text.MY_EMAIL}</a>
+                            </div>
                         </div>
                     </div>
                 </div>

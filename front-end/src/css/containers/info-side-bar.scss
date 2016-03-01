@@ -31,9 +31,6 @@ $info-height: 25px;
     }
 
     .github-info, .email-info, .zhihu-info, .weibo-info {
-        font-family: "Helvetica Neue", Helvetica, "PingFang SC", Arial, sans-serif;
-
-
         height: $info-height;
         display: inline-block;
         .iconfont {
@@ -42,8 +39,8 @@ $info-height: 25px;
             margin-right: 6px;
         }
         a {
-            display: inline-block;
-            font-size: 9px;
+            position: absolute;
+            font-size: 8px;
             line-height: $info-height;
             @include reset-link-style($grey)
         }
@@ -52,6 +49,9 @@ $info-height: 25px;
         }
     }
     .github-info, .zhihu-info {
+        width: 80px;
+    }
+    .weibo-info, .email-info {
         width: 80px;
     }
     .weibo-info {
