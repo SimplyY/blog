@@ -7,7 +7,7 @@ export const MY_NAME = 'SimplyY'
 export const ARTICLE_DATE_LABEL_TEXT = '发布日期'
 
 export const COLUMN_INTRO_TEXT = '博客专辑'
-export const MY_EMAIL = 'simplyyu@163.com'
+export const MY_EMAIL = 'SimplyYu@163.com'
 export const MY_GITHUB_URL = 'https://github.com/SimplyY'
 export const MY_ZHIHU_URL = 'https://www.zhihu.com/people/SimplyY'
 export const MY_WEIBO_URL = 'http://weibo.com/u/5391751756'
