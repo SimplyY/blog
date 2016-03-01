@@ -25,12 +25,15 @@ $info-height: 25px;
         }
     }
 
-    .social-info {
+    .other-info {
         padding: 10px 3px;
         @include silver-border-top
     }
 
     .github-info, .email-info, .zhihu-info, .weibo-info {
+        font-family: "Helvetica Neue", Helvetica, "PingFang SC", Arial, sans-serif;
+
+
         height: $info-height;
         display: inline-block;
         .iconfont {

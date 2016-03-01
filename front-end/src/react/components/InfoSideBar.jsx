@@ -27,7 +27,7 @@ class InfoSideBar extends Component{
                             {text.MY_NAME}
                         </div>
                     </div>
-                    <div className="social-info">
+                    <div className="other-info">
                         <div className="github-info">
                             <div className="github-icon iconfont"
                                 dangerouslySetInnerHTML={{__html: img.GITHUB_ICONFONT}}></div>

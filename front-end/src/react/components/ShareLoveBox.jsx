@@ -17,12 +17,12 @@ class ShareLoveBox extends Component {
         return (
             <div>
                 <div className="love-and-share">
-                    <div className='love-box' onClick={this.toggleLove.bind(this)}>
+                    <div className='article-love-box' onClick={this.toggleLove.bind(this)}>
                         <div className="iconfont article-love"
                             dangerouslySetInnerHTML={{__html: img.LOVE_ICONFONT}}></div>
                         <p>{'喜欢 ( ' + currentArticle.loveNumber + ' )'}</p>
                     </div>
-                    <div className="share-box" onClick={this.toggleShare.bind(this)}>
+                    <div className="article-share-box" onClick={this.toggleShare.bind(this)}>
                         <div className="iconfont article-share"
                             dangerouslySetInnerHTML={{__html: img.SHARE_ICONFONT}}></div>
                         <p>{'分享 ( ' + currentArticle.shareNumber + ' )'}</p>
