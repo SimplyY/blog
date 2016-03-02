@@ -5,19 +5,12 @@ import EventProxy from 'eventproxy';
 import { basename, dirname, extname } from 'path';
 import { readFile } from 'fs';
 
-import marked from '../../lib/hackedMarked';
-import hljs from 'highlight.js';
-
 export { getTagAndArticle };
 
 var config = require('../../../config');
 const ROOT_DIR = config.blogRootPath;
 
-marked.setOptions({
-    highlight: function(code) {
-        return hljs.highlightAuto(code).value;
-    }
-});
+
 
 function getTagAndArticle(callback) {
     let tags = [];
@@ -50,22 +43,17 @@ function getTagAndArticle(callback) {
             });
 
             for (let i = 0; i < articlesPaths.length; i++) {
-                readFile(articlesPaths[i], 'utf8', function () {
+                readFile(articlesPaths[i], 'utf8', function(err, data) {
+                    if (err) console.log(err);
+                    let title = getTile(articlesPaths[i]);
+                    let parentTagName = basename(dirname(articlesPaths[i]));
+                    let md = data;
+                    let parentsTagNameArray = getParentsTagNameArray(ROOT_DIR, articlesPaths[i]);
+                    let article = { title, md, parentTagName, parentsTagNameArray };
+                    articles.push(article);
 
+                    ep.emit('got_file');
                 });
-            }
-
-            function dealFileToArticle(err, data) {
-                if (err) console.log(err);
-                let title = getTile(articlesPaths[i]);
-                let parentTagName = basename(dirname(articlesPaths[i]));
-                let md = data;
-                let html = marked(md);
-                let parentsTagNameArray = getParentsTagNameArray(ROOT_DIR, articlesPaths[i]);
-                let article = { title, md, html, parentTagName, parentsTagNameArray };
-                articles.push(article);
-
-                ep.emit('got_file');
             }
         });
 

@@ -17,14 +17,6 @@ var _path = require('path');
 
 var _fs = require('fs');
 
-var _hackedMarked = require('../../lib/hackedMarked');
-
-var _hackedMarked2 = _interopRequireDefault(_hackedMarked);
-
-var _highlight = require('highlight.js');
-
-var _highlight2 = _interopRequireDefault(_highlight);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* jshint esnext: true */
@@ -33,12 +25,6 @@ exports.getTagAndArticle = getTagAndArticle;
 
 var config = require('../../../config');
 var ROOT_DIR = config.blogRootPath;
-
-_hackedMarked2.default.setOptions({
-    highlight: function highlight(code) {
-        return _highlight2.default.highlightAuto(code).value;
-    }
-});
 
 function getTagAndArticle(callback) {
     var tags = [];
@@ -74,9 +60,8 @@ function getTagAndArticle(callback) {
                 var title = getTile(articlesPaths[i]);
                 var parentTagName = (0, _path.basename)((0, _path.dirname)(articlesPaths[i]));
                 var md = data;
-                var html = (0, _hackedMarked2.default)(md);
                 var parentsTagNameArray = getParentsTagNameArray(ROOT_DIR, articlesPaths[i]);
-                var article = { title: title, md: md, html: html, parentTagName: parentTagName, parentsTagNameArray: parentsTagNameArray };
+                var article = { title: title, md: md, parentTagName: parentTagName, parentsTagNameArray: parentsTagNameArray };
                 articles.push(article);
 
                 ep.emit('got_file');
