@@ -37,11 +37,14 @@
 #### 全局变量
 > 坏处容易造成 bug、且难以 debug。
 
-解决办法:使用闭包，或者 `commonjs` 或 `AMD`
+解决办法: 使用iife，或者 `commonjs` 或 `AMD` 或 es6 等等
 
-    (function() {
-        // body...
-    })();
+```js
+//iife
+(function() {
+    // body...
+})();
+```
 
 #### 自动插入分号
 （坏处同上，每个语句后面加上分号）
@@ -80,28 +83,32 @@ https://github.com/MikeMcl/decimal.js
 NaN 表示 `不是一个数字`，当输入把非数字形式的字符串转化为数字时产生。并且 NaN !== NaN
 
 
-    > typeof NaN === 'number'
-    true
-    > parseInt('oop')
-    NaN
-    > Math.sqrt(-1)
-    NaN
-    > NaN === NaN
-    false
-    > NaN !== NaN
-    true
+```js
+> typeof NaN === 'number'
+true
+> parseInt('oop')
+NaN
+> Math.sqrt(-1)
+NaN
+> NaN === NaN
+false
+> NaN !== NaN
+true
+```
 
 
 ##### 如何判断一个数是不是数字
 > isFinite 可以筛选 NaN 和 Infinity(全局属性 Infinity 是一个数值，表示无穷大。),但是会试图非数字变成数字，如'0'
 
-    isFinite(NaN);       // false
-    isFinite(-Infinity); // false
+```js
+isFinite(NaN);       // false
+isFinite(-Infinity); // false
 
-    isFinite(0);         // true
-    isFinite("0");       // true, would've been false with the more robust Number.isFinite("0")
-    isFinite('a')
-    false
+isFinite(0);         // true
+isFinite('0');       // true, 会试图将 string 自动转成 int
+Number.isFinite('0'); // false ,非 number 都返回 false, 同 Number.isNaN
+isFinite('a'); // false
+```
 
 解决办法，先确保 value 是一个数字
 
@@ -114,7 +121,7 @@ NaN 表示 `不是一个数字`，当输入把非数字形式的字符串转化�
 
 
     typeof []
-    'object'
+    // 'object'
 
 检测一个值是不是数组
 
