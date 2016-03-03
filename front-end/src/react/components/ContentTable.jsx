@@ -141,7 +141,7 @@ function getPrefix(contentTable) {
     // 第一项为1.
     // 当 item.rank 大于前者，大了几，在末尾加上几个"1."，比如大1的话，1.变成1.1.
     // 当 item.rank 等于前者，将currentPrefix的倒数第二位“加1”，比如1.1.变成1.2.
-    // 当 item.rank 小于前者，小了几，将currentPrefix的后两位去掉几次，再将currentPrefix的倒数第二位“加1”, 比如小1， 效果为1.2.变成2.
+    // 当 item.rank 小于前者，小了几，将currentPrefix的'x.'去掉几次，再将currentPrefix的倒数第二位“加1”, 比如小1， 效果为1.2.变成2.
 
     let currentPrefix = '1.'
     contentTable.forEach((item, index, array) => {
@@ -164,7 +164,9 @@ function getPrefix(contentTable) {
         }
         if (diff < 0) {
             for (let i = 0; i < -diff; i++) {
-                currentPrefix = currentPrefix.slice(0, currentPrefix.length-2)
+                // 将currentPrefix的'x.'去掉几次, 先要获取'x.'之前的'.'的 index
+                let index = currentPrefix.lastIndexOf('.', currentPrefix.length - 2)
+                currentPrefix = currentPrefix.slice(0, index + 1)
             }
             currentPrefix = secendLastCharAdd1(currentPrefix)
         }
