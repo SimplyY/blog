@@ -26,12 +26,10 @@ loadMustData()
             document.getElementById('root')
         )
     })
-    .then(loadAllData)
+    .then(() => {
+        return loadAllArticles()
+    })
+    .then(allArticles => {
+        store.dispatch(loadAllArticlesAction(allArticles))
+    })
     .then(loadGoogleAnalyse)
-
-function loadAllData() {
-    loadAllArticles()
-        .then((allArticles) => {
-            store.dispatch(loadAllArticlesAction(allArticles))
-        })
-}
