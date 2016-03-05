@@ -49,8 +49,7 @@
 文章 model， 标签 model，详情见 node/app/model.js 里的相应 schema。
 
 ### pc 前端
-css:  [alice](http://aliceui.org/)
-js: react redux chartjs
+js: react redux echart
 
 用 react router + 组件化开发 来spa
 
