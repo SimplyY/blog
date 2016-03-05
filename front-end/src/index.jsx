@@ -26,9 +26,7 @@ loadMustData()
             document.getElementById('root')
         )
     })
-    .then(() => {
-        return loadAllArticles()
-    })
+    .then(loadAllArticles)
     .then(allArticles => {
         store.dispatch(loadAllArticlesAction(allArticles))
     })
