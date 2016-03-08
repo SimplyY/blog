@@ -410,7 +410,7 @@ footer {
 ```
 
 #### 法二:用CSS3 单元格实现
-尽管利用 HTML 的<table>标签实现多栏布局是难以接受的,但使用 CSS 让布局形 如表格则是绝对可以接受的。
+尽管利用 HTML 的`<table>`标签实现多栏布局是难以接受的,但使用 CSS 让布局形 如表格则是绝对可以接受的。
 
 我们知道,CSS 可以把一个 HTML 元素的 display 属性设定为 table、table-row 和 table-cell。通过这种方法可以模拟相应 HTML 元素的行为。而通过 CSS 把布局中 的栏设定为 table-cell 有三个好处。
 
