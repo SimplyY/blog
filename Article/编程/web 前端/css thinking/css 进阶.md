@@ -1,3 +1,4 @@
+# css 进阶
 ## 玉伯论 html css 的重要性
 https://github.com/lifesinger/blog/issues/105
 
@@ -15,7 +16,7 @@ https://github.com/lifesinger/blog/issues/105
 .content {
     width: 980px;
     margin-left: auto;
-    margin-right auto;
+    margin-right: auto;
 }
 ```
 

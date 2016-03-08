@@ -54,66 +54,67 @@ function getTagAndArticle(callback) {
             callback(tags, articles);
         });
 
-        var _loop = function _loop(i) {
-            (0, _fs.readFile)(articlesPaths[i], 'utf8', function (err, data) {
+        for (var i = 0; i < articlesPaths.length; i++) {
+            (0, _fs.readFile)(articlesPaths[i], 'utf8', dealFileData(i));
+        }
+
+        function dealFileData(i) {
+            return function (err, data) {
                 if (err) console.log(err);
                 var title = getTile(articlesPaths[i]);
                 var parentTagName = (0, _path.basename)((0, _path.dirname)(articlesPaths[i]));
+                // encode html for xss
                 var md = data;
                 var parentsTagNameArray = getParentsTagNameArray(ROOT_DIR, articlesPaths[i]);
                 var article = { title: title, md: md, parentTagName: parentTagName, parentsTagNameArray: parentsTagNameArray };
                 articles.push(article);
 
                 ep.emit('got_file');
-            });
-        };
+            };
+        }
+    });
+}
 
-        for (var i = 0; i < articlesPaths.length; i++) {
-            _loop(i);
+function createTag(path) {
+    var tagName = (0, _path.basename)(path);
+    var parentTagName = (0, _path.basename)((0, _path.dirname)(path));
+    // 根目录不作为 tag
+    if ((0, _path.basename)(ROOT_DIR) === tagName) {
+        return;
+    }
+    // 使第一级 tag 的父目录为空
+    if (parentTagName === ROOT_DIR) {
+        parentTagName = "";
+    }
+    var parentsTagNameArray = getParentsTagNameArray(ROOT_DIR, path);
+    var tagRank = parentsTagNameArray.length + 1;
+
+    var articleTitleList = [];
+    _fsExtra2.default.walk(path).on('data', function (item) {
+        if (item.stats.isFile()) {
+            // create article and add in articles
+            if ((0, _path.extname)(item.path) !== '.md') {
+                return;
+            }
+
+            var title = getTile(item.path);
+            articleTitleList.push(title);
         }
     });
 
-    function createTag(path) {
-        var tagName = (0, _path.basename)(path);
-        var parentTagName = (0, _path.basename)((0, _path.dirname)(path));
-        // 根目录不作为 tag
-        if ((0, _path.basename)(ROOT_DIR) === tagName) {
-            return;
-        }
-        // 使第一级 tag 的父目录为空
-        if (parentTagName === ROOT_DIR) {
-            parentTagName = "";
-        }
-        var parentsTagNameArray = getParentsTagNameArray(ROOT_DIR, path);
-        var tagRank = parentsTagNameArray.length + 1;
+    return { tagName: tagName, parentTagName: parentTagName, articleTitleList: articleTitleList, parentsTagNameArray: parentsTagNameArray, tagRank: tagRank };
+}
 
-        var articleTitleList = [];
-        _fsExtra2.default.walk(path).on('data', function (item) {
-            if (item.stats.isFile()) {
-                // create article and add in articles
-                if ((0, _path.extname)(item.path) !== '.md') {
-                    return;
-                }
-
-                var title = getTile(item.path);
-                articleTitleList.push(title);
-            }
-        });
-
-        return { tagName: tagName, parentTagName: parentTagName, articleTitleList: articleTitleList, parentsTagNameArray: parentsTagNameArray, tagRank: tagRank };
+function getParentsTagNameArray(ROOT_DIR, path) {
+    var array = [];
+    var parentPath = (0, _path.dirname)(path);
+    while (parentPath !== ROOT_DIR) {
+        array.unshift((0, _path.basename)(parentPath));
+        parentPath = (0, _path.dirname)(parentPath);
     }
+    return array;
+}
 
-    function getParentsTagNameArray(ROOT_DIR, path) {
-        var array = [];
-        var parentPath = (0, _path.dirname)(path);
-        while (parentPath !== ROOT_DIR) {
-            array.unshift((0, _path.basename)(parentPath));
-            parentPath = (0, _path.dirname)(parentPath);
-        }
-        return array;
-    }
-
-    function getTile(baseName) {
-        return (0, _path.basename)(baseName, '.md');
-    }
+function getTile(baseName) {
+    return (0, _path.basename)(baseName, '.md');
 }

@@ -4,7 +4,7 @@
   "description": "SimplyY's blog",
   "main": "./node/app/app.js",
   "scripts": {
-    "mongodb": "sudo mongod -f ./mongod.conf",
+    "mongodb": "mongod -f ./mongod.conf",
     "start": "node ./node/app/app.js",
     "config": "node ./run-config.js"
   },

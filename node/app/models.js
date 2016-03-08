@@ -120,125 +120,128 @@ function renewDatabase() {
             });
     });
 
-    // 韦恩图给的灵感，来求增删改的元素，=。=，不过只能对主键处理，因为不支持 objects.difference
-    function getOperateItemsKeys(oldItemsKeys, newItemsKeys) {
-        var addItemsKeys = array.difference(newItemsKeys, oldItemsKeys);
-        var deleteItemsKeys = array.difference(oldItemsKeys, newItemsKeys);
 
-        var allItemsKeys = array.union(newItemsKeys, oldItemsKeys);
-        var differenceItemsKeys = array.union(addItemsKeys, deleteItemsKeys);
+}
 
-        var updateItemsKeys = array.difference(allItemsKeys, differenceItemsKeys);
+// 韦恩图给的灵感，来求增删改的元素，=。=，不过只能对主键处理，因为不支持 objects.difference
+function getOperateItemsKeys(oldItemsKeys, newItemsKeys) {
+    var addItemsKeys = array.difference(newItemsKeys, oldItemsKeys);
+    var deleteItemsKeys = array.difference(oldItemsKeys, newItemsKeys);
 
-        return {
-            addItemsKeys: addItemsKeys,
-            deleteItemsKeys: deleteItemsKeys,
-            updateItemsKeys: updateItemsKeys
-        };
+    var allItemsKeys = array.union(newItemsKeys, oldItemsKeys);
+    var differenceItemsKeys = array.union(addItemsKeys, deleteItemsKeys);
+
+    var updateItemsKeys = array.difference(allItemsKeys, differenceItemsKeys);
+
+    return {
+        addItemsKeys: addItemsKeys,
+        deleteItemsKeys: deleteItemsKeys,
+        updateItemsKeys: updateItemsKeys
+    };
+}
+
+function renderMd2Html(articleOperateItemsKeys, oldArticles, newArticles) {
+    var addItemsKeys = articleOperateItemsKeys.addItemsKeys;
+    var updateItemsKeys = articleOperateItemsKeys.updateItemsKeys;
+
+    for (i = 0; i < addItemsKeys.length; i++) {
+        var addObject = findObject(addItemsKeys[i], localConfig.articleModelName, newArticles);
+        addObject.html = marked(addObject.md);
     }
 
-    function renderMd2Html(articleOperateItemsKeys, oldArticles, newArticles) {
-        var addItemsKeys = articleOperateItemsKeys.addItemsKeys;
-        var updateItemsKeys = articleOperateItemsKeys.updateItemsKeys;
+    for (i = 0; i < updateItemsKeys.length; i++) {
+        var updateObject = findObject(updateItemsKeys[i], localConfig.articleModelName, newArticles);
+        var oldObject = findObject(updateItemsKeys[i], localConfig.articleModelName, oldArticles);
 
-        for (i = 0; i < addItemsKeys.length; i++) {
-            var addObject = findObject(addItemsKeys[i], localConfig.articleModelName, newArticles);
-            addObject.html = marked(addObject.md);
-        }
-
-        for (i = 0; i < updateItemsKeys.length; i++) {
-            var updateObject = findObject(updateItemsKeys[i], localConfig.articleModelName, newArticles);
-            var oldObject = findObject(updateItemsKeys[i], localConfig.articleModelName, oldArticles);
-
-            if (updateObject.md !== oldObject.md) {
-                updateObject.html = marked(updateObject.md);
-            }
+        if (updateObject.md !== oldObject.md) {
+            updateObject.html = marked(updateObject.md);
         }
     }
+}
 
-    // for modelName is tag or article
-    function findObject(itemKey, modelName, objects) {
-        var keyAttrName;
+
+// for modelName is tag or article
+function findObject(itemKey, modelName, objects) {
+    var keyAttrName;
+    if (modelName === localConfig.tagModelName) {
+        keyAttrName = localConfig.tagKeyAttrName;
+    } else if (modelName === localConfig.articleModelName) {
+        keyAttrName = localConfig.articleKeyAttrName;
+    }
+
+    for (var i = 0; i < objects.length; i++) {
+        if (itemKey === objects[i][keyAttrName]) {
+            return objects[i];
+        }
+    }
+}
+
+function operateDatabase(modelName, operateItemsKeys, oldMogoObjects, newObjects) {
+    var model = mongoose.model(modelName);
+    var oldObjects = [];
+    for (var i = 0; i < oldMogoObjects.length; i++) {
+        oldObjects.push(oldMogoObjects[i]._doc);
+    }
+
+    var addItemsKeys = operateItemsKeys.addItemsKeys;
+    var deleteItemsKeys = operateItemsKeys.deleteItemsKeys;
+    var updateItemsKeys = operateItemsKeys.updateItemsKeys;
+
+    for (i = 0; i < addItemsKeys.length; i++) {
+        var addObject = findObject(addItemsKeys[i], modelName, newObjects);
+        model.create(addObject);
+    }
+
+    for (i = 0; i < updateItemsKeys.length; i++) {
+        var updateObject = findObject(updateItemsKeys[i], modelName, newObjects);
+        var oldObject = findObject(updateItemsKeys[i], modelName, oldObjects);
+
+        if (IsEqualWithFileRead(oldObject, updateObject, modelName)) {
+            continue;
+        }
+
+        var updateConditions = getConditions(updateObject, modelName);
+
+        model.update(updateConditions, updateObject, handleError);
+    }
+
+    for (i = 0; i < deleteItemsKeys.length; i++) {
+        var deleteObject = findObject(deleteItemsKeys[i], modelName, oldObjects);
+        var deleteConditions = getConditions(deleteObject, modelName);
+        model.remove(deleteConditions, handleError);
+    }
+
+    function getConditions(object, modelName) {
+        var conditions = {};
         if (modelName === localConfig.tagModelName) {
-            keyAttrName = localConfig.tagKeyAttrName;
+            conditions[localConfig.tagKeyAttrName] = object[localConfig.tagKeyAttrName];
         } else if (modelName === localConfig.articleModelName) {
-            keyAttrName = localConfig.articleKeyAttrName;
+            conditions[localConfig.articleKeyAttrName] = object[localConfig.articleKeyAttrName];
         }
-
-        for (var i = 0; i < objects.length; i++) {
-            if (itemKey === objects[i][keyAttrName]) {
-                return objects[i];
-            }
-        }
+        return conditions;
     }
 
-    function operateDatabase(modelName, operateItemsKeys, oldMogoObjects, newObjects) {
-        var model = mongoose.model(modelName);
-        var oldObjects = [];
-        for (var i = 0; i < oldMogoObjects.length; i++) {
-            oldObjects.push(oldMogoObjects[i]._doc);
+    function IsEqualWithFileRead(oldObject, newObject, modelName) {
+        var isEqual;
+        if (modelName === localConfig.tagModelName) {
+            isEqual = oldObject.tagName === newObject.tagName &&
+                oldObject.parentTagName === newObject.parentTagName &&
+                oldObject.tagRank === newObject.tagRank &&
+                _.isEqual(oldObject.parentsTagNameArray, newObject.parentsTagNameArray) &&
+                _.isEqual(oldObject.articleTitleList, newObject.articleTitleList);
         }
-
-        var addItemsKeys = operateItemsKeys.addItemsKeys;
-        var deleteItemsKeys = operateItemsKeys.deleteItemsKeys;
-        var updateItemsKeys = operateItemsKeys.updateItemsKeys;
-
-        for (i = 0; i < addItemsKeys.length; i++) {
-            var addObject = findObject(addItemsKeys[i], modelName, newObjects);
-            model.create(addObject);
+        else if (modelName === localConfig.articleModelName) {
+            isEqual = oldObject.title === newObject.title &&
+                oldObject.parentTagName === newObject.parentTagName &&
+                oldObject.md === newObject.md &&
+                _.isEqual(oldObject.parentsTagNameArray, newObject.parentsTagNameArray);
         }
-
-        for (i = 0; i < updateItemsKeys.length; i++) {
-            var updateObject = findObject(updateItemsKeys[i], modelName, newObjects);
-            var oldObject = findObject(updateItemsKeys[i], modelName, oldObjects);
-
-            if (IsEqualWithFileRead(oldObject, updateObject, modelName)) {
-                continue;
-            }
-
-            var updateConditions = getConditions(updateObject, modelName);
-
-            model.update(updateConditions, updateObject, function (err, raw) {
-                if (err) return handleError(err);
-            });
-        }
-
-        for (i = 0; i < deleteItemsKeys.length; i++) {
-            var deleteObject = findObject(deleteItemsKeys[i], modelName, oldObjects);
-            var deleteConditions = getConditions(deleteObject, modelName);
-            model.remove(deleteConditions, function (err, raw) {
-                if (err) return handleError(err);
-            });
-        }
-
-        function getConditions(object, modelName) {
-            var conditions = {};
-            if (modelName === localConfig.tagModelName) {
-                conditions[localConfig.tagKeyAttrName] = object[localConfig.tagKeyAttrName];
-            } else if (modelName === localConfig.articleModelName) {
-                conditions[localConfig.articleKeyAttrName] = object[localConfig.articleKeyAttrName];
-            }
-            return conditions;
-        }
-
-        function IsEqualWithFileRead(oldObject, newObject, modelName) {
-            var isEqual;
-            if (modelName === localConfig.tagModelName) {
-                isEqual = oldObject.tagName === newObject.tagName &&
-                    oldObject.parentTagName === newObject.parentTagName &&
-                    oldObject.tagRank === newObject.tagRank &&
-                    _.isEqual(oldObject.parentsTagNameArray, newObject.parentsTagNameArray) &&
-                    _.isEqual(oldObject.articleTitleList, newObject.articleTitleList);
-            }
-            else if (modelName === localConfig.articleModelName) {
-                isEqual = oldObject.title === newObject.title &&
-                    oldObject.parentTagName === newObject.parentTagName &&
-                    oldObject.md === newObject.md &&
-                    _.isEqual(oldObject.parentsTagNameArray, newObject.parentsTagNameArray);
-            }
-            return isEqual;
-        }
+        return isEqual;
     }
+}
+
+function handleError(err, raw) {
+    if (err) console.log(err);
 }
 
 module.exports = {
