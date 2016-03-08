@@ -31,3 +31,8 @@ loadMustData()
         store.dispatch(loadAllArticlesAction(allArticles))
     })
     .then(loadGoogleAnalyse)
+    .catch(error => {
+        if (error) {
+            console.log(error)
+        }
+    })

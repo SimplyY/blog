@@ -14,6 +14,7 @@ class Article extends Component {
         if (isUrlInAnchor()) {
             showAnchor()
         }
+        // for content table read info from DOM
         this.props.appearContentTable()
     }
 
