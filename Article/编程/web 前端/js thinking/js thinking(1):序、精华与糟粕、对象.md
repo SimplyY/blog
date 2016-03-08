@@ -46,9 +46,6 @@
 })();
 ```
 
-#### 自动插入分号
-（坏处同上，每个语句后面加上分号）
-
 #### typeof
 #### parseInt(str, int)
 > 遇到非数字会自动停止解析，请一定加上第二个参数来设置进制.
@@ -112,9 +109,19 @@ isFinite('a'); // false
 
 解决办法，先确保 value 是一个数字
 
-    function isNumber(value) {
-        return typeof value === 'number' && isFinite(value);
-    }
+```js
+function isNumber(value) {
+    return typeof value === 'number' && isFinite(value);
+}
+```
+
+或者更棒的方法:
+
+```js
+Number.isFinite('0'); //false
+```
+
+不过你得学会区分，非 number 都返回 false, 同 Number.isNaN
 
 #### 伪数组
 > js 没有真正的数组
@@ -130,17 +137,29 @@ isFinite('a'); // false
     }
 
 
-#### undefined和null
-阮一峰写过一篇[博客](http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html) 如果想弄懂这两个值的典故，值得去学习一下。下面是我的主要摘录。
+### null和undefined的区别？
+null是一个表示空值的对象，即不存在的对象。
 
-> undefined和null在if语句中，都会被自动转为false
+> The DOM methods getElementById(), nextSibling(), childNodes[n], parentNode() and so on return null (defined but having no value) when the call does not return a node object.
 
-##### null
-> null是一个表示"无"的对象，即该处不应该有值。好比链表的终点
 
-典型用法是：
-1. 作为函数的参数，表示该函数的参数不是对象。
+null典型用法是：
+1. 作为函数的返回值，表示该函数本应该返回对象，但是找不到，即为不存在的对象的意思。
 2. 作为对象原型链的终点。
+3. 调用函数时，作为缺省的参数。比如
+
+```js
+Math.max.apply(null, array)
+```
+
+undefined是一个表示"无"的原始值。
+当声明的变量还未被初始化时，变量的默认值为undefined。
+
+undefined 典型用法是：
+1. 变量或对象属性被声明了，但没有赋值时，就等于 undefined。
+2. 调用函数时，未传入参数，函数内部该参数等于 undefined。
+3. 函数没有返回值时，默认返回 undefined。
+
 
 
 ```js

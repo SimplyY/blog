@@ -7,28 +7,30 @@
 
 解决办法
 
-    // element can be Object, Strin
-
-    g, Number etc
-    function isInArray(element, array) {
-        for (var i = 0; i < array.length; i++) {
-            if (JSON.stringify(element) === JSON.stringify(array[i])) {
-                return true;
-            }
+```js
+// element can be Object, String, Number etc
+function isInArray(element, array) {
+    for (var i = 0; i < array.length; i++) {
+        if (JSON.stringify(element) === JSON.stringify(array[i])) {
+            return true;
         }
-        return false;
     }
+    return false;
+}
 
-    // test performance
+// test performance
+var element = []
+for (var i = 0; i < 1000; i++) {
+    element.push(1)
+}
+var t0 = Date.now();
+JSON.stringify(element);
+var t1 = Date.now();
+console.log(t1 - t0);
 
-    var element = [1,2,3,4,5,6,2];
-    var t0 = performance.now();
-    JSON.stringify(element);
-    var t1 = performance.now();
-    console.log(t1-t0);
-
-    // 当 element 为简单数据类型时，JSON.stringify(element);性能很高（element 为100长度的字符串时，0.01毫秒）
-    // 注意，当 element 为数组的 length 大于10000 时，JSON.stringify(element);性能会开始变低（大于0.01秒），但是绝大多数情况不会大于这么多，所以还是在需要性能优化的时候再性能优化。
+// 当 element 为简单数据类型时，JSON.stringify(element);性能很高（element 为 1000 长度的字符串时，才会大于 1 毫秒，小于10 ms）
+// 注意，当 element 为数组的 length 大于 10000 时，JSON.stringify(element);性能会开始变低（大于0.01秒），但是绝大多数情况不会大于这么多，所以还是在需要性能优化的时候再性能优化。
+```
 
 
 ## JavaScript 语句后应该加分号么？

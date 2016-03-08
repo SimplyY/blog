@@ -24,13 +24,13 @@ as small as ±5 × 10的−324次方
 > The JavaScript number format allows you to exactly represent all integers between
 −9007199254740992  and 9007199254740992 （即正负2的53次方）
 
-数组索引还有位操作：
+数组索引还有位操作范围：
 
 > 正负2的31次方
 
 ### 字符串
     'A' === '\u0041'
-1. `js` 中所有字符使用的是16位（Unicode字符集, uft-8是它的一种实现）。
+1. `js` 中所有字符使用的是16位Unicode字符集(uft-8是它的一种实现）。
 2. 字符不能单独出现，不过创建一个仅含一个字符的字符串即可。
 3. 并且一旦字符串被创建，就永远无法改变它，也就是说如果你用 `+` 连接字符串所得到的返回值，是一个新的字符串。
 
@@ -92,17 +92,27 @@ as small as ±5 × 10的−324次方
 
 forin 的迭代无序，且包括原型链。
 
-#### 深复制
-TODO
+### 深复制
 "JSON unsafe" is an object containing any value type that is not representable in standard JSON. For example:
-
 undefined
 function
 regex
 typed object (like String, Number)
 reference (circular reference, for example)
-#### 浅复制
-TODO
+
+一般而言，只有由 **对象和数组组成** 的对象才是 JSON 安全的，也就是 JSON.parse(JSON.stringify(obj)) 返回的对象的值和 obj 一样，即转换成 JSON 的时候不会有信息损失（自定义函数和一些类型是做不到的）。
+
+so
+
+对于 JSON 安全的对象，我们的深复制非常简单
+```js
+var newObj = JSON.parse(JSON.stringify(obj));
+```
+
+### 浅复制
+```js
+var a = obj;
+```
 
 ## 函数
 > 函数式 js 的基础模块单元，用于代码复用、信息隐藏和组合调用。

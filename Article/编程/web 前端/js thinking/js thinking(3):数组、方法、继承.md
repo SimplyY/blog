@@ -2,16 +2,21 @@
 
 ## 数组
 数组不少坑。
+
 ### 不要设置长度
+原因：
 1. length 值为数组最大整数属性名加上1
 2. 设置比元素数量大的 length 不会为数组分配更大空间，小的会删除大下标。
 
 **推荐只读 length 值，不要设置 length 值。应该通过变异方法间接更改 length 的值**
 
 ### 不要用 delete
-应该使用
+对于数组应该使用
 
     array.splice(begin, deleteCount);
+
+对于对象的属性，是可以 delete 的。
+
 #### 删除数组中的元素
 ![](http://7xkpdt.com1.z0.glb.clouddn.com/ce099953100f3ee0a897872d1e58bfd7.png)
 
@@ -20,9 +25,11 @@
 #### array.concat(item...)
 返回一个新数组，[array, items]。其中 item 可以是数组，也就是可以用来拼接数组.
 
-    var a = [1,2]
-    var b = [1,2]
-    var a.concat(b) //[ 1, 2, 1, 2 ]
+```js
+var a = [1,2]
+var b = [1,2]
+var a.concat(b) //[ 1, 2, 1, 2 ]
+```
 
 
 注意：
@@ -33,24 +40,19 @@
 
 总的来说
 1. concat 不会修改 array 和 item
-2. 并且尤为重要的是对于数组的浅复制不是针对于数组对象，而是数组包含的元素。
+2. 并且尤为重要的是，concat 是 **浅复制的**，不是对于数组对象，而是对于 **数组包含的元素的浅复制**。
 
 #### array.join(separator)
 将数组构造成字符串，以 separator 分隔，separator 默认为','
 
 #### array.slice
-slice: 切片
+> slice 含义: 切片
+
 返回数组中的一部分的浅复制，也是只对数组中的元素进行浅复制
-##### 得到数组最后一个元素
-如果 array 的 element 为简单数据类型，则 array.slice(-1)[0] === array[array.length - 1]
-```
-Array.prototype.getLastElement = function () {
-    return this.slice(-1)[0];
-};
-```
 
 ### array.变异方法
-所谓变异方法，就是会更改原 array。有 push,pop,reverse,shift,unshift,sort(内部用了快排，不稳定排序),splice(),等（map，es6+）
+所谓变异方法，就是会更改原 array。有 push,pop,reverse,shift,unshift,sort,splice()等
+
 #### array.splice(start, deleteCount, items...)
 splice: 拼接
 deleteCount默认为 max（如果不传参数），即 start 之后全部 delete 掉
@@ -60,8 +62,8 @@ deleteCount默认为 max（如果不传参数），即 start 之后全部 delete
 xxx 之前： array[xxx] 前，不包括array[xxx]，xxx即为 end。
 xxx 之后： array[xxx] 后，包括array[xxx]，xxx 即为 begin。
 
-注意：所有 begin,start 都是包括的，所有 end 都是不包括的，类比 for 循环的起始条件和终止条件。
-口诀：函数传参，**包括起点不包括终点**（最好背下来）。
+- 注意：所有 begin,start 都是包括的，所有 end 都是不包括的，类比 for 循环的起始条件和终止条件。
+- 口诀：函数传参，**包括起点不包括终点**（最好背下来）。
 
 注意2：当 start,end 大于等于 length 时，并不会报错。而关键的是当它们的值为负数时，且小于-length 时，亦不会报错，而且更关键的是，它们的值 **如同0一般**。
 
@@ -74,16 +76,20 @@ xxx 之后： array[xxx] 后，包括array[xxx]，xxx 即为 begin。
 #### foreach
 假设我们有一个数组，每个元素是一个人。你面前站了一排人。foreach 就是你按顺序一个一个跟他们做点什么，具体做什么，随便
 
-    people.forEach(function (dude) {
-      dude.pickUpSoap();
-    });
+```js
+people.forEach(function (dude) {
+    dude.pickUpSoap();
+});
+```
 
 #### reduce
 The reduce() method applies a function against an accumulator and each value of the array (from left-to-right) to **reduce it to a single value**.
 
-    [0, 1, 2, 3, 4].reduce(function(previousValue, currentValue, currentIndex, array) {
-      return previousValue + currentValue;
-    });//10
+```js
+[0, 1, 2, 3, 4].reduce(function(previousValue, currentValue, currentIndex, array) {
+    return previousValue + currentValue;
+});//10
+```
 
 ### 产生新数组
 就像 python 的数组推导
@@ -91,27 +97,31 @@ The reduce() method applies a function against an accumulator and each value of 
 #### map
 新数组会和原数组长度一致，比如下面函数 doubles === [ undefined, 8, 18 ]
 
-    var numbers = [1, 4, 9];
-    var doubles = numbers.map(function(num) {
-        if(num === 1){
-            return;
-        }
-        else {
-            return num*2
-        }
-    })
+```js
+var numbers = [1, 4, 9];
+var doubles = numbers.map(function(num) {
+    if(num === 1){
+        return;
+    }
+    else {
+        return num*2
+    }
+})
 
-    var numbers = [1, 4, 9];
-    var roots = numbers.map(Math.sqrt);
-    // roots is now [1, 2, 3], numbers is still [1, 4, 9]
+var numbers = [1, 4, 9];
+var roots = numbers.map(Math.sqrt);
+// roots is now [1, 2, 3], numbers is still [1, 4, 9]
+```
 
 #### filter
 
-    function isBigEnough(value) {
-      return value >= 10;
-    }
-    var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
-    // filtered is [12, 130, 44]
+```js
+function isBigEnough(value) {
+    return value >= 10;
+}
+var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
+// filtered is [12, 130, 44]
+```
 
 
 

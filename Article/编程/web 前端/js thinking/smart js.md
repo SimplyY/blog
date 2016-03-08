@@ -54,15 +54,6 @@ function safe_tags_replace(str) {
 依照 Promise/A+ 的定义，
 > Promise表示一个异步操作的最终结果。
 
-Promise 有四种状态：
-
-- pending: 初始状态, 非 fulfilled 或 rejected.
-- fulfilled: 成功的操作.
-- rejected: 失败的操作.
-- settled: Promise已被fulfilled或rejected，且不是pending
-
-另外， fulfilled 与 rejected 一起合称 settled。
-
 ![](http://7xkpdt.com1.z0.glb.clouddn.com/57f886ce0b2cbfdc54ba33b6a5269dd1.png)
 
 
@@ -88,13 +79,6 @@ Promise 实例拥有 then 方法（具有 then 方法的对象，通常被称为
 // return promise
 promise.then(onFulfilled, onRejected)
 ```
-
-接收 **两个函数** 作为参数，一个在 fulfilled 的时候被调用，一个在 rejected 的时候被调用，接收参数就是 future，onFulfilled 对应 resolve, onRejected 对应 reject。
-
-
-promise 的执行顺序到底是怎么样的呢，首先 promise 维护了俩回调函数数组，根据状态改变（resolve or reject）来执行。
-
-其中注意的是，then 方法中的 onFulfilled 如果返回一个 promise，则采用其状态。
 
 ### 异步 api 串行
 
