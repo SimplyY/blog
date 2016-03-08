@@ -10,9 +10,6 @@ $menu-padding: 10px;
         margin-right: 20px;
         @include reset-link-style;
     }
-    .home {
-        cursor: pointer;
-    }
 
     // 默认直接显示
     .first-menus {
@@ -22,8 +19,7 @@ $menu-padding: 10px;
         > li {
             display: inline-block;
             line-height: $nav-height;
-            padding-left: $menu-padding;
-            padding-right: $menu-padding;
+
         }
         > li:hover {
             cursor: pointer;
@@ -40,19 +36,24 @@ $menu-padding: 10px;
     .second-menus {
         display: none;
         position: absolute;
-        margin-left: -$menu-padding;
 
         list-style: none;
         background-color: white;
         box-shadow: 0 5px 1.0rem grey;
 
         > li {
-            padding-left: $menu-padding;
-            padding-right: $menu-padding;
+
         }
         > li:hover {
             cursor: pointer;
-            @include be-brey-animation
+            @include be-brey-animation;
         }
     }
+}
+
+.nav-tag-content {
+    display: block;
+    padding-left: $menu-padding;
+    padding-right: $menu-padding;
+    @include reset-link-style;
 }

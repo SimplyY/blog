@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { push } from 'react-router-redux'
+import { Link } from 'react-router'
 
 import { AppData } from '../../util/AppData'
-import { enterNewRouter } from '../../util/common'
+import { scrollToTop } from '../../util/common'
 
 import { ARTICLE_PATH, SHOW_MORE_ARTICLES_NUMBER } from '../../consts/config'
 import * as img from '../../consts/img'
 import * as text from '../../consts/text'
 
 class ArticleList extends Component {
-    constructor({ dispatch }) {
+    constructor() {
         super()
-        // react-router-redux's dispatch
-        this.dispatch = dispatch
     }
 
     render() {
@@ -53,9 +51,8 @@ function getArticlesListDOM(dispatch, factShowedArticles) {
         let dateStr = AppData.formatArticleDate(item.date)
 
         return (
-            <div className="article-list-item" key={item._id} onClick={() => {
-                enterNewRouter('/' + ARTICLE_PATH + item._id, dispatch, push)
-            }} >
+            <Link className="article-list-item" key={item._id}
+                to={'/' + ARTICLE_PATH + item._id} onClick={scrollToTop}>
                 <div className="title">{item.title}</div>
                 <div className="love-share-info">
                     <div className="articlelist-love-box">
@@ -73,7 +70,7 @@ function getArticlesListDOM(dispatch, factShowedArticles) {
                     <label>{text.ARTICLE_DATE_LABEL_TEXT}</label>
                     <div>{dateStr}</div>
                 </div>
-            </div>
+            </Link>
         )
     })
 }

@@ -1,6 +1,5 @@
-export function enterNewRouter(path, dispatch, push) {
+export function scrollToTop() {
     window.scrollTo(0, 0)
-    dispatch(push(path))
 }
 
 export function getPathType(urlPathname) {

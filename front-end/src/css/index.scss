@@ -9,9 +9,11 @@
 
 @import './layout';
 @import './containers/main-nav-bar';
-@import './containers/tag-chain';
 @import './containers/article-list-box';
 @import './containers/article-box';
-@import './containers/love-share';
 @import './containers/info-side-bar';
 @import './containers/content-table';
+
+@import './components/love-share';
+@import './components/tag-chain';
+@import './components/person-info';

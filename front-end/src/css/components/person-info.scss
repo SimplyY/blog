@@ -1,0 +1,62 @@
+.personal-info {
+    padding-top: 10px;
+
+    .avator-info {
+        padding: 10px 0;
+        .avator {
+            display: block;
+            max-width: 80%;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+        .avator-name {
+            font-size: 24px;
+            line-height: 45px;
+            padding-top: 5px;
+            color: #666;
+            font-weight: 300;
+            @include vertical-center(88px)
+        }
+    }
+
+    .other-info {
+        padding: 10px 3px;
+        @include silver-border-top
+    }
+
+    .github-info, .email-info, .zhihu-info, .weibo-info {
+        height: $info-height;
+        display: inline-block;
+        .iconfont {
+            display: inline-block;
+            line-height: $info-height;
+            margin-right: 6px;
+        }
+        a {
+            position: absolute;
+            font-size: 8px;
+            line-height: $info-height;
+            @include reset-link-style($grey)
+        }
+        a:hover {
+            @include reset-link-style(black)
+        }
+    }
+    .github-info, .zhihu-info {
+        width: 80px;
+    }
+    .weibo-info, .email-info {
+        width: 80px;
+    }
+    .weibo-info {
+        .iconfont {
+            font-size: 20px;
+        }
+    }
+    .email-info {
+        .iconfont {
+            font-size: 18px;
+            padding: 0 1px;
+        }
+    }
+}

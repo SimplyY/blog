@@ -1,45 +1,47 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { push } from 'react-router-redux'
+import { Link } from 'react-router'
 
-import { enterNewRouter } from '../../util/common'
+import { scrollToTop } from '../../util/common'
 
 import {TAG_PATH, HOT_PATH} from '../../consts/config'
 import * as text from '../../consts/text'
 
 class NavigationBar extends Component{
-    constructor({ dispatch }) {
+    constructor() {
         super()
-        this.dispatch = dispatch
     }
 
     render() {
         let { tags } = this.props
-        let tagsDOM = buildTagsDOMBytTags(tags, this.dispatch)
+        let tagsDOM = buildTagsDOMBytTags(tags)
+        let otherTagsDOM = buildOtherTagsDOM()
 
         return (
             <div className="main-nav-bar">
-                <p className="home" onClick={() => {
-                    enterNewRouter('/', this.dispatch, push)
-                }}>
+                <Link className="home" to="/" onClick={scrollToTop}>
                     {text.MY_NAME}
-                </p>
+                </Link>
                 <ol className="first-menus">
-
                     {tagsDOM}
-
-                    <li onClick={() => {
-                        enterNewRouter('/' + HOT_PATH, this.dispatch, push)
-                    }}>
-                        {text.HOT_TEXT}
-                    </li>
+                    {otherTagsDOM}
                 </ol>
             </div>
         )
     }
 }
 
-function buildTagsDOMBytTags(tags, dispatch) {
+function buildOtherTagsDOM() {
+    return (
+        <li>
+            <Link className="nav-tag-content" to={'/' + HOT_PATH} onClick={scrollToTop}>
+                {text.HOT_TEXT}
+            </Link>
+        </li>
+    )
+}
+
+function buildTagsDOMBytTags(tags) {
     let tagsDOM = []
     tags.forEach((item) => {
         if (item.tagRank === 1) {
@@ -48,21 +50,23 @@ function buildTagsDOMBytTags(tags, dispatch) {
             if (item.childrenTags !== undefined) {
                 childrenTagsDOM = item.childrenTags.map(item => {
                     return (
-                        <li key={item._id} onClick={e => {
-                            enterNewRouter('/' + TAG_PATH + item._id, dispatch, push)
-                            e.stopPropagation()
-                        }} >
-                            {item.tagName}
+                        <li key={item._id}>
+                            <Link className="nav-tag-content" to={'/' + TAG_PATH + item._id}  onClick={e => {
+                                scrollToTop()
+                                e.stopPropagation()
+                            }} >
+                                {item.tagName}
+                            </Link>
                         </li>
                     )
                 })
             }
             // 构造一级 tag DOM
             tagsDOM.push(
-                <li key={item._id} onClick={() => {
-                        enterNewRouter('/' + TAG_PATH + item._id, dispatch, push)
-                    }} >
-                    {item.tagName}
+                <li key={item._id}>
+                    <Link className="nav-tag-content" to={'/' + TAG_PATH + item._id} onClick={scrollToTop}>
+                        {item.tagName}
+                    </Link>
                     <ol className="second-menus">
                         {childrenTagsDOM}
                     </ol>

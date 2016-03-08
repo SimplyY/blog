@@ -6,6 +6,9 @@
     color: $color;
     text-decoration: none;
 }
+.reset-link {
+    @include reset-link-style;
+}
 
 @mixin box-grey-shadow($width: 15px){
     box-shadow: 0 2px $width grey;

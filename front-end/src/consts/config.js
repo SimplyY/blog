@@ -16,6 +16,6 @@ export const HOT_STR = 'hot'
 export const TAG_PATH = TAG_STR + '/'
 export const ARTICLE_PATH = ARTICLE_STR + '/'
 export const CHART_PATH = CHART_STR + '/'
-export const HOT_PATH = TAG_PATH + HOT_STR
+export const HOT_PATH = HOT_STR
 
 export const wrapperMoveClass = ' wrapper-move'
