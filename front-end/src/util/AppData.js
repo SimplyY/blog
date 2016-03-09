@@ -1,7 +1,9 @@
 import { ajaxGet } from './ajax'
 
 import { API_ROOT_URL, TAGS_URL, ARTICLES_URL } from '../consts/apis'
-import { TAG_STR, ARTICLE_STR, SORT_LIMIT_QUERY_STR, SORT_QUREY_STR, PATH_TYPE_IN_SPLIT_NUMBER } from '../consts/config'
+import {
+    TAG_STR, ARTICLE_STR, SORT_LIMIT_QUERY_STR, SORT_QUREY_STR, PATH_TYPE_IN_SPLIT_NUMBER, HOT_STR
+} from '../consts/config'
 
 export let AppData = {
     // load functions
@@ -134,7 +136,7 @@ function getMustArticlesJudgeFromUrl(url) {
         pArticle = ajaxGet(API_ROOT_URL + ARTICLES_URL + articleId)
         // pArticles will be undefined
     }
-    else if (pathTypeStr === TAG_STR || pathTypeStr === '') {
+    else if ([TAG_STR, HOT_STR, ''].includes(pathTypeStr)) {
         var latestArticleQurey = API_ROOT_URL + ARTICLES_URL + SORT_LIMIT_QUERY_STR
         pArticles = ajaxGet(latestArticleQurey)
         // pArticle will be undefined

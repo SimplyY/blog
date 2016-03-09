@@ -1,10 +1,11 @@
-export const LATEST_ARTICLES_NUMBER = 10
+export const LATEST_ARTICLES_NUMBER = 100
 export const FIRST_SHOWED_ARTICLES_MAX_NUMBER = 15
 export const SHOW_MORE_ARTICLES_NUMBER = 10
 export const PATH_TYPE_IN_SPLIT_NUMBER = 3
 
 export const SORT_QUREY_STR = '?sort=-date'
-export const SORT_LIMIT_QUERY_STR = SORT_QUREY_STR + '&limit=' + LATEST_ARTICLES_NUMBER
+export const QUREY_SELECT_META_STR = 'select=-md -html'
+export const SORT_LIMIT_QUERY_STR = SORT_QUREY_STR + '&limit=' + LATEST_ARTICLES_NUMBER + '&' + QUREY_SELECT_META_STR
 
 export const ROOT_STR = ''
 export const TAG_STR = 'tag'
