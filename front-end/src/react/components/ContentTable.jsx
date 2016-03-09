@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 
 import classNames from 'classNames'
 
+import _ from '../../../lib/lodash.core'
+
 import { jumpToAnchor } from '../../util/common'
 
 import { wrapperMoveClass } from '../../consts/config'
@@ -10,6 +12,10 @@ import { ARROW_ICONFONT } from '../../consts/img'
 class ContentTable extends Component {
     constructor() {
         super()
+    }
+
+    shouldComponentUpdate(nextProps){
+        return !_.isEqual(nextProps.contentTable, this.props.contentTable)
     }
 
     componentDidUpdate() {
