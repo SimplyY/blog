@@ -22,7 +22,6 @@ $menu-padding: 10px;
 
         }
         > li:hover {
-            cursor: pointer;
             @include be-brey-animation
 
             // 显示下拉菜单
@@ -41,11 +40,7 @@ $menu-padding: 10px;
         background-color: white;
         box-shadow: 0 5px 1.0rem grey;
 
-        > li {
-
-        }
         > li:hover {
-            cursor: pointer;
             @include be-brey-animation;
         }
     }

@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 
 import { scrollToTop } from '../../util/common'
 
-import {TAG_PATH, HOT_PATH} from '../../consts/config'
+import {TAG_PATH, HOT_PATH, ARTICLE_PATH, ABOUT_ARTICLE_ID} from '../../consts/config'
 import * as text from '../../consts/text'
 
 class NavigationBar extends Component{
@@ -32,13 +32,24 @@ class NavigationBar extends Component{
 }
 
 function buildOtherTagsDOM() {
-    return (
+    let otherTags = [
+        {
+            toUrl: '/' + HOT_PATH,
+            text: text.HOT_TEXT
+        },
+        {
+            toUrl: '/' +  ARTICLE_PATH + ABOUT_ARTICLE_ID,
+            text: text.ABOUT_TEXT
+        }
+    ]
+
+    return otherTags.map(item => (
         <li>
-            <Link className="nav-tag-content" to={'/' + HOT_PATH} onClick={scrollToTop}>
-                {text.HOT_TEXT}
+            <Link className="nav-tag-content" to={item.toUrl} onClick={scrollToTop}>
+                {item.text}
             </Link>
         </li>
-    )
+    ))
 }
 
 function buildTagsDOMBytTags(tags) {
@@ -53,7 +64,6 @@ function buildTagsDOMBytTags(tags) {
                         <li key={item._id}>
                             <Link className="nav-tag-content" to={'/' + TAG_PATH + item._id}  onClick={e => {
                                 scrollToTop()
-                                e.stopPropagation()
                             }} >
                                 {item.tagName}
                             </Link>

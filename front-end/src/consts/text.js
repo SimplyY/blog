@@ -1,6 +1,7 @@
 export const INVALED_URL_TIP = '您访问的 url 指向了不存在的页面'
 export const ALL_ARTICLES_STR = '所有文章'
 export const HOT_TEXT = '最热'
+export const ABOUT_TEXT = '关于'
 
 export const AUTHOR = '本文作者'
 export const MY_NAME = 'SimplyY'

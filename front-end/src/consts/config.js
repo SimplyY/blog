@@ -18,5 +18,6 @@ export const TAG_PATH = TAG_STR + '/'
 export const ARTICLE_PATH = ARTICLE_STR + '/'
 export const CHART_PATH = CHART_STR + '/'
 export const HOT_PATH = HOT_STR
+export const ABOUT_ARTICLE_ID = '56cb46564496cee272dea173'
 
 export const wrapperMoveClass = ' wrapper-move'
