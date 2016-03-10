@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
+import Tag from './Tag'
 import { scrollToTop } from '../../util/common'
 
 import {TAG_PATH, HOT_PATH, ARTICLE_PATH, ABOUT_ARTICLE_ID} from '../../consts/config'
@@ -35,22 +36,21 @@ function buildOtherTagsDOM() {
     let otherTags = [
         {
             toUrl: '/' + HOT_PATH,
-            text: text.HOT_TEXT
+            text: text.HOT_TEXT,
+            key: text.HOT_TEXT
         },
         {
             toUrl: '/' +  ARTICLE_PATH + ABOUT_ARTICLE_ID,
-            text: text.ABOUT_TEXT
+            text: text.ABOUT_TEXT,
+            key: text.ABOUT_TEXT
         }
     ]
 
     return otherTags.map(item => (
-        <li>
-            <Link className="nav-tag-content" to={item.toUrl} onClick={scrollToTop}>
-                {item.text}
-            </Link>
-        </li>
+        <Tag key={item.key} url={item.toUrl} text={item.text}/>
     ))
 }
+
 
 function buildTagsDOMBytTags(tags) {
     let tagsDOM = []
@@ -61,26 +61,23 @@ function buildTagsDOMBytTags(tags) {
             if (item.childrenTags !== undefined) {
                 childrenTagsDOM = item.childrenTags.map(item => {
                     return (
-                        <li key={item._id}>
-                            <Link className="nav-tag-content" to={'/' + TAG_PATH + item._id}  onClick={e => {
-                                scrollToTop()
-                            }} >
-                                {item.tagName}
-                            </Link>
-                        </li>
+                        <Tag key={item._id} url={'/' + TAG_PATH + item._id} text={item.tagName}/>
                     )
                 })
             }
+
+            let secondMenus = (
+                <ol className="second-menus">
+                    {childrenTagsDOM}
+                </ol>
+            )
+
             // 构造一级 tag DOM
             tagsDOM.push(
-                <li key={item._id}>
-                    <Link className="nav-tag-content" to={'/' + TAG_PATH + item._id} onClick={scrollToTop}>
-                        {item.tagName}
-                    </Link>
-                    <ol className="second-menus">
-                        {childrenTagsDOM}
-                    </ol>
-                </li>
+                <Tag key={item._id}
+                    url={'/' + TAG_PATH + item._id}
+                    text={item.tagName}
+                    child={secondMenus} />
             )
         }
     })
