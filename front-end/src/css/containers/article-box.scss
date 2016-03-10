@@ -37,7 +37,7 @@ $vote-share-love-box-height: 60px;
     }
 
     .print-this-page {
-        @include reset-link-style($light-grey);
+        @include reset-link-style(grey);
     }
     .print-this-page:hover {
         color: black;
