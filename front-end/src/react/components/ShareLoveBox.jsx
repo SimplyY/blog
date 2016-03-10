@@ -15,7 +15,7 @@ class ShareLoveBox extends Component {
         let { currentArticle } = this.props
 
         return (
-            <div>
+            <div className="love-share-box">
                 <div className="love-and-share">
                     <div className='article-love-box' onClick={this.toggleLove.bind(this)}>
                         <div className="iconfont article-love"

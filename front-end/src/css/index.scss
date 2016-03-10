@@ -1,6 +1,9 @@
 @import './common/reset';
 @import './common/font';
 
+@import './lib/github-markdown';
+@import './lib/github-gist';
+
 @import './util/color';
 @import './util/const';
 @import './util/meta-style';

@@ -49,3 +49,24 @@ $vote-share-love-box-height: 60px;
 .iconfont.article-anchor:hover {
     @include reset-link-style(black);
 }
+
+
+@media print {
+    .main-nav-bar, .content-table, .main-sidebar, .article-info, .tag-chain, .love-share-box {
+        display: none;
+    }
+
+    .main-container {
+        position: absolute;
+        top: 0px;
+        width: 960px;
+
+        .article {
+            border: 0px solid #000;
+        }
+
+        .iconfont.article-anchor {
+            display: none;
+        }
+    }
+}

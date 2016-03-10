@@ -8,8 +8,6 @@ import { AppData } from './util/AppData'
 import { loadGoogleAnalyse } from './util/google'
 import { loadMustDataAction, loadAllArticlesAction } from './react/actions/articles'
 
-import './css/lib/github-markdown.css'
-import './css/lib/github-gist.css'
 import './css/index.scss'
 
 let { loadMustData, loadAllArticles } = AppData
