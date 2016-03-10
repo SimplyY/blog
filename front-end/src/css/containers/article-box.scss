@@ -35,6 +35,14 @@ $vote-share-love-box-height: 60px;
     p {
         display: inline;
     }
+
+    .print-this-page {
+        @include reset-link-style($light-grey);
+    }
+    .print-this-page:hover {
+        color: black;
+        text-decoration: underline;
+    }
 }
 
 .iconfont.article-anchor {

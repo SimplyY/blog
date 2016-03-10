@@ -39,6 +39,9 @@ class Article extends Component {
                         <label>{text.ARTICLE_DATE_LABEL_TEXT}</label>
                         <date>{dateStr}</date>
                     </div>
+                    <div>
+                        <a className="print-this-page" href="javascript:window.print()">click there to print this page </a>
+                    </div>
                 </div>
 
                 <article id="article-content" className="markdown-body"
