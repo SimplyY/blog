@@ -20,7 +20,11 @@ module.exports = {
     },
     plugins: [
         //这个使用uglifyJs压缩你的js代码
-        new webpack.optimize.UglifyJsPlugin({minimize: true}),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
         //把入口文件里面的数组打包成 libs.js
         new webpack.optimize.CommonsChunkPlugin('libs', 'libs.js'),
         new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
