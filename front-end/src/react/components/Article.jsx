@@ -40,7 +40,7 @@ class Article extends Component {
                         <date>{dateStr}</date>
                     </div>
                     <div>
-                        <a className="print-this-page" href="javascript:window.print()">click there to print this article </a>
+                        <a className="print-this-page" href="javascript:window.print()">click there to get pdf or print</a>
                     </div>
                 </div>
 
