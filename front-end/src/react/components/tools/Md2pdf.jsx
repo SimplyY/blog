@@ -27,7 +27,7 @@ class Md2pdf extends Component {
             <div>
                 <div className="md-input-box">
                     <div className="md-input-header">
-                        在这里输入 md（建议粘贴过来，不建议在这里输入）
+                        在这里输入 md（建议粘贴过来，不建议在这里输入，注需要严格的 md 语法）
                     </div>
                     <div>
                         <a className="print-this-page" href="javascript:window.print()">click there to get pdf or print</a>
