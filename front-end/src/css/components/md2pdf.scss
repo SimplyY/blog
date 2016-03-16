@@ -1,0 +1,37 @@
+$md2pdf-margin: 20px;
+
+.md-input-box {
+    .md-input-header {
+        font-size: 20px;
+        padding: $md2pdf-margin;
+    }
+
+    #md-input {
+        width: 95%;
+        margin-left: $md2pdf-margin;
+        margin-right: $md2pdf-margin;
+        height: 200px;
+    }
+
+    #tools-md2pdf-preview {
+        margin-left: $md2pdf-margin;
+        margin-right: $md2pdf-margin;
+    }
+
+    .print-this-page {
+        position: absolute;
+        top: $md2pdf-margin;
+        right: $md2pdf-margin;
+        @include reset-link-style(grey);
+    }
+}
+
+#tools-md2pdf-preview {
+    margin: $md2pdf-margin;
+}
+
+@media print {
+    .md-input-box {
+        display: none;
+    }
+}

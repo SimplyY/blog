@@ -2,7 +2,8 @@ import { ajaxGet } from './ajax'
 
 import { API_ROOT_URL, TAGS_URL, ARTICLES_URL } from '../consts/apis'
 import {
-    TAG_STR, ARTICLE_STR, SORT_LIMIT_QUERY_STR, SORT_QUREY_STR, PATH_TYPE_IN_SPLIT_NUMBER, HOT_STR
+    TAG_STR, ARTICLE_STR, SORT_LIMIT_QUERY_STR, SORT_QUREY_STR, PATH_TYPE_IN_SPLIT_NUMBER, HOT_STR,
+    TAG_PATH
 } from '../consts/config'
 
 export let AppData = {
@@ -158,15 +159,19 @@ function getMustArticlesJudgeFromUrl(url) {
 function processTags(tags) {
     // process tags
     tags.sort((a, b) => b.articleTitleList.length - a.articleTitleList.length)
-    tags.forEach(item => {
-        if (item.tagRank === 2) {
-             let parentTag = AppData.getTagByTagName(tags, item.parentTagName)
 
-             if (parentTag.childrenTags === undefined) {
-                 parentTag.childrenTags = [item]
-             } else {
-                 parentTag.childrenTags.push(item)
-             }
+    tags.forEach(item => {
+        item.url = '/' + TAG_PATH + item._id
+
+        // make first rank tag has childrenTags attribute
+        if (item.tagRank === 2) {
+            let parentTag = AppData.getTagByTagName(tags, item.parentTagName)
+
+            if (parentTag.childrenTags === undefined) {
+                parentTag.childrenTags = [item]
+            } else {
+                parentTag.childrenTags.push(item)
+            }
         }
     })
 }

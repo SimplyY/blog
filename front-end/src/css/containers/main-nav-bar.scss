@@ -1,4 +1,4 @@
-$nav-font-size: 20px;
+$nav-font-size: 19px;
 $menu-padding: 10px;
 
 .main-nav-bar {
@@ -6,7 +6,7 @@ $menu-padding: 10px;
 
     .home {
         display: inline;
-        margin-left: 40px;
+        margin-left: 36px;
         margin-right: 20px;
         @include reset-link-style;
     }
