@@ -12,7 +12,7 @@ class Md2pdf extends Component {
     }
     render() {
         if (!this.state.hasLoadLibs) {
-            loadLibs(this.state)
+            loadLibs(this.setState)
         }
         let previewDOM
         if (this.state.hasLoadLibs) {
@@ -44,10 +44,10 @@ class Md2pdf extends Component {
 }
 
 
-function loadLibs(state) {
+function loadLibs(setState) {
     loadScript('//cdn.bootcss.com/marked/0.3.5/marked.js', () => {
         loadScript('//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js', () => {
-            state.hasLoadLibs = true
+            setState({hasLoadLibs: true})
             marked.setOptions({
                 highlight: function(code) {
                     return hljs.highlightAuto(code).value;
@@ -70,8 +70,7 @@ function loadScript(url, callback){
             script.onload = script.onreadystatechange = null;
         }
     };
-    // Use insertBefore instead of appendChild  to circumvent an IE6 bug.
-    head.insertBefore(script, head.firstChild);
+    head.appendChild(script);
 }
 
 export default Md2pdf
