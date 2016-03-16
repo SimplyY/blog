@@ -12,7 +12,7 @@ class Md2pdf extends Component {
     }
     render() {
         if (!this.state.hasLoadLibs) {
-            loadLibs(this.setState)
+            loadLibs(this.state)
         }
         let previewDOM
         if (this.state.hasLoadLibs) {
@@ -44,10 +44,10 @@ class Md2pdf extends Component {
 }
 
 
-function loadLibs(setState) {
+function loadLibs(state) {
     loadScript('//cdn.bootcss.com/marked/0.3.5/marked.js', () => {
         loadScript('//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js', () => {
-            setState({hasLoadLibs: true})
+            state.hasLoadLibs = true
             marked.setOptions({
                 highlight: function(code) {
                     return hljs.highlightAuto(code).value;
