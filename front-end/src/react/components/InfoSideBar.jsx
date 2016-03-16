@@ -40,7 +40,7 @@ function getColumnTagsDOM(tags) {
     return columnTags.map(item => {
         return (
             <li key={item._id}>
-                <Link className="column-item reset-link" to={'/' + TAG_PATH + item.url} onClick={scrollToTop}>
+                <Link className="column-item reset-link" to={item.url} onClick={scrollToTop}>
                     {item.tagName}
                 </Link>
             </li>
