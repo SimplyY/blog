@@ -27,7 +27,12 @@ class Md2pdf extends Component {
             <div>
                 <div className="md-input-box">
                     <div className="md-input-header">
-                        在这里输入 md（建议粘贴过来，不建议在这里输入，注需要严格的 md 语法）
+                        <p>在下面输入 Markdown</p>
+                        <br/>
+                        <p>建议粘贴过来，不建议在这里输入</p>
+                        <p>注需要严格的 md 语法(比如 # test not #test)</p>
+                        <p>chrome 导出 pdf 最大的优势是，你自己可以改 css</p>
+
                     </div>
                     <div>
                         <a className="print-this-page" href="javascript:window.print()">click there to get pdf or print</a>
