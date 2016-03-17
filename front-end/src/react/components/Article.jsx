@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+import DOMPurify from 'dompurify'
+
 import { AppData } from '../../util/AppData'
 import { jumpToAnchor, showAnchor, isUrlInAnchor } from '../../util/common'
 
@@ -45,7 +47,7 @@ class Article extends Component {
                 </div>
 
                 <article id="article-content" className="markdown-body"
-                    dangerouslySetInnerHTML={{__html: currentArticleDOM}}
+                    dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(currentArticleDOM)}}
                     onClick={(e) => {
                         if (e.target.className === 'iconfont article-anchor') {
                             jumpToAnchor(e)

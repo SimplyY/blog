@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+import DOMPurify from 'dompurify'
+
 class Md2pdf extends Component {
     constructor() {
         super()
@@ -42,7 +44,7 @@ class Md2pdf extends Component {
                         onInput={e => this.setState({md: e.target.value})}>
                     </textarea>
                 </div>
-                {previewDOM}
+                {DOMPurify.sanitize(previewDOM)}
             </div>
         )
     }
@@ -62,7 +64,7 @@ function loadLibs(state) {
     })
 }
 
-function loadScript(url, callback){
+function loadScript(url, callback) {
     var head = document.getElementsByTagName('head')[0];
     var script = document.createElement('script');
     script.type = 'text/javascript';

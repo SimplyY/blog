@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var WebpackMd5Hash = require('webpack-md5-hash');
 
 var SRC_PATH = path.join(__dirname, 'src')
 var FONT_PATH = path.join(__dirname, 'font')
@@ -26,8 +27,9 @@ module.exports = {
             }
         }),
         //把入口文件里面的数组打包成 libs.js
-        new webpack.optimize.CommonsChunkPlugin('libs', 'libs.js'),
+        new webpack.optimize.CommonsChunkPlugin('libs', 'libs.[chunkhash].[id].js'),
         new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
+        new WebpackMd5Hash()
     ],
     resolve: {
         extensions: ['', '.js', '.jsx', ]
