@@ -52,7 +52,7 @@ function getArticlesListDOM(dispatch, factShowedArticles) {
 
         return (
             <Link className="article-list-item" key={item._id}
-                to={'/' + ARTICLE_PATH + item._id + '#!'} onClick={scrollToTop}>
+                to={'/' + ARTICLE_PATH + item._id} onClick={scrollToTop}>
                 <div className="title">{item.title}</div>
                 <div className="love-share-info">
                     <div className="articlelist-love-box">
