@@ -43,6 +43,12 @@ module.exports.setViews = function (app) {
     app.set('view engine', 'html');
     app.set('views', path.join(__dirname, 'views'));
 
+    app.get('/google0fb416815f1d4d7c.html', function (req, res) {
+        res.render('google0fb416815f1d4d7c', function (err, html) {
+            res.send(html);
+        });
+    });
+
     app.get('/*', function (req, res) {
         res.render('blog', function (err, html) {
             res.send(html);
