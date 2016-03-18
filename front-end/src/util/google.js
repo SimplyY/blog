@@ -1,4 +1,7 @@
-export function loadGoogleAnalyse() {
+import { loadScript } from './common'
+
+export function loadGoogle() {
+    // google-analytics
     (function(i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         i[r] = i[r] || function() {
@@ -12,4 +15,9 @@ export function loadGoogleAnalyse() {
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
     ga('create', 'UA-71968674-1', 'auto');
     ga('send', 'pageview');
+
+    // google ads
+    loadScript('//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', () => {
+        (adsbygoogle = window.adsbygoogle || []).push({})
+    })
 }

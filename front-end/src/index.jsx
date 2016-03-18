@@ -5,7 +5,7 @@ import createConfigureStore from './react/store/createConfigureStore'
 
 import Root from './react/containers/root/Root'
 import { AppData } from './util/AppData'
-import { loadGoogleAnalyse } from './util/google'
+import { loadGoogle } from './util/google'
 import { loadMustDataAction, loadAllArticlesAction } from './react/actions/articles'
 
 import './css/index.scss'
@@ -28,7 +28,7 @@ loadMustData()
     .then(allArticles => {
         store.dispatch(loadAllArticlesAction(allArticles))
     })
-    .then(loadGoogleAnalyse)
+    .then(loadGoogle)
     .catch(error => {
         if (error) {
             console.log(error)
