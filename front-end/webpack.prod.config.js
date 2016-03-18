@@ -11,8 +11,8 @@ module.exports = {
         //添加要打包在 libs 里面的库
         libs: [
             'react', 'react-router', 'core-js', 'history',
-            'immutable', 'redux', 'react-redux', 'redux-immutablejs',
-             'isomorphic-fetch', './lib/lodash.core.js'
+            'immutable', 'redux', 'react-redux', 'redux-immutablejs','react-router-redux',
+             'isomorphic-fetch', './lib/lodash.core.js','dompurify'
         ]
     },
     output: {
