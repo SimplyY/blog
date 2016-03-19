@@ -30,8 +30,11 @@ atom 的界面 ui 非常的现代化，并且有很多 theme 可以选择
 ![](http://7xkpdt.com1.z0.glb.clouddn.com/d59372a57e485c3411ead78ea07ca4a8.png)
 
 ## 丰富的快捷键操作
+> cmd 在 win 下对应为 ctrl
+
 它是基于 electron(Electron 的底层基于Chromium 和node.js)，并且你会发现它非常像 chrome dev tools(cmd + p，cmd + shift + f 等等快捷键完全一样，一套快捷键俩地方使用，简直不能再棒)。
 
+更多在这 SimplyY 的博客文章: 《atom tips(1):常用操作》	链接为： http://simplyy.space/article/56ecd89a39a1954f69680f1e
 
 ## 强大的模糊命令
 cmd + shift + p 启动，通过命令输入框可以使用任何插件（自带插件和第三方插件）的功能。特别是对于懒得记太多快捷键的童鞋的福音（说的就是我。。）
@@ -40,10 +43,14 @@ cmd + shift + p 启动，通过命令输入框可以使用任何插件（自带�
 
 ## 丰富而且 amazing 的插件
 
+SimplyY 的博客文章: 《atom tips(2):web 开发常用插件》	链接为： http://simplyy.space/article/56ecd89a39a1954f69680f1f
+
 ## 强大的 snippets 系统
 自己定制自己的代码补全功能，是那么的简单。动态语言补全的福音。而且非常的 hackable。
 
 我自己写了一个 web 开发者常用的， https://github.com/SimplyY/simplyy-snippets
+
+详情见这里 https://segmentfault.com/a/1190000003042239
 
 ## 和 git、github 深度配合
 你可以直接从当前文件定位到 github 的文件，和 git 的深度配合
