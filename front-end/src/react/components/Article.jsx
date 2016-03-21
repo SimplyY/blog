@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 
+import _ from '../../../lib/lodash.core'
 import DOMPurify from 'dompurify'
 
 import { AppData } from '../../util/AppData'
@@ -12,6 +13,13 @@ class Article extends Component {
         super()
     }
 
+    shouldComponentUpdate(nextProps){
+        let nextArticle = nextProps.currentArticle
+        let oldArticle = this.props.currentArticle
+        // use lodash (deep)isEqual
+        return !_.isEqual(nextArticle.html, oldArticle.html)
+    }
+
     componentDidMount() {
         if (isUrlInAnchor()) {
             showAnchor()
@@ -19,6 +27,7 @@ class Article extends Component {
     }
 
     render() {
+        // console.log('Article render')
         let { currentArticle } = this.props
         let currentArticleDOM = currentArticle.html
 

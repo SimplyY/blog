@@ -1,8 +1,9 @@
 $vote-share-love-box-height: 60px;
+$near-article-box-height: 60px;
 
 .article-box {
     position: relative;
-    padding-bottom: $vote-share-love-box-height;
+    padding-bottom: $vote-share-love-box-height + $near-article-box-height;
 
     @include box-grey-shadow($container-shadow-width)
 

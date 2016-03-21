@@ -14,6 +14,7 @@ import InvalidUrlBox from '../containers/InvalidUrlBox'
 import Article from '../components/Article'
 import CurrentTagChain from '../components/CurrentTagChain'
 import ShareLoveBox from '../components/ShareLoveBox'
+import NearArticleBox from '../components/NearArticleBox'
 
 import { getPathType } from '../../util/common'
 
@@ -35,6 +36,8 @@ class ArticleBox extends Component {
     }
 
     render() {
+        // console.log('ArticleBox render')
+
         let {
             urlPathname,
             tags, articles,
@@ -62,6 +65,7 @@ class ArticleBox extends Component {
                 <ShareLoveBox currentArticle={currentArticle}
                     addArticleLoveNumber={addArticleLoveNumber}
                     addArticleShareNumber={addArticleShareNumber} />
+                <NearArticleBox nearArticle={currentArticle.nearArticle} />
             </div>
         )
     }

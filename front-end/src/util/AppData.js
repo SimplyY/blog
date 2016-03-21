@@ -178,6 +178,19 @@ function processTags(tags) {
 
 function processArticles(articles) {
     convertDateStrType(articles)
+
+    addContentOfTableAttr(articles)
+
+    addNearArticleAttr(articles)
+}
+
+function convertDateStrType(data){
+    data.forEach((item) => {
+        item.date = new Date(item.date)
+    })
+}
+
+function addContentOfTableAttr(articles) {
     articles.map(item => {
         if (item.contentOfTable) {
             item.contentOfTable = JSON.parse(item.contentOfTable)
@@ -186,8 +199,29 @@ function processArticles(articles) {
     })
 }
 
-function convertDateStrType(data){
-    data.forEach((item) => {
-        item.date = new Date(item.date)
+function addNearArticleAttr(articles) {
+    articles.forEach((item, index, array) => {
+        let nearArticle = {}
+
+        if (index === 0) {
+            nearArticle.before = null
+        }
+        else {
+            nearArticle.before = {
+                _id: array[index - 1]._id,
+                title: array[index - 1].title
+            }
+        }
+        if (index === array.length - 1) {
+            nearArticle.after = null
+        }
+        else {
+            nearArticle.after = {
+                _id: array[index + 1]._id,
+                title: array[index + 1].title
+            }
+        }
+
+        item.nearArticle = nearArticle
     })
 }

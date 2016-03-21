@@ -1,0 +1,29 @@
+.near-article-box {
+    position: relative;
+    top: $near-article-box-height;
+
+    font-size: 16px;
+
+    .before-article {
+        display: inline-block;
+        position: absolute;
+        left: $main-container-padding-h + 2px;
+    }
+    .after-article {
+        display: inline-block;
+        position: absolute;
+        right: $main-container-padding-h + 2px;
+    }
+    a {
+        @include reset-link-style($blue);
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    .arrow-icon-left:before {
+        content: "上一篇博文: ";
+    }
+    .arrow-icon-right:before {
+        content: "下一篇博文: ";
+    }
+}
