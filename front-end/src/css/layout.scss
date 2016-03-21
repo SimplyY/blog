@@ -1,12 +1,12 @@
 // layout
 $nav-height: 48px;
 
-$body-max-width: 1080px;
+$body-max-width: 68rem;
 $main-container-width: 74%;
 $sidebar-width: 22%;
 
 // layout margin
-$nav-body-margin: 30px;
+$nav-body-margin: 35px;
 $body-top-margin: $nav-height + $nav-body-margin;
 $container-sidebar-margin: 100% - $main-container-width - $sidebar-width;
 

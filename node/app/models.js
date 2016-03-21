@@ -42,6 +42,7 @@ var articleSchema = new mongoose.Schema({
     parentsTagNameArray: [{ type: String, required: true }], // 同上
     md:  { type: String, required: true },
     html: { type: String, required: true},
+    contentOfTable: { type: String, required: true },
     // because date con't be json.stringfy safe, so use String type
     date: { type: String, default: moment().tz("Asia/Shanghai").format() },
 
@@ -49,6 +50,7 @@ var articleSchema = new mongoose.Schema({
     shareNumber: { type: Number, default: 0 },
     // diffcult,easy grade
     grade: { type: Number, default: 50 },
+
     comments:[{
         date: { type: String, default: moment().tz("Asia/Shanghai").format() },
 
@@ -113,7 +115,7 @@ function renewDatabase() {
                 var tagOperateItemsKeys = getOperateItemsKeys(oldTagsNames, newTagsNames);
                 var articleOperateItemsKeys = getOperateItemsKeys(oldArticlesTitles, newArticlesTitles);
 
-                renderMd2Html(articleOperateItemsKeys, oldArticles, newArticles);
+                getAttrsForAritcleFromMd(articleOperateItemsKeys, oldArticles, newArticles);
 
                 operateDatabase(localConfig.tagModelName, tagOperateItemsKeys, oldTags, newTags);
                 operateDatabase(localConfig.articleModelName, articleOperateItemsKeys, oldArticles, newArticles);
@@ -140,13 +142,15 @@ function getOperateItemsKeys(oldItemsKeys, newItemsKeys) {
     };
 }
 
-function renderMd2Html(articleOperateItemsKeys, oldArticles, newArticles) {
+// get attrs(html, contentOfTable)
+function getAttrsForAritcleFromMd(articleOperateItemsKeys, oldArticles, newArticles) {
     var addItemsKeys = articleOperateItemsKeys.addItemsKeys;
     var updateItemsKeys = articleOperateItemsKeys.updateItemsKeys;
 
     for (i = 0; i < addItemsKeys.length; i++) {
         var addObject = findObject(addItemsKeys[i], localConfig.articleModelName, newArticles);
         addObject.html = marked(addObject.md);
+        addObject.contentOfTable = getContentOfTableFromHTML(addObject.html);
     }
 
     for (i = 0; i < updateItemsKeys.length; i++) {
@@ -155,8 +159,26 @@ function renderMd2Html(articleOperateItemsKeys, oldArticles, newArticles) {
 
         if (updateObject.md !== oldObject.md) {
             updateObject.html = marked(updateObject.md);
+            updateObject.contentOfTable = getContentOfTableFromHTML(updateObject.html);
         }
+
     }
+}
+
+var cheerio = require('cheerio');
+var getPrefix = require('./util/common').getPrefix;
+function getContentOfTableFromHTML(html) {
+    var $ = cheerio.load(html);
+    var titles = $('h1,h2,h3,h4,h5,h6').get();
+    var contentOfTable = titles.map(function(item) {
+        return {
+            content: item.attribs.id,
+            // tagName is 'Hx', rank is x
+            rank: Number.parseInt(item.name[1], 10)
+        };
+    });
+    getPrefix(contentOfTable);
+    return JSON.stringify(contentOfTable);
 }
 
 

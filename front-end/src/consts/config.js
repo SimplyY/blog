@@ -5,7 +5,7 @@ export const PATH_TYPE_IN_SPLIT_NUMBER = 3
 
 // qurey str
 export const SORT_QUREY_STR = '?sort=-date'
-export const QUREY_SELECT_META_STR = 'select=-md -html'
+export const QUREY_SELECT_META_STR = 'select=-md -html -contentOfTable'
 export const SORT_LIMIT_QUERY_STR = SORT_QUREY_STR + '&limit=' + LATEST_ARTICLES_NUMBER + '&' + QUREY_SELECT_META_STR
 
 export const ROOT_STR = ''
@@ -26,6 +26,3 @@ export const TOOLS_PATH = 'tools/'
 export const MD2PDF_TOOL_PATH = TOOLS_PATH + MD2PDF_STR
 
 export const ABOUT_ARTICLE_ID = '56cb46564496cee272dea173'
-
-// class
-export const wrapperMoveClass = ' wrapper-move'

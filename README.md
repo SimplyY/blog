@@ -31,6 +31,9 @@
 1. npm run mongodb 启动数据库（端口默认为27017,修改见 "./node/mongod.conf"文件）
 2. npm run server 启动服务器(默认同上，修改方式同上)
 
+## TODO
+- 服务器端渲染
+
 ## 重写计划
 ### 后端
 > node express mongodb fs restful
@@ -62,6 +65,7 @@ js: react redux echart
 - [x] ContentTable (左侧点击，显示目录，根据 h 标签开发）
 - [ ] 评论功能 CommentBox avatar url default 'http://7xkpdt.com1.z0.glb.clouddn.com/46867d9be26db9982249775578cf37fc.png'
 - [ ] chartjs
+
 
 #### 组件结构
 - root

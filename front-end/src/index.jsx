@@ -1,3 +1,6 @@
+import './util/resize-rem'
+import './css/index.scss'
+
 import 'babel-core/polyfill'
 import React from 'react'
 import { render } from 'react-dom'
@@ -7,8 +10,6 @@ import Root from './react/containers/root/Root'
 import { AppData } from './util/AppData'
 import { loadGoogle } from './util/google'
 import { loadMustDataAction, loadAllArticlesAction } from './react/actions/articles'
-
-import './css/index.scss'
 
 let { loadMustData, loadAllArticles } = AppData
 
@@ -29,8 +30,8 @@ loadMustData()
         store.dispatch(loadAllArticlesAction(allArticles))
     })
     .then(loadGoogle)
-    .catch(error => {
-        if (error) {
-            console.log(error)
-        }
-    })
+    // .catch(error => {
+    //     if (error) {
+    //         console.log(error)
+    //     }
+    // })

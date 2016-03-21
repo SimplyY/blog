@@ -1,14 +1,13 @@
-$info-height: 25px;
-
 .main-sidebar {
-    padding: 7px 10px
+    font-size: 1rem;
+    padding: 0.4rem 0.625rem;
 }
 
 .column-tags {
     .column-header {
         @include silver-border-top
-        padding-left: 3px;
-        padding-top: 20px;
+        padding-left: 0.2rem;
+        padding-top: 1.2rem;
     }
 
     .column-header:after {
@@ -32,7 +31,7 @@ $info-height: 25px;
         cursor: pointer;
     }
 
-    $arrow-padding: 3px;
+    $arrow-padding: 0.2rem;
     .column-item:before {
         content:"‹‹";
         @include arrow-char-style($arrow-padding)

@@ -3,6 +3,10 @@ export function scrollToTop() {
 }
 
 export function getPathType(urlPathname) {
+    if (urlPathname === undefined || urlPathname === null) {
+        return
+    }
+
     return urlPathname.split('/')[1]
 }
 

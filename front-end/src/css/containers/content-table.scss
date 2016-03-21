@@ -1,5 +1,5 @@
 $content-table-sidebar-width: 230px;
-$content-table-padding: 10px;
+$content-table-padding: 5px;
 
 .content-table {
     color: rgb(3,3,3);
@@ -7,7 +7,7 @@ $content-table-padding: 10px;
 
 .content-table-button {
     position: fixed;
-    left: 10px;
+    left: 5px;
     top: $nav-height + $content-table-padding;
     z-index: 99;
     cursor: pointer;
@@ -24,8 +24,14 @@ $content-table-padding: 10px;
 
     //box-shadow: 0 1px 1px grey;
 }
+
+.content-table-button-disapper {
+    visibility: hidden;
+    @include translate3d-t()
+}
+
 .content-table-button-clicked {
-    @include translate3d-t(170px)
+    @include translate3d-t(175px)
 }
 
 .button.iconfont {
@@ -46,13 +52,9 @@ $content-table-padding: 10px;
     }
 }
 
-.content-table-button-disapper {
-    display: none;
-}
-
 .content-table-header {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 12px;
+    padding-bottom: 6px;
     padding-left: 18px;
 
     border-bottom: 1.5px solid $silver;

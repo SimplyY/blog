@@ -1,3 +1,5 @@
+$info-height: 1.5rem;
+
 .personal-info {
     padding-top: 10px;
 
@@ -10,12 +12,12 @@
             border-radius: 50%;
         }
         .avator-name {
-            font-size: 24px;
-            line-height: 45px;
+            font-size: 1.5rem;
+            line-height: 2.8rem;
             padding-top: 5px;
             color: #666;
             font-weight: 300;
-            @include vertical-center(88px)
+            @include vertical-center(5.5rem)
         }
     }
 
@@ -23,18 +25,18 @@
         padding: 10px 3px;
         @include silver-border-top
     }
-
     .github-info, .email-info, .zhihu-info, .weibo-info {
         height: $info-height;
         display: inline-block;
         .iconfont {
             display: inline-block;
             line-height: $info-height;
-            margin-right: 6px;
+            margin-right: 0.375rem;
+            font-size: 1.1rem;
         }
         a {
             position: absolute;
-            font-size: 8px;
+            font-size: 0.6rem;
             line-height: $info-height;
             @include reset-link-style($grey)
         }
@@ -43,19 +45,19 @@
         }
     }
     .github-info, .zhihu-info {
-        width: 80px;
+        width: 5.3rem;
     }
     .weibo-info, .email-info {
-        width: 80px;
+        width: 6rem;
     }
     .weibo-info {
         .iconfont {
-            font-size: 20px;
+            font-size: 1.25rem;
         }
     }
     .email-info {
         .iconfont {
-            font-size: 18px;
+            font-size: 1.1rem;
             padding: 0 1px;
         }
     }

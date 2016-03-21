@@ -3,12 +3,17 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import {
-    showContentTableAction, hiddenContentTableAction, loadContentTableContentAction
+    showContentTableAction, hiddenContentTableAction
 } from '../actions/contentTable'
 
 import NavigationBar from '../components/NavigationBar'
 import InfoSideBar from '../components/InfoSideBar'
 import ContentTable from '../components/ContentTable'
+
+import { AppData } from '../../util/AppData'
+import { getPathType } from '../../util/common'
+
+import { ARTICLE_STR } from '../../consts/config'
 
 class App extends Component {
     constructor() {
@@ -16,18 +21,28 @@ class App extends Component {
     }
     render() {
         const {
-            children, tags, contentTable,
+            pathname,
+            children, tags, articles, contentTable,
             showContentTable, hiddenContentTable, loadContentTableContent
         } = this.props
+
+        let isAppear = false
+        if (getPathType(pathname) === ARTICLE_STR) {
+            isAppear = true
+            const { articleId } = this.props.params
+            let currentArticle = AppData.getAricleByArticleId(articles, articleId)
+            contentTable.content = currentArticle.contentOfTable
+        }
+
 
         return (
             <div className="main-wrapper">
                 <NavigationBar tags={tags} />
-                <ContentTable contentDOMId='article-content' wrapperId='main-body'
-                    showContentTable={showContentTable}
-                    hiddenContentTable={hiddenContentTable}
-                    loadContentTableContent={loadContentTableContent}
-                    contentTable={contentTable} />
+                    <ContentTable isAppear={isAppear}
+                        contentTable={contentTable}
+                        showContentTable={showContentTable}
+                        hiddenContentTable={hiddenContentTable}
+                        loadContentTableContent={loadContentTableContent}/>
                 <div id="main-body" className="main-body clear-float">
                     <div className="main-container">
                         {children}
@@ -42,15 +57,16 @@ class App extends Component {
 function mapStateToProps(state) {
     return {
         tags: state.data.get('tags').toJS(),
-        contentTable: state.contentTable.toJS()
+        articles: state.data.get('articles').toJS(),
+        contentTable: state.contentTable.toJS(),
+        pathname: state.routing.location.pathname
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         showContentTable: bindActionCreators(showContentTableAction, dispatch),
-        hiddenContentTable: bindActionCreators(hiddenContentTableAction, dispatch),
-        loadContentTableContent: bindActionCreators(loadContentTableContentAction, dispatch)
+        hiddenContentTable: bindActionCreators(hiddenContentTableAction, dispatch)
     }
 }
 

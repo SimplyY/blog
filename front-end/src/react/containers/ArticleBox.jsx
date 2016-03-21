@@ -7,7 +7,7 @@ import _ from '../../../lib/lodash.core'
 import { AppData } from '../../util/AppData'
 
 import { addArticleLoveNumberAction, addArticleShareNumberAction } from '../actions/articles'
-import { appearContentTableAction, disappearContentTableAction } from '../actions/contentTable'
+import { showContentTableAction } from '../actions/contentTable'
 
 import InvalidUrlBox from '../containers/InvalidUrlBox'
 
@@ -27,6 +27,11 @@ class ArticleBox extends Component {
         let oldArticle = AppData.getAricleByArticleId(this.props.articles, this.props.params.articleId)
         // use lodash (deep)isEqual
         return !_.isEqual(nextArticle, oldArticle)
+    }
+
+    componentDidMount() {
+        const { showContentTable } = this.props
+        showContentTable()
     }
 
     render() {
@@ -73,10 +78,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
+        showContentTable: bindActionCreators(showContentTableAction, dispatch),
         addArticleLoveNumber: bindActionCreators(addArticleLoveNumberAction, dispatch),
         addArticleShareNumber: bindActionCreators(addArticleShareNumberAction, dispatch),
-        appearContentTable: bindActionCreators(appearContentTableAction, dispatch),
-        disappearContentTable: bindActionCreators(disappearContentTableAction, dispatch)
     }
 }
 

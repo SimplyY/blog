@@ -178,6 +178,12 @@ function processTags(tags) {
 
 function processArticles(articles) {
     convertDateStrType(articles)
+    articles.map(item => {
+        if (item.contentOfTable) {
+            item.contentOfTable = JSON.parse(item.contentOfTable)
+        }
+        return item
+    })
 }
 
 function convertDateStrType(data){
