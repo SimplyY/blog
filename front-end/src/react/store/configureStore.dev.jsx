@@ -11,8 +11,8 @@ const finalCreateStore = compose(
     DevTools.instrument()
 )(createStore)
 
-export default function configureStore() {
-    const store = finalCreateStore(rootReducer)
+export default function configureStore(initialState) {
+    const store = finalCreateStore(rootReducer, initialState)
 
     // Required for replaying actions from devtools to work
     reduxRouterMiddleware.listenForReplays(store)

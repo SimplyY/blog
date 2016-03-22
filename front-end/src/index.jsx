@@ -1,7 +1,6 @@
 import './util/resize-rem'
 import './css/index.scss'
 
-import 'babel-core/polyfill'
 import React from 'react'
 import { render } from 'react-dom'
 import createConfigureStore from './react/store/createConfigureStore'
@@ -13,7 +12,8 @@ import { loadMustDataAction, loadAllArticlesAction } from './react/actions/artic
 
 let { loadMustData, loadAllArticles } = AppData
 
-let store = createConfigureStore()
+const initialState = window.__INITIAL_STATE__
+let store = createConfigureStore(initialState)
 
 // loadMustData 返回一个 promise
 // 先加载 mustData，再 render 页面，再加载 allData,etc
