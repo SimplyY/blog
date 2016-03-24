@@ -12,8 +12,10 @@ import { loadAllArticlesAction } from './react/actions/articles'
 
 let { loadAllArticles } = AppData
 
-const initialState = window.__INITIAL_STATE__
-let store = configureStore(initialState)
+const serverState = window.__INITIAL_STATE__
+processServerState(serverState)
+
+let store = configureStore(serverState)
 
 let pRender = new Promise((resolve) => {
     render(
@@ -34,3 +36,12 @@ pRender.then(loadAllArticles)
             throw error
         }
     })
+
+
+function processServerState(serverState) {
+    if (serverState.data.articles[0].html !== undefined) {
+        serverState.data.articles.forEach(item => {
+            item.contentOfTable = JSON.parse(item.contentOfTable)
+        })
+    }
+}

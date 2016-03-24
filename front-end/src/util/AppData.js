@@ -92,6 +92,10 @@ export function processArticles(articles) {
 }
 
 function addContentOfTableAttr(articles) {
+    if (typeof window === 'undefined') {
+        return
+    }
+
     articles.map(item => {
         if (item.contentOfTable) {
             item.contentOfTable = JSON.parse(item.contentOfTable)

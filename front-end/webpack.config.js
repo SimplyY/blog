@@ -7,11 +7,11 @@ var FONT_PATH = path.join(__dirname, 'font')
 module.exports = {
     devtool: 'source-map',
     entry: [
-        'webpack-hot-middleware/client',
+        // 'webpack-hot-middleware/client',
         './src/index.jsx'
     ],
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: '../node/app/static',
         filename: 'bundle.js',
         publicPath: '/static/'
     },
@@ -21,7 +21,7 @@ module.exports = {
      },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
+        // new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
     ],
     resolve: {

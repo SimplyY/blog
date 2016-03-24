@@ -12,7 +12,10 @@ class NearArticleBox extends Component {
         const { nearArticle } = this.props
         let beforeArticleDOM, afterArticleDOM
         if (nearArticle === undefined) {
-            return
+            return (
+                <div className="near-article-box">
+                </div>
+            )
         }
 
         if (nearArticle.before !== null) {

@@ -73,20 +73,20 @@ function handleRender(req, res) {
         }
         else if (renderProps) {
             var initialState
-            var ReactHtml
+            var reactHtml
             models.loadMustData(req.url)
                 .then(function(data) {
                     store.dispatch(loadMustDataAction(data))
                     initialState = store.getState()
                     var Router = React.createElement(RouterContext, renderProps)
                     var Root = React.createElement(Provider, {store: store}, Router)
-                    ReactHtml = renderToString(Root)
+                    reactHtml = renderToString(Root)
                     return data
                 })
                 .then(getTitle)
                 .then(function(title) {
                     // 把渲染后的页面内容发送给客户端
-                    res.send(renderFullPage(ReactHtml, initialState, title))
+                    res.send(renderFullPage(reactHtml, initialState, title))
 
                 })
                 .catch(function(error) {
@@ -135,26 +135,15 @@ function renderFullPage(html, initialState, title) {
         <head>
             <meta charset="utf-8">
             <title>SimplyY 的博客:${title}</title>
-            <style type="text/css">
-                body {
-                    display: none;
-                }
-            </style>
         </head>
         <body>
-            <div id="root">
-                ${html}
-            </div>
+            <div id="root">${html}</div>
             <script>
                 window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
             </script>
-            <script src="/static/libs.js"></script>
+            <script src="http://7xkpdt.com1.z0.glb.clouddn.com/blog-libs.348172ab82b494835d50.0.js"></script>
             <script src="/static/bundle.js"></script>
-            <style type="text/css">
-                body {
-                    display: block;
-                }
-            </style>
+
             <!-- blog ads-->
             <ins class="adsbygoogle"
                  style="display:block"
