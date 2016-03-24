@@ -2,7 +2,7 @@
 
 # sass
 .sass-cache/
-*.css.map
+*.map
 
 # node
 # Logs

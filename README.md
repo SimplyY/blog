@@ -1,3 +1,6 @@
+## TODO
+css render in server
+
 # 博客
 博客地址： [http://simplyy.space/](http://simplyy.space/)
 
@@ -10,7 +13,48 @@
 这里的是详细的技术介绍，包括搭建流程，重写的进度，前后端各种技术细节（有的可能没写上去，有疑惑的开 issue）。
 
 - 后端：express + mongodb + node-restful,  也就是使用 node 遍历文件目录作为文章和标签的数据源，提供 rest api
+- 使用 react 服务器渲染方案，好多坑 orz。
 - 前端：react + react router + redux + babel + webpack + sass 开发的 spa 博客应用，并尝试使用 immutable.js
+
+## 计划
+### 后端
+> node express mongodb fs restful
+
+
+- [x] 扫描文件目录生成标签和文章
+- [x] 提供 restful api，文档看 node/app/model.js 里的相应 schema。
+- [ ] 支持 www
+- [ ] 邮件提醒功能（一天发一封）
+- [ ] https
+- [x] 服务器端渲染
+
+！！！禁止有相同的目录名或者文件名！！！（因为这俩会作为主键存在数据库中）
+
+扫描文件目录树生成文章（md 文件）、标签（文件夹），前端交互生成评论。
+
+文章 model， 标签 model，详情见 node/app/model.js 里的相应 schema。
+
+### pc 前端
+js: react redux echart
+
+用 react router + 组件化开发 来spa
+
+- [x] spa
+- [x] redux
+- [x] 组件开发
+- [x] 正文锚点功能
+- [ ] 回到顶部
+- [x] ContentTable (左侧点击，显示目录，根据 h 标签开发）
+- [ ] 评论功能 CommentBox avatar url default 'http://7xkpdt.com1.z0.glb.clouddn.com/46867d9be26db9982249775578cf37fc.png'
+- [ ] chartjs
+
+
+#### 手机端
+准备使用 vue vuex vue-loader vue-router
+
+## 设计关键
+- 导航栏标签、专辑标签
+- 银色为主色调
 
 
 ## 搭建流程
@@ -31,72 +75,4 @@
 1. npm run mongodb 启动数据库（端口默认为27017,修改见 "./node/mongod.conf"文件）
 2. npm run server 启动服务器(默认同上，修改方式同上)
 
-## TODO
-- 服务器端渲染
-
-## 重写计划
-### 后端
-> node express mongodb fs restful
-
-
-- [x] 扫描文件目录生成标签和文章
-- [x] 提供 restful api，文档看 node/app/model.js 里的相应 schema。
-- [ ] 支持 www
-- [ ] 邮件提醒功能（一天发一封）
-- [ ] https
-
-！！！禁止有相同的目录名或者文件名！！！（因为这俩会作为主键存在数据库中）
-
-扫描文件目录树生成文章（md 文件）、标签（文件夹），前端交互生成评论。
-
-文章 model， 标签 model，详情见 node/app/model.js 里的相应 schema。
-
-### pc 前端
-js: react redux echart
-
-用 react router + 组件化开发 来spa
-
-- [x] spa
-- [x] redux
-- [ ] 组件开发(已完成90%)
-- [x] 正文锚点功能
-- [ ] 回到顶部
-- [ ] js 设置 meta title and <meta name="description" content="text">
-- [x] ContentTable (左侧点击，显示目录，根据 h 标签开发）
-- [ ] 评论功能 CommentBox avatar url default 'http://7xkpdt.com1.z0.glb.clouddn.com/46867d9be26db9982249775578cf37fc.png'
-- [ ] chartjs
-
-
-#### 组件结构
-- root
-    - app(common part)
-        - NavigationBar (编程 生活 诗集 电影 最热）
-        - InfoSideBar(right)
-            - ColumnTag(三级标签)
-            - personalInfo(zhihu weibo email)
-            - github info (https://github.com/lepture/github-cards)
-            - subscribe by github api
-    - spa main
-        - ArticleListBox
-            - CurrentTagChain
-            - ArticleList（显示喜欢数、分享数、（投票结果的平均）难易度、日期）
-                - click more
-        - ArticleBox
-            - ContentTable
-            - CurrentTagChain
-            - Article
-                - ArticleInfo（作者，时间）
-                - ArticleMd(md 渲染, 正文锚点功能)
-            - ShareLoveBox
-                - share
-                - love
-            - CommentBox(antd 表单)
-        - Chart 用 chartjs 写博客文章标签分析图表
-        - InvalidUrlBox
-
-#### 手机端
-准备使用 vue vuex vue-loader vue-router
-
-## 设计关键
-- 导航栏标签、专辑标签
-- 银色为主色调
+``

@@ -234,8 +234,9 @@ function loadMustData(url) {
         // 非 tag、article页面，只显示需要 tag 的 navgation-bar
         if (pArticles === undefined) {
             pTags.then(function(tags) {
+                tags = JSON.parse(JSON.stringify(tags[0]))
                 var articles = []
-                processTags(mustData.tags)
+                processTags(tags)
                 var mustData = { tags, articles }
                 resolve(mustData)
             })
@@ -243,13 +244,14 @@ function loadMustData(url) {
 
         Promise.all([pTags, pArticles])
             .then(function(datas) {
-                var tags = datas[0]
-                var articles = datas[1]
+                var tags = JSON.parse(JSON.stringify(datas[0]))
+                var articles = JSON.parse(JSON.stringify(datas[1]))
                 var mustData = { tags, articles }
                 // process data
                 processTags(mustData.tags)
                 processArticles(mustData.articles)
                 // console.log(mustData)
+
                 resolve(mustData)
             })
             .catch(function(error) {
@@ -258,7 +260,7 @@ function loadMustData(url) {
     })
 
     // 文章页面只加载一篇文章（article）
-    // tag 页面或者根页面加载 limited articles
+    // tag 页面或者根页面加载 ArticlesInfos
     function getMustArticlesJudgeFromUrl(url) {
         var pArticles
 
