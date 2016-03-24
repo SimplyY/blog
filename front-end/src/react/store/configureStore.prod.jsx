@@ -1,13 +1,19 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { syncHistory } from 'react-router-redux'
 import { browserHistory } from 'react-router'
-import thunk from 'redux-thunk'
 import rootReducer from '../reducers'
 
-const finalCreateStore = compose(
-    applyMiddleware(thunk, syncHistory(browserHistory))
-)(createStore)
+export default function configureStore(initialState, history) {
+    let reduxRouterMiddleware
+    if (history === undefined) {
+        reduxRouterMiddleware = syncHistory(browserHistory)
+    }
+    else {
+        reduxRouterMiddleware = syncHistory(history)
+    }
+    const finalCreateStore = compose(
+        applyMiddleware(reduxRouterMiddleware)
+    )(createStore)
 
-export default function configureStore(initialState) {
     return finalCreateStore(rootReducer, initialState)
 }

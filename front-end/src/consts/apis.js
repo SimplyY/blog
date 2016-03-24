@@ -1,5 +1,10 @@
-export const API_ROOT_URL = '//121.40.224.83:8000/api/'
-
-// export const API_ROOT_URL = '//localhost:800/api/'
+let API_ROOT_URL
+if (typeof window === 'undefined' || document.domain === 'localhost') {
+    API_ROOT_URL = '//localhost:8000/api/'
+}
+else {
+    API_ROOT_URL = '//121.40.224.83:8000/api/'
+}
+export { API_ROOT_URL }
 export const TAGS_URL = 'tags/'
 export const ARTICLES_URL = 'articles/'

@@ -8,7 +8,7 @@ export default class Root extends Component {
     render() {
         const { store } = this.props
         return (
-            <Provider store={store} test="test">
+            <Provider store={store}>
                 <div>
                     <Router history={browserHistory} routes={routes} tags={this.props.tags}/>
                     <DevTools />

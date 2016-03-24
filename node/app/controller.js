@@ -6,7 +6,7 @@ var restful = require('node-restful');
 var config = require('../../config');
 var token;
 
-module.exports.setRouters = function (app, models) {
+module.exports.setApiRouters = function (app, models) {
     // restful routers
     var tagRest = restful.model(
             'tag',
@@ -49,9 +49,9 @@ module.exports.setViews = function (app) {
         });
     });
 
-    app.get('/*', function (req, res) {
-        res.render('blog', function (err, html) {
-            res.send(html);
-        });
-    });
+    // app.get('/*', function (req, res) {
+    //     res.render('blog', function (err, html) {
+    //         res.send(html);
+    //     });
+    // });
 };

@@ -62,6 +62,9 @@ function toggleContentTableStyle(newIsShow) {
 }
 
 function wrapperMove() {
+    if (typeof window === 'undefined') {
+        return
+    }
     let wrapperDOM = document.getElementById(wrapperId)
     if (wrapperDOM === null) {
         return
@@ -71,6 +74,9 @@ function wrapperMove() {
 }
 
 function wrapperReset() {
+    if (typeof window === 'undefined') {
+        return
+    }
     let wrapperDOM = document.getElementById(wrapperId)
     if (wrapperDOM === null) {
         return

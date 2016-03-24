@@ -55,7 +55,6 @@ class ShareLoveBox extends Component {
 }
 
 function shareInfo2clipboard(currentArticle) {
-    console.log(articleName)
     var articleName = currentArticle.title
     var articleUrl = window.location.href
 

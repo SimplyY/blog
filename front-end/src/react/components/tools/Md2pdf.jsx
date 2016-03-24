@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 
-import DOMPurify from 'dompurify'
-
-import { loadScript } from '../../../util/common'
+import { loadScript, sanitizeHTML } from '../../../util/common'
 
 class Md2pdf extends Component {
     constructor() {
@@ -39,14 +37,16 @@ class Md2pdf extends Component {
 
                     </div>
                     <div>
-                        <a className="print-this-page" href="javascript:window.print()">click there to get pdf or print</a>
+                        <a className="print-this-page" href="javascript:window.print()">
+                             click there to get pdf or print
+                         </a>
                     </div>
                     <textarea id="md-input"
                         autoFocus="true"
                         onInput={e => this.setState({md: e.target.value})}>
                     </textarea>
                 </div>
-                {DOMPurify.sanitize(previewDOM)}
+                {sanitizeHTML(previewDOM)}
             </div>
         )
     }

@@ -1,3 +1,12 @@
+import { sanitize } from 'dompurify'
+
+export function sanitizeHTML(html) {
+    if (typeof window === 'undefined') {
+        return html
+    }
+    return sanitize(html)
+}
+
 export function scrollToTop() {
     window.scrollTo(0, 0)
 }

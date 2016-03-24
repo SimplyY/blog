@@ -8,9 +8,9 @@ var FONT_PATH = path.join(__dirname, 'font')
 module.exports = {
     entry: {
         app: './src/index.jsx',
-        //添加要打包在 libs 里面的库
+        // 添加要打包在 libs 里面的库
         libs: [
-            'react', 'react-router', 'core-js', 'history',
+            'react', 'react-router',
             'immutable', 'redux', 'react-redux', 'redux-immutablejs','react-router-redux',
              'isomorphic-fetch', './lib/lodash.core.js','dompurify'
         ]
@@ -20,16 +20,17 @@ module.exports = {
         filename: 'bundle.js'
     },
     plugins: [
-        //这个使用uglifyJs压缩你的js代码
+        // 这个使用uglifyJs压缩你的js代码
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
             }
         }),
-        //把入口文件里面的数组打包成 libs.js
-        new webpack.optimize.CommonsChunkPlugin('libs', 'libs.[chunkhash].[id].js'),
+        // 把入口文件里面的数组打包成 libs.js
+        new webpack.optimize.CommonsChunkPlugin('libs', 'libs.js'),
         new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
-        new WebpackMd5Hash()
+        // new webpack.optimize.CommonsChunkPlugin('libs', 'libs.[chunkhash].[id].js'),
+        // new WebpackMd5Hash()
     ],
     resolve: {
         extensions: ['', '.js', '.jsx', ]

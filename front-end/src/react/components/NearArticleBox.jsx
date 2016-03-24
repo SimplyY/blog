@@ -9,8 +9,6 @@ class NearArticleBox extends Component {
         super()
     }
     render() {
-        // console.log('NearArticleBox render')
-
         const { nearArticle } = this.props
         let beforeArticleDOM, afterArticleDOM
         if (nearArticle === undefined) {

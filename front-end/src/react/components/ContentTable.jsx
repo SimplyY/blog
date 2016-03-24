@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import classNames from 'classNames'
+import classNames from 'classnames'
 import _ from '../../../lib/lodash.core'
 
 import { jumpToAnchor } from '../../util/common'

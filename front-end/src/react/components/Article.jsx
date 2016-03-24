@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
 
 import _ from '../../../lib/lodash.core'
-import DOMPurify from 'dompurify'
 
 import { AppData } from '../../util/AppData'
-import { jumpToAnchor, showAnchor, isUrlInAnchor } from '../../util/common'
+import { jumpToAnchor, showAnchor, isUrlInAnchor, sanitizeHTML } from '../../util/common'
 
 import * as text from '../../consts/text'
 
@@ -50,7 +49,7 @@ class Article extends Component {
                 </div>
 
                 <article id="article-content" className="markdown-body"
-                    dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(currentArticleDOM)}}
+                    dangerouslySetInnerHTML={{__html: sanitizeHTML(currentArticleDOM)}}
                     onClick={(e) => {
                         if (e.target.className === 'iconfont article-anchor') {
                             jumpToAnchor(e)

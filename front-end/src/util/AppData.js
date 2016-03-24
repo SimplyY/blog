@@ -1,71 +1,9 @@
 import { ajaxGet } from './ajax'
 
-import { API_ROOT_URL, TAGS_URL, ARTICLES_URL } from '../consts/apis'
-import {
-    TAG_STR, ARTICLE_STR, SORT_LIMIT_QUERY_STR, SORT_QUREY_STR, PATH_TYPE_IN_SPLIT_NUMBER, HOT_STR,
-    TAG_PATH
-} from '../consts/config'
+import { API_ROOT_URL, ARTICLES_URL } from '../consts/apis'
+import { SORT_QUREY_STR, TAG_PATH } from '../consts/config'
 
 export let AppData = {
-    // load functions
-
-    // 针对文章数量多且大的特点，于是做了加载优化，只加载了必须的文章
-    loadMustData() {
-        return new Promise(function(resolve, reject) {
-            let pTags = ajaxGet(API_ROOT_URL + TAGS_URL)
-
-            // 通过 url 判断，如果为文章页面，只加载一篇文章（article）
-            // 如果为 tag 页面或者根页面，只加载 limited articles
-            let { pArticle, pArticles } = getMustArticlesJudgeFromUrl(document.URL)
-
-            // 非 tag、article页面，只显示需要 tag 的 navgation-bar
-            if (pArticle === undefined && pArticles === undefined) {
-                pTags.then(tags => {
-                    let articles = []
-                    let mustData = { tags, articles }
-                    resolve(mustData)
-                })
-            }
-
-            // tag 页面或根页面
-            if (pArticle === undefined) {
-                Promise.all([pTags, pArticles])
-                    .then(datas => {
-                        let [tags, articles] = datas
-                        let mustData = { tags, articles }
-
-                        // process data
-                        processTags(mustData.tags)
-                        processArticles(mustData.articles)
-
-                        resolve(mustData)
-                    })
-                    .catch(error => {
-                        reject(error)
-                    })
-            }
-
-            // 文章页面
-            if (pArticles === undefined) {
-                Promise.all([pTags, pArticle])
-                    .then(datas => {
-                        let [tags, article] = datas
-                        let articles = [article]
-                        let mustData = { tags, articles }
-
-                        // process data
-                        processTags(mustData.tags)
-                        processArticles(mustData.articles)
-
-                        resolve(mustData)
-                    })
-                    .catch(error => {
-                        reject(error)
-                    })
-            }
-        });
-    },
-
     loadAllArticles() {
         return new Promise(function(resolve, reject) {
             ajaxGet(API_ROOT_URL + ARTICLES_URL + SORT_QUREY_STR)
@@ -80,8 +18,6 @@ export let AppData = {
                 })
         })
     },
-
-    // model functions
 
     getArticlesByTagId(allArticles, tags, tagId){
         let currentTag = AppData.getTagById(tags, tagId)
@@ -103,7 +39,12 @@ export let AppData = {
         return allArticles.sort((a, b) => getHotWeight(b) - getHotWeight(a))
 
         function getHotWeight(article) {
-            return article.loveNumber + article.shareNumber + article.comments.length
+            if (article.comments) {
+                return article.loveNumber + article.shareNumber + article.comments.length
+            }
+            else {
+                return article.loveNumber + article.shareNumber
+            }
         }
     },
 
@@ -116,47 +57,15 @@ export let AppData = {
     },
 
     getAricleByArticleId(articles, articleId){
-        return articles.find(item => item._id === articleId)
+        return articles.find(item => item._id == articleId)
     },
 
     formatArticleDate(date){
-        return date.toISOString().substring(0, 10)
+        return new Date(date).toISOString().substring(0, 10)
     },
 }
 
-// 文章页面只加载一篇文章（article）
-// tag 页面或者根页面加载 limited articles
-function getMustArticlesJudgeFromUrl(url) {
-    let pArticle, pArticles
-
-    let params = url.split('/')
-    // pathTypeStr is tag or '' or article or other
-    let pathTypeStr = getPathTypeStr(params)
-    if (pathTypeStr === ARTICLE_STR) {
-        let articleId = getIdStr(params)
-        pArticle = ajaxGet(API_ROOT_URL + ARTICLES_URL + articleId)
-        // pArticles will be undefined
-    }
-    else if ([TAG_STR, HOT_STR, ''].includes(pathTypeStr)) {
-        var latestArticleQurey = API_ROOT_URL + ARTICLES_URL + SORT_LIMIT_QUERY_STR
-        pArticles = ajaxGet(latestArticleQurey)
-        // pArticle will be undefined
-    }
-    else {
-        // other situation will all undefined
-    }
-
-    return { pArticle, pArticles }
-
-    function getPathTypeStr(params) {
-        return params[PATH_TYPE_IN_SPLIT_NUMBER]
-    }
-    function getIdStr(params) {
-        return params[PATH_TYPE_IN_SPLIT_NUMBER + 1]
-    }
-}
-
-function processTags(tags) {
+export function processTags(tags) {
     // process tags
     tags.sort((a, b) => b.articleTitleList.length - a.articleTitleList.length)
 
@@ -176,18 +85,10 @@ function processTags(tags) {
     })
 }
 
-function processArticles(articles) {
-    convertDateStrType(articles)
-
+export function processArticles(articles) {
     addContentOfTableAttr(articles)
 
     addNearArticleAttr(articles)
-}
-
-function convertDateStrType(data){
-    data.forEach((item) => {
-        item.date = new Date(item.date)
-    })
 }
 
 function addContentOfTableAttr(articles) {
