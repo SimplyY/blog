@@ -16,7 +16,6 @@ class ContentTable extends Component {
         return !_.isEqual(nextProps.contentTable, this.props.contentTable)
     }
 
-
     render() {
         let { contentTable, isAppear } = this.props
 

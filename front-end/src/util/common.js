@@ -1,7 +1,11 @@
 import { sanitize } from 'dompurify'
 
+export function isNodeEnv() {
+    return typeof window === 'undefined' && typeof process === 'object'
+}
+
 export function sanitizeHTML(html) {
-    if (typeof window === 'undefined') {
+    if (isNodeEnv()) {
         return html
     }
     return sanitize(html)

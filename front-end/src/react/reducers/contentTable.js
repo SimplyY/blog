@@ -1,7 +1,7 @@
 import { createReducer } from 'redux-immutablejs'
 import Immutable from 'immutable'
 
-import { getPathType } from '../../util/common'
+import { getPathType, isNodeEnv } from '../../util/common'
 import { ARTICLE_STR, TAG_STR } from '../../consts/config'
 
 import * as ActionTypes from '../../consts/ActionTypes'
@@ -62,7 +62,7 @@ function toggleContentTableStyle(newIsShow) {
 }
 
 function wrapperMove() {
-    if (typeof window === 'undefined') {
+    if (isNodeEnv()) {
         return
     }
     let wrapperDOM = document.getElementById(wrapperId)
@@ -74,7 +74,7 @@ function wrapperMove() {
 }
 
 function wrapperReset() {
-    if (typeof window === 'undefined') {
+    if (isNodeEnv()) {
         return
     }
     let wrapperDOM = document.getElementById(wrapperId)

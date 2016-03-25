@@ -1,5 +1,7 @@
+import { isNodeEnv } from '../util/common'
+
 let API_ROOT_URL
-if (typeof window === 'undefined' || document.domain === 'localhost') {
+if (isNodeEnv() || document.domain === 'localhost') {
     API_ROOT_URL = '//localhost:8000/api/'
 }
 else {

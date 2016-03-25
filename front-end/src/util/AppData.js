@@ -1,5 +1,7 @@
 import { ajaxGet } from './ajax'
 
+import { isNodeEnv } from './common'
+
 import { API_ROOT_URL, ARTICLES_URL } from '../consts/apis'
 import { SORT_QUREY_STR, TAG_PATH } from '../consts/config'
 
@@ -92,7 +94,7 @@ export function processArticles(articles) {
 }
 
 function addContentOfTableAttr(articles) {
-    if (typeof window === 'undefined') {
+    if (isNodeEnv()) {
         return
     }
 
