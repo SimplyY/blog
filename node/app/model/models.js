@@ -293,7 +293,10 @@ function getIdStr(url) {
     return params[config.PATH_TYPE_INDEX + 1]
 }
 function getTagById(id) {
-    return tagModel.find({_id: id}).exec()
+    return tagModel.find({_id: id}).exec().then(
+        function(docs) {
+            return docs[0]
+    })
 }
 
 function getAllTags() {

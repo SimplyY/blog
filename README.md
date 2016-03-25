@@ -1,5 +1,7 @@
 ## TODO
-css render in server
+- title change in router contanier
+- 延迟加载 img
+- css render in server
 
 # 博客
 博客地址： [http://simplyy.space/](http://simplyy.space/)
