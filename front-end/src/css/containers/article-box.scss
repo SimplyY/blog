@@ -61,9 +61,13 @@ $near-article-box-height: 60px;
 
 
 @media print {
-    .main-nav-bar, .content-table, .main-sidebar, .article-info, .tag-chain, .love-share-box {
+    .main-nav-bar, .main-sidebar, .article-info, .tag-chain, .love-share-box {
         display: none;
     }
+     .content-table {
+         display: none;
+         transform: translate3d(0, 0, 0)
+     }
 
     .main-container {
         position: absolute;

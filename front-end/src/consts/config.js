@@ -19,7 +19,17 @@ export const ARTICLE_PATH = ARTICLE_STR + '/'
 export const CHART_PATH = CHART_STR + '/'
 export const HOT_PATH = HOT_STR
 
-export const TOOLS_PATH = 'tools/'
+export const TOOLS_STR = 'tools'
+export const TOOLS_PATH = TOOLS_STR + '/'
 export const MD2PDF_TOOL_PATH = TOOLS_PATH + MD2PDF_STR
 
-export const ABOUT_ARTICLE_ID = '56cb46564496cee272dea173'
+import { isNodeEnv } from '../util/common'
+
+let ABOUT_ARTICLE_ID
+if (isNodeEnv()) {
+    ABOUT_ARTICLE_ID = '56f2a88292734392717169f3'
+}
+else {
+    ABOUT_ARTICLE_ID = '56cb46564496cee272dea173'
+}
+export { ABOUT_ARTICLE_ID }

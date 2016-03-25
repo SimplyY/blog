@@ -1,7 +1,6 @@
 ## TODO
-- title change in router contanier
-- 延迟加载 img
-- css render in server
+- css render in server， contentTable click bug in article page(maybe cause by react sum check, because css render orz)
+- refactor
 
 # 博客
 博客地址： [http://simplyy.space/](http://simplyy.space/)
@@ -15,7 +14,7 @@
 这里的是详细的技术介绍，包括搭建流程，重写的进度，前后端各种技术细节（有的可能没写上去，有疑惑的开 issue）。
 
 - 后端：express + mongodb + node-restful,  也就是使用 node 遍历文件目录作为文章和标签的数据源，提供 rest api
-- 使用 react 服务器渲染方案，好多坑 orz。
+- 使用 react 服务渲染方案，好多坑 orz。
 - 前端：react + react router + redux + babel + webpack + sass 开发的 spa 博客应用，并尝试使用 immutable.js
 
 ## 计划

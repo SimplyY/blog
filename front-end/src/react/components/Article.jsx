@@ -31,7 +31,6 @@ class Article extends Component {
         let currentArticleDOM = currentArticle.html
 
         let dateStr = AppData.formatArticleDate(currentArticle.date)
-
         return (
             <div className="article">
                 <div className="article-info">

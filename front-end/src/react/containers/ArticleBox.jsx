@@ -16,7 +16,7 @@ import CurrentTagChain from '../components/CurrentTagChain'
 import ShareLoveBox from '../components/ShareLoveBox'
 import NearArticleBox from '../components/NearArticleBox'
 
-import { getPathType } from '../../util/common'
+import { getPathType, setPageTitle } from '../../util/common'
 
 class ArticleBox extends Component {
     constructor() {
@@ -37,8 +37,7 @@ class ArticleBox extends Component {
 
     render() {
         // console.log('ArticleBox render')
-
-        let {
+                let {
             urlPathname,
             tags, articles,
             addArticleLoveNumber, addArticleShareNumber, appearContentTable, disappearContentTable
@@ -49,6 +48,8 @@ class ArticleBox extends Component {
         let pathType = getPathType(urlPathname)
         let currentArticle = AppData.getAricleByArticleId(articles, articleId)
         let currentTag = AppData.getTagByTagName(tags, currentArticle.parentTagName)
+
+        setPageTitle(currentArticle.title)
 
         if (currentArticle === undefined) {
             return (

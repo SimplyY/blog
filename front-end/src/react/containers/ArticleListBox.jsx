@@ -10,8 +10,9 @@ import InvalidUrlBox from '../containers/InvalidUrlBox'
 import ArticleList from '../components/ArticleList'
 import CurrentTagChain from '../components/CurrentTagChain'
 
-import { getPathType } from '../../util/common'
+import { getPathType, setPageTitle } from '../../util/common'
 import * as config from '../../consts/config'
+import * as text from '../../consts/text'
 
 class ArticleListBox extends Component {
     constructor() {
@@ -51,13 +52,17 @@ function getShowedArticles(pathType, articles, tags, tagId) {
     switch (pathType) {
         case config.HOT_STR:
             showedArticles = AppData.getHotSortedArticles(articles)
+            setPageTitle(text.HOT_TEXT)
             break
         case config.TAG_STR:
             showedArticles = AppData.getArticlesByTagId(articles, tags, tagId)
+            let tag = AppData.getTagById(tags, tagId)
+            setPageTitle(tag.tagName)
             break
         // root path case show all articles
         case config.ROOT_STR:
             showedArticles = articles
+            setPageTitle(text.ALL_ARTICLES_STR)
             break
         default:
             showedArticles = undefined

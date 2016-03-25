@@ -1,7 +1,17 @@
 import { sanitize } from 'dompurify'
+import * as text from '../consts/text'
 
 export function isNodeEnv() {
     return typeof window === 'undefined' && typeof process === 'object'
+}
+
+export function setPageTitle(title) {
+    if (isNodeEnv()) {
+        GLOBAL.blog.title = text.TITLE_PREFIX + title
+    }
+    else {
+        document.title = text.TITLE_PREFIX + title
+    }
 }
 
 export function sanitizeHTML(html) {
@@ -43,16 +53,23 @@ export function isUrlInAnchor() {
     return location.href.indexOf('#') !== -1 && location.href.split('#')[1]
 }
 
-const ANCHOR_DISTANCE = 42
+const ANCHOR_DISTANCE = 48
 export function jumpToAnchor(e) {
     e.preventDefault()
-
     let href = e.target.href === undefined ? e.target.dataset.href : e.target.href
     let anchorId = href.split('#')[1]
     let anchorDOM = document.getElementById(anchorId)
-    let anchorName = anchorDOM.id
 
-    // deal lovation href
+    let anchorName
+    if (anchorDOM === null) {
+        anchorDOM = getAnchorDOMbyHref(href)
+        anchorName = anchorDOM.href.split('#')[1]
+    }
+    else {
+        anchorName = anchorDOM.id
+    }
+
+    // deal location href
     if (location.href.indexOf('#') === -1) {
         location.href += '#' + anchorName
     }
@@ -63,10 +80,33 @@ export function jumpToAnchor(e) {
     scrollToAnchor(anchorDOM.offsetTop, ANCHOR_DISTANCE)
 }
 
+function getAnchorDOMbyHref(href) {
+    let anchorDOM
+
+    let articleDOM = document.getElementById('article-content')
+    let anchorsDOM = articleDOM.getElementsByTagName('a')
+    for (let i = 0; i < anchorsDOM.length; i++) {
+        if (anchorsDOM[i].href.split('#')[1] === href.split('#')[1]) {
+            anchorDOM = anchorsDOM[i]
+        }
+    }
+    return anchorDOM
+}
+
 export function showAnchor() {
     let anchorId = location.href.split('#')[1]
     anchorId = decodeURI(anchorId)
     let anchorDOM = document.getElementById(anchorId)
+
+    if (anchorDOM === null) {
+        anchorDOM = getAnchorDOMbyHref(decodeURI(location.href))
+        scrollToAnchor(anchorDOM.offsetTop, ANCHOR_DISTANCE)
+    }
+    else {
+        setTimeout(function() {
+            scrollToAnchor(anchorDOM.offsetTop, ANCHOR_DISTANCE)
+        }, 0)
+    }
 
     // for dom load img will change dom position, so delay
     setTimeout(function() {

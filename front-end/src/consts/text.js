@@ -17,3 +17,6 @@ export const MY_GITHUB_URL = 'https://github.com/SimplyY'
 export const MY_ZHIHU_URL = 'https://www.zhihu.com/people/SimplyY'
 export const MY_WEIBO_URL = 'http://weibo.com/u/5391751756'
 export const MY_WEIBO_NAME = 'SimplyY_'
+
+
+export const TITLE_PREFIX = 'SimplyY 的博客:'

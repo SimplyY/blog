@@ -7,6 +7,7 @@ var controller = require('./controller')
 var mid = require('./mid')
 
 var app = express()
+GLOBAL.blog = {}
 
 setHeader(app)
 mid.useMid(app)
@@ -86,7 +87,7 @@ function handleRender(req, res) {
                 .then(getTitle)
                 .then(function(title) {
                     // 把渲染后的页面内容发送给客户端
-                    res.send(renderFullPage(reactHtml, initialState, title))
+                    res.send(renderFullPage(reactHtml, initialState, blog.title))
 
                 })
                 .catch(function(error) {
@@ -134,14 +135,14 @@ function renderFullPage(html, initialState, title) {
         <html lang="zh-CN">
         <head>
             <meta charset="utf-8">
-            <title>SimplyY 的博客:${title}</title>
+            <title>${title}</title>
         </head>
         <body>
             <div id="root">${html}</div>
             <script>
                 window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
             </script>
-            <script src="http://7xkpdt.com1.z0.glb.clouddn.com/blog-libs.348172ab82b494835d50.0.js"></script>
+            <script src="http://7xkpdt.com1.z0.glb.clouddn.com/libs.348172ab82b494835d50.0.js"></script>
             <script src="/static/bundle.js"></script>
 
             <!-- blog ads-->
