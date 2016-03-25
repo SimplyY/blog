@@ -1,4 +1,4 @@
-export const MY_AVATOR_URL = ' http://7xkpdt.com1.z0.glb.clouddn.com/746baebb7f4be1cf71f9ae70be796ed7.png'
+export const MY_AVATOR_URL = ' http://7xkpdt.com1.z0.glb.clouddn.com/SimplyY_230_mini.jpeg'
 
 // ANCHOR_ICONFONT moved to node/lib
 
