@@ -1,5 +1,5 @@
 require('./polyfill')
-
+var os = require('os')
 var express = require('express')
 
 var config = require('../../config')
@@ -14,7 +14,10 @@ mid.useMid(app)
 
 var models = require('./model/models')
 controller.setApiRouters(app, models)
-renewDbTimer(models)
+
+if (os.platform() !== 'darwin') {
+    renewDbTimer(models)
+}
 
 controller.setViews(app)
 
