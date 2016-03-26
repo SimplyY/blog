@@ -16,8 +16,4 @@ export function loadGoogle() {
     ga('create', 'UA-71968674-1', 'auto');
     ga('send', 'pageview');
 
-    // google ads
-    loadScript('//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', () => {
-        (adsbygoogle = window.adsbygoogle || []).push({})
-    })
 }

@@ -148,13 +148,16 @@ function renderFullPage(html, initialState, title) {
             <script src="http://7xkpdt.com1.z0.glb.clouddn.com/libs.348172ab82b494835d50.0.js"></script>
             <script src="/static/bundle.js"></script>
 
-            <!-- blog ads-->
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- blog -->
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-9240750359266096"
                  data-ad-slot="7067368564"
-                 data-ad-format="auto">
-             </ins>
+                 data-ad-format="auto"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </body>
         </html>
     `
