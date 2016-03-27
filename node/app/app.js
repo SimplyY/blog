@@ -149,11 +149,11 @@ function renderFullPage(html, initialState, title) {
             <script src="/static/bundle.js"></script>
 
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- blog -->
+            <!-- 博客 -->
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-9240750359266096"
-                 data-ad-slot="7067368564"
+                 data-ad-slot="9883600562"
                  data-ad-format="auto"></ins>
             <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
