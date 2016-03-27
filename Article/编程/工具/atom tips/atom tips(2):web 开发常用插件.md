@@ -24,6 +24,12 @@
 - markdown-writer@2.3.2(在设置里面设置一下，就拥有了正常 md 编辑器的编辑 md 的各种快捷键 例如 cmd + b, cmd + shift + k 插入链接，而且更棒非常值得一试)
 - markdown-toc@0.4.1
 
+### amazing useful
+- js-hyperclick + hyperclick 可以从跳转到变量定义的地方，也能识import/require，点击模块名可以跳转到模块的内部。
+- terminal-plus（不推荐 win 用）
+
+osx 下效果图：
+![](http://7xkpdt.com1.z0.glb.clouddn.com/fb53b040c4c30bc75761d5e550bbc503.png)
 
 ### autocomplete
 - atom-ternjs@0.13.2(js 最佳补全插件)
@@ -79,10 +85,3 @@
 - copy-filename@1.0.1
 - tree-view-git-status@0.2.3
 - chary-tree-view@0.2.3(Tree-view responds to only double-click to avoid opening a large file accidentally.)
-
-
-### amazing useful
-- terminal-plus（不推荐 win 用）
-
-osx 下效果图：
-![](http://7xkpdt.com1.z0.glb.clouddn.com/fb53b040c4c30bc75761d5e550bbc503.png)
