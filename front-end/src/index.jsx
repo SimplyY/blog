@@ -39,7 +39,8 @@ pRender.then(loadAllArticles)
 
 
 function processServerState(serverState) {
-    if (serverState.data.articles[0].html !== undefined) {
+    let articles = serverState.data.articles[0]
+    if (articles && articles.html !== undefined) {
         serverState.data.articles.forEach(item => {
             item.contentOfTable = JSON.parse(item.contentOfTable)
         })

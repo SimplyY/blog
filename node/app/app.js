@@ -85,12 +85,12 @@ function handleRender(req, res) {
                     var Router = React.createElement(RouterContext, renderProps)
                     var Root = React.createElement(Provider, {store: store}, Router)
                     reactHtml = renderToString(Root)
-                    return data
+                    return GLOBAL.blog.title
                 })
-                .then(getTitle)
                 .then(function(title) {
+                    console.log(title)
                     // 把渲染后的页面内容发送给客户端
-                    res.send(renderFullPage(reactHtml, initialState, blog.title))
+                    res.send(renderFullPage(reactHtml, initialState, GLOBAL.blog.title))
 
                 })
                 .catch(function(error) {
@@ -105,31 +105,6 @@ function handleRender(req, res) {
             res.status(404).send('Not found')
         }
     })
-
-    function getTitle(data) {
-        if (data.articles.length === 1) {
-            return new Promise(function(resolve, reject) {
-                if (data.articles === undefined) {
-                    reject()
-                }
-                else {
-                    resolve(data.articles[0].title)
-                }
-            });
-        }
-        else {
-            if (req.url === '/') {
-                return new Promise(function(resolve) {
-                    resolve('主页')
-                })
-            }
-            var id = models.getIdStr(req.url)
-            var pTag = models.getTagById(id)
-            return pTag.then(function(tag) {
-                return tag.tagName
-            })
-        }
-    }
 }
 
 function renderFullPage(html, initialState, title) {

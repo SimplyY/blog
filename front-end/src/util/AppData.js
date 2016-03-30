@@ -70,7 +70,6 @@ export let AppData = {
 export function processTags(tags) {
     // process tags
     tags.sort((a, b) => b.articleTitleList.length - a.articleTitleList.length)
-
     tags.forEach(item => {
         item.url = '/' + TAG_PATH + item._id
 

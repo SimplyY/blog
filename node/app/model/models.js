@@ -234,7 +234,7 @@ function loadMustData(url) {
         // 非 tag、article页面，只显示需要 tag 的 navgation-bar
         if (pArticles === undefined) {
             pTags.then(function(tags) {
-                tags = JSON.parse(JSON.stringify(tags[0]))
+                tags = JSON.parse(JSON.stringify(tags))
                 var articles = []
                 processTags(tags)
                 var mustData = { tags, articles }

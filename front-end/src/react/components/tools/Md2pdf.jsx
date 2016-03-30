@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import { loadScript, sanitizeHTML } from '../../../util/common'
+import { loadScript, sanitizeHTML, isNodeEnv } from '../../../util/common'
 
 class Md2pdf extends Component {
     constructor() {
@@ -9,18 +9,16 @@ class Md2pdf extends Component {
             hasLoadLibs: false,
             md: ''
         }
-
-
     }
     render() {
         if (!this.state.hasLoadLibs) {
             loadLibs(this.state)
         }
         let previewDOM
-        if (this.state.hasLoadLibs) {
+        if (this.state.hasLoadLibs && !isNodeEnv() && marked) {
             previewDOM = (
                 <div id="tools-md2pdf-preview" className="markdown-body"
-                    dangerouslySetInnerHTML={{__html: marked(this.state.md)}}>
+                    dangerouslySetInnerHTML={{__html: sanitizeHTML(marked(this.state.md))}}>
                 </div>
             )
         }
@@ -34,7 +32,6 @@ class Md2pdf extends Component {
                         <p>建议粘贴过来，不建议在这里输入</p>
                         <p>注需要严格的 md 语法(比如 # test not #test)</p>
                         <p>chrome 导出 pdf 最大的优势是，你自己可以改 css</p>
-
                     </div>
                     <div>
                         <a className="print-this-page" href="javascript:window.print()">
@@ -46,7 +43,7 @@ class Md2pdf extends Component {
                         onInput={e => this.setState({md: e.target.value})}>
                     </textarea>
                 </div>
-                {sanitizeHTML(previewDOM)}
+                {previewDOM}
             </div>
         )
     }
@@ -54,6 +51,9 @@ class Md2pdf extends Component {
 
 
 function loadLibs(state) {
+    if (isNodeEnv()) {
+        return
+    }
     loadScript('//cdn.bootcss.com/marked/0.3.5/marked.js', () => {
         loadScript('//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js', () => {
             state.hasLoadLibs = true

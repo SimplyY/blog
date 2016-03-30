@@ -31,7 +31,7 @@ class App extends Component {
             isAppear = true
             const { articleId } = this.props.params
             let currentArticle = AppData.getAricleByArticleId(articles, articleId)
-            if (currentArticle.contentOfTable !== undefined) {
+            if (currentArticle && currentArticle.contentOfTable !== undefined) {
                 contentTable.content = currentArticle.contentOfTable
             }
         }

@@ -37,14 +37,14 @@ class ArticleBox extends Component {
 
     render() {
         // console.log('ArticleBox render')
-                let {
+        let {
             urlPathname,
             tags, articles,
             addArticleLoveNumber, addArticleShareNumber, appearContentTable, disappearContentTable
         } = this.props
 
         const { articleId } = this.props.params
-
+        console.log(urlPathname)
         let pathType = getPathType(urlPathname)
         let currentArticle = AppData.getAricleByArticleId(articles, articleId)
         let currentTag = AppData.getTagByTagName(tags, currentArticle.parentTagName)
