@@ -3,8 +3,25 @@
 <head>
     <meta charset="utf-8">
     <title>${title}</title>
+    <script type="text/javascript">
+    (function(doc, window) {
+        var resizeCall = function(){
+            var docEl = doc.documentElement;
+            var clientWidth = window.screen.width;
+            if (!clientWidth){
+                return;
+            }
+            if (clientWidth > 800){
+                docEl.style.fontSize = 4 * (clientWidth / 320) + 'px';
+            }
+            else{
+                docEl.style.fontSize = 11 * (clientWidth / 320) + 'px';
+            }
+        };
+        resizeCall();
+    })(document, window);
+    </script>
     <link rel="stylesheet" href="/static/css/blog.css" media="screen" title="no title" charset="utf-8">
-
 </head>
 <body>
     <div id="root">${html}</div>
