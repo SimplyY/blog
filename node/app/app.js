@@ -1,4 +1,7 @@
 require('./polyfill')
+
+var fs = require('fs')
+var path = require('path')
 var os = require('os')
 var express = require('express')
 
@@ -49,6 +52,7 @@ function renewDbTimer(models) {
     }, config.renewInterval * 1000)
 }
 
+var htmlTemplate = fs.readFileSync(path.join(__dirname, 'views/index.html'), 'utf-8')
 require('babel-core/register')
 var React = require('react')
 var renderToString = require('react-dom/server').renderToString
@@ -90,9 +94,8 @@ function handleRender(req, res) {
                     return GLOBAL.blog.title
                 })
                 .then(function(title) {
-                    console.log(title)
                     // 把渲染后的页面内容发送给客户端
-                    res.send(renderFullPage(reactHtml, initialState, GLOBAL.blog.title))
+                    res.send(renderFullPage(title, reactHtml, initialState))
 
                 })
                 .catch(function(error) {
@@ -109,52 +112,9 @@ function handleRender(req, res) {
     })
 }
 
-function renderFullPage(html, initialState, title) {
-    return `
-        <!DOCTYPE html>
-        <html lang="zh-CN">
-        <head>
-            <meta charset="utf-8">
-            <title>${title}</title>
-            <script type="text/javascript">
-                (function(doc, window) {
-                    var resizeCall = function(){
-                        var docEl = doc.documentElement;
-                        var clientWidth = window.screen.width;
-                        if (!clientWidth){
-                            return;
-                        }
-                        if (clientWidth > 800){
-                            docEl.style.fontSize = 4 * (clientWidth / 320) + 'px';
-                        }
-                        else{
-                            docEl.style.fontSize = 11 * (clientWidth / 320) + 'px';
-                        }
-                    };
-                    resizeCall();
-                })(document, window);
-            </script>
-            <link rel="stylesheet" href="/static/css/blog.css" media="screen" title="no title" charset="utf-8">
-        </head>
-        <body>
-            <div id="root">${html}</div>
-            <script>
-                window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
-            </script>
-            <script src="http://7xkpdt.com1.z0.glb.clouddn.com/libs.348172ab82b494835d50.0.js"></script>
-            <script src="/static/js/bundle.js"></script>
-
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- 博客 -->
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-9240750359266096"
-                 data-ad-slot="9883600562"
-                 data-ad-format="auto"></ins>
-            <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </body>
-        </html>
-    `
+function renderFullPage(title, reactHtml, initialState) {
+    var html = htmlTemplate.replace('${title}', title)
+        .replace('${reactHtml}', reactHtml)
+        .replace('${initialState}', JSON.stringify(initialState))
+    return html
 }
