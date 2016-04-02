@@ -1,11 +1,45 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="utf-8">
-        <title>SimplyY's Blog</title>
-    </head>
-    <body>
-        <div id="root"></div>
-        <script src="/static/bundle.js"></script>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title>${title}</title>
+    <script type="text/javascript">
+    (function(doc, window) {
+        var resizeCall = function(){
+            var docEl = doc.documentElement;
+            var clientWidth = window.screen.width;
+            if (!clientWidth){
+                return;
+            }
+            if (clientWidth > 800){
+                docEl.style.fontSize = 4 * (clientWidth / 320) + 'px';
+            }
+            else{
+                docEl.style.fontSize = 11 * (clientWidth / 320) + 'px';
+            }
+        };
+        resizeCall();
+    })(document, window);
+    </script>
+    <link href="dist/index.css" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+    <div id="root">${reactHtml}</div>
+    <script>
+        window.__INITIAL_STATE__ = ${initialState}
+    </script>
+    <script src="http://7xkpdt.com1.z0.glb.clouddn.com/libs.348172ab82b494835d50.0.js"></script>
+    <script src="/static/js/bundle.js"></script>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- 博客 -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9240750359266096"
+         data-ad-slot="9883600562"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
 </html>
