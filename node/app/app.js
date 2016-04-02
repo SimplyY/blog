@@ -82,8 +82,10 @@ function handleRender(req, res) {
                 .then(function(data) {
                     store.dispatch(loadMustDataAction(data))
                     initialState = store.getState()
+
                     var Router = React.createElement(RouterContext, renderProps)
-                    var Root = React.createElement(Provider, {store: store}, Router)
+                    var RouterWrapper = React.createElement('div', {}, Router)
+                    var Root = React.createElement(Provider, {store: store}, RouterWrapper)
                     reactHtml = renderToString(Root)
                     return GLOBAL.blog.title
                 })

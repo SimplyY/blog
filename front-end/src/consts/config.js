@@ -26,7 +26,7 @@ export const MD2PDF_TOOL_PATH = TOOLS_PATH + MD2PDF_STR
 import { isNodeEnv } from '../util/common'
 
 let ABOUT_ARTICLE_ID
-if (isNodeEnv()) {
+if (isNodeEnv() || document.domain === 'localhost') {
     ABOUT_ARTICLE_ID = '56f2a88292734392717169f3'
 }
 else {
