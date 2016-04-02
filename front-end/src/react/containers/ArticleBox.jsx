@@ -44,7 +44,6 @@ class ArticleBox extends Component {
         } = this.props
 
         const { articleId } = this.props.params
-        console.log(urlPathname)
         let pathType = getPathType(urlPathname)
         let currentArticle = AppData.getAricleByArticleId(articles, articleId)
         let currentTag = AppData.getTagByTagName(tags, currentArticle.parentTagName)

@@ -26,7 +26,7 @@ html, body {
     height: $nav-height;
     background-color: white;
     z-index: 999;
-    @include box-grey-shadow($nav-box-shadow-width)
+    @include box-grey-shadow($nav-box-shadow-width);
     background-color: white;
 }
 
@@ -48,6 +48,6 @@ html, body {
     float: left;
     display: inline;
     width: $sidebar-width;
-    @include box-grey-shadow($container-shadow-width)
+    @include box-grey-shadow($container-shadow-width);
     background-color: white;
 }

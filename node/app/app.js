@@ -114,6 +114,8 @@ function renderFullPage(html, initialState, title) {
         <head>
             <meta charset="utf-8">
             <title>${title}</title>
+            <link rel="stylesheet" href="/static/css/blog.css" media="screen" title="no title" charset="utf-8">
+
         </head>
         <body>
             <div id="root">${html}</div>
@@ -121,7 +123,7 @@ function renderFullPage(html, initialState, title) {
                 window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
             </script>
             <script src="http://7xkpdt.com1.z0.glb.clouddn.com/libs.348172ab82b494835d50.0.js"></script>
-            <script src="/static/bundle.js"></script>
+            <script src="/static/js/bundle.js"></script>
 
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- 博客 -->

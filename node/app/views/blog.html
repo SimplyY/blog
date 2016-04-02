@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="utf-8">
-    <title>SimplyY's Blog</title>
+    <title>${title}</title>
+    <link rel="stylesheet" href="/static/css/blog.css" media="screen" title="no title" charset="utf-8">
+
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">${html}</div>
+    <script>
+        window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
+    </script>
+    <script src="http://7xkpdt.com1.z0.glb.clouddn.com/libs.348172ab82b494835d50.0.js"></script>
+    <script src="/static/js/bundle.js"></script>
 
-    <script src="http://7xkpdt.com1.z0.glb.clouddn.com/blog-libs.a5aaecf8ea5d8678a7e5.1.js"></script>
-    <script src="/static/bundle.js"></script>
-
-    <!-- blog ads-->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- 博客 -->
     <ins class="adsbygoogle"
          style="display:block"
          data-ad-client="ca-pub-9240750359266096"
-         data-ad-slot="7067368564"
-         data-ad-format="auto">
-     </ins>
+         data-ad-slot="9883600562"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 </body>
-
 </html>

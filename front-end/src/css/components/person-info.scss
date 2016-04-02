@@ -17,13 +17,13 @@ $info-height: 1.5rem;
             padding-top: 5px;
             color: #666;
             font-weight: 300;
-            @include vertical-center(5.5rem)
+            @include vertical-center(5.5rem);
         }
     }
 
     .other-info {
         padding: 10px 3px;
-        @include silver-border-top
+        @include silver-border-top;
     }
     .github-info, .email-info, .zhihu-info, .weibo-info {
         height: $info-height;
@@ -38,10 +38,10 @@ $info-height: 1.5rem;
             position: absolute;
             font-size: 0.6rem;
             line-height: $info-height;
-            @include reset-link-style($grey)
+            @include reset-link-style($grey);
         }
         a:hover {
-            @include reset-link-style(black)
+            @include reset-link-style(black);
         }
     }
     .github-info, .zhihu-info {

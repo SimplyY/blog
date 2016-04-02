@@ -1,5 +1,4 @@
 import './util/resize-rem'
-import './css/index.scss'
 
 import React from 'react'
 import { render } from 'react-dom'

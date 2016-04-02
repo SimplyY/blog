@@ -11,7 +11,7 @@ $content-table-padding: 5px;
     top: $nav-height + $content-table-padding;
     z-index: 99;
     cursor: pointer;
-    @include translate3d-t()
+    @include translate3d-t();
 
     display: inline-block;
     width: 30px;
@@ -27,11 +27,11 @@ $content-table-padding: 5px;
 
 .content-table-button-disapper {
     visibility: hidden;
-    @include translate3d-t()
+    @include translate3d-t();
 }
 
 .content-table-button-clicked {
-    @include translate3d-t(175px)
+    @include translate3d-t(175px);
 }
 
 .button.iconfont {
@@ -69,7 +69,7 @@ $content-table-padding: 5px;
     height: 100%;
     left: 0;
     z-index: 9;
-    @include translate3d-t(-$content-table-sidebar-width)
+    @include translate3d-t(-$content-table-sidebar-width);
 
     width: $content-table-sidebar-width;
     overflow: scroll;
@@ -79,15 +79,15 @@ $content-table-padding: 5px;
 }
 
 .content-table-sidebar-show {
-    @include translate3d-t()
+    @include translate3d-t();
 }
 
 .main-body {
-    @include translate3d-t()
+    @include translate3d-t();
 }
 .wrapper-move {
     position: relative;
-    @include translate3d-t($content-table-sidebar-width)
+    @include translate3d-t($content-table-sidebar-width);
 }
 
 
@@ -112,6 +112,5 @@ $content-table-padding: 5px;
 }
 
 .content-table-item:hover {
-    //@include be-brey-animation()
     text-decoration: underline;
 }

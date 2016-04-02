@@ -22,7 +22,7 @@ $menu-padding: 10px;
 
         }
         > li:hover {
-            @include be-brey-animation
+            @include be-brey-animation;
 
             // 显示下拉菜单
             .second-menus {

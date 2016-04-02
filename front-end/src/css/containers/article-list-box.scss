@@ -1,9 +1,9 @@
 .article-list-box {
-    @include box-grey-shadow($container-shadow-width)
+    @include box-grey-shadow($container-shadow-width);
 }
 
 .article-list-item:hover {
-    @include be-brey-animation
+    @include be-brey-animation();
     cursor: pointer;
 }
 
@@ -11,8 +11,8 @@
     display: block;
     padding: $main-container-padding-v $main-container-padding-h;
 
-    @include silver-border-top;
-    @include reset-link-style;
+    @include silver-border-top();
+    @include reset-link-style();
 
     .title {
         font-size: 22px;
@@ -55,17 +55,17 @@
 }
 
 .click-more {
-    @include silver-border-top()
+    @include silver-border-top();
     padding: $main-container-padding-v 0;
 
     p {
         color: $deep-grey;
-        @include vertical-center(42px)
+        @include vertical-center(42px);
     }
 }
 .click-more:hover {
     cursor: pointer;
-    @include be-brey-animation()
+    @include be-brey-animation();
 
     p {
         color: black;

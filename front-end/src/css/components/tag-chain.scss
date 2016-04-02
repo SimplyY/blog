@@ -20,6 +20,6 @@
     // element >=2
     li:nth-of-type(n+2):before{
         content:"›";
-        @include arrow-char-style(7px)
+        @include arrow-char-style(7px);
     }
 }

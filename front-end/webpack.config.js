@@ -11,9 +11,9 @@ module.exports = {
         './src/index.jsx'
     ],
     output: {
-        path: '../node/app/static',
+        path: '../node/app/static/js',
         filename: 'bundle.js',
-        publicPath: '/static/'
+        publicPath: '/static/js/'
     },
     devServer: {
         noInfo: true,
@@ -29,14 +29,6 @@ module.exports = {
     },
     module: {
         loaders: [{
-            test: /\.scss$/,
-            loaders: [ 'style', 'css', 'sass'],
-            include: path.join(SRC_PATH, 'css')
-        }, {
-            test: /\.css$/,
-            loaders: [ 'style', 'css'],
-            include: path.join(SRC_PATH, 'css')
-        },{
             test: /\.(js|jsx)$/,
             loaders: [ 'babel'],
             exclude: /node_modules/,

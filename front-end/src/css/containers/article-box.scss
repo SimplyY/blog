@@ -5,17 +5,17 @@ $near-article-box-height: 60px;
     position: relative;
     padding-bottom: $vote-share-love-box-height + $near-article-box-height;
 
-    @include box-grey-shadow($container-shadow-width)
+    @include box-grey-shadow($container-shadow-width);
 
     :target {
-        @include anchor-highlight-animation(2.5s)
+        @include anchor-highlight-animation(2.5s);
     }
 }
 
 .article {
     position: relative;
     padding: $main-container-padding-v + 10px $main-container-padding-h + 1px;
-    @include silver-border-top
+    @include silver-border-top();
 }
 
 .article-info {
