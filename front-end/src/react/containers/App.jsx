@@ -9,6 +9,7 @@ import {
 import NavigationBar from '../components/NavigationBar'
 import InfoSideBar from '../components/InfoSideBar'
 import ContentTable from '../components/ContentTable'
+import ScrollTopButton from '../components/ScrollTopButton'
 
 import { AppData } from '../../util/AppData'
 import { getPathType } from '../../util/common'
@@ -51,6 +52,7 @@ class App extends Component {
                     </div>
                     <InfoSideBar tags={tags} />
                 </div>
+                <ScrollTopButton />
             </div>
         )
     }

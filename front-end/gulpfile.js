@@ -7,7 +7,15 @@ var cleanCSS = require('gulp-clean-css')
 var replace = require('gulp-replace')
 var qiniu = require('gulp-qiniu')
 
-gulp.task('build', ['css', 'html'])
+gulp.task('build', function() {
+    gulp.run('html')
+})
+
+gulp.task('watch', function() {
+    gulp.watch(['src/sass/**'], function() {
+        gulp.run('html')
+    })
+})
 
 gulp.task('css', function() {
     return gulp.src('src/sass/index.scss')
@@ -16,7 +24,7 @@ gulp.task('css', function() {
         .pipe(gulp.dest('dist'))
 })
 
-gulp.task('html', function() {
+gulp.task('html', ['css'], function() {
     return gulp.src('src/index.html')
         .pipe(replace(/<link href="([^\.]*\.css)"[^>]*>/, function(s, filename) {
             var style = fs.readFileSync(filename, 'utf8')

@@ -27,9 +27,9 @@ module.exports = {
                 warnings: false
             }
         }),
+        new WebpackMd5Hash(),
         // 把入口文件里面的数组打包成 libs.js
-        new webpack.optimize.CommonsChunkPlugin('libs', 'libs.[chunkhash].[id].js'),
-        new WebpackMd5Hash()
+        new webpack.optimize.CommonsChunkPlugin('libs', 'libs.[chunkhash].[id].js')
     ],
     resolve: {
         extensions: ['', '.js', '.jsx', ]

@@ -1,0 +1,21 @@
+.scroll-top-button {
+    position: fixed;
+    right: 7rem;
+    bottom: 2.5rem;
+
+    width: 40px;
+    height: 40px;
+
+    cursor: pointer;
+    border-radius: 50%;
+    @include box-grey-shadow(5px);
+
+    z-index: 1000;
+
+    img {
+        position: relative;
+        top: -0.45px;
+        left: -0.5px;
+        border-radius: 50%;
+    }
+}

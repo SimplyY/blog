@@ -12,7 +12,7 @@ class Md2pdf extends Component {
     }
     render() {
         if (!this.state.hasLoadLibs) {
-            loadLibs(this.state)
+            loadLibs(this.state, this)
         }
         let previewDOM
         if (this.state.hasLoadLibs && !isNodeEnv() && marked) {
@@ -27,6 +27,7 @@ class Md2pdf extends Component {
             <div>
                 <div className="md-input-box">
                     <div className="md-input-header">
+                        <h1>md2pdf</h1>
                         <p>在下面输入 Markdown</p>
                         <br/>
                         <p>建议粘贴过来，不建议在这里输入</p>
@@ -50,13 +51,13 @@ class Md2pdf extends Component {
 }
 
 
-function loadLibs(state) {
+function loadLibs(state, that) {
     if (isNodeEnv()) {
         return
     }
     loadScript('//cdn.bootcss.com/marked/0.3.5/marked.js', () => {
         loadScript('//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js', () => {
-            state.hasLoadLibs = true
+            that.setState({hasLoadLibs: true})
             marked.setOptions({
                 highlight: function(code) {
                     return hljs.highlightAuto(code).value;
