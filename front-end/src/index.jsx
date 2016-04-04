@@ -28,7 +28,6 @@ pRender.then(loadAllArticles)
     .then(allArticles => {
         store.dispatch(loadAllArticlesAction(allArticles))
     })
-    .then(loadGoogle)
     .catch(error => {
         if (error) {
             console.log(error)
