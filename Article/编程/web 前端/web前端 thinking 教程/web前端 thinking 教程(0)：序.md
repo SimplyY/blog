@@ -16,9 +16,9 @@
     - js 事件队列(2)
     - 回调函数的原理(3)
     - es6 常用语法基础(3,4)
-        - 解构、let和const、扩展运算符
-        - 箭头函数、Promise 对象
-        - Module（重点）
+        - 解构、let和const、扩展运算符(3)
+        - Module（3重点）
+        - 箭头函数、Promise 对象(4)
 - dom 基础(2)
     - DOM 增删改查
     - DOM 事件机制
@@ -39,12 +39,13 @@
 
 #### 小作业
 - (2)使用 DOM 写简版的搜索栏（功能和百度谷歌类似）
-- (3,4)模仿前端渲染框架工作原理（比如模仿 react）写个简版 TODO(可以选择使用 jquery)
-- (5,6)使用 react 写个简版 TODO
+- (3)模仿前端渲染框架工作原理（比如模仿 react）写个简版 TODO(可以使用 jquery，bootstrap，purecss 等来提高开发效率)
+- (4, 5)使用 react 写个简版 TODO
 
 #### 大作业
-- (7,8,9)使用 react react-router redux 写一个包括模拟登陆功能的简版 TODO 应用（假设用户不刷新，有能力的人可以使用 localstorage 来完成一个完整的 webapp，用户可以刷新了）
-- 或者自己的点子，还是用 react react-router redux 的技术栈
+- (6, 7, 8, 9)自由发挥，1000行代码以上的项目
+    - 必用：es6、react、webpack。
+    - 选用：react router、react native
 
 ### 框架、工具
 - 学会查文档(1)
@@ -58,7 +59,8 @@
 - webpack(3)
     - 使用 es6 等预处理器
     - 开发(dev)环境和生产(production)环境
-- react(4)
+- react(3, 4)
+    - 什么是前端渲染
     - 基本概念
     - 基本使用
     - vitural DOM
@@ -66,14 +68,13 @@
     - 什么是前端路由
     - 以往的后端路由是怎么样的（不知道的话请看经典面试题：[输入 url 到页面展示发生了什么](http://simplyy.space/article/56d8377063fac2a8175b41f4#一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）) ）
     - 基本使用
-- redux(6)
-    - 基本概念
-    - 基本使用
-    - react-redux
+- react-native(7, 8, 9)
 
 ## 推荐书籍
+- 《css 设计指南》
 - dom 入门书： 《js dom 编程艺术》
-- js 进阶书：[JavaScript语言精粹](https://book.douban.com/subject/3590768/)、effective js、 you dont know js
+- js 进阶小书：[JavaScript语言精粹](https://book.douban.com/subject/3590768/)、effective js、 you dont know js(你不知道的 js 推荐买)
+- js 系统厚书：《js 高级程序设计》、《js 权威指南》即犀牛书
 - 其他：[《高性能网站建设指南》](http://book.douban.com/subject/3132277/)
 
 ## 推荐在线学习资料
