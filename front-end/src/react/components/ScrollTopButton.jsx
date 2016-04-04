@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { isNodeEnv } from '../../util/common.js'
 
-const SHOW_BIGGER_HEIGHT = 400
+const SHOW_BIGGER_HEIGHT = 500
 
 class ScrollTopButton extends Component {
 
@@ -53,7 +53,7 @@ function watchWindowScrolled(that) {
 
 function scrollTopWithAnimate() {
     let currentTop = document.body.scrollTop
-    const wholeTime = 500
+    const wholeTime = 300
     const stepTime = 10
     const stepsNumber = wholeTime/stepTime
     const stepMove = currentTop/stepsNumber
