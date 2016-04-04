@@ -52,11 +52,11 @@ function watchWindowScrolled(that) {
 }
 
 function scrollTopWithAnimate() {
-    var currentTop = document.body.scrollTop
-    const wholeTime = 1000
-    const stepsNumber = 60
-    const stepTime = wholeTime/stepsNumber
-    const stepMove = currentTop/stepTime
+    let currentTop = document.body.scrollTop
+    const wholeTime = 500
+    const stepTime = 10
+    const stepsNumber = wholeTime/stepTime
+    const stepMove = currentTop/stepsNumber
 
     ;(function timeLoop(){
         const delay = stepTime
