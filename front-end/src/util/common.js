@@ -104,6 +104,9 @@ export function showAnchor() {
 
     if (anchorDOM === null) {
         anchorDOM = getAnchorDOMbyHref(decodeURI(location.href))
+        if (anchorDOM === undefined) {
+            return
+        }
         scrollToAnchor(anchorDOM.offsetTop, ANCHOR_DISTANCE)
     }
     else {
