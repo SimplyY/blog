@@ -17,8 +17,6 @@
     - 演示如何 debug
 - js 语法基础(1,2,3,4)
     - this(2)
-    - 原型链、继承(2)
-    - js 事件队列(2)
 - dom 基础(2)
     - DOM 增删改查
     - DOM 事件机制
@@ -186,11 +184,10 @@ console.log(func()); //undefined
 http://www.ruanyifeng.com/blog/2010/04/using_this_keyword_in_javascript.html
 
 #### 总结
-1. 纯粹的函数调用: this就代表全局对象Global。
-2. 作为对象方法的调用: 这时this就指这个上级对象。
-3. 作为构造函数调用：this就指这个新对象
-4. apply,call,bind调用：this指的就是这第一个参数
-
+1. 纯粹的函数调用: this 就代表全局对象 Global（浏览器下就是 window）。
+2. 作为对象方法的调用: this 指向调用方法的对象。
+3. 作为构造函数调用：this 就指向 **构造器创建的新对象**
+4. apply, call, bind调用：this 指向就是这些函数的第一个参数
 
 #### 易错
 第八题我在 react 中错过类似的。
@@ -200,6 +197,7 @@ http://www.ruanyifeng.com/blog/2010/04/using_this_keyword_in_javascript.html
 ```js
 var componentA = {
     // ....xxx
+    // 提示 setState 依赖与 this 对象，即在 setState 函数内部使用了 this
     render: function() {
         func(this.setState)
     }
@@ -209,6 +207,18 @@ function func(setState) {
 }
 ```
 
+应该写成
+```js
+var componentA = {
+    // ....xxx
+    render: function() {
+        func(this)
+    }
+}
+function func(that) {
+    that.setState({x: 1})
+}
+```
 
 
 ### 作用域
@@ -254,42 +264,6 @@ var a = 2
 
 ![](http://7xkpdt.com1.z0.glb.clouddn.com/52eb2ef20950313734a86c164d7071d4.png)
 
-
-### js 事件执行队列
-> 蛇神带我们读博客系列=。=
-
-http://www.ruanyifeng.com/blog/2014/10/event-loop.html
-
-#### 单线程和多线程的概念
-多个线程之间不会相互阻塞（例如其中一个线程在请求网络，另外一个线程响应UI操作，Android开发往往是这么做的）
-
-![](http://7xkpdt.com1.z0.glb.clouddn.com/661a5246f4ca68e1b6c8bb53d482b4bd.png)
-
-#### 为什么JavaScript事实上是单线程的（浏览器端）
-
-多个线程的冲突在DOM操作中难以避免
-
-理想中的多线程和现实中的多线程
-
-
-#### 同步和异步的区别
-这是JS和其他主流语言的差异之一
-
-JS异步的实现机制-任务队列
-
-
-此处思考：当一个XHR请求发出的时候，整个过程是怎样的？
-![](http://7xkpdt.com1.z0.glb.clouddn.com/38204868aac817fc5537a414027488da.png)
-
-
-思考：JS是单线程的，为什么能够实现异步？
-因为浏览器不是单线程的，（事件队列只是JS异步的工作方式，而不是其原因）
-
-#### 事件循环
-
-![](http://7xkpdt.com1.z0.glb.clouddn.com/6f1f7bc71e88e17f1b828d75fff797c2.png)
-
-NodeJS部分因为不甚了解略
 
 ## dom 基础
 ### DOM 增删改查
