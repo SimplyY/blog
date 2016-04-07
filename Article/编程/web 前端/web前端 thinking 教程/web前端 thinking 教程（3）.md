@@ -1,5 +1,6 @@
 # web前端 thinking 教程(3):
 ## 教学提纲
+- 习题讲解
 - js 语法基础(1,2,3,4)
     - 构造器、原型链、继承(3)
     - js 事件执行队列
@@ -9,6 +10,14 @@
     - 使用 webpack 运行 es6 程序
 - react
     - 基础知识、demo 演示
+
+### 习题讲解
+
+https://github.com/SimplyY/web-front-end-thinking-tutorial/blob/master/practice/yuwei/2/index.js
+
+其中事件代理、兼容性处理、通过更改 class 来动态更改样式，这些都写得非常不错
+
+[why 事件代理](https://github.com/abell123456/communicate#题目4使用原生js实现事件代理)
 
 ### 构造器、原型链、继承
 #### 构造器
@@ -202,6 +211,61 @@ https://github.com/rauschma/webpack-es6-demo 大家把这个项目 clone 到本�
 阅读：
 [Module](http://simplyy.space/article/56c2d71f6ba384e02299f9ae#Module)
 
+#### 使用 es6
+在从 https://github.com/rauschma/webpack-es6-demo  clone 下来的仓库里面，使用之前学到的 es6 语法写一写代码，并运行。
+
 ### react
-#### 基础知识
-#### demo 演示
+#### 介绍
+##### 为什么使用 React
+阅读：http://reactjs.cn/react/docs/why-react.html
+
+核心：
+1. 可组合的组件
+2. React 是不会去操作 DOM 的
+
+
+##### JSX
+阅读 http://reactjs.cn/react/docs/jsx-in-depth.html
+
+核心：
+1. 如何使用 JSX
+2. JSX 中的 JavaScript 表达式
+3. JSX 与 html 的不同，标签的属性名采用驼峰法命名，并且有所改动（class => className, onclick => onClick）。
+
+##### react 中的数据绑定和呈现
+阅读 http://reactjs.cn/react/docs/displaying-data.html
+
+核心
+1. react 怎么做到响应式更新的
+
+#### 详细学习基础知识
+http://www.ruanyifeng.com/blog/2015/03/react.html
+
+不需要下载安装他的，非 es6语法，有的比较老，不过基础知识都涉及到了
+
+然后先详细阅读弄懂核心内容即可。
+
+核心：
+1. React.render 干了啥，每个参数的意义
+2. JSX 语法
+3. 组件
+4. this.props
+5. this.state
+
+
+#### 使用 es6 + react demo
+1. clone https://github.com/SimplyY/webpack-es6-react-demo
+2. npm install
+3. webpack
+4. open html
+
+然后就可以在此仓库里面写 react 组件了
+
+如果要提交作业，将 .git 文件夹（默认隐藏，得打开隐藏可见）删掉，然后将这个仓库文件夹，放到原来的作业项目里的 practice/3/xx/ 文件夹里即可
+
+#### classnames 介绍
+https://github.com/JedWatson/classnames
+
+#### 作业
+使用 es6 webpack react 写简版的搜索栏
+http://reactjs.cn/react/docs/getting-started.html
