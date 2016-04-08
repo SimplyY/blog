@@ -239,9 +239,9 @@ https://github.com/rauschma/webpack-es6-demo 大家把这个项目 clone 到本�
 1. react 怎么做到响应式更新的
 
 #### 详细学习基础知识
-http://www.ruanyifeng.com/blog/2015/03/react.html
+https://hulufei.gitbooks.io/react-tutorial/content/index.html
 
-不需要下载安装他的，非 es6语法，有的比较老，不过基础知识都涉及到了
+暂时先阅读前四部分即可
 
 然后先详细阅读弄懂核心内容即可。
 
