@@ -223,23 +223,8 @@ https://github.com/rauschma/webpack-es6-demo 大家把这个项目 clone 到本�
 1. 可组合的组件
 2. React 是不会去操作 DOM 的
 
-
-##### JSX
-阅读 http://reactjs.cn/react/docs/jsx-in-depth.html
-
-核心：
-1. 如何使用 JSX
-2. JSX 中的 JavaScript 表达式
-3. JSX 与 html 的不同，标签的属性名采用驼峰法命名，并且有所改动（class => className, onclick => onClick）。
-
-##### react 中的数据绑定和呈现
-阅读 http://reactjs.cn/react/docs/displaying-data.html
-
-核心
-1. react 怎么做到响应式更新的
-
 #### 详细学习基础知识
-https://hulufei.gitbooks.io/react-tutorial/content/index.html
+react 基础教程(1到4章) https://hulufei.gitbooks.io/react-tutorial/content/index.html
 
 暂时先阅读前四部分即可
 
@@ -269,3 +254,6 @@ https://github.com/JedWatson/classnames
 #### 作业
 使用 es6 webpack react 写简版的搜索栏
 http://reactjs.cn/react/docs/getting-started.html
+
+#### 简版答案
+http://simplyy.space/article/57062adbb194638f7d6d273f

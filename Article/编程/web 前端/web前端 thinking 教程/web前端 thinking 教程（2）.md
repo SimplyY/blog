@@ -352,3 +352,6 @@ chrome-dev-tool
 1. 必须使用原生 DOM 操作，不能使用任何 js 类库。
 2. 必须完成补全显示。
 3. 选择性的完成 键盘、鼠标交互事件。
+
+## 标准答案
+https://github.com/SimplyY/web-front-end-thinking-tutorial/blob/master/practice%2Fyuwei%2F2%2Findex.js

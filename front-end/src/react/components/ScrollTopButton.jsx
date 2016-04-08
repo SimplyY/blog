@@ -19,7 +19,6 @@ class ScrollTopButton extends Component {
         if (isNodeEnv() || !this.state.isShow) {
             return (
                 <div>
-                    b
                 </div>
             )
         }

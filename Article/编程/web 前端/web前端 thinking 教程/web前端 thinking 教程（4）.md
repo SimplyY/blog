@@ -108,8 +108,23 @@ function getTips(dataArray, inputStr) {
 export default AutoComplete
 ```
 
-##### react 教程
-http://reactjs.cn/react/docs/tutorial.html
-
-##### 深入理解 react
+## 作业
+### 阅读
+### 深入理解 react
 http://reactjs.cn/react/docs/thinking-in-react.html
+
+
+#### 核心内容：
+- 使用 react 的步骤
+    1. 拆分用户界面成一个组件树
+    2. 利用 React ，创建应用的一个静态版本
+    3. 识别出最小的（但是完整的）代表 UI 的 `state`
+    4. 确认 `state` 的所属组件
+    5. 添加反向数据流
+- 容器组件，上面第4部中的 **所属组件** 实际上就是找到容器组件，重点思考这种组件和普通组件（stateless）的不同
+
+当我们需要对用户输入、服务器请求或者时间变化等作出响应，这时才需要使用 `State` 。常用的模式是 **创建多个只负责渲染数据的无状态（stateless）组件**，在它们的上层创建一个有状态（stateful）组件(我们常将其称之为组件容器，它和普通组件非常不同)并把它的状态通过 props 传给子级。这个 **有状态的组件封装了所有用户的交互逻辑**，而这些无状态组件则负责 **声明式地渲染数据**。
+
+#### 难点：
+1. 添加反向数据流，反向数据流是指，子组件（stateless 组件）要更改父组件（容器组件）中的 state，这时我们会采取在父组件中声明 handle 函数，然后通过 props 传给子组件，子组件在 onxxx 的时候调用此函数，这样就使得整个的数据流仍然是单向的，并且完全由容器组件来控制整个容器内的 state。
+2. react 生命周期
