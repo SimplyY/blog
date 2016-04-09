@@ -263,6 +263,10 @@ console.log('Is rect an instance of Shape?', rect instanceof Shape);// true
 rect.move(1, 1); // Outputs, 'Shape moved.'
 ```
 
+其实呢，我们天天在用的 array、object 的继承关系和上面的代码如出一辙，看下图，Shape 相当于 Object，Rectangle 相当于 Array
+![](http://7xkpdt.com1.z0.glb.clouddn.com/a8c122fad8f0568f52f8b285f8ca4393.png)
+
+
 提问：
 1. constructor 是啥？（查文档回答）
 2. constructor 存在哪的？

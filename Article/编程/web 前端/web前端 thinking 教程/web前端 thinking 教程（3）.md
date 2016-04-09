@@ -18,6 +18,9 @@ https://github.com/SimplyY/web-front-end-thinking-tutorial/blob/master/practice/
 
 ### webpack
 #### 使用 webpack 运行 es6 程序
+> 使用 npm 命令前得设置一下淘宝源，这样下载速度会很快
+> npm config set registry https://registry.npm.taobao.org
+
 https://github.com/rauschma/webpack-es6-demo 大家把这个项目 clone 到本地，并用命令行 运行 npm install
 
 我们之后写 react 就是用 webpack 来将 es6代码编译成 es5（在浏览器无压力运行），

@@ -1,4 +1,61 @@
 # js thinking(4)：易错
+## 对象字面量
+### node
+常见的有 node 里面
+```js
+// with bug
+exports = {
+    a: 'b'
+}
+
+// right
+module.exports = {
+    a: 'b'
+}
+```
+
+好，现在我们来思考一下为啥。
+
+**首先 看看 exports 和 module.exports 的区别：**
+
+1. exports 是指向的 module.exports 的引用
+2. module.exports 初始值为一个空对象 {}，所以 exports 初始值也是 {}
+3. require() 返回的是 module.exports 而不是 exports
+
+**对象字面量就是返回一个对象**
+
+```js
+exports = {
+    a: 'b'
+}
+```
+**这里会使 exports 指向了一块新的内存**（存储对象的地方），这样以来 module.exports 和它指的地方就不一样了
+
+so why bug
+
+那么同样的，当我们写代码的时候，也要避免类似的错误，对象字面量会返回一个对象，这样以来会让原来的变量指向一块新的内存。也就是覆盖。
+
+### 原型
+
+so 在对原型进行操作的时候，我们很容易写出这样的代码
+
+```js
+A.prototype = {
+    b: 1,
+    c: function() {
+        console.log(1)
+    }
+}
+```
+
+假如 A 是一个构造器函数，那么我们会将 A 原来的 prototype 覆盖掉。
+
+这样以来，A 原来 prototype.constructor 就没啦，所以当我们在使用 Object.create 来实现原型继承的时候，要把没的东西弄回去。
+```js
+A.prototype = Object.create(B.prototype)
+A.Prototype.constructor = A
+```
+
 ## indexOf 判断元素是否在数组的缺陷
 `array.indexOf(item) !== -1 `
 
