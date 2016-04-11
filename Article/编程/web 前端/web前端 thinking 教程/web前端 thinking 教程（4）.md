@@ -311,11 +311,31 @@ NodeJS部分因为不甚了解略
 
 ## 作业
 ### 阅读
-### 深入理解 react
+#### 颠覆式前端UI开发框架：React
+http://www.infoq.com/cn/articles/subversion-front-end-ui-development-framework-react
+
+**核心**
+1. 基于HTML的前端界面开发正变得越来越复杂，其本质问题基本都可以归结于如何将来自于服务器端或者用户输入的动态数据高效的反映到复杂的用户界面上。
+2. 高性能的 Virtual DOM
+3. 一切都是组件：内聚、降低耦合，每个组件只关心自己部分的逻辑，彼此独立。我感觉，在写 HTML 中，原本的 div 等标签就是一行一行的代码，而组件就像函数。
+4.
+
+
+#### 深入浅出React（一）：React的设计哲学 - 简单之美
+http://www.infoq.com/cn/articles/react-art-of-simplity
+
+
+**核心**
+1. React取消了函数的自动绑定（在 jsx 的事件回调中）
+2. 所谓组件，其实就是状态机器
+    > 例如，某个组件有只读和编辑两个状态。一般的思路可能是提供beginEditing()和endEditing()这样的方法来实现切换；而在React中，需要做的是setState({editing: true/false})。在组件的输出逻辑中负责正确展现当前状态。这种方式，你不需要考虑beginEditing和endEditing中应该怎样更新UI，而只需要考虑在某个状态下，UI是怎样的。显然后者更加自然和直观。
+3.
+
+#### 深入理解 react
 http://reactjs.cn/react/docs/thinking-in-react.html
 
 
-#### 核心内容：
+**核心**
 - 使用 react 的步骤
     1. 拆分用户界面成一个组件树
     2. 利用 React ，创建应用的一个静态版本
@@ -326,6 +346,11 @@ http://reactjs.cn/react/docs/thinking-in-react.html
 
 当我们需要对用户输入、服务器请求或者时间变化等作出响应，这时才需要使用 `State` 。常用的模式是 **创建多个只负责渲染数据的无状态（stateless）组件**，在它们的上层创建一个有状态（stateful）组件(我们常将其称之为组件容器，它和普通组件非常不同)并把它的状态通过 props 传给子级。这个 **有状态的组件封装了所有用户的交互逻辑**，而这些无状态组件则负责 **声明式地渲染数据**。
 
-#### 难点：
+**难点**
 1. 添加反向数据流，反向数据流是指，子组件（stateless 组件）要更改父组件（容器组件）中的 state，这时我们会采取在父组件中声明 handle 函数，然后通过 props 传给子组件，子组件在 onxxx 的时候调用此函数，这样就使得整个的数据流仍然是单向的，并且完全由容器组件来控制整个容器内的 state。
 2. react 生命周期
+
+
+#### 生命周期
+
+![](http://7xkpdt.com1.z0.glb.clouddn.com/6c0f0eae09b64a1763220ae2457ce2bc.png)

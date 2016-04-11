@@ -91,6 +91,7 @@ react 基础教程(1到4章) https://hulufei.gitbooks.io/react-tutorial/content/
 4. this.props
 5. this.state
 
+弄懂类组件的属性(props)与状态(state) http://wwsun.github.io/posts/react-with-es6-part-2.html
 
 #### 使用 es6 + react demo
 1. clone https://github.com/SimplyY/webpack-es6-react-demo
@@ -111,3 +112,11 @@ http://reactjs.cn/react/docs/getting-started.html
 
 #### 简版答案
 http://simplyy.space/article/57062adbb194638f7d6d273f
+
+### 其他
+#### 命令讲解
+npm install 的意思是安装当前项目的所有依赖，其中 npm 是 node 的包管理器
+
+详解：非常棒的文章，值得仔细阅读  http://www.infoq.com/cn/articles/msh-using-npm-manage-node.js-dependence
+
+webpack 则是会以 webpack.config.js 作为 webpack 启动的默认配置文件，去工作，其中 webpack.config.js 决定了 webpack 干啥。
