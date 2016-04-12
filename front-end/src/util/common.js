@@ -22,7 +22,9 @@ export function sanitizeHTML(html) {
 }
 
 export function scrollToTop() {
-    window.scrollTo(0, 0)
+    if (window.scrollTo) {
+        window.scrollTo(0, 0)
+    }
 }
 
 export function getPathType(urlPathname) {

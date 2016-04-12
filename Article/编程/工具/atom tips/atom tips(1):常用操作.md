@@ -14,7 +14,7 @@ atom + 文件or文件夹名
   'cmd-\': 'tree-view:toggle'
 
 ### 分屏(amazing)
-- osx: cmd + k， 加 方向键
+- osx: 先 cmd + k，松开，再加方向键
 - win: ctrl + k, + 方向键
 
 ### 多光标编辑

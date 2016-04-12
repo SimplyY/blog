@@ -354,3 +354,24 @@ http://reactjs.cn/react/docs/thinking-in-react.html
 #### 生命周期
 
 ![](http://7xkpdt.com1.z0.glb.clouddn.com/6c0f0eae09b64a1763220ae2457ce2bc.png)
+
+### 代码
+todomvc 作业（两次完成）
+
+完整样例效果 http://todomvc.com/examples/react/#/
+
+查看样例的 react 构成，chrome 插件（ 我只知道 http 或 https 协议才会在 devtool，显示 react pane）：
+
+需要翻墙才能下载 https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?utm_source=chrome-ntp-icon
+
+![](http://7xkpdt.com1.z0.glb.clouddn.com/7e238a5664b7787d0c4f19b76cd2bf2c.png)
+
+
+
+## 解惑部分
+### 问题
+#### 1. 命令行里React 转换流程和webpack打包流程……这两个有点忘了……
+webpack 的使用分两部分
+
+1. 初始化整个项目时（第一次配置项目的时候），假如已经有了 package.json（参照别人的或原来的项目） ，需要先去 npm install 所有 package.json 里面的的依赖。假如没 package.json 则需要使用 npm init 命令去初始化一个项目（创建一个空的 package.json）, npm install --save-dev or --save。
+2. 构建项目时。当你 webpack.config.js 配置成功后，项目根路径输入 webpack
