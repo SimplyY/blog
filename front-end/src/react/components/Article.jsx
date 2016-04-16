@@ -3,16 +3,28 @@ import React, {Component} from 'react'
 import _ from '../../../lib/lodash.core'
 
 import { AppData } from '../../util/AppData'
-import { jumpToAnchor, showAnchor, isUrlInAnchor, sanitizeHTML } from '../../util/common'
+import { jumpToAnchor, showAnchor, isUrlInAnchor, sanitizeHTML, isNodeEnv } from '../../util/common'
 
 import * as text from '../../consts/text'
+
+const FIRST_MAX_LEN = 5000
+const delay = 500
 
 class Article extends Component {
     constructor() {
         super()
+        this.state = {
+            needSecondLoad: false
+        }
     }
 
-    shouldComponentUpdate(nextProps){
+    shouldComponentUpdate(nextProps, nextStates){
+        // 分批渲染长文章
+        if (nextStates.needSecondLoad) {
+            console.log('load second')
+            return true
+        }
+
         let nextArticle = nextProps.currentArticle
         let oldArticle = this.props.currentArticle
         // use lodash (deep)isEqual
@@ -28,7 +40,8 @@ class Article extends Component {
     render() {
         // console.log('Article render')
         let { currentArticle } = this.props
-        let currentArticleDOM = currentArticle.html
+        let currentArticleHtml = this.getLenLimitedHtml(currentArticle.html)
+        console.log(currentArticleHtml.length)
 
         let dateStr = AppData.formatArticleDate(currentArticle.date)
         return (
@@ -48,7 +61,7 @@ class Article extends Component {
                 </div>
 
                 <article id="article-content" className="markdown-body"
-                    dangerouslySetInnerHTML={{__html: sanitizeHTML(currentArticleDOM)}}
+                    dangerouslySetInnerHTML={{__html: sanitizeHTML(currentArticleHtml)}}
                     onClick={(e) => {
                         if (e.target.className === 'iconfont article-anchor') {
                             jumpToAnchor(e)
@@ -58,8 +71,27 @@ class Article extends Component {
             </div>
         )
     }
-}
 
+    getLenLimitedHtml(html) {
+        const { isFirstPage } = this.props
+        // 浏览器第二次加载、服务器端渲染，直接返回完整 html
+        if (this.state.needSecondLoad || isFirstPage) {
+            return html
+        }
+
+        // 浏览器第一次最多加载 FIRST_MAX_LEN 的 html
+        if (html.length < FIRST_MAX_LEN) {
+            return html
+        } else {
+            // 延迟加载
+            const that = this
+            setTimeout(() => {
+                that.setState({needSecondLoad: true})
+            }, delay)
+            return html.slice(0, FIRST_MAX_LEN)
+        }
+    }
+}
 
 
 export default Article

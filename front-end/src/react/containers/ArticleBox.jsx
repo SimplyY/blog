@@ -16,7 +16,7 @@ import CurrentTagChain from '../components/CurrentTagChain'
 import ShareLoveBox from '../components/ShareLoveBox'
 import NearArticleBox from '../components/NearArticleBox'
 
-import { getPathType, setPageTitle } from '../../util/common'
+import { getPathType, setPageTitle, isFirstPage } from '../../util/common'
 
 class ArticleBox extends Component {
     constructor() {
@@ -40,7 +40,7 @@ class ArticleBox extends Component {
         let {
             urlPathname,
             tags, articles,
-            addArticleLoveNumber, addArticleShareNumber, appearContentTable, disappearContentTable
+            addArticleLoveNumber, addArticleShareNumber, isFirstPage
         } = this.props
 
         const { articleId } = this.props.params
@@ -59,9 +59,8 @@ class ArticleBox extends Component {
         return (
             <div className="article-box">
                 <CurrentTagChain pathType={pathType} tags={tags} currentTagId={currentTag._id} />
-                <Article currentArticle={currentArticle}
-                    appearContentTable={appearContentTable}
-                    disappearContentTable={disappearContentTable}/>
+                <Article isFirstPage={isFirstPage}
+                    currentArticle={currentArticle}/>
                 <ShareLoveBox currentArticle={currentArticle}
                     addArticleLoveNumber={addArticleLoveNumber}
                     addArticleShareNumber={addArticleShareNumber} />
@@ -76,7 +75,8 @@ function mapStateToProps(state) {
         tags: state.data.get('tags').toJS(),
         articles: state.data.get('articles').toJS(),
 
-        urlPathname: state.routing.location.pathname
+        urlPathname: state.routing.location.pathname,
+        isFirstPage: isFirstPage(state.routing.location.action)
     }
 }
 

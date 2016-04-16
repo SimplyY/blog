@@ -5,6 +5,13 @@ export function isNodeEnv() {
     return typeof window === 'undefined' && typeof process === 'object'
 }
 
+export function isFirstPage(routerAction) {
+    if (typeof routerAction === 'string' && routerAction === 'POP') {
+        return true
+    }
+    return false
+}
+
 export function setPageTitle(title) {
     if (isNodeEnv()) {
         GLOBAL.blog.title = text.TITLE_PREFIX + title

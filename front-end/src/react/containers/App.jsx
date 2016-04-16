@@ -41,11 +41,11 @@ class App extends Component {
         return (
             <div className="main-wrapper">
                 <NavigationBar tags={tags} />
-                    <ContentTable isAppear={isAppear}
-                        contentTable={contentTable}
-                        showContentTable={showContentTable}
-                        hiddenContentTable={hiddenContentTable}
-                        loadContentTableContent={loadContentTableContent}/>
+                <ContentTable isAppear={isAppear}
+                    contentTable={contentTable}
+                    showContentTable={showContentTable}
+                    hiddenContentTable={hiddenContentTable}
+                    loadContentTableContent={loadContentTableContent}/>
                 <div id="main-body" className="main-body clear-float">
                     <div className="main-container">
                         {children}
