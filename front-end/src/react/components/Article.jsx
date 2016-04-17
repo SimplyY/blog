@@ -7,7 +7,7 @@ import { jumpToAnchor, showAnchor, isUrlInAnchor, sanitizeHTML, isNodeEnv } from
 
 import * as text from '../../consts/text'
 
-const FIRST_MAX_LEN = 5000
+const FIRST_RENDER_MAX_LEN = 2000
 const delay = 500
 
 class Article extends Component {
@@ -79,16 +79,15 @@ class Article extends Component {
             return html
         }
 
-        // 浏览器第一次最多加载 FIRST_MAX_LEN 的 html
-        if (html.length < FIRST_MAX_LEN) {
+        // 浏览器第一次最多加载 FIRST_RENDER_MAX_LEN 的 html
+        if (html.length < FIRST_RENDER_MAX_LEN) {
             return html
         } else {
             // 延迟加载
-            const that = this
             setTimeout(() => {
-                that.setState({needSecondLoad: true})
+                this.setState({needSecondLoad: true})
             }, delay)
-            return html.slice(0, FIRST_MAX_LEN)
+            return html.slice(0, FIRST_RENDER_MAX_LEN)
         }
     }
 }
