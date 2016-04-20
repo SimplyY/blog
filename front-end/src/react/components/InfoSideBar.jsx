@@ -6,7 +6,6 @@ import PersonInfo from './PersonInfo'
 
 import { scrollToTop } from '../../util/common'
 
-import { TAG_PATH } from '../../consts/config'
 import * as text from '../../consts/text'
 
 class InfoSideBar extends Component{
@@ -22,14 +21,14 @@ class InfoSideBar extends Component{
         return (
             <div className="main-sidebar">
                 <PersonInfo />
-                <div className="column-tags">
-                    <div className="column-header">
+                <section className="column-tags">
+                    <header className="column-header">
                         {text.COLUMN_INTRO_TEXT}
-                    </div>
+                    </header>
                     <ol className="column-list">
                         {columnTagsDOM}
                     </ol>
-                </div>
+                </section>
             </div>
         )
     }

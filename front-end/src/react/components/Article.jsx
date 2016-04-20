@@ -45,30 +45,30 @@ class Article extends Component {
 
         let dateStr = AppData.formatArticleDate(currentArticle.date)
         return (
-            <div className="article">
+            <article className="article">
                 <div className="article-info">
-                    <div className="author-info-wrapper">
-                        <label>{text.AUTHOR}</label>
-                        <p>{text.MY_NAME}</p>
-                    </div>
-                    <div className="date-info-wrapper">
-                        <label>{text.ARTICLE_DATE_LABEL_TEXT}</label>
-                        <date>{dateStr}</date>
-                    </div>
-                    <div>
+                    <section className="author-info-wrapper">
+                        <header className="header">{text.AUTHOR}</header>
+                        <p className="info">{text.MY_NAME}</p>
+                    </section>
+                    <section className="date-info-wrapper">
+                        <header className="header">{text.ARTICLE_DATE_LABEL_TEXT}</header>
+                        <date className="info">{dateStr}</date>
+                    </section>
+                    <div className="article-print-tool">
                         <a className="print-this-page" href="javascript:window.print()">click there to get pdf or print</a>
                     </div>
                 </div>
 
-                <article id="article-content" className="markdown-body"
+                <div id="article-content" className="markdown-body"
                     dangerouslySetInnerHTML={{__html: sanitizeHTML(currentArticleHtml)}}
                     onClick={(e) => {
                         if (e.target.className === 'iconfont article-anchor') {
                             jumpToAnchor(e)
                         }
-                }} >
-                </article>
-            </div>
+                    }} >
+                </div>
+            </article>
         )
     }
 

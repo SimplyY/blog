@@ -24,10 +24,10 @@ class ArticleList extends Component {
         let articlesListDOM = getArticlesListDOM(this.dispatch, factShowedArticles)
 
         return (
-            <div>
+            <section>
                 {articlesListDOM}
                 {clickMoreDOM}
-            </div>
+            </section>
         )
     }
 }

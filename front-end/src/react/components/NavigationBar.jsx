@@ -19,7 +19,7 @@ class NavigationBar extends Component{
         let otherTagsDOM = buildOtherTagsDOM()
 
         return (
-            <div className="main-nav-bar">
+            <nav className="main-nav-bar">
                 <Link className="home" to="/" onClick={scrollToTop}>
                     {text.MY_NAME}
                 </Link>
@@ -27,7 +27,7 @@ class NavigationBar extends Component{
                     {tagsDOM}
                     {otherTagsDOM}
                 </ol>
-            </div>
+            </nav>
         )
     }
 }

@@ -57,7 +57,7 @@ class ArticleBox extends Component {
         }
 
         return (
-            <div className="article-box">
+            <section className="article-box">
                 <CurrentTagChain pathType={pathType} tags={tags} currentTagId={currentTag._id} />
                 <Article isFirstPage={isFirstPage}
                     currentArticle={currentArticle}/>
@@ -65,7 +65,7 @@ class ArticleBox extends Component {
                     addArticleLoveNumber={addArticleLoveNumber}
                     addArticleShareNumber={addArticleShareNumber} />
                 <NearArticleBox nearArticle={currentArticle.nearArticle} />
-            </div>
+            </section>
         )
     }
 }

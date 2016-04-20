@@ -17,7 +17,7 @@ class PersonInfo extends Component {
                         {text.MY_NAME}
                     </div>
                 </div>
-                <div className="other-info">
+                <address className="other-info">
                     <div>
                         <div className="github-info">
                             <div className="github-icon iconfont"
@@ -42,7 +42,7 @@ class PersonInfo extends Component {
                             <a href={`mailto:` + text.MY_EMAIL} >{text.MY_EMAIL}</a>
                         </div>
                     </div>
-                </div>
+                </address>
             </div>
         )
     }

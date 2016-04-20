@@ -26,7 +26,7 @@ class ArticleListBox extends Component {
 
         const tagId = this.props.params.tagId
         let pathType = getPathType(urlPathname)
-        
+
         if (isNodeEnv() && this.props.route.path) {
             pathType = this.props.route.path.split('/')[0]
         }
@@ -41,12 +41,12 @@ class ArticleListBox extends Component {
         }
 
         return (
-            <div className="article-list-box">
+            <section className="article-list-box">
                 <CurrentTagChain pathType={pathType} tags={tags} currentTagId={tagId} />
                 <ArticleList showedArticles={showedArticles}
                     showMoreArticle={showMoreArticle}
                     showedArticlesMaxNumber={showedArticlesMaxNumber} />
-            </div>
+            </section>
         )
     }
 }

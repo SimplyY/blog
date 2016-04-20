@@ -37,9 +37,8 @@ class App extends Component {
             }
         }
 
-
         return (
-            <div className="main-wrapper">
+            <main className="main-wrapper">
                 <NavigationBar tags={tags} />
                 <ContentTable isAppear={isAppear}
                     contentTable={contentTable}
@@ -53,7 +52,7 @@ class App extends Component {
                     <InfoSideBar tags={tags} />
                 </div>
                 <ScrollTopButton />
-            </div>
+            </main>
         )
     }
 }

@@ -21,7 +21,7 @@ class NearArticleBox extends Component {
         if (nearArticle.before !== null) {
             beforeArticleDOM = (
                 <div className="before-article arrow-icon-left">
-                    <Link to={'/' + ARTICLE_PATH + nearArticle.before._id}
+                    <Link rel="prev" to={'/' + ARTICLE_PATH + nearArticle.before._id}
                         onClick={scrollToTop}>
                         {nearArticle.before.title}
                     </Link>
@@ -31,7 +31,7 @@ class NearArticleBox extends Component {
         if (nearArticle.after !== null) {
             afterArticleDOM = (
                 <div className="after-article arrow-icon-right">
-                    <Link to={'/' + ARTICLE_PATH + nearArticle.after._id}
+                    <Link rel="next" to={'/' + ARTICLE_PATH + nearArticle.after._id}
                         onClick={scrollToTop}>
                         {nearArticle.after.title}
                     </Link>

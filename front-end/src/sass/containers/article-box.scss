@@ -24,21 +24,24 @@ $near-article-box-height: 60px;
     font-size: $article-info-font-size;
     color: $grey;
 
-    div {
+    .author-info-wrapper, .date-info-wrapper, .article-print-tool {
         display: inline;
         margin-right: $article-info-right-margin;
     }
 
-    label:after {
+    .header {
+        display: inline;
+    }
+    .header:after {
         content: ": ";
     }
 
-    p {
+    .info {
         display: inline;
     }
 
     .print-this-page {
-        @include reset-link-style(grey);
+        @include reset-link-style($grey);
     }
     .print-this-page:hover {
         color: black;

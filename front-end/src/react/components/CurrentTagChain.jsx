@@ -15,11 +15,11 @@ class CurrentTagChain extends Component {
     render() {
         let tagChainDOM = this.getTagChainDOM()
         return (
-            <div className="tag-chain">
+            <header className="tag-chain">
                 <ol>
                     {tagChainDOM}
                 </ol>
-            </div>
+            </header>
         )
     }
 

@@ -43,12 +43,12 @@ class ContentTable extends Component {
                     <div className={buttonIconfontClass} dangerouslySetInnerHTML={{__html: ARROW_ICONFONT}}>
                     </div>
                 </div>
-                <div className={sidebarClass}>
-                    <div className="content-table-header">
+                <section className={sidebarClass}>
+                    <header className="content-table-header">
                         Table of Contents
-                    </div>
+                    </header>
                     {contentTableDOM}
-                </div>
+                </section>
             </div>
         )
     }

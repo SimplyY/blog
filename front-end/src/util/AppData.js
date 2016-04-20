@@ -110,19 +110,19 @@ function addNearArticleAttr(articles) {
         let nearArticle = {}
 
         if (index === 0) {
-            nearArticle.before = null
+            nearArticle.after = null
         }
         else {
-            nearArticle.before = {
+            nearArticle.after = {
                 _id: array[index - 1]._id,
                 title: array[index - 1].title
             }
         }
         if (index === array.length - 1) {
-            nearArticle.after = null
+            nearArticle.before = null
         }
         else {
-            nearArticle.after = {
+            nearArticle.before = {
                 _id: array[index + 1]._id,
                 title: array[index + 1].title
             }

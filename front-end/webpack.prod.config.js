@@ -12,7 +12,7 @@ module.exports = {
         libs: [
             'react', 'react-router',
             'immutable', 'redux', 'react-redux', 'redux-immutablejs','react-router-redux',
-             'isomorphic-fetch', './lib/lodash.core.js','dompurify'
+            'isomorphic-fetch', './lib/lodash.core.js','dompurify'
         ]
     },
     output: {
@@ -29,7 +29,7 @@ module.exports = {
         }),
         new WebpackMd5Hash(),
         // 把入口文件里面的数组打包成 libs.js
-        new webpack.optimize.CommonsChunkPlugin('libs', 'libs.[chunkhash].[id].js')
+        new webpack.optimize.CommonsChunkPlugin('libs', 'libs.[hash].[id].js')
     ],
     resolve: {
         extensions: ['', '.js', '.jsx', ]
@@ -52,6 +52,5 @@ module.exports = {
             exclude: /node_modules/,
             include: FONT_PATH
         }
-    ]
-    }
+    ]}
 }
