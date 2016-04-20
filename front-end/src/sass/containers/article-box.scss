@@ -62,14 +62,24 @@ $near-article-box-height: 60px;
     @include reset-link-style(black);
 }
 
-
+// for print article
 @media print {
     .main-nav-bar, .main-sidebar, .article-info, .tag-chain, .love-share-box {
         display: none;
     }
+
     .content-table-button {
         display: none !important;
     }
+    .content-table-sidebar {
+        width: 100% !important;
+        position: static !important;
+    }
+    .main-body {
+        position: static !important;
+        transform: translate3d(0, 0, 0) !important;
+    }
+
     .main-container {
         position: absolute;
         top: 0px;
