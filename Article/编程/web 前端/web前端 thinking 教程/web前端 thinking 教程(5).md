@@ -44,11 +44,18 @@
 
 ### 现代前端开发
 - ajax
-    - 后端提供 api 的开发方式
+    - 后端提供 api 的开发方式，使用 JSON 进行交互
     - 甚至是后端 直接提供 restful api（详情见作业的阅读）
 - 前端渲染（vue，angular，react）和后端渲染配合进行，以达到性能最优
 - spa（单页应用，比如我的博客）
 - 同构（react 服务器端渲染，在 spa 中首屏后端渲染，其他页面由前端渲染，共用一套代码）
+
+#### json
+介绍 JSON http://www.json.org/json-zh.html
+
+#### ajax
+js ajax 教程
+http://javascript.ruanyifeng.com/bom/ajax.html
 
 ### http 基础知识
 统一资源标识符:URI;统一资源定位符:URL

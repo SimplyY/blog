@@ -353,7 +353,7 @@ http://reactjs.cn/react/docs/thinking-in-react.html
 
 #### 生命周期
 
-![](http://7xkpdt.com1.z0.glb.clouddn.com/6c0f0eae09b64a1763220ae2457ce2bc.png)
+![](http://7xkpdt.com1.z0.glb.clouddn.com/814eb3744feb92b1488169f61b1359d3.png)
 
 ### 代码
 todomvc 作业（两次完成）
