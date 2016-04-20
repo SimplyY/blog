@@ -71,7 +71,7 @@ var routes = require('../../front-end/src/routes.jsx').default
 function handleRender(req, res) {
     var history = createMemoryHistory()
     var store = configureStore(undefined, history)
-    console.log(req.url)
+
     match({ routes: routes, location: req.url }, function(error, redirectLocation, renderProps) {
         if (error) {
             res.status(500).send(error.message)
@@ -84,6 +84,10 @@ function handleRender(req, res) {
             var reactHtml
             models.loadMustData(req.url)
                 .then(function(data) {
+                    console.log(req.url)
+                    var s = store.getState()
+                    s.routing.location.pathname = req.url
+
                     store.dispatch(loadMustDataAction(data))
                     initialState = store.getState()
 

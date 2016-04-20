@@ -10,7 +10,7 @@ import InvalidUrlBox from '../containers/InvalidUrlBox'
 import ArticleList from '../components/ArticleList'
 import CurrentTagChain from '../components/CurrentTagChain'
 
-import { getPathType, setPageTitle, isNodeEnv } from '../../util/common'
+import { getPathType, setPageTitle } from '../../util/common'
 import * as config from '../../consts/config'
 import * as text from '../../consts/text'
 
@@ -26,10 +26,6 @@ class ArticleListBox extends Component {
 
         const tagId = this.props.params.tagId
         let pathType = getPathType(urlPathname)
-
-        if (isNodeEnv() && this.props.route.path) {
-            pathType = this.props.route.path.split('/')[0]
-        }
 
         let showedArticles = getShowedArticles(pathType, articles, tags, tagId)
 

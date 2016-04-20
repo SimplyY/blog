@@ -18,7 +18,6 @@ class ContentTable extends Component {
 
     render() {
         let { contentTable, isAppear } = this.props
-
         let contentTableDOM = this.getContentTableDOM(contentTable.content)
 
         let buttonClass = classNames({

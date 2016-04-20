@@ -61,7 +61,7 @@ class Article extends Component {
                 </div>
 
                 <div id="article-content" className="markdown-body"
-                    dangerouslySetInnerHTML={{__html: sanitizeHTML(currentArticleHtml)}}
+                    dangerouslySetInnerHTML={{__html: currentArticleHtml}}
                     onClick={(e) => {
                         if (e.target.className === 'iconfont article-anchor') {
                             jumpToAnchor(e)

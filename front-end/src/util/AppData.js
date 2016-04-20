@@ -93,10 +93,6 @@ export function processArticles(articles) {
 }
 
 function addContentOfTableAttr(articles) {
-    if (isNodeEnv()) {
-        return
-    }
-
     articles.map(item => {
         if (item.contentOfTable) {
             item.contentOfTable = JSON.parse(item.contentOfTable)

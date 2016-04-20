@@ -22,9 +22,6 @@ export function setPageTitle(title) {
 }
 
 export function sanitizeHTML(html) {
-    if (isNodeEnv()) {
-        return html
-    }
     return sanitize(html)
 }
 
