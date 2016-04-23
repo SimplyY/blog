@@ -1,40 +1,13 @@
-import * as ActionTypes from '../../consts/ActionTypes'
+import { createAction } from 'redux-actions'
 
-export function loadMustDataAction(data) {
-    return {
-        type: ActionTypes.LOAD_MUST_DATA,
-        articles: data.articles,
-        currentArticle: data.currentArticle,
-        tags: data.tags
-    }
-}
+import * as types from '../../consts/ActionTypes'
 
-export function loadAllArticlesAction(articles) {
-    return {
-        type: ActionTypes.LOAD_ALL_ARTICLES,
-        articles
-    }
-}
+export const loadMustDataAction = createAction(types.LOAD_MUST_DATA)
 
-export function showMoreArticleAction(number) {
-    return {
-        type: ActionTypes.SHOW_MORE_ARTICLES,
-        number
-    }
-}
+export const loadAllArticlesAction = createAction(types.LOAD_ALL_ARTICLES)
 
-export function addArticleLoveNumberAction(_id, addNumber) {
-    return {
-        type: ActionTypes.ADD_ARTICLE_LOVE_NUMBER,
-        _id,
-        addNumber
-    }
-}
+export const showMoreArticleAction = createAction(types.SHOW_MORE_ARTICLES)
 
-export function addArticleShareNumberAction(_id, addNumber) {
-    return {
-        type: ActionTypes.ADD_ARTICLE_SHARE_NUMBER,
-        _id,
-        addNumber
-    }
-}
+export const addArticleLoveNumberAction = createAction(types.ADD_ARTICLE_LOVE_NUMBER)
+
+export const addArticleShareNumberAction = createAction(types.ADD_ARTICLE_SHARE_NUMBER)

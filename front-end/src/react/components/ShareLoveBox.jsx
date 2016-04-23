@@ -37,7 +37,7 @@ class ShareLoveBox extends Component {
         let _id = currentArticle._id
 
         if (this.state.isLove === false) {
-            addArticleLoveNumber(_id, 1)
+            addArticleLoveNumber({_id, addNumber:1})
             this.setState({isLove: true})
         }
     }
@@ -47,7 +47,7 @@ class ShareLoveBox extends Component {
         let _id = currentArticle._id
 
         if (this.state.isShare === false) {
-            addArticleShareNumber(_id, 1)
+            addArticleShareNumber({_id, addNumber:1})
             this.setState({isShare: true})
             shareInfo2clipboard(currentArticle)
         }

@@ -3,7 +3,7 @@ import Immutable from 'immutable'
 
 import { ajaxPut } from '../../util/ajax'
 
-import * as ActionTypes from '../../consts/ActionTypes'
+import * as types from '../../consts/ActionTypes'
 import { FIRST_SHOWED_ARTICLES_MAX_NUMBER } from '../../consts/config'
 import * as api from '../../consts/apis'
 
@@ -17,23 +17,23 @@ const initialState = Immutable.fromJS({
 
 
 export default createReducer(initialState, {
-    [ActionTypes.LOAD_MUST_DATA]: (state, action) => state.merge({
-        articles: action.articles,
-        tags: action.tags
+    [types.LOAD_MUST_DATA]: (state, action) => state.merge({
+        articles: action.payload.articles,
+        tags: action.payload.tags
     }),
-    [ActionTypes.LOAD_ALL_ARTICLES]: (state, action) => state.merge({
-        articles: action.articles
-    }),
-
-    [ActionTypes.SHOW_MORE_ARTICLES]: (state, action) => state.merge({
-        showedArticlesMaxNumber: state.get('showedArticlesMaxNumber') + action.number
+    [types.LOAD_ALL_ARTICLES]: (state, action) => state.merge({
+        articles: action.payload
     }),
 
-    [ActionTypes.ADD_ARTICLE_LOVE_NUMBER]: (state, action) => mergeStateByArticle(
-        state, action._id, 'loveNumber', action.addNumber
+    [types.SHOW_MORE_ARTICLES]: (state, action) => state.merge({
+        showedArticlesMaxNumber: state.get('showedArticlesMaxNumber') + action.payload
+    }),
+
+    [types.ADD_ARTICLE_LOVE_NUMBER]: (state, action) => mergeStateByArticle(
+        state, action.payload._id, 'loveNumber', action.payload.addNumber
     ),
-    [ActionTypes.ADD_ARTICLE_SHARE_NUMBER]: (state, action) => mergeStateByArticle(
-        state, action._id, 'shareNumber', action.addNumber
+    [types.ADD_ARTICLE_SHARE_NUMBER]: (state, action) => mergeStateByArticle(
+        state, action.payload._id, 'shareNumber', action.payload.addNumber
     )
 })
 

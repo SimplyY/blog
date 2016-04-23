@@ -1,13 +1,7 @@
-import * as ActionTypes from '../../consts/ActionTypes'
+import { createAction } from 'redux-actions'
 
-export function showContentTableAction() {
-    return {
-        type: ActionTypes.SHOW_CONTENT_TABLE,
-    }
-}
+import * as types from '../../consts/ActionTypes'
 
-export function hiddenContentTableAction() {
-    return {
-        type: ActionTypes.HIDDEN_CONTENT_TABLE,
-    }
-}
+export const showContentTableAction = createAction(types.SHOW_CONTENT_TABLE)
+
+export const hiddenContentTableAction = createAction(types.HIDDEN_CONTENT_TABLE)
