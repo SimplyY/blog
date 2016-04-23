@@ -25,6 +25,7 @@ var config = {
     ARTICLE_KEY_ATTR_NAME: 'title',
 
     PATH_TYPE_INDEX: 1,
+    MIN_MD_LEN: 500
 }
 
 var db = mongoose.connect(mongoUrl)
@@ -106,6 +107,7 @@ function renewDatabase() {
 
         for (var i = 0; i < addItemsKeys.length; i++) {
             var addObject = findObject(addItemsKeys[i], config.ARTICLE_MODEL_NAME, newArticles)
+            addObject.minHtml = marked(addObject.md.slice(0, config.MIN_MD_LEN))
             addObject.html = marked(addObject.md)
             addObject.contentOfTable = getContentOfTableFromHTML(addObject.html)
         }
@@ -114,7 +116,9 @@ function renewDatabase() {
             var updateObject = findObject(updateItemsKeys[i], config.ARTICLE_MODEL_NAME, newArticles)
             var oldObject = findObject(updateItemsKeys[i], config.ARTICLE_MODEL_NAME, oldArticles)
 
+            // marked 非常耗性能，所以只在 md 改动情况下，用 marked md2html
             if (updateObject.md !== oldObject.md) {
+                updateObject.minHtml = marked(updateObject.md.slice(0, config.MIN_MD_LEN))
                 updateObject.html = marked(updateObject.md)
                 updateObject.contentOfTable = getContentOfTableFromHTML(updateObject.html)
             }
@@ -170,11 +174,10 @@ function renewDatabase() {
         for (i = 0; i < updateItemsKeys.length; i++) {
             var updateObject = findObject(updateItemsKeys[i], modelName, newObjects)
             var oldObject = findObject(updateItemsKeys[i], modelName, oldObjects)
-
+            // 假如从文件读写里获取的俩次数据没有改变，则视为元数据未改变，则不做数据库更新操作
             if (isEqualWithFileRead(oldObject, updateObject, modelName)) {
                 continue
             }
-
             var updateConditions = getConditions(updateObject, modelName)
 
             model.update(updateConditions, updateObject, handleError)
@@ -250,7 +253,6 @@ function loadMustData(url) {
                 // process data
                 processTags(mustData.tags)
                 processArticles(mustData.articles)
-                // console.log(mustData)
 
                 resolve(mustData)
             })

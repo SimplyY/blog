@@ -24,6 +24,7 @@ exports.articleSchema = new mongoose.Schema({
     parentsTagNameArray: [{ type: String, required: true }], // 同上
     md:  { type: String, required: true },
     html: { type: String, required: true},
+    minHtml: {type: String, require: true},
     contentOfTable: { type: String, required: true },
     // because date con't be json.stringfy safe, so use String type
     date: { type: String, default: moment().tz('Asia/Shanghai').format() },

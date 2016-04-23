@@ -40,7 +40,7 @@ class Article extends Component {
     render() {
         // console.log('Article render')
         let { currentArticle } = this.props
-        let currentArticleHtml = this.getLenLimitedHtml(currentArticle.html)
+        let currentArticleHtml = this.getShowHtml(currentArticle)
         console.log(currentArticleHtml.length)
 
         let dateStr = AppData.formatArticleDate(currentArticle.date)
@@ -72,22 +72,25 @@ class Article extends Component {
         )
     }
 
-    getLenLimitedHtml(html) {
+    // 浏览器第一次加载如果文章很长，返回 minHtml
+    // 浏览器第二次加载、服务器端渲染，直接返回完整 html
+    getShowHtml(article) {
         const { isFirstPage } = this.props
-        // 浏览器第二次加载、服务器端渲染，直接返回完整 html
+
         if (this.state.needSecondLoad || isFirstPage) {
-            return html
+            return article.html
         }
 
-        // 浏览器第一次最多加载 FIRST_RENDER_MAX_LEN 的 html
-        if (html.length < FIRST_RENDER_MAX_LEN) {
-            return html
+        // 浏览器第一次加载如果文章长度大于 FIRST_RENDER_MAX_LEN，返回 minHtml
+        if (article.html.length < FIRST_RENDER_MAX_LEN) {
+            return article.html
         } else {
-            // 延迟加载
+            // 延迟加载完整 html
             setTimeout(() => {
                 this.setState({needSecondLoad: true})
             }, delay)
-            return html.slice(0, FIRST_RENDER_MAX_LEN)
+
+            return article.minHtml
         }
     }
 }

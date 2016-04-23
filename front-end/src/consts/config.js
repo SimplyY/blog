@@ -3,7 +3,7 @@ export const SHOW_MORE_ARTICLES_NUMBER = 10
 
 // qurey str
 export const SORT_QUREY_STR = '?sort=-date'
-export const MUST_DATA_SELECT_STR = '-md -html -contentOfTable -comments'
+export const MUST_DATA_SELECT_STR = '-md -html -minHtml -contentOfTable -comments'
 
 export const ROOT_STR = ''
 export const TAG_STR = 'tag'
