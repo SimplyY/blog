@@ -1,7 +1,3 @@
-## TODO
-- css render in server， contentTable click bug in article page(maybe cause by react sum check, because css render orz)
-- refactor
-
 # 博客
 博客地址： [http://simplyy.space/](http://simplyy.space/)
 
@@ -14,7 +10,7 @@
 这里的是详细的技术介绍，包括搭建流程，重写的进度，前后端各种技术细节（有的可能没写上去，有疑惑的开 issue）。
 
 - 后端：express + mongodb + node-restful,  也就是使用 node 遍历文件目录作为文章和标签的数据源，提供 rest api
-- 使用 react 服务渲染方案，好多坑 orz。
+- 使用 react 服务渲染方案
 - 前端：react + react router + redux + babel + webpack + sass 开发的 spa 博客应用，并尝试使用 immutable.js
 
 ## 计划
@@ -24,10 +20,8 @@
 
 - [x] 扫描文件目录生成标签和文章
 - [x] 提供 restful api，文档看 node/app/model.js 里的相应 schema。
-- [ ] 支持 www
-- [ ] 邮件提醒功能（一天发一封）
 - [ ] https
-- [x] 服务器端渲染
+- [x] react 服务器端渲染
 
 ！！！禁止有相同的目录名或者文件名！！！（因为这俩会作为主键存在数据库中）
 
@@ -44,9 +38,8 @@ js: react redux echart
 - [x] redux
 - [x] 组件开发
 - [x] 正文锚点功能
-- [ ] 回到顶部
+- [x] 回到顶部
 - [x] ContentTable (左侧点击，显示目录，根据 h 标签开发）
-- [ ] 评论功能 CommentBox avatar url default 'http://7xkpdt.com1.z0.glb.clouddn.com/46867d9be26db9982249775578cf37fc.png'
 - [ ] chartjs
 
 
