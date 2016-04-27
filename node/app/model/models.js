@@ -1,6 +1,7 @@
 var array = require('array-extended')
 var _ = require('lodash')
 var mongoose = require('mongoose')
+var moment = require('moment-timezone')
 
 var mongoUrl = require('../../../config').mongoUrl
 
@@ -177,7 +178,10 @@ function renewDatabase() {
             // 假如从文件读写里获取的俩次数据没有改变，则视为元数据未改变，则不做数据库更新操作
             if (isEqualWithFileRead(oldObject, updateObject, modelName)) {
                 continue
+            } else {
+                updateObject.editedDate = moment().tz('Asia/Shanghai').format()
             }
+
             var updateConditions = getConditions(updateObject, modelName)
 
             model.update(updateConditions, updateObject, handleError)

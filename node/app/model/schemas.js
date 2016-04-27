@@ -28,6 +28,7 @@ exports.articleSchema = new mongoose.Schema({
     contentOfTable: { type: String, required: true },
     // because date con't be json.stringfy safe, so use String type
     date: { type: String, default: moment().tz('Asia/Shanghai').format() },
+    editedDate: { type: String, default: moment().tz('Asia/Shanghai').format() },
 
     loveNumber: { type: Number, default: 0 },
     shareNumber: { type: Number, default: 0 },
