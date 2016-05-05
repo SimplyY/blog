@@ -43,6 +43,7 @@ let store = configureStore(serverState)
 
 
 ## 资料
-1. Server-Side Rendering with Redux and React-Router: https://www.codementor.io/reactjs/tutorial/redux-server-rendering-react-router-universal-web-app
-2. react-router doc: http://react-guide.github.io/react-router-cn/docs/guides/advanced/ServerRendering.html
-3. redux doc: http://redux.js.org/docs/recipes/ServerRendering.html
+
+1. react-router doc: http://react-guide.github.io/react-router-cn/docs/guides/advanced/ServerRendering.html
+2. redux doc: http://redux.js.org/docs/recipes/ServerRendering.html
+3. React同构实践：http://www.stuq.org/courseware/987/1194

@@ -39,4 +39,4 @@ cmd + shift + f 项目内查找
 在 setting 里面（cmd + , 打开）可以设置默认 preferred line length，在各个语言的 packgage 里面可以针对不同语言设置不同的 length，
 
 ### 跳转到某一行
-alt + g
+ctrl + g
