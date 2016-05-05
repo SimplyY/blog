@@ -38,7 +38,7 @@ $info-height: 1.5rem;
             position: absolute;
             font-size: 0.6rem;
             line-height: $info-height;
-            @include reset-link-style($deep-grey);
+            @include reset-link-style($grey);
         }
         a:hover {
             @include reset-link-style(black);

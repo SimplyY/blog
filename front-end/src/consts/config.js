@@ -1,4 +1,4 @@
-export const FIRST_SHOWED_ARTICLES_MAX_NUMBER = 15
+export const FIRST_SHOWED_ARTICLES_MAX_NUMBER = 10
 export const SHOW_MORE_ARTICLES_NUMBER = 10
 
 // qurey str

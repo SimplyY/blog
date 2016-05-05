@@ -8,7 +8,7 @@ import { jumpToAnchor, showAnchor, isUrlInAnchor, sanitizeHTML, isNodeEnv } from
 import * as text from '../../consts/text'
 
 const FIRST_RENDER_MAX_LEN = 2000
-const delay = 500
+const SECOND_LOAD_DELAY = 500
 
 class Article extends Component {
     constructor() {
@@ -88,7 +88,7 @@ class Article extends Component {
             // 延迟加载完整 html
             setTimeout(() => {
                 this.setState({needSecondLoad: true})
-            }, delay)
+            }, SECOND_LOAD_DELAY)
 
             return article.minHtml
         }
