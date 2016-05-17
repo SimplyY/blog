@@ -1,6 +1,9 @@
 # web前端 thinking 教程(0)：序
 > (x 为第x节课，对应在web前端 thinking 教程的第(x))
 
+## web 前端学习介绍
+新手必看： SimplyY 的博客文章: 《web 前端学习介绍》	链接为： http://simplyy.space/article/56c2d71f6ba384e02299f9a2
+
 ## 教学提纲
 ### 基础
 - 编程基础(1)
