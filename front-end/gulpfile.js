@@ -12,6 +12,7 @@ gulp.task('build', function() {
 })
 
 gulp.task('watch', function() {
+    gulp.run('html')
     gulp.watch(['src/sass/**'], function() {
         gulp.run('html')
     })
