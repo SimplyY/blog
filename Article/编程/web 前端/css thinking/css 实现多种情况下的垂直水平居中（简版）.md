@@ -106,7 +106,7 @@ vertical-align 详细介绍：The vertical-align CSS property specifies the vert
 ### text-align:center 让元素水平居中
 The text-align CSS property describes how inline content like text is aligned in its parent block element. text-align does not control the alignment of block elements, only their inline content.
 
-**注意是在容器里加这个属性，且对块级元素无效。**
+**注意是在容器里加这个属性，且对块级元素无效(所有直接子元素都必须不是块级元素)。**
 
 ```html
 <div class="container">
