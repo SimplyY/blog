@@ -59,8 +59,8 @@ store.dispatch(addTodo(text))
 ```
 
 ### Reducers
+Action 只是描述了有事情发生了这一事实，并没有指明应用如何更新 state。而这正是 reducer 要做的事情。
 
-Reducer 用来处理 Action 触发的对状态树的更改（也就是具体怎么更改 state 由 reducer 来决定）
 
 一个 reducer 函数会接受 oldState 和 action 两个参数，返回一个新的 state：也就是`(oldState, action) => newState`。一个简单的 reducer 可能类似这样：
 
@@ -90,6 +90,8 @@ function someApp(state = initialState, action) {
 Reducer 也是 pure function，这点非常重要，所以绝对不要在 reducer 里面做一些引入 side-effects 的事情，比如：
 
 - 修改 state 参数对象（即更改 oldState）
+- 执行有副作用的操作，如 API 请求和路由跳转
+- 调用非纯函数
 
 ### 拆分 reducer
 因为 Redux 里面只有一个 Store，对应一个 State 状态，所以整个 State 对象就是由一个 reducer 函数管理，但是如果所有的状态更改逻辑都放在这一个 reducer 里面，显然会变得越来越巨大，越来越难以维护。
@@ -261,7 +263,7 @@ react-redux 提供的 connect() 允许你从 Redux store 中指定准确的 stat
 
 #### 使用方法
 
-实现时需要俩函数 mapStateToProps、mapDispatchToProps 作为 connect 的参数，具体代码如下。
+实现时需要俩函数 mapStateToProps、mapDispatchToProps 作为 connect 的参数，具体代码就像下面这样。
 
 ```js
 // containers/CounterContainer.js
@@ -288,6 +290,15 @@ function mapDispatchToProps(dispatch) {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 ```
+
+
+然后我们就可以在 render 等函数(组件 class 的方法)里面 取出相应 props，自己使用或者传给子组件
+
+![](http://7xkpdt.com1.z0.glb.clouddn.com/23de2473748fcdc580eadf3d7884fba4.png)
+
+![](http://7xkpdt.com1.z0.glb.clouddn.com/8f1b9d879892a4f6c22d4f718cb86034.png)
+
+![](http://7xkpdt.com1.z0.glb.clouddn.com/92da3baee49699f72ed8f7aa6fb8bb11.png)
 
 
 

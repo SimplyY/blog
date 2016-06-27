@@ -220,14 +220,14 @@ export function fetchPosts(subreddit) {
 ## 关于这段代码的问题
 > 这是我自己产生过的俩问题
 
-### 1. redux 异步请求为什么要写在 action 里
+### 问题1： redux 异步请求为什么要写在 action 里
 我一开始学 redux 时就犯了这个错误。将异步请求写到 reducer 里去了，因为我开发时忘记了一句话。
 
 > **reducer 应该是 pure function**
 
 而异步请求是有副作用的。官方文档给出了正确的姿势，使用异步 action creator。
 
-### 2. redux 的 异步 action 为什么需要 thunk
+### 问题2： redux 的 异步 action 为什么需要 thunk
 
 #### 简单使用方法
 发起异步 API 时，有两个非常关键的时刻：发起请求的时刻，和接收到响应的时刻。
@@ -267,13 +267,11 @@ export function fetchPosts(dispatch, text) {
 
 
 #### 使用异步 action creator
-但是 redux 作者考虑到了:
+因为 redux 作者考虑到了:
 
 当我们在 react 中使用 redux 的时候，经常会出现像下面代码这样的情况。
 
-> 当你使用 bindActionCreators 向子组件传递 可以直接调用 action
-
-> 使用 bindActionCreators 的场景是当你需要把 action creator 给一个子组件上，却不想让子组件觉察到 Redux 的存在，而且不希望把 Redux store 或 dispatch 传给它。
+> 不想让子组件觉察到 Redux 的存在，而且不希望把 Redux 的 store 对象或 dispatch、getState 方法传给它。
 
 
 ```js
@@ -337,7 +335,7 @@ redux-thunk 运用了柯里化的一个功能：**提前传递部分参数**。�
 我对 redux 作者对 redux-thunk 的功能解释（stackoverflow 上的一个回答） 的总结
 1. 我们想要抽象出来一个 异步(合体了的)ActionCreator，我们需要 dispatch。
 2. 但我们使用 react-redux 时，在深层次组件是没有对 dispatch 和 store 的引用的。
-3. 这个时候 redux-thunk 大发神威，有了它，我们就把 dispatch 的引用存在了高阶函数里。
+3. 这个时候 redux-thunk 就非常有用了，有了它，我们就把 dispatch 的引用存在了高阶函数里。
 
 所以有了 redux-thunk，知道了它背后的思想和原理，我们就可以轻松的向子组件传递 异步 action 函数了，并且遵守了 redux 一个潜在的思想：
 
