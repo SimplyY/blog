@@ -66,17 +66,7 @@ SimplyY 的博客文章: 《多个连续的箭头函数与柯里化》	链接为
 1. 可以惰性求值
 2. 可以提前传递部分参数
 
-Thunk 函数、co 和 async 我在另一篇文章具体介绍了，如果对此不理解请看这里（有我对其研究的的详细解释）：
-
-SimplyY 的博客文章: 《Thunk 函数、 co 、 async》	链接为： http://simplyy.space/article/57712d781c22961d350eb06c
-
 ## 回到问题的源头
-当初我就是看下面这段代码产生了迷惑，我搜索的时候还在这个 [github issue](https://github.com/thunks/thunks/issues/1)  看到了关于 thunk 和  promise **处理异步**的讨论，知道了 **node 那边 thunk 用的非常多，也用的很久了，浏览器端用的更多的则是 promise。**
-
-并且看到了和我一样的，在学习研究 redux 时碰到 redux-thunk 然后研究探寻 找到了这个 2014 年(那个时候自己才刚刚开始学编程...)的帖子，。
-
-![](http://7xkpdt.com1.z0.glb.clouddn.com/61a686968eda175cfc8a448d45efdd37.png)
-
 知道了柯里化和 Thunk 后，我们再来看 redux-thunk 的十几行源码，其实已经无比清晰了。
 
 无非就是 return 一个 **多次柯里化 的函数**，其中 action 不仅仅可以是 redux 的 action 对象了，还可以是一个(回调)函数。
