@@ -36,7 +36,6 @@ class ArticleBox extends Component {
     }
 
     render() {
-        // console.log('ArticleBox render')
         let {
             urlPathname,
             tags, articles,
@@ -58,15 +57,21 @@ class ArticleBox extends Component {
         }
 
         return (
-            <section className="article-box">
-                <CurrentTagChain pathType={pathType} tags={tags} currentTagId={currentTag._id} />
-                <Article isFirstPage={isFirstPage}
+            <div className="article-box">
+                <CurrentTagChain
+                    tags={tags}
+                    pathType={pathType}
+                    currentTagId={currentTag._id} />
+                <Article
+                    isFirstPage={isFirstPage}
                     currentArticle={currentArticle}/>
-                <ShareLoveBox currentArticle={currentArticle}
+                <ShareLoveBox
+                    currentArticle={currentArticle}
                     addArticleLoveNumber={addArticleLoveNumber}
                     addArticleShareNumber={addArticleShareNumber} />
-                <NearArticleBox nearArticle={currentArticle.nearArticle} />
-            </section>
+                <NearArticleBox
+                    nearArticle={currentArticle.nearArticle} />
+            </div>
         )
     }
 }

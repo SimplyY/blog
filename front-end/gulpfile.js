@@ -7,6 +7,10 @@ var cleanCSS = require('gulp-clean-css')
 var replace = require('gulp-replace')
 var qiniu = require('gulp-qiniu')
 
+gulp.task('default', function() {
+    gulp.run('build')
+})
+
 gulp.task('build', function() {
     gulp.run('html')
 })
