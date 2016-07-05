@@ -1,4 +1,4 @@
-# redux 分享
+# redux 基础知识和 react-redux
 ## redux 的特别之处
 redux 的 Store **不再拥有状态，而只是管理状态**。
 
@@ -20,9 +20,9 @@ redux 的 Store **不再拥有状态，而只是管理状态**。
 整个 redux 的使用分为两个流程：初始化过程，数据流过程
 
 #### 基本概念
-- 图中的 dispatch 是 store.dispatch(action), 也就是分发一个 action，它是每次数据改变的源头。
+- 图中的 dispatch 是 `store.dispatch(action)`, 也就是分发一个 action，它是每次数据改变的源头。
 - reducer 则是管理(根据不同 action 用相应策略修改) state, 也就是 `(oldState, action) => newState` 的集合。当 action 被分发，就会由 reducer 根据 action 的类型来调用对应的 `(oldState, action) => newState` 。
-- listener 则是业务上的回调函数，当 state 改变的时候被调用（比如使 state 改变后 view 自动改变）。
+- listener 则是的回调函数，当 state 改变的时候被调用（比如使 state 改变后 view 自动改变）。
 - view 即 react， 会在最后说如何将 redux 和 react 联合使用。
 
 #### 初始化过程
@@ -30,7 +30,7 @@ redux 的 Store **不再拥有状态，而只是管理状态**。
 2. 然后用返回的 store 去 subscribe listenner
 
 #### 数据流过程
-这样以来subscribe 后，就进入了上图红色部分，可以进行 dispatch(action)了，这也就是进入 了 redux 的数据流。
+这样以来 subscribe 后，就进入了上图红色部分，可以进行 dispatch(action)了，这也就是进入 了 redux 的数据流。
 
 ## 使用
 接下来我们分别详细介绍一下 Actions、Reducers、Store 的使用。
@@ -238,11 +238,28 @@ ReactDOM.render(
 |            | 容器组件              | 展示组件              |
 |:-----------|:----------------------|:----------------------|
 | 位置       | 最顶层、路由处理     | 中间和子组件          |
-| 使用 Redux | 是                    | 否                    |
-| 读取数据   | 从 Redux 获取 state   | 从 props（可以是 store 的 state） 获取数据     |
-| 修改数据   | 向 Redux 发起 actions | 从 props（可以是 store 的 dispatch） 调用回调函数 |
+| 感知 Redux | 是                    | 否                    |
+| 读取数据   | 从 Redux 获取 state   | 从 props 获取数据     |
+| 修改数据   | 向 Redux 发起 actions | 从 props 调用回调函数 |
 
 我们可以发现展示组件需要 store.state 和 store.dispatch 这样的 props，后面的 connect 方法，就是将这俩变成 props 传给组件。
+
+
+### 如何判别容器组件和展示组件
+#### 1. 状态
+- 容器组件维护多个状态
+- 展示组件维护极少的状态(一般是 ui 状态)
+
+#### 2. ui
+- 容器组件无关 ui,不定义 CSS 样式，几乎没有 html 标签，通过组合展示组件来构造容器组件
+- 展示组件 ui 强相关,大量 css 和 html 标签
+
+
+#### 容器组件示例：
+![](http://7xkpdt.com1.z0.glb.clouddn.com/8f1b9d879892a4f6c22d4f718cb86034.png)
+
+#### 展示组件示例：
+![](http://7xkpdt.com1.z0.glb.clouddn.com/3871511dbf50259f6fb7a9fa6cbc5663.png)
 
 #### 作用 why do this？
 > 实际上它就是在帮你 **把容器组件连接上 store**，也就是在这里完成 store 在此组件的 **职责**

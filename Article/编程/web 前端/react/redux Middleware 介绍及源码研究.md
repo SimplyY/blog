@@ -1,6 +1,6 @@
 # redux Middleware 介绍及源码研究
 
-redux Middleware 详细学习 redux 文档相关章节 http://cn.redux.js.org/docs/advanced/Middleware.html
+redux Middleware 学习资料(redux 文档相关章节 ) : http://cn.redux.js.org/docs/advanced/Middleware.html
 
 我这里引用少数 redux 文档上面的内容来介绍，并结合源码研究内部运行原理。
 
@@ -60,7 +60,7 @@ const logger = ({ dispatch, getState }) => next => action => {
 
 它其实就是一个柯里化函数，我这里简单介绍一下它的特点：
 1. 需要多次调用传递参数
-2. 最后一次调用才会调用并返回最内层函数
+2. 最后一次调用才会调用最内层函数
 
 比如
 ```js
