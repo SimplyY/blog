@@ -82,6 +82,8 @@ function handleRender(req, res) {
         else if (renderProps) {
             var initialState
             var reactHtml
+            var Router = React.createElement(RouterContext, renderProps)
+            var RouterWrapper = React.createElement('div', {}, Router)
             models.loadMustData(req.url)
                 .then(function(data) {
                     console.log(req.url)
@@ -91,21 +93,21 @@ function handleRender(req, res) {
                     store.dispatch(loadMustDataAction(data))
                     initialState = store.getState()
 
-                    var Router = React.createElement(RouterContext, renderProps)
-                    var RouterWrapper = React.createElement('div', {}, Router)
                     var Root = React.createElement(Provider, {store: store}, RouterWrapper)
                     reactHtml = renderToString(Root)
-                    return GLOBAL.blog.title
-                })
-                .then(function(title) {
-                    // 把渲染后的页面内容发送给客户端
-                    res.send(renderFullPage(title, reactHtml, initialState))
 
+                    // 把渲染后的页面内容发送给客户端
+                    res.send(renderFullPage(GLOBAL.blog.title, reactHtml, initialState))
                 })
                 .catch(function(error) {
                     if (error) {
                         console.log('loadMustData:', error)
-                        throw error
+
+                        var title = '404'
+                        var Root = React.createElement(Provider, {store: store}, RouterWrapper)
+                        reactHtml = renderToString(Root)
+                        initialState = store.getState()
+                        res.send(renderFullPage(title, reactHtml, initialState))
                     }
                 })
 
