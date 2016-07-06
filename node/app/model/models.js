@@ -251,8 +251,12 @@ function loadMustData(url) {
 
         Promise.all([pTags, pArticles])
             .then(function(datas) {
-                var tags = JSON.parse(JSON.stringify(datas[0]))
-                var articles = JSON.parse(JSON.stringify(datas[1]))
+                var tags = datas[0] ?
+                    JSON.parse(JSON.stringify(datas[0])) :
+                    []
+                var articles = datas[1] ?
+                    JSON.parse(JSON.stringify(datas[1])) :
+                    []
                 var mustData = { tags, articles }
                 // process data
                 processTags(mustData.tags)
@@ -310,7 +314,20 @@ function getAllTags() {
 }
 
 function getArticleById(articleId) {
-    return articleModel.find({_id: articleId}).exec()
+    var article
+
+    articleModel.find({_id: articleId}).exec()
+        .then(function(data) {
+            article = data
+        })
+        .catch(function(error) {
+            console.log(error)
+            return
+        })
+
+    return new Promise(function(resolve) {
+        resolve(article)
+    })
 }
 
 function getArticlesInfos() {

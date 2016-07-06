@@ -101,13 +101,10 @@ function handleRender(req, res) {
                 })
                 .catch(function(error) {
                     if (error) {
-                        console.log('loadMustData:', error)
-
-                        var title = '404'
-                        var Root = React.createElement(Provider, {store: store}, RouterWrapper)
-                        reactHtml = renderToString(Root)
-                        initialState = store.getState()
-                        res.send(renderFullPage(title, reactHtml, initialState))
+                        console.log('error stack:', error.stack)
+                        var title = 'error'
+                        reactHtml = 'error: this page has error, click this return to <a href="/">home page</a>'
+                        res.send(renderFullPage(title, reactHtml))
                     }
                 })
 
@@ -120,7 +117,7 @@ function handleRender(req, res) {
 
 function renderFullPage(title, reactHtml, initialState) {
     var html = htmlTemplate.replace('${title}', title)
-        .replace('${reactHtml}', reactHtml)
+        .replace('${reactHtml}', reactHtml || '')
         .replace('${initialState}', JSON.stringify(initialState))
     return html
 }

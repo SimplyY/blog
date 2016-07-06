@@ -21,6 +21,7 @@ import { getPathType, setPageTitle, isFirstPage } from '../../util/common'
 class ArticleBox extends Component {
     constructor() {
         super()
+        this.isInvalidUrl = false
     }
 
     shouldComponentUpdate(nextProps){
@@ -32,7 +33,9 @@ class ArticleBox extends Component {
 
     componentDidMount() {
         const { showContentTable } = this.props
-        showContentTable()
+        if (!this.isInvalidUrl) {
+            showContentTable()
+        }
     }
 
     render() {
@@ -46,15 +49,16 @@ class ArticleBox extends Component {
 
         let pathType = getPathType(urlPathname)
         let currentArticle = AppData.getAricleByArticleId(articles, articleId)
-        let currentTag = AppData.getTagByTagName(tags, currentArticle.parentTagName)
-
-        setPageTitle(currentArticle.title)
 
         if (currentArticle === undefined) {
+            this.isInvalidUrl = true
             return (
                 <InvalidUrlBox />
             )
         }
+
+        let currentTag = AppData.getTagByTagName(tags, currentArticle.parentTagName)
+        setPageTitle(currentArticle.title)
 
         return (
             <div className="article-box">

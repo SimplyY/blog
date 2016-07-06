@@ -11,9 +11,13 @@ import { loadAllArticlesAction } from './react/actions/articles'
 
 let { loadAllArticles } = AppData
 
-const serverState = window.__INITIAL_STATE__
+let serverState
 
-let store = configureStore(serverState)
+if (window.__INITIAL_STATE__) {
+    serverState = window.__INITIAL_STATE__
+}
+
+let store = serverState ? configureStore(serverState) : configureStore()
 
 let pRender = new Promise((resolve) => {
     render(

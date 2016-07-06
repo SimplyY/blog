@@ -68,6 +68,9 @@ export let AppData = {
 }
 
 export function processTags(tags) {
+    if (!tags || tags.length === 0) {
+        return
+    }
     // process tags
     tags.sort((a, b) => b.articleTitleList.length - a.articleTitleList.length)
     tags.forEach(item => {
@@ -87,6 +90,9 @@ export function processTags(tags) {
 }
 
 export function processArticles(articles) {
+    if (!articles || articles.length === 0) {
+        return
+    }
     addContentOfTableAttr(articles)
 
     addNearArticleAttr(articles)
