@@ -5,6 +5,7 @@ redux Middleware 学习资料(redux 文档相关章节 ) : http://cn.redux.js.or
 我这里引用少数 redux 文档上面的内容来介绍，并结合源码研究内部运行原理。
 
 ## Middleware 介绍
+
 ### backend Middleware
 如果你使用过 Express 或者 Koa 等服务端框架, 那么应该对 middleware 的概念不会陌生。 在这类框架中，middleware 是指可以被嵌入在框架接收请求到产生响应过程之中的代码。
 
