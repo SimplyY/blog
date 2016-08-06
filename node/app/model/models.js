@@ -279,7 +279,6 @@ function loadMustData(url) {
         if (pathTypeStr === fe_config.ARTICLE_STR) {
             var articleId = getIdStr(url)
             pArticles = getArticleById(articleId)
-            // pArticles will be undefined
         }
         else if ([fe_config.TAG_STR, fe_config.HOT_STR, ''].includes(pathTypeStr)) {
             pArticles = getArticlesInfos()
@@ -316,17 +315,16 @@ function getAllTags() {
 function getArticleById(articleId) {
     var article
 
-    articleModel.find({_id: articleId}).exec()
-        .then(function(data) {
-            article = data
-        })
-        .catch(function(error) {
-            console.log(error)
-            return
-        })
-
     return new Promise(function(resolve) {
-        resolve(article)
+        articleModel.find({_id: articleId}).exec()
+            .then(function(data) {
+                article = data
+                resolve(article)
+            })
+            .catch(function(error) {
+                console.log(error)
+                return
+            })
     })
 }
 
