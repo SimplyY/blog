@@ -28,6 +28,7 @@ $info-height: 1.5rem;
     .github-info, .email-info, .zhihu-info, .weibo-info {
         height: $info-height;
         display: inline-block;
+        font-weight: 400;
         .iconfont {
             display: inline-block;
             line-height: $info-height;
