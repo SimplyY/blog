@@ -22,7 +22,7 @@
     "compression": "^1.6.0",
     "dompurify": "^0.7.4",
     "ejs": "~2.3.3",
-    "es6-promise": "^3.0.2",
+    "es6-promise": "^3.2.1",
     "eventproxy": "^0.3.4",
     "express": "~4.13.1",
     "fs-extra": "^0.26.4",
@@ -47,5 +47,7 @@
     "redux-thunk": "^2.0.1",
     "serve-favicon": "~2.3.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "babel-plugin-es6-promise": "^1.0.0"
+  }
 }
