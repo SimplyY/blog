@@ -8,7 +8,9 @@
 ## 垂直居中
 
 ### 单行固定高度垂直居中
-**元素内容是单行，并且其高度是固定不变的**，你只要将其“line-height”设置成和“height”值一样就Ok了
+MDN "line-height": On block level elements, the line-height property specifies the minimum height of line boxes within the element.
+
+**当是块级元素且单行高度固定不变**，你只要将其“line-height”设置成和“height”值一样就Ok了
 
 ```html
 <div class="vertical">content</div>
@@ -20,7 +22,7 @@
 }
 ```
 
-限制条件：内容单行，高度固定
+限制条件：块级元素，内容单行，高度固定，不适用于图片，适合文本
 
 ### 多行固定高度垂直居中
 给容器设置绝对定位（position:absolute）,并且定位高度（top:50%）和margin-top为高度的一半（margin-top:-height/2）。
