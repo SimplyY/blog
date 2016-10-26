@@ -93,7 +93,7 @@ fn.call(ctx).catch(ctx.onerror);
 ```js
 var middleware = [respond].concat(this.middleware);
 ```
-假如原来的 middleware 是 [S1, S2, S3] 就变成了 [respond, S1, S2, S3]
+假如原来的 middleware 是 [S1, S2, S3], concat 就变成了 [respond, S1, S2, S3]
 
 ### respond
 那么 respond 是干啥的呢？
