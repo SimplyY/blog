@@ -101,7 +101,7 @@ function handleRender(req, res) {
                 })
                 .catch(function(error) {
                     if (error) {
-                        console.log('error stack:', error.stack)
+                        console.error('error stack:', error.stack)
                         var title = 'error'
                         reactHtml = 'error: this page has error, click this return to <a href="/">home page</a>'
                         res.send(renderFullPage(title, reactHtml))
