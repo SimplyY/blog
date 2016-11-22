@@ -67,4 +67,4 @@ js: react redux echart
 > 重新开机后都要运行
 
 1. npm run mongodb 启动数据库（端口默认为27017,修改见 "./node/mongod.conf"文件）
-2. npm run server 启动服务器(默认同上，修改方式同上)
+2. npm run start 启动服务器(默认同上，修改方式同上)
