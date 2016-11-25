@@ -1,6 +1,5 @@
 export const FIRST_SHOWED_ARTICLES_MAX_NUMBER = 10
-export const SHOW_MORE_ARTICLES_NUMBER = 5
-
+export const SHOW_MORE_ARTICLES_NUMBER = 10
 // qurey str
 export const SORT_QUREY_STR = '?sort=-date'
 export const MUST_DATA_SELECT_STR = '-md -html -minHtml -contentOfTable -comments'
