@@ -27,8 +27,7 @@ import { isNodeEnv } from '../util/common'
 let ABOUT_ARTICLE_ID
 if (isNodeEnv() || document.domain === 'localhost') {
     ABOUT_ARTICLE_ID = '56f2a88292734392717169f3'
-}
-else {
+} else {
     ABOUT_ARTICLE_ID = '56cb46564496cee272dea173'
 }
 export { ABOUT_ARTICLE_ID }
