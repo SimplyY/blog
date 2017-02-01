@@ -2,6 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
     <title>${title}</title>
     <script type="text/javascript">
     (function(doc, window) {
@@ -15,8 +16,9 @@
                 docEl.style.fontSize = 4 * (clientWidth / 320) + 'px';
             }
             else{
-                docEl.style.fontSize = 11 * (clientWidth / 320) + 'px';
+                docEl.style.fontSize = 16 * (clientWidth / 320) + 'px';
             }
+            console.log('docEl.style.fontSize:', docEl.style.fontSize);
         };
         resizeCall();
     })(document, window);

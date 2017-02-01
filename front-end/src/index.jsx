@@ -1,5 +1,3 @@
-import './util/resize-rem'
-
 import React from 'react'
 import { render } from 'react-dom'
 import configureStore from './react/store/createConfigureStore'

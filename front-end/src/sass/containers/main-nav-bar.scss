@@ -19,7 +19,6 @@ $menu-padding: 10px;
         > li {
             display: inline-block;
             line-height: $nav-height;
-
         }
         > li:hover {
             @include be-brey-animation;

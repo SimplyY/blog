@@ -5,7 +5,8 @@
     "index": "./src/entry/index.js"
   },
   "scripts": {
-    "dev": "webpack-dev-server --hot --no-info"
+    "dev": "webpack --watch",
+    "devbuild": "gulp watch"
   },
   "dependencies": {
     "classnames": "^2.2.3",

@@ -33,7 +33,7 @@
     "lodash": "^4.6.0",
     "moment-timezone": "^0.5.0",
     "mongodb": "^2.0.43",
-    "mongoose": "^4.3.6",
+    "mongoose": "^4.6.8",
     "node-restful": "^0.2.5",
     "rand-token": "^0.2.1",
     "react": "^0.14.7",

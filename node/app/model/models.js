@@ -4,6 +4,7 @@ var mongoose = require('mongoose')
 var moment = require('moment-timezone')
 
 var mongoUrl = require('../../../config').mongoUrl
+var devMongoUrl = require('../../../config').devMongoUrl
 
 // for md
 var marked = require('../../lib/hackedMarked')
@@ -29,7 +30,13 @@ var config = {
     MIN_MD_LEN: 500
 }
 
-var db = mongoose.connect(mongoUrl)
+var db;
+var os = require('os')
+if (os.platform() !== 'darwin') {
+  db  = mongoose.connect(mongoUrl)
+} else {
+  db  = mongoose.connect(devMongoUrl)
+}
 
 var schemas = require('./schemas')
 
