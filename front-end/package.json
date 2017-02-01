@@ -6,7 +6,8 @@
   },
   "scripts": {
     "dev": "webpack --watch",
-    "devbuild": "gulp watch"
+    "watch": "gulp watch",
+    "build": "gulp && env webpack --config webpack.prod.config.js"
   },
   "dependencies": {
     "classnames": "^2.2.3",
