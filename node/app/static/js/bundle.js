@@ -29021,20 +29021,19 @@
 	    _createClass(CurrentTagChain, [{
 	        key: 'render',
 	        value: function render() {
-	            var tagChainDOM = this.getTagChainDOM();
 	            return _react2.default.createElement(
 	                'header',
 	                { className: 'tag-chain' },
 	                _react2.default.createElement(
 	                    'ol',
 	                    null,
-	                    tagChainDOM
+	                    this.renderTagChain()
 	                )
 	            );
 	        }
 	    }, {
-	        key: 'getTagChainDOM',
-	        value: function getTagChainDOM() {
+	        key: 'renderTagChain',
+	        value: function renderTagChain() {
 	            var tagChainDOM = void 0;
 	            var _props = this.props,
 	                pathType = _props.pathType,
@@ -29045,10 +29044,10 @@
 	
 	            switch (pathType) {
 	                case config.TAG_STR:
-	                    tagChainDOM = _getTagChainDOM(tag, tags);
+	                    tagChainDOM = getTagChainDOM(tag, tags);
 	                    break;
 	                case config.ARTICLE_STR:
-	                    tagChainDOM = _getTagChainDOM(tag, tags);
+	                    tagChainDOM = getTagChainDOM(tag, tags);
 	                    break;
 	                case config.HOT_STR:
 	                    tagChainDOM = _react2.default.createElement(
@@ -29091,24 +29090,39 @@
 	    return CurrentTagChain;
 	}(_react.Component);
 	
-	function _getTagChainDOM(tag, tags) {
+	function getTagChainDOM(tag, tags) {
 	    var tagChain = tag.parentsTagNameArray;
+	
 	    tagChain = tagChain.map(function (item) {
 	        return _AppData.AppData.getTagByTagName(tags, item);
 	    });
+	    var allArticleId = 'all article';
+	    tagChain.unshift({
+	        _id: allArticleId,
+	        tagName: '所有文章'
+	    });
 	    tagChain.push(tag);
+	
 	    var tagChainDOM = tagChain.map(function (item) {
 	        return _react2.default.createElement(
 	            'li',
 	            { key: item._id },
 	            _react2.default.createElement(
 	                _reactRouter.Link,
-	                { to: '/' + config.TAG_PATH + item._id },
+	                { to: getUrl(item) },
 	                item.tagName
 	            )
 	        );
 	    });
 	    return tagChainDOM;
+	
+	    function getUrl(tag) {
+	        if (tag._id === allArticleId) {
+	            return '/';
+	        } else {
+	            return '/' + config.TAG_PATH + tag._id;
+	        }
+	    }
 	}
 	
 	exports.default = (0, _reactRedux.connect)()(CurrentTagChain);

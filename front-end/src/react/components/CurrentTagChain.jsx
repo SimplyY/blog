@@ -13,17 +13,16 @@ class CurrentTagChain extends Component {
     }
 
     render() {
-        let tagChainDOM = this.getTagChainDOM()
         return (
             <header className="tag-chain">
                 <ol>
-                    {tagChainDOM}
+                    {this.renderTagChain()}
                 </ol>
             </header>
         )
     }
 
-    getTagChainDOM() {
+    renderTagChain() {
         let tagChainDOM
         let { pathType, tags, currentTagId } = this.props
         let tag = AppData.getTagById(tags, currentTagId)
@@ -63,16 +62,31 @@ class CurrentTagChain extends Component {
 
 function getTagChainDOM(tag, tags) {
     let tagChain = tag.parentsTagNameArray
+
     tagChain = tagChain.map((item) => AppData.getTagByTagName(tags, item))
+    const allArticleId = 'all article'
+    tagChain.unshift({
+      _id: allArticleId,
+      tagName: '所有文章'
+    })
     tagChain.push(tag)
+
     let tagChainDOM = tagChain.map(item => {
         return (
             <li key={item._id} >
-                <Link to={'/' + config.TAG_PATH + item._id}>{item.tagName}</Link>
+                <Link to={getUrl(item)}>{item.tagName}</Link>
             </li>
         )
     })
     return tagChainDOM
+
+    function getUrl (tag) {
+      if (tag._id === allArticleId) {
+        return '/'
+      } else {
+        return '/' + config.TAG_PATH + tag._id
+      }
+    }
 }
 
 export default connect()(CurrentTagChain)
