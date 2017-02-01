@@ -70,6 +70,7 @@ class ArticleBox extends Component {
                     isFirstPage={isFirstPage}
                     currentArticle={currentArticle}/>
                 <ShareLoveBox
+                    key={currentArticle._id}
                     currentArticle={currentArticle}
                     addArticleLoveNumber={addArticleLoveNumber}
                     addArticleShareNumber={addArticleShareNumber} />
