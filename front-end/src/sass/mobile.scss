@@ -1,0 +1,157 @@
+@media screen and (max-width: 800px) {
+  #root {
+    background-color: #F2F2F2
+  }
+
+  .main-nav-bar {
+    display: none !important;
+  }
+
+  .main-body {
+    max-width: 17rem;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+
+  .main-sidebar {
+    display: none;
+  }
+
+  .main-container {
+    width: 100%;
+    float: none;
+    display: block;
+    background-color: #fff;
+
+  }
+
+  .article-box, .article-list-box {
+    box-shadow: 0.2px 1px 6px grey;
+
+    .tag-chain {
+      font-size: 0.8rem;
+      padding: 0.5rem 0.83rem;
+    }
+  }
+
+  .article-list-box {
+    .article-list-item :not(.title){
+      font-size: 0.6rem;
+      margin-right: 0rem;
+    }
+
+    .article-list-item .title {
+      font-size: 0.9rem;
+      color: #424242;
+      padding-bottom: 0.33rem;
+    }
+
+    .article-list-item {
+      position: relative;
+      padding: 0.83rem;
+
+      .article-list-love,.article-list-share {
+        top: 0.067rem;
+        font-size: 1.1rem;
+        left: -0.116rem;
+      }
+
+      .articlelist-share-box {
+        padding-left: 0.33rem;
+      }
+
+
+      .articlelist-date {
+        position: absolute;
+        right: 1.3rem;
+        bottom: 0.8rem;
+      }
+
+    }
+
+    .article, .article-list-item, .click-more {
+      border-top: 1px solid #DDDDDD;
+    }
+
+    .click-more {
+      padding: 0.46rem 0;
+      font-size: 0.67rem;
+    }
+  }
+
+  // 上面是 文章列表 的 样式
+
+  // 下面是 文章页面 的 样式
+
+  .wrapper-move {
+    position: static;
+    transition: none;
+    transform: none;
+  }
+
+  .content-table, .main-sidebar {
+    display: none;
+  }
+
+  .article-box {
+    padding-bottom: 3rem;
+
+    .article-info {
+      .author-info-wrapper,.date-info-wrapper {
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      .article-print-tool {
+        display: none;
+      }
+
+    }
+
+    .markdown-body {
+      font-size: 0.68rem;
+
+      .article-anchor {
+        display: none;
+      }
+    }
+
+    .article-share-box {
+      display: none;
+    }
+
+    .love-and-share {
+      bottom: 1.1rem;
+      right: 0.9rem;
+    }
+
+    .near-article-box {
+      position: absolute;
+      top: initial;
+      //bottom: 1.8rem;
+      left: 0.5rem;
+      font-size: 0.8rem;
+
+      .before-article,.after-article {
+        display: block;
+        position: static;
+        max-width: 9rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .scroll-top-button {
+    right: 0.1rem;
+    bottom: 0.5rem;
+
+    img {
+      opacity: 0.95;
+    }
+  }
+
+}
